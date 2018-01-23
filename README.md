@@ -17,4 +17,6 @@ The team at Berkeley uses "massively parallel algorithms and implementations" on
 
 With their optimizations, specifically their I/O and communication, they were able to surpass the 16x speedup expected from purely Moore's law. The I/O bottleneck was surpassed using the M3 and TOAST software packages, taking advantage of the efficiencies: "coupling the simulation and map-making so that the simulated detector data are never written to or read from disk" (reduction factor: completely gone), "reading the pointing data required to simulate and map all realizations outside the Monte Carlo loop and keep it in memory" (reduction factor 10^4), "reading only the sparse satellite pointing data and recalculate each individual detectors’ dense pointing data from this at runtime" (reduction factor of 10^4) [1].
 
-Even with I/O optimizations, an increasing number of MPI tasks means an increasing overhead, and thus an increasing runtime for jobs requiring more than a few thousand cores.
+Even with I/O optimizations, an increasing number of MPI tasks means an increasing overhead, and thus an increasing runtime for jobs requiring more than a few thousand cores. By reducing the number of MPI tasks and number and size of messages, the bottleneck was surpassed with order of magnitude speedup.
+
+[1] Borrill, J, et. al. *"Big Bang, Big Data, Big Iron: Fifteen Years of Cosmic Microwave Background Data Analysis at NERSC"* (2015)
