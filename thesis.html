@@ -30,13 +30,9 @@
       gap: 1.25rem;
       padding: 1rem 1.25rem;
       background: var(--surface);
-      transition: background 0.15s;
-      text-decoration: none;
       color: var(--ink);
+      text-decoration: none;
     }
-
-    .chapter-row:hover { background: var(--bg); }
-    .chapter-row:hover .chapter-title { color: var(--accent); }
 
     .chapter-num {
       font-family: var(--mono);
@@ -48,16 +44,36 @@
     .chapter-title {
       font-size: 0.88rem;
       font-weight: 400;
-      transition: color 0.15s;
       text-transform: lowercase;
+    }
+
+    .chapter-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .chapter-actions a {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-muted);
+      border-radius: 1px;
+      transition: border-color 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+
+    .chapter-actions a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .chapter-info {
       font-family: var(--mono);
       font-size: 0.65rem;
       color: var(--ink-muted);
-      white-space: nowrap;
-      text-align: right;
     }
 
     .full-download {
@@ -119,7 +135,7 @@
         Yes, absolutely. Needless to say, I hope you enjoy reading it and catching all my
         errors ;)
 
-        If I may recommend, my favorite chapter is Chapter 5 -- easily the best chapter in
+        If I may recommend, my favorite chapter is Chapter 5 — easily the best chapter in
         this dissertation, and one I enjoyed the most writing in my limited time.
       </p>
 
@@ -129,67 +145,93 @@
         download full pdf — 142 pages
       </a>
 
-      <!-- Chapter downloads -->
+      <!-- Chapter list -->
       <p class="eyebrow" style="margin-bottom: 0.5rem;">by chapter</p>
       <p class="reading-note">
-        prefer to read selectively? each chapter is available individually below.
+        read online or download by chapter — each pdf and html version available below.
       </p>
 
       <div class="chapter-list">
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/front-matter.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">—</span>
           <span class="chapter-title">front matter, abstract &amp; table of contents</span>
-          <span class="chapter-info">13 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/front-matter.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/front-matter.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch1-introduction.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">1</span>
           <span class="chapter-title">introduction</span>
-          <span class="chapter-info">4 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch1.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch1-introduction.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch2-cmb.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">2</span>
           <span class="chapter-title">the cosmic microwave background</span>
-          <span class="chapter-info">23 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch2.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch2-cmb.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch3-simons-observatory.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">3</span>
           <span class="chapter-title">the simons observatory</span>
-          <span class="chapter-info">13 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch3.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch3-simons-observatory.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch4-small-aperture-telescopes.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">4</span>
           <span class="chapter-title">the simons observatory small aperture telescopes</span>
-          <span class="chapter-info">31 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch4.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch4-small-aperture-telescopes.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch5-detector-arrays.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">5</span>
           <span class="chapter-title">antenna-coupled detector arrays</span>
-          <span class="chapter-info">38 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch5.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch5-detector-arrays.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch6-observing.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">6</span>
           <span class="chapter-title">observing the cmb and future work</span>
-          <span class="chapter-info">7 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch6.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch6-observing.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch7-conclusion.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">7</span>
           <span class="chapter-title">conclusion</span>
-          <span class="chapter-info">1 p</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="thesis-html/ch7.html">read</a>
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/ch7-conclusion.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
-        <a class="chapter-row" href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/bibliography.pdf" target="_blank">
+        <div class="chapter-row">
           <span class="chapter-num">—</span>
           <span class="chapter-title">bibliography</span>
-          <span class="chapter-info">12 pp</span>
-        </a>
+          <div class="chapter-actions">
+            <a href="https://github.com/aashrita/aashrita.github.io/releases/download/v1.0-thesis/bibliography.pdf" target="_blank">pdf</a>
+          </div>
+        </div>
 
       </div>
 
