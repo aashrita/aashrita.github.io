@@ -162,27 +162,26 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ── About / Hero ───────────────────────── */
-#about { padding-top: 6rem; }
+#about { padding-top: 5rem; }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 120px;
-  gap: 3rem;
-  align-items: start;
+/* Photo sits above the name, left-aligned, portrait */
+.hero-photo-wrap {
+  margin-bottom: 2rem;
 }
 
 .hero-photo {
-  width: 140px;
-  height: 190px;
+  width: 200px;
+  height: 260px;
   border-radius: 2px;
   object-fit: cover;
-  object-position: center top;
-  filter: grayscale(10%);
+  object-position: center 15%;
+  filter: grayscale(8%);
+  display: block;
 }
 
 .hero-photo-placeholder {
-  width: 140px;
-  height: 190px;
+  width: 200px;
+  height: 260px;
   border-radius: 2px;
   background: var(--rule);
   display: flex;
@@ -191,9 +190,6 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: 0.65rem;
   color: var(--ink-muted);
-  text-align: center;
-  line-height: 1.5;
-  flex-shrink: 0;
 }
 
 .contact-row {
