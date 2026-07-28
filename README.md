@@ -1,22 +1,78 @@
-# CS267 Intro & HMWK 0
+# yourname.github.io
 
-**Intro**
+Personal site with an about page, research portfolio, and public wiki.
 
-Hi! I'm Aashrita Mangu, a current PhD candidate in the physics department. I graduated with a degree in electrical engineering from Caltech. My research interests include precision cosmology, specifically developing detectors for mapping the Cosmic Microwave Background. My current research lab works on POLARBEAR and the Simons Array, detectors located in the Atacama Desert in Chile.
+---
 
-I'd really like to learn more about parallel computing so that I can more effectively use computers for my research. I'm interested in learning about techniques and tools that can help me use, manipulate, and extract useful data.
+## Structure
 
+```
+yourname.github.io/
+├── index.html          # Main page (About, Research, Wiki index)
+├── README.md           # This file
+├── cv.pdf              # Your CV — linked from the About section
+├── photo.jpg           # Your headshot — referenced in index.html
+└── wiki/
+    ├── note-template.html   # Copy this to make a new note
+    ├── your-first-note.html
+    └── ...
+```
 
+---
 
+## Checklist: getting started
 
-**Interesting Application: Parallel Computation in CMB Data Analysis**
+- [ ] Replace `Your Name` everywhere (search the file — it appears in the `<title>`, nav, footer, and hero)
+- [ ] Fill in the eyebrow line in About (e.g. `PhD Candidate · University of Chicago`)
+- [ ] Write your bio paragraphs
+- [ ] Update the contact links (email, GitHub, Scholar, CV)
+- [ ] Swap in your photo: replace the placeholder `div` with `<img class="hero-photo" src="photo.jpg" alt="Your Name">`
+- [ ] Add your research projects (duplicate the project block in `index.html`)
+- [ ] Write the wiki intro blurb
+- [ ] Add your first wiki note (see below)
 
-An interesting use of parallel computing deals with vast amounts of Cosmic Microwave Background (CMB) data. The CMB consists of primordial photons with a current (cooled-down) energy in the microwave range that can be measured everywhere in the sky. The very faint fluctations in the signal require experiments like POLARBEAR to collect vast amounts of data when they scan the sky. With such large data sets, scientists all over the world are working to overcome computational challenges associated with analysis.
+---
 
-The team at Berkeley uses "massively parallel algorithms and implementations" on the NERSC supercomputers (ranked 8th in the Top 500 list) [1]. In a recent paper, as a first step in their massively parallel analysis, they did an exact maximum likelihood CMB data analysis using Microwave Anisotropy Dataset Computational Analysis Package (MADCAP). They also used MPI.
+## Adding a wiki note
 
-With their optimizations, specifically their I/O and communication, they were able to surpass the 16x speedup expected from purely Moore's law. The I/O bottleneck was surpassed using the M3 and TOAST software packages, taking advantage of the efficiencies: "coupling the simulation and map-making so that the simulated detector data are never written to or read from disk" (reduction factor: completely gone), "reading the pointing data required to simulate and map all realizations outside the Monte Carlo loop and keep it in memory" (reduction factor 10^4), "reading only the sparse satellite pointing data and recalculate each individual detectors’ dense pointing data from this at runtime" (reduction factor of 10^4) [1].
+1. Copy `wiki/note-template.html` and rename it something descriptive, e.g. `wiki/variational-inference.html`
+2. Fill in the `<!-- comment -->` placeholders in the new file
+3. Add a card for it in the wiki grid in `index.html`:
 
-Even with I/O optimizations, an increasing number of MPI tasks means an increasing overhead, and thus an increasing runtime for jobs requiring more than a few thousand cores. By reducing the number of MPI tasks and number and size of messages, the bottleneck was surpassed with order of magnitude speedup.
+```html
+<a class="wiki-card" href="wiki/variational-inference.html">
+  <p class="wiki-card-label">Methods</p>
+  <h3>Variational Inference</h3>
+  <p>A primer on ELBO, mean-field approximations, and when VI beats MCMC.</p>
+</a>
+```
 
-[1] Borrill, J, et. al. *"Big Bang, Big Data, Big Iron: Fifteen Years of Cosmic Microwave Background Data Analysis at NERSC"* (2015)
+---
+
+## Adding a research project
+
+Duplicate one of the `<div class="project">` blocks in `index.html` and fill it in. The fields are:
+
+- **project-meta** — year and venue (e.g. `2024 · NeurIPS`)
+- **h3** — paper or project title
+- **p** — 2–3 sentence description of the contribution
+- **tags** — topic keywords (duplicate `<span class="tag">` as needed)
+- **project-links** — links to paper, code, talk, etc.
+
+---
+
+## Fonts and dependencies
+
+The site loads two Google Fonts families (`DM Serif Display` and `Inter`) and `DM Mono` from Google Fonts CDN. No build step, no npm, no framework. Everything is vanilla HTML and CSS.
+
+---
+
+## Deploying
+
+Push to the `main` branch of a repo named `yourusername.github.io`. GitHub Pages will serve `index.html` automatically. If you're using a project repo instead, go to **Settings → Pages** and set the source branch.
+
+---
+
+## License
+
+Content © [Your Name]. Code structure is yours to use freely.
