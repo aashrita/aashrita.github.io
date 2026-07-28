@@ -6,9 +6,6 @@
   <title>thesis — aashrita mangu</title>
   <link rel="stylesheet" href="assets/style.css" />
   <style>
-    /* Thesis page uses peacock as accent */
-    /* (overridden via body class below) */
-
     .thesis-meta {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -80,11 +77,20 @@
       border-radius: 1px;
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
+      margin-bottom: 3rem;
     }
 
     .full-download:hover {
       background: var(--accent);
       color: white;
+    }
+
+    .reading-note {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
     }
   </style>
 </head>
@@ -111,16 +117,25 @@
       </div>
 
       <p style="max-width: 580px; margin-bottom: 2.5rem;">
-      This dissertation was rather <em>speedily</em> written in 3 weeks after a 2 month 
-      deployment to Chile, where I was busy building the high-frequency small
-      aperture telescope for the Simons Observatory. Does it sum up all the work I did?
-      Most definitely not. Does it represent all the work I had the energy to type out?
-      Yes, absolutely. Needless to say, I hope  you enjoy reading it and catching all my
-      errors ;)
+        This dissertation was rather <em>speedily</em> written in 3 weeks after a 2 month
+        deployment to Chile, where I was busy building the high-frequency small
+        aperture telescope for the Simons Observatory. Does it sum up all the work I did?
+        Most definitely not. Does it represent all the work I had the energy to type out?
+        Yes, absolutely. Needless to say, I hope you enjoy reading it and catching all my
+        errors ;)
       </p>
 
+      <!-- Full download -->
+      <p class="eyebrow" style="margin-bottom: 1rem;">full thesis</p>
+      <a class="full-download" href="thesis/thesis-amangu-full.pdf" target="_blank">
+        download full pdf — 142 pages
+      </a>
+
       <!-- Chapter downloads -->
-      <p class="eyebrow" style="margin-bottom: 1rem;">by chapter</p>
+      <p class="eyebrow" style="margin-bottom: 0.5rem;">by chapter</p>
+      <p class="reading-note">
+        prefer to read selectively? each chapter is available individually below.
+      </p>
 
       <div class="chapter-list">
 
@@ -179,12 +194,6 @@
         </a>
 
       </div>
-
-      <!-- Full download -->
-      <p class="eyebrow" style="margin-bottom: 1rem;">full thesis</p>
-      <a class="full-download" href="thesis/thesis-amangu-full.pdf" target="_blank">
-        download full pdf — 142 pages
-      </a>
 
     </div>
   </section>
