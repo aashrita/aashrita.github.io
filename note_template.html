@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Note Title — Your Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:       #1a1a1a;
+      --ink-soft:  #4a4a4a;
+      --ink-muted: #888;
+      --paper:     #f9f8f5;
+      --rule:      #ddd9d0;
+      --accent:    #2d5be3;
+      --accent-dim:#e8eeff;
+      --mono:      'DM Mono', monospace;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(249,248,245,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .container { max-width: 700px; margin: 0 auto; padding: 0 2rem; }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    article {
+      padding: 4rem 0 6rem;
+    }
+    .note-meta {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .note-subtitle {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+    .note-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+
+    /* Note body typography */
+    .note-body h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 2.5rem 0 0.75rem;
+    }
+    .note-body h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+    }
+    .note-body p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+    .note-body ul, .note-body ol {
+      color: var(--ink-soft);
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .note-body li { margin-bottom: 0.3rem; }
+    .note-body a { color: var(--accent); }
+
+    /* Code blocks */
+    .note-body pre {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 1.1rem 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    .note-body code {
+      font-family: var(--mono);
+      font-size: 0.85em;
+    }
+    .note-body p code, .note-body li code {
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+
+    /* Callout / aside */
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-dim);
+      padding: 0.9rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .note-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0;
+    }
+    footer .container {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      footer .container { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="nav-name" href="../index.html">Your Name</a>
+      <a class="nav-back" href="../index.html#wiki">← All notes</a>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+
+      <!-- Meta: category and date -->
+      <p class="note-meta">
+        Category &nbsp;·&nbsp; Last updated: Month Year
+      </p>
+
+      <!-- Title and optional subtitle -->
+      <h1>Note Title</h1>
+      <p class="note-subtitle">
+        <!-- Optional: one sentence framing what this note is and who it's for -->
+      </p>
+
+      <hr class="note-divider" />
+
+      <!-- ── Note body: fill this in ── -->
+      <div class="note-body">
+
+        <!-- 
+          Write your note here using standard HTML.
+          
+          Below are ready-to-use components — keep or delete as needed.
+        -->
+
+        <h2>Overview</h2>
+        <p>
+          <!-- What is this topic? Why does it matter? -->
+        </p>
+
+        <!-- Callout box — great for key definitions or warnings -->
+        <div class="callout">
+          <!-- Key insight, definition, or caveat to highlight -->
+        </div>
+
+        <h2>Section Title</h2>
+        <p>
+          <!-- Body text -->
+        </p>
+        <ul>
+          <li><!-- Point --></li>
+          <li><!-- Point --></li>
+        </ul>
+
+        <h2>Another Section</h2>
+        <p>
+          <!-- You can add as many sections as you like.
+               Duplicate an h2 + p block to extend the note. -->
+        </p>
+
+        <!-- Code block example -->
+        <!--
+        <pre><code>paste code here</code></pre>
+        -->
+
+        <h2>References</h2>
+        <ul>
+          <li><a href="#">Source title (Author, Year)</a></li>
+          <li><!-- Add more references --></li>
+        </ul>
+
+      </div>
+      <!-- ── End note body ── -->
+
+      <div class="note-footer">
+        <span>© <span class="yr"></span> Your Name</span>
+        <span>These are personal working notes, shared publicly.</span>
+      </div>
+
+    </div>
+  </article>
+
+  <footer>
+    <div class="container">
+      <span>© <span class="yr"></span> Your Name</span>
+      <span><a href="../index.html">← Back to site</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.yr').forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
+  </script>
+
+</body>
+</html>
