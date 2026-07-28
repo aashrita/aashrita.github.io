@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>introduction — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span><a href="front-matter.html">← front matter</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch2.html">ch2 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+<h1 id="ch:intro">Introduction</h1>
+<h2 id="cosmological-motivation">Cosmological Motivation</h2>
+<p><em>How did the universe originate and evolve?</em> Over the past
+several decades, theoretical and experimental cosmology has advanced
+drastically and attempted to answer this and other prodigious questions
+with high precision. From Einstein’s general relativity to modern highly
+sensitive observations of the cosmic microwave background, we have seen
+an evolution in testable theories that aim to answer fundamental
+questions about our universe.</p>
+<p>The “concordance" or standard <span
+class="math inline">\(\Lambda\)</span>CDM model of cosmology is the
+leading model of our universe. It encapsulates the following paradigm:
+our universe is a Euclidean one (i.e. has a flat geometry) composed of
+only about about 5% normal matter. The rest is about 70% dark energy
+(<span class="math inline">\(\Lambda\)</span>), which is accelerating
+the expansion of the universe but is still very poorly understood, and
+about 25% non-baryonic, non-relativistic (or “cold") dark matter (CDM),
+which is a major research subject in modern cosmology. Species such as
+neutrinos and photons contribute a small fraction of a percent to this
+distribution. Indeed, the majority of the photon energy density is
+actually from the cosmic microwave background! The current most
+widely-accepted theory of the history of the universe involves a hot Big
+Bang model wherein a hot, dense universe expanded and cooled over time.
+When the universe was cool enough to start forming neutral hydrogen, the
+cosmic microwave background (CMB) photons started free streaming about
+375,000 years after the beginning of the universe. This model
+successfully explains several key observations including <span
+class="citation" data-cites="planck2018_1">(The Planck Collaboration
+2020)</span>:</p>
+<ul>
+<li><p>cosmic expansion (Hubble’s law, 1920s <span class="citation"
+data-cites="hubble1929">(Hubble 1929)</span>)</p></li>
+<li><p>cosmic microwave background (Penzias and Wilson, 1964 <span
+class="citation" data-cites="PenziasWilson1965">(Penzias and Wilson
+1965)</span>)</p></li>
+<li><p>light element abundances (BBN - Alpher, Gamow, Herman <span
+class="citation" data-cites="alpherbethegamow">(Alpher, Bethe, and Gamow
+1948)</span>)</p></li>
+<li><p>formation of large-scale structure and galaxies</p></li>
+</ul>
+<p>The most conclusive evidence of this model and theory has been the
+CMB, which permeates the entire universe uniformly to 1 part in <span
+class="math inline">\(10^{5}\)</span>. Arno Penzias and Robert Wilson at
+Bell Laboratories discovered the CMB quite accidentally with the Holmdel
+horn antenna back in 1964 <span class="citation"
+data-cites="PenziasWilson1965">(Penzias and Wilson 1965)</span>. Much
+later in the 1990s, the Far InfraRed Absolute Spectrometer (FIRAS) on
+the <em>Cosmic Background Explorer (COBE)</em> satellite measured the
+CMB spectrum as shown in Figure <a href="#fig:ch1:cmb_blackbody"
+data-reference-type="ref"
+data-reference="fig:ch1:cmb_blackbody">1.1</a>. There are also
+anisotropies in the CMB – small temperature fluctuations to 1 part in
+<span class="math inline">\(10^{5}\)</span> suggest extremely spatially
+isotropic radiation. Over time with efforts from both space-based
+satellites (e.g. the <em>Wilkinson Microwave Anisotropy Probe</em>
+(<em>WMAP</em>) and <em>Planck</em>) and ground-based observatories
+(e.g. the Atacama Cosmology Telescope (ACT), BICEP, South Pole Telescope
+(SPT), and POLARBEAR), anisotropies in CMB temperature and polarization
+have been mapped to great precision over many angular scales.</p>
+<p>To explain the the current cosmological model’s intrinsic
+inconsistencies (e.g. the homogeneity, isotropy, and flatness of the
+modern universe on very large scales), the theory of inflation was
+adopted alongside the Big Bang paradigm. Seed perturbations, or quantum
+fluctuations, in the fabric of spacetime sourced from a period of rapid
+expansion (“inflation") eventually grew to form the large scale
+structure we see today via gravitational instability. For a more
+detailed and technical description of cosmology, please refer to Chapter
+<a href="#ch:cmb" data-reference-type="ref"
+data-reference="ch:cmb">[ch:cmb]</a>.</p>
+<figure id="fig:ch1:cmb_blackbody">
+<img src="figures/chap1_pics/COBE_CMBblackbody.png" />
+<figcaption>CMB data fit beautifully to a Planck blackbody spectrum with
+<span class="math inline">\(T \approx 2.73K\)</span> as measured by the
+FIRAS instrument on the COBE satellite <span class="citation"
+data-cites="Fixsen_1996 PDG">(Fixsen et al. 1996; Group et al.
+2020)</span>. Note that the error bars are smaller than the width of the
+line!</figcaption>
+</figure>
+<p>Upcoming ground-based experiments such as Simons Observatory (SO) and
+CMB-Stage 4 (CMB-S4) will hit unprecedented sensitivities and provide
+valuable cosmological information in the coming decades. They also
+provide the tools and technical readiness for space-based missions to
+reach sensitivities that are more difficult to achieve on earth with
+atmospheric interference. As described in the Astro2020 decadal survey,
+space observations will be necessary for the lowest systematics and best
+Galactic and extragalactic foreground separation with a much wider range
+of observing windows (20-800 GHz) across angular scales <span
+class="citation" data-cites="astro2020">(National Academies of Sciences,
+Engineering, and Medicine 2023)</span>. The largest angular scales (low
+<span class="math inline">\(\ell\)</span>) are in greatest need of a
+space mission for measurements of reionization features, which require
+good noise stability and are very difficult for ground-based experiments
+to achieve. Additionally, residuals after foreground cleaning seen in
+ground-based experiments will need to be tested statistically on
+multiple patches of the sky, and a space observatory will provide
+exactly this. Ground-based experiments like SO and CMB-S4 are aiming to
+achieve high signal-to-noise maps, and a space-based observatory would
+vastly improve upon data analysis that currently relies on e.g.
+<em>Planck</em>. The Astro2020 survey also agreed that momentum in
+ground-based experiments and development of technologies in the coming
+decade will determine a future probe mission in the 2030s, which would
+serve as a complement to CMB-S4.</p>
+<p>The field is moving towards large-scale technical efforts to make
+multichroic (i.e. multi-frequency) observatories covering many angular
+scales to yield higher and higher sensitivity maps. We will be able to
+study particle physics beyond the Standard Model by constraining the sum
+of neutrino masses, probing the nature of dark energy and dark matter,
+and enabling a model-independent search for light relic particles from
+the early universe. Highly sensitive CMB instruments must untangle the
+effects of gravitational lensing perturbations and various galactic and
+extragalactic foregrounds that affect CMB signals as they journey across
+space and time to our detectors <span class="citation"
+data-cites="cibforegrounds cmbs4science SOscience Abitbol_2021">(Baleato-Lizancos
+et al. 2022; K. N. Abazajian et al. 2016; The Simons Observatory
+Collaboration 2019; Abitbol et al. 2021)</span>. Ground-based
+experiments have the added challenge of characterizing atmospheric and
+terrestrial effects <span class="citation"
+data-cites="SOscience cmbs4_sciencecase BICEP_2016">(The Simons
+Observatory Collaboration 2019; K. Abazajian et al. 2019; Ade et al.
+2016)</span>. Data is also affected by instrumental systematics and
+intrinsic white noise (e.g. <span class="citation"
+data-cites="Gudmundsson2021 salatino2018 Gallardo_2018">(Gudmundsson et
+al. 2021; Salatino et al. 2018; Gallardo et al. 2018)</span>). While
+future space observatories are required for the highest precision
+measurements, we must use ground-based experiments to understand
+instrumental systematics, make scalable low-risk technologies, and
+continue investment in readiness for such missions.</p>
+<p>These large-scale research and development efforts come with huge
+technical challenges. Higher sensitivities require more detectors on the
+sky as we reach our limits on single-pixel efficiencies (see Chapters <a
+href="#ch:so" data-reference-type="ref"
+data-reference="ch:so">[ch:so]</a> and <a href="#ch:detarrays"
+data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for a more detailed
+discussion on photon-noise dominated detectors). SO is fielding over
+68,000 detectors, and CMB-S4 will reach 500,000 detectors on the sky.
+These require compact optical coupling designs, complex focal plane
+architecture, and innovative detector readout strategies so that
+associated noise levels remain subdominant (see Chapter <a
+href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for discussions on
+readout). It is truly an exciting time to be a part of the CMB community
+as we chase unprecedented sensitivities and novel science goals.</p>
+<h2 id="overview">Overview</h2>
+<p>This thesis is divided into four main sections: (1) scientific
+background and motivation; (2) integration, testing, and deployment of a
+Simons Observatory (SO) small aperture telescope (SAT); (3) design,
+construction, and testing of focal planes for cosmic microwave
+background (CMB) experiments; and (4) how to observe the CMB with these
+telescopes. We will largely focus on the Simons Observatory, with some
+work applicable for other upcoming experiments like <em>LiteBIRD</em>
+and CMB-S4.</p>
+<p>We have made an effort to make each chapter somewhat stand-alone so
+that it can be read independently if needed, but some references to
+other sections will be rather unavoidable! This chapter provides an
+overview of the cosmological motivation and this dissertation. Chapter
+<a href="#ch:cmb" data-reference-type="ref"
+data-reference="ch:cmb">[ch:cmb]</a> reviews CMB theory to provide a
+framework for the rest of the thesis. Chapter <a href="#ch:so"
+data-reference-type="ref" data-reference="ch:so">[ch:so]</a> briefly
+describes the state of the field, what sensitivities modern instruments
+are reaching for, and how to understand them. It also contextualizes the
+Simons Observatory experiment, with an overview of SO science and
+instruments. Chapter <a href="#ch:sosat" data-reference-type="ref"
+data-reference="ch:sosat">[ch:sosat]</a> goes into detail about the SO
+small aperture telescopes, with a focus on the Ultra-High Frequency
+(UHF) telescope that was integrated and tested at Berkeley and began
+Chilean integration in January 2024. The current status of the
+experiment and the UHF SAT is provided as well. Chapter <a
+href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> discusses the structure
+of focal planes used in CMB experiments, and considerations taken when
+building complex detector arrays. Details on the SO Low Frequency (LF)
+arrays are provided, with some CMB-S4 and <em>LiteBIRD</em> applications
+used as examples for pedagogical purposes. Chapter <a href="#ch:cmbobs"
+data-reference-type="ref" data-reference="ch:cmbobs">[ch:cmbobs]</a>
+briefly describes considerations for CMB observations, with a focus on
+SO scan strategy. Finally Chapter <a href="#ch:conclusion"
+data-reference-type="ref"
+data-reference="ch:conclusion">[ch:conclusion]</a> provides a brief
+summary of this dissertation.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-cmbs4science" class="csl-entry" role="listitem">
+Abazajian, Kevork N., Peter Adshead, Zeeshan Ahmed, Steven W. Allen,
+David Alonso, Kam S. Arnold, Carlo Baccigalupi, et al. 2016.
+<span>“CMB-S4 Science Book, First Edition.”</span> <a
+href="https://arxiv.org/abs/1610.02743">https://arxiv.org/abs/1610.02743</a>.
+</div>
+<div id="ref-cmbs4_sciencecase" class="csl-entry" role="listitem">
+Abazajian, Kevork, Graeme Addison, Peter Adshead, Zeeshan Ahmed, Steven
+W. Allen, David Alonso, Marcelo Alvarez, et al. 2019. <span>“CMB-S4
+Science Case, Reference Design, and Project Plan.”</span> <a
+href="https://arxiv.org/abs/1907.04473">https://arxiv.org/abs/1907.04473</a>.
+</div>
+<div id="ref-Abitbol_2021" class="csl-entry" role="listitem">
+Abitbol, Maximilian H., David Alonso, Sara M. Simon, Jack Lashner, Kevin
+T. Crowley, Aamir M. Ali, Susanna Azzoni, et al. 2021. <span>“The Simons
+Observatory: Gain, Bandpass and Polarization-Angle Calibration
+Requirements for b-Mode Searches.”</span> <em>Journal of Cosmology and
+Astroparticle Physics</em> 2021 (05): 032. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2021%2F05%2F032">https://doi.org/10.1088%2F1475-7516%2F2021%2F05%2F032</a>.
+</div>
+<div id="ref-BICEP_2016" class="csl-entry" role="listitem">
+Ade, P. A. R., Z. Ahmed, R. W. Aikin, K. D. Alexander, D. Barkats, S. J.
+Benton, C. A. Bischoff, et al. 2016. <span>“BICEP2/KECK ARRAY. VII.
+MATRIX BASED e/b SEPARATION APPLIED TO BICEP2 AND THE KECK
+ARRAY.”</span> <em>The Astrophysical Journal</em> 825 (1): 66. <a
+href="https://doi.org/10.3847/0004-637X/825/1/66">https://doi.org/10.3847/0004-637X/825/1/66</a>.
+</div>
+<div id="ref-alpherbethegamow" class="csl-entry" role="listitem">
+Alpher, R. A., H. Bethe, and G. Gamow. 1948. <span>“The Origin of
+Chemical Elements.”</span> <em>Phys. Rev.</em> 73: 803–4. <a
+href="https://doi.org/10.1103/PhysRev.73.803">https://doi.org/10.1103/PhysRev.73.803</a>.
+</div>
+<div id="ref-cibforegrounds" class="csl-entry" role="listitem">
+Baleato-Lizancos, Antón, Anthony Challinor, Blake D Sherwin, and Toshiya
+Namikawa. 2022. <span>“<span class="nocase">Delensing the CMB with the
+cosmic infrared background: the impact of foregrounds</span>.”</span>
+<em>Monthly Notices of the Royal Astronomical Society</em> 514 (4):
+5786–5812. <a
+href="https://doi.org/10.1093/mnras/stac1705">https://doi.org/10.1093/mnras/stac1705</a>.
+</div>
+<div id="ref-Fixsen_1996" class="csl-entry" role="listitem">
+Fixsen, D. J., E. S. Cheng, J. M. Gales, J. C. Mather, R. A. Shafer, and
+E. L. Wright. 1996. <span>“The Cosmic Microwave Background Spectrum from
+the Full COBE/FIRAS Data Set.”</span> <em>The Astrophysical Journal</em>
+473 (2): 576–87. <a
+href="https://doi.org/10.1086/178173">https://doi.org/10.1086/178173</a>.
+</div>
+<div id="ref-Gallardo_2018" class="csl-entry" role="listitem">
+Gallardo, Patricio A., Jon Gudmundsson, Aamir Ali, Sean Bryan, Yuji
+Chinone, Gabriele Coppi, Nicholas Cothard, et al. 2018.
+<span>“Systematic Uncertainties in the Simons Observatory: Optical
+Effects and Sensitivity Considerations.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>IX</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2312971">https://doi.org/10.1117/12.2312971</a>.
+</div>
+<div id="ref-PDG" class="csl-entry" role="listitem">
+Group, Particle Data, P A Zyla, R M Barnett, J Beringer, O Dahl, D A
+Dwyer, D E Groom, et al. 2020. <span>“<span class="nocase">Review of
+Particle Physics</span>.”</span> <em>Progress of Theoretical and
+Experimental Physics</em> 2020 (8): 083C01. <a
+href="https://doi.org/10.1093/ptep/ptaa104">https://doi.org/10.1093/ptep/ptaa104</a>.
+</div>
+<div id="ref-Gudmundsson2021" class="csl-entry" role="listitem">
+Gudmundsson, Jon E., Patricio A. Gallardo, Roberto Puddu, Simon R.
+Dicker, Alexandre E. Adler, Aamir M. Ali, Andrew Bazarko, et al. 2021.
+<span>“The Simons Observatory: Modeling Optical Systematics in the Large
+Aperture Telescope.”</span> <em>Appl. Opt.</em> 60 (4): 823–37. <a
+href="https://doi.org/10.1364/AO.411533">https://doi.org/10.1364/AO.411533</a>.
+</div>
+<div id="ref-hubble1929" class="csl-entry" role="listitem">
+Hubble, Edwin. 1929. <span>“<span class="nocase">A Relation between
+Distance and Radial Velocity among Extra-Galactic
+Nebulae</span>.”</span> <em>Proceedings of the National Academy of
+Science</em> 15 (3): 168–73. <a
+href="https://doi.org/10.1073/pnas.15.3.168">https://doi.org/10.1073/pnas.15.3.168</a>.
+</div>
+<div id="ref-astro2020" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, and Medicine. 2023.
+<em>Pathways to Discovery in Astronomy and Astrophysics for the
+2020s</em>. Washington, DC: The National Academies Press. <a
+href="https://doi.org/10.17226/26141">https://doi.org/10.17226/26141</a>.
+</div>
+<div id="ref-PenziasWilson1965" class="csl-entry" role="listitem">
+Penzias, A. A., and R. W. Wilson. 1965. <span>“<span class="nocase">A
+Measurement of Excess Antenna Temperature at 4080 Mc/s.</span>”</span>
+<em>The Astrophysical Journal</em> 142: 419–21. <a
+href="https://doi.org/10.1086/148307">https://doi.org/10.1086/148307</a>.
+</div>
+<div id="ref-salatino2018" class="csl-entry" role="listitem">
+Salatino, Maria, Jacob Lashner, Martina Gerbino, Sara M. Simon, Joy
+Didier, Aamir Ali, Peter C. Ashton, et al. 2018. <span>“Studies of
+Systematic Uncertainties for Simons Observatory: Polarization Modulator
+Related Effects.”</span> <a
+href="https://arxiv.org/abs/1808.07442">https://arxiv.org/abs/1808.07442</a>.
+</div>
+<div id="ref-planck2018_1" class="csl-entry" role="listitem">
+The Planck Collaboration. 2020. <span>“Planck 2018 Results. I. Overview
+and the Cosmological Legacy of Planck.”</span> <em>Astronomy
+<span>&amp;</span> Astrophysics</em> 641: A1. <a
+href="https://doi.org/10.1051%2F0004-6361%2F201833880">https://doi.org/10.1051%2F0004-6361%2F201833880</a>.
+</div>
+<div id="ref-SOscience" class="csl-entry" role="listitem">
+The Simons Observatory Collaboration. 2019. <span>“The Simons
+Observatory: Science Goals and Forecasts.”</span> <em>Journal of
+Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
+</div>
+</div>
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span><a href="front-matter.html">← front matter</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch2.html">ch2 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

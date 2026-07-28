@@ -1,0 +1,2493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>antenna-coupled detector arrays — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span><a href="ch4.html">← ch4</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch6.html">ch6 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+<h1 id="ch:detarrays">Antenna-Coupled Detector Arrays</h1>
+<p><em>Parts of this chapter are adapted from <span class="citation"
+data-cites="manguLF">(Mangu et al. 2024)</span>.</em><br />
+<br />
+In Chapter <a href="#ch:sosat" data-reference-type="ref"
+data-reference="ch:sosat">[ch:sosat]</a>, the construction of a small
+aperture telescope for SO was discussed. In this chapter, we focus on
+what happens after the telescope optics couple to the focal plane. This
+mode of <em>optical coupling</em> is often done using some antenna,
+which induces a signal on some detector such as a bolometer. A
+<em>bolometer</em> is a type of detector that converts incoming signal
+into heat, resulting in some measurable temperature change. This signal
+at <span class="math inline">\(\mathcal{O}(100)\)</span> mK stage then
+traverses several temperature stages within the telescope to be read out
+at 300K and converted to a time-ordered data format (see Chapter <a
+href="#ch:cmbobs" data-reference-type="ref"
+data-reference="ch:cmbobs">[ch:cmbobs]</a> for more information on
+observations).</p>
+<p>Focal planes are highly complex, with each pixel acting as an
+individual camera. Multichroic arrays, as are common now in CMB
+experiments, involve dual polarized antennas that carry signals with
+microstrip lines to multiplexing bandpass filters (i.e. diplexing if two
+bands, triplexing if three bands, etc.) and terminate at a bolometer.
+While SO uses diplexing filters, <em>LiteBIRD</em> will be using
+triplexing filters. Additional features depend on the mode of optical
+coupling. For example, feedhorn-coupled orthomode transducers utilize
+microstrip line to coplanar waveguide transitions. Multichroic pixels
+often also utilize crossunders when routing microstrip lines.</p>
+<p>A critical component to reaching technological readiness is
+developing the optical coupling technology, which couples light onto the
+detectors and defines the detector beams. In first few sections, we
+review different types of CMB optical coupling that have been used
+successfully in experiments, focusing first on lenslet-coupling sinuous
+antenna arrays developed at Berkeley for Simons Observatory (and
+previously used in Simons Array). We then discuss how the optics couples
+to the detectors, and how that is read out in modern CMB experiments. At
+the end of the chapter, we provide a comprehensive look at the
+low-frequency SO arrays. Note that Berkeley will also serve as a
+fabrication house for CMB-S4 (which will use feedhorn-coupled orthomode
+transducers (OMTs) like the SO mid- and high-frequency arrays) and
+<em>LiteBIRD</em> (which will use both optical coupling
+technologies).</p>
+<p>This chapter follows a long history of successful antenna-coupled
+detector array work in the CMB community. Useful dissertations for
+further reading include <span class="citation"
+data-cites="rogerthesis tokithesis arithesis">(O’Brient 2010; Aritoki
+Suzuki 2013; A. J. Cukierman 2018)</span>, which provide detailed
+context to Berkeley’s lenslet-coupled sinuous array development history.
+For excellent resources to better understand bolometers, please turn to
+<span class="citation"
+data-cites="IrwinHilton2005 richardsbolometers1994 gildemeisterthesis">(Irwin
+and Hilton 2005; <span>“Bolometers for Infrared and Millimeter
+Waves”</span> 1994; Gildemeister 2000)</span>. Finally, to understand
+major sources of noise and other technical considerations for readout
+and detectors, good details are provided in <span class="citation"
+data-cites="cmbs4_technology charliethesis kamthesis">(Abitbol et al.
+2017; Hill 2020; K. S. Arnold 2010)</span>.</p>
+<p>Finally, it is necessary to include a small note on the design and
+simulation software used for research discussed in this chapter:</p>
+<ul>
+<li><p><strong>ANSYS High Frequency Structure Simulator (HFSS)</strong>
+is a 3-D finite element method (FEM) simulator used extensively in this
+dissertation for optical coupling simulations.</p></li>
+<li><p><strong>Sonnet Software</strong> is a 2.5-D FEM simulator which
+is useful for understanding microwave components from a fabrication
+perspective. Different thin films can be defined and stacked to tune
+bandpass filters, microstrip lines, impedance transformers, and more
+during simulation.</p></li>
+<li><p><strong>Keysight Advanced Design System (ADS)</strong> is a
+circuit and electromagnetic simulator, which is useful for simulating
+circuit elements before translating them into thin films for Sonnet
+simulations. We often just use the circuit simulator component, since
+the electromagnetic simulator has historically produced incorrect
+results compared to e.g. HFSS.</p></li>
+<li><p><strong>TannerTools L-Edit</strong> is an integrated circuit (IC)
+design software where the final pixel designs are drawn, routed, and
+used for fabrication.</p></li>
+</ul>
+<h2 id="lenslet-coupled-sinuous-antennas">Lenslet-Coupled Sinuous
+Antennas</h2>
+<figure id="fig:ch5:sinuous">
+<img src="figures/chap5_pics/sinuous.png" />
+<figcaption>Sinuous antenna parameters, properties, and lenslet focus.
+Beige is slot, white is metal for the left antenna diagrams. (a)
+Baseline sinuous antenna with <span class="math inline">\(\tau =
+1.3\)</span>, <span class="math inline">\(\alpha = 45^{\circ}\)</span>,
+and <span class="math inline">\(\delta = 22.5^{\circ}\)</span>. Note
+that every period of <span class="math inline">\(\tau^2\)</span> gives a
+repeating geometry, a signature of the log-periodic nature of this
+antenna. (b) Baseline sinuous antenna but instead with <span
+class="math inline">\(\tau = 1.1\)</span>. Note how the arms oscillate
+seemingly “faster". (c) Plot from <span class="citation"
+data-cites="edwards">(Edwards et al. 2012)</span> shows the effect of
+<span class="math inline">\(\tau\)</span> on the sinuous antenna
+frequency dependent polarization rotation. Note how lower <span
+class="math inline">\(\tau\)</span> results in lower amplitude of
+polarization rotation. (d) Baseline sinuous antenna but instead with
+<span class="math inline">\(\delta = 10^{\circ}\)</span>. Note how the
+slot size has decreased with a lower <span
+class="math inline">\(\delta\)</span>. (e) Baseline sinuous antenna but
+instead with <span class="math inline">\(\alpha = 25^{\circ}\)</span>.
+Note how the arm oscillate at a lower amplitude with a lower <span
+class="math inline">\(\alpha\)</span>. (f) Rough lenslet ray diagram.
+When the ratio of the length of the rectangular extension to the radius
+of the hemispherical lenslet is tuned, the above lenslet will focus
+incoming parallel sky signal onto the antenna. At some point, total
+internal reflection occurs in the reverse time sense (not shown), which
+can be seen in simulation.</figcaption>
+</figure>
+<p>Before diving into lenslet-coupled sinuous antennas, remember that
+dipole antennas are a useful first-principles study described thoroughly
+in many electromagnetics and antenna textbooks. They often drive more
+complicated antenna geometries, and are also often feeds for other
+antennas like the horn antenna. Additionally, double-slot dipole
+antennas (briefly described in Section <a
+href="#sec:ch5:otheroptcouping" data-reference-type="ref"
+data-reference="sec:ch5:otheroptcouping">1.2</a> and Figure <a
+href="#fig:ch5:miscantenna" data-reference-type="ref"
+data-reference="fig:ch5:miscantenna">1.2</a>) are an excellent
+simulation replacement for a sinuous antenna when narrow-band, quick,
+computationally inexpensive simulations are required to test other
+optical coupling geometries and parameters (e.g. new anti-reflection
+coating designs, coupling between neighboring pixels, etc). Figure <a
+href="#fig:ch5:miscantenna" data-reference-type="ref"
+data-reference="fig:ch5:miscantenna">1.2</a> shows the simulation model
+used for a double-slot dipole antenna on HFSS, where four-fold symmetric
+boundary conditions are used to drastically reduce computational time
+and cost. Many of the resources supplied at the beginning of this
+chapter also contain excellent resources on understanding these
+antennas.</p>
+<p>The lenslet-coupled sinuous antenna (see Figures <a
+href="#fig:ch5:sinuous" data-reference-type="ref"
+data-reference="fig:ch5:sinuous">1.1</a> and <a href="#fig:ch5:lpt"
+data-reference-type="ref" data-reference="fig:ch5:lpt">1.4</a>) is a
+planar, log-periodic slot antenna with an extended hemispherical lenslet
+sitting on top. We can begin by understanding the significance of this
+statement. Planar antennas are advantageous for making compact,
+high-density, less complex 3-D focal planes. This allows for easier
+scaling of detectors required to achieve sensitivities needed for
+current and next-generation CMB experiments.</p>
+<p><em>Slot antennas</em> are effective duals of wire antennas, where
+the geometry is instead cut from an infinite ground plane. Thus the
+metal and slot antennas have similar radiation patterns, but the
+electric and magnetic fields roughly flip. See Figure <a
+href="#fig:ch5:miscantenna" data-reference-type="ref"
+data-reference="fig:ch5:miscantenna">1.2</a> to see an example of this
+effect. Slot antennas provide two primary advantages outside of their
+planar nature. First, they allow for smoother integration with planar
+transmission lines often used such as microstrip lines or co-planar
+waveguides (CPWs). This is advantageous for CMB experiments, where the
+antenna must transfer the radiation to a detector (such as a bolometer)
+after going through a filter. Second, the ground plane acts as an
+effective RF shield for anything sitting behind the detector wafer. This
+additional layer of protection is particularly useful for
+electromagnetically sensitive elements like SQUIDs (see Section <a
+href="#sec:ch5:tesreadout" data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">1.5</a>). Note that CMB instruments
+usually contain several layers of RF and magnetic shielding (see
+Chapters <a href="#ch:so" data-reference-type="ref"
+data-reference="ch:so">[ch:so]</a> or <a href="#ch:sosat"
+data-reference-type="ref" data-reference="ch:sosat">[ch:sosat]</a> for
+examples).</p>
+<p><em>Log periodic antennas</em> are generally classified as
+<em>frequency-independent antennas</em>, where the impedance and
+radiation properties repeat every logarithmic period in frequency.
+Within this period, the oscillations are usually designed to be
+negligible and can be classified as generally frequency-independent.
+This valuable property of frequency-independence is a result of
+broadband antenna geometry construction, which usually involves several
+key considerations (see e.g. <span class="citation"
+data-cites="Rumsey_freqindepantenna">(Rumsey 1957)</span> for more
+details):</p>
+<ul>
+<li><p><strong>Self-complementarity.</strong> That is, the antenna and
+its complement have identical geometries. This idea is closely tied with
+the concept of a slot antenna, in that the slot and the metal must have
+identical geometries to achieve self-complementarity. Imagine the input
+impedance of a metal or wire antenna is <span
+class="math inline">\(Z_{metal}\)</span> and the dual (i.e.
+complementary) slot antenna has an input impedance <span
+class="math inline">\(Z_{air}\)</span>. We can use <em>Babinet’s
+principle</em>: <span class="math display">\[Z_{metal}Z_{air} =
+\frac{\eta^2}{4},\]</span> where <span
+class="math inline">\(\eta\)</span> is the intrinsic impedance of the
+medium such that <span class="math inline">\(\eta = \frac{\lvert
+\textbf{E} \rvert}{\lvert \textbf{H} \rvert} =
+\sqrt{\frac{\mu}{\epsilon}}\)</span> and <span
+class="math inline">\(\lvert \textbf{E} \rvert\)</span> is the electric
+field strength, <span class="math inline">\(\lvert \textbf{H}
+\rvert\)</span> is the magnetic field strength, <span
+class="math inline">\(\mu\)</span> is the magnetic constant, and <span
+class="math inline">\(\epsilon\)</span> is the electric constant. In
+free space, <span class="math inline">\(\eta\)</span> becomes the
+impedance of free space where <span class="math inline">\(\mu =
+\mu_0\)</span> is the permeability of free space and <span
+class="math inline">\(\epsilon = \epsilon_0\)</span> is the permittivity
+of free space. This free space approximation breaks down in reality
+because the antenna are fabricated on some dielectric. For our purposes,
+this is a silicon-air half-space, which violates self-complementarity.
+Thus, these designs have an input impedance that oscillates with
+frequency, and we often make sure that <span
+class="math inline">\(Re(Z)\)</span> oscillates about some desired
+impedance to couple a microstrip line to, and that <span
+class="math inline">\(Im(Z)\)</span> oscillates about zero. See Figure
+<a href="#fig:ch5:antennaimpedances" data-reference-type="ref"
+data-reference="fig:ch5:antennaimpedances">1.3</a> for a comparison of
+the sinuous antenna and double slot dipole impedance behavior. For more
+information on self-complementarity and Babinet’s principle, see <span
+class="citation" data-cites="Deschamps1959 Booker1946">(Deschamps 1959;
+Booker 1946)</span>.</p></li>
+<li><p><strong>Widening a resonant region increases bandwidth.</strong>
+See e.g. the bow-tie antenna compared to the dipole antenna. See Figure
+<a href="#fig:ch5:miscantenna" data-reference-type="ref"
+data-reference="fig:ch5:miscantenna">1.2</a>. The bow-tie antenna
+broadens the resonant regions of the dipole to make it slightly more
+broadband. However, the bandwidth is limited by the sharp current
+termination at the fin edges. The log-periodic class of antennas really
+branch from the bow-tie antenna, where the extensions to the
+log-periodic trapezoid and log-periodic toothed antennas are the next
+variations to alleviate the current-termination issue and achieve
+broadband geometries.</p></li>
+<li><p><strong>Using geometries that are angle-dependent</strong>
+instead of fixed physical length (like how dipole antennas resonate).
+See e.g. the spiral (Figure <a href="#fig:ch5:miscantenna"
+data-reference-type="ref" data-reference="fig:ch5:miscantenna">1.2</a>)
+or sinuous antenna compared to the dipole antenna. Fixed lengths are
+associated with fixed wavelength resonances. Angle-dependent structures
+allow for self-scaling features. Note that it is often a useful exercise
+to approximate resonant structures as half-wavelength fixed lengths
+(e.g. analogous to dipole antenna) or one wavelength circumferences
+(e.g. any spiral geometry or wavelength loops) when analyzing a
+complicated antenna geometry. This is particularly handy when thinking
+of sinuous antenna behavior, which have features that can be
+approximated as either.</p></li>
+</ul>
+<figure id="fig:ch5:miscantenna">
+<img src="figures/chap5_pics/miscantenna.png" style="width:90.0%" />
+<figcaption>Slots, bow-tie antennas, spiral antennas, and double slot
+dipole antennas. (a) Half-wave dipoles in half-wave array placed as
+shown, where metal is shaded. While the metal dipole array acts as a
+bandstop filter, its dual of half-wave dipole slots act as a bandpass
+filter. In the above diagram, the E-field vibrates in horizontal
+direction <span class="citation" data-cites="Booker1946">(Booker
+1946)</span>. Note that for ideal excitation, the incoming E-field must
+be parallel to the metal dipoles, while the B-field is parallel to the
+slot dipoles. (b) The bow-tie antenna <span class="citation"
+data-cites="Balanis-2012-antenna">(Balanis 2005)</span>. (c) A spiral
+antenna <span class="citation"
+data-cites="Balanis-2012-antenna">(Balanis 2005)</span>. (d) The double
+slot dipole antenna <span class="citation"
+data-cites="chattopadhyay_zmuidzinas_2998">(Chattopadhyay and Zmuidzinas
+1998)</span>. (e) Simulation set up for a lenslet-coupled double slot
+dipole antenna with quarter wavelength flat backshort. Symmetric
+boundary conditions are used to cut computation time and cost by
+exploiting the geometry’s four-fold symmetry.</figcaption>
+</figure>
+<p>The planar antenna couples well to a <em>dielectric extended
+hemispherical lenslet</em>, a small hemispherical piece that sits on top
+of the antenna. In free space, an antenna will radiate bidirectionally.
+The dielectric pulls the electric fields such that most of the radiation
+pattern is skyward and less than <span
+class="math inline">\(5\%\)</span> of the power sits in the backlobe.
+Often, high dieletric materials like silicon are favorable to maximize
+this effect. Backshorts are often used to recover backlobe power.
+Historically, flat backshorts sitting a <span
+class="math inline">\(\lambda/4\)</span> distance behind the antenna are
+often used, where <span class="math inline">\(\lambda\)</span> is
+usually the central frequency of the observation bands (see simulation
+set up in Figure <a href="#fig:ch5:miscantenna"
+data-reference-type="ref"
+data-reference="fig:ch5:miscantenna">1.2</a>(e)). In Section <a
+href="#sec:ch5:solf" data-reference-type="ref"
+data-reference="sec:ch5:solf">1.6</a>, a new backshort design is
+discussed to accommodate mechanical requirements for the multiplexing
+hardware. Additionally, the lenslet helps focus the beam onto the planar
+antenna. When a hemispherical lens sits on a rectangular dielectric
+half-space, the net result is an effective ellipsoid where the antenna
+can be the focal point of the geometry. This is often done by tuning the
+length of the dielectric half-space (i.e. the “extension length") with
+respect to the radius of the lenslet (see Section <a
+href="#sec:ch5:solf" data-reference-type="ref"
+data-reference="sec:ch5:solf">1.6</a> for an example of this result for
+SO).</p>
+<p>The high dieletric constant (<span class="math inline">\(\epsilon
+\approx 11.7\)</span>) of the silicon<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a> lenslet is an abrupt
+transition to free space, making the lens-air surface a highly
+reflective boundary condition. Thus, an <em>anti-reflection (AR)
+coating</em> is often placed on top of the lenslet to smoothen the
+transition. A single-layer quarter-wavelength (again, <span
+class="math inline">\(\lambda/4\)</span> thickness for the central
+frequency of the desired band) would ideally use a material that is the
+square root of the substrate’s index of refraction. This allows roughly
+no reflections at the central frequency, with lower effectiveness as one
+deviates from there. This can be made more broadband with more layers of
+AR coating, but that can be tricky to implement in practice because
+layers can crack or pop off in cryogenic cycling. Thus, for the
+lenslet-coupled sinuous antenna, the AR-coated lenslet is really the
+bandwidth-limiting factor. Currently, meta-material AR coatings are
+being investigated for experiments like <em>LiteBIRD</em> as an
+innovative solution to this problem. Traditionally, layers of epoxy
+(<span class="math inline">\(\epsilon \approx 3.4\)</span>) were used as
+coatings (e.g. in Simons Array), but SO is using a single layer of
+borosilicate glass (<span class="math inline">\(\epsilon \approx
+3.4\)</span>). This is a more uniform, commercial option rather than the
+traditional time-consuming method of mixing epoxy and making molds.</p>
+<figure id="fig:ch5:antennaimpedances">
+<img src="figures/chap5_pics/antenna_impedances.png" />
+<figcaption>Double slot dipole and sinuous antenna impedances.
+<em>Left</em> is the simulated real and imaginary impedance of a double
+slot dipole antenna designed for a 150 GHz CMB observation band. Note
+how around the band center of <span
+class="math inline">\(\sim150\)</span> GHz, the real impedance is a
+desired <span class="math inline">\(50 \Omega\)</span> to couple to the
+microstrip line and the imaginary impedance is roughly zero as desired.
+Then note how as we deviate from the band center, this behavior worsens
+rendering a narrower bandwidth than, for example, a sinuous antenna.
+<em>Right</em> is the simulated real and imaginary impedance of a
+sinuous antenna designed for low-frequency CMB observation bands. The
+impedance behavior deteriorates under <span class="math inline">\(\sim
+20\)</span> GHz because the antenna was only designed to be large enough
+for the desired band. This was left in for pedagogical purposes. Note
+how the real impedance oscillates around <span class="math inline">\(100
+\Omega\)</span> to couple to the microstrip line and the imaginary
+impedance oscillates about zero. </figcaption>
+</figure>
+<p>The sinuous antenna, as shown in Figure <a href="#fig:ch5:sinuous"
+data-reference-type="ref" data-reference="fig:ch5:sinuous">1.1</a>, has
+a shape can be easily constructed with the following basic polar
+equation:</p>
+<p><span class="math display">\[\phi =
+\alpha\sin\left[\pi\frac{\log\left(\frac{r}{R_{in}}\right)}{\log\tau}\right]
+\pm \delta \\ \text{ for } R_{in} \leq r \leq R_{in}\tau^n,\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of “cells"
+(i.e. switchbacks) and we can define <span class="math inline">\(R_{out}
+= R_{in}\tau^n\)</span>. The parameters of sinuous antenna are as
+follows:</p>
+<ul>
+<li><p><strong><span class="math inline">\(\alpha\)</span> and <span
+class="math inline">\(\delta\)</span> are set to maintain a
+self-complementary structure</strong>, such that <span
+class="math inline">\(\alpha = 45^{\circ}\)</span> and <span
+class="math inline">\(\delta = 22.5^{\circ}\)</span>. Deviations from
+self-complementarity distort beams, as described earlier. To maintain
+self-complementarity, <span class="math inline">\(\delta =
+\frac{\alpha}{2}\)</span>. Note that <span
+class="math inline">\(\alpha\)</span> is set by the number of arms,
+where for <span class="math inline">\(N = 4\)</span> arms for two linear
+polarizations, <span class="math inline">\(\alpha =
+\frac{360^{\circ}}{2N}\)</span>.</p></li>
+<li><p><strong>The inner (<span class="math inline">\(R_{in}\)</span>)
+and outer (<span class="math inline">\(R_{out}\)</span>) radius set the
+frequency bands.</strong> If we think of the <span
+class="math inline">\(\lambda/2\)</span> regions between the switchbacks
+as effective dipole antennas where feature size is correlated with
+resonant wavelength, then it is easy to see that the inner part of the
+sinuous favorably couples to higher frequencies and the outer part of
+the sinuous favorably couples to lower frequencies. The low-frequency
+cutoff for some radiating region can be defined as: <span
+class="math display">\[R_{rad} = \frac{\lambda_{rad}}{4(\alpha +
+\delta)\sqrt{\epsilon_{eff}}},\]</span> where <span
+class="math inline">\(\epsilon_{eff}\)</span> is the effective
+dielectric constant. However, cutting off the antenna at its band edges
+results in elliptical beams because current pools at the edges of the
+antenna. Thus, the sinuous is often extended in the inner and outer
+edges. Usually, a factor of roughly <span
+class="math inline">\(\sim4-5\)</span> (e.g. <span
+class="math inline">\(R_{out}\)</span> is 4-5 times the radius of the
+lowest frequency resonance) is sufficient, although this is not a strict
+requirement and always should be confirmed with simulation. Note that
+while a factor of 5 sounds large, it usually translates to just a few
+extra turns in the outermost wing of the antenna. Finally, like all
+log-periodic antennas, the antenna must be fed at the high-frequency end
+<span class="citation" data-cites="Rumsey_freqindepantenna">(Rumsey
+1957)</span>. If driven at the low-frequency end, higher-order modes can
+get excited in the low-frequency regions because the physical area of
+the slot is larger. This will result in poor beams and low
+efficiency.</p></li>
+<li><p><strong><span class="math inline">\(\tau\)</span> is the growth
+rate</strong> (historically set as <span class="math inline">\(\tau =
+1.3\)</span> for Berkeley fabrication). Recall our discussion of
+log-periodicity, and note that if <span class="math inline">\(r\)</span>
+changes by a factor of <span class="math inline">\(\tau^2\)</span>, then
+a phase shift of <span class="math inline">\(2\pi\)</span> is introduced
+and <span class="math inline">\(\phi\)</span> remains unchanged. Thus,
+the sinuous antenna is log-periodic in <span
+class="math inline">\(\tau\)</span>, with symmetric behavior in periods
+of <span class="math inline">\(\tau^2\)</span>. As seen in Figure <a
+href="#fig:ch5:sinuous" data-reference-type="ref"
+data-reference="fig:ch5:sinuous">1.1</a>, a decreasing <span
+class="math inline">\(\tau\)</span> means a decrease in
+<em>frequency-dependent polarization rotation</em> (colloquially known
+as “<em>polarization wobble</em>")<a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a>. This wobble is the
+frequency-dependent shift in the far-field polarization angle at zenith,
+and has a log-periodic oscillation. Visually, this can be understood by
+the oscillatory nature of the wings. Note where, for example, the
+sinuous antenna resonates for a given frequency, and compare it with the
+previous or next turn in the antenna. There is a small shift in the
+central resonance placement, which results in the periodic <span
+class="math inline">\(\tau^2\)</span> oscillation in polarization axis.
+Compared to other similar log-periodic antenna geometries like the log
+periodic toothed antenna (see Figure <a href="#fig:ch5:lpt"
+data-reference-type="ref" data-reference="fig:ch5:lpt">1.4</a>), the
+sinuous has a significantly lower wobble. See Figure <a
+href="#fig:ch5:wobble" data-reference-type="ref"
+data-reference="fig:ch5:wobble">1.5</a> for different <span
+class="math inline">\(\tau\)</span> studies done on the sinuous and LPT
+antennas. This is because the sinuous has interlocking arms between the
+switchbacks, which aligns the opposite wings to one another better,
+reducing wobble <span class="citation" data-cites="duhamel1987">(DuHamel
+1987)</span>. Because the sinuous antenna has a handedness (i.e. has two
+“senses"), our focal planes are tiled to cancel out the wobble, which
+will be equal and opposite between the two senses. Thus we often include
+a label on our pixels as <span class="math inline">\(Q_A, Q_B, U_A,
+\text{ and } U_B\)</span> to define the Stokes parameters and sense of
+the antenna.</p></li>
+</ul>
+<figure id="fig:ch5:lpt">
+<img src="figures/chap5_pics/LPT.png" />
+<figcaption>Sinuous antenna versus log periodic toothed (LPT) antenna.
+(a) Trimetric view of example LPT (<span class="math inline">\(\tau =
+1.05\)</span>) simulation set up on ANSYS HFSS. (b) Inner LPT antenna
+excitation and crossfeed in simulation suite, where the groundplane is
+simulated as a perfect conductor. (c) LPT geometry. Compare this to the
+sinuous antenna. Beige represents the slot that will be cut from the
+ground plane. (d) Trimetric view of example sinuous (<span
+class="math inline">\(\tau = 1.3\)</span>) simulation set up. (e) Inner
+sinuous antenna excitation and crossfeed. (f) Side view of simulation
+geometry. Note the SO low-frequency geometry was adopted for this study.
+</figcaption>
+</figure>
+<figure id="fig:ch5:wobble">
+<img src="figures/chap5_pics/wobble.png" />
+<figcaption>Frequency-dependent polarization polarization rotation of
+the sinuous antenna and log periodic trapezoidal antenna versus <span
+class="math inline">\(\tau\)</span>. Dashed lines represent pure
+simulation data from HFSS. Numerical simulations, especially when
+simulating small feature sizes in a large volume (such as for LF
+pixels), contribute partially to the noise seen in the raw data. Solid
+lines are smoothed with a spline. <em>Left</em> shows how sinuous
+polarization wobble reduces as we decrease <span
+class="math inline">\(\tau\)</span>. Note how <span
+class="math inline">\(\tau = 1.3\)</span> wobbles about <span
+class="math inline">\(\pm5^{\circ}\)</span>, <span
+class="math inline">\(\tau = 1.2\)</span> wobbles about <span
+class="math inline">\(\pm3^{\circ}\)</span>, and <span
+class="math inline">\(\tau = 1.1\)</span> wobbles about <span
+class="math inline">\(\pm1^{\circ}\)</span> approximately. This is in
+agreement with Figure <a href="#fig:ch5:sinuous"
+data-reference-type="ref" data-reference="fig:ch5:sinuous">1.1</a>(c)
+from <span class="citation" data-cites="edwards">(Edwards et al.
+2012)</span>. <em>Right</em> shows the same effect on the LPT antenna.
+Note how much less the <span class="math inline">\(\tau = 1.3\)</span>
+sinuous antenna wobbles (<span
+class="math inline">\(\pm5^{\circ}\)</span>) compared to even a very
+small <span class="math inline">\(\tau = 1.05\)</span> (<span
+class="math inline">\(\pm20^{\circ}\)</span>) for the LPT
+antenna.</figcaption>
+</figure>
+<figure id="fig:ch5:sinuousmsgp">
+<img src="figures/chap5_pics/sinuous_msgp.png" />
+<figcaption>Sinuous antenna microstrip line to groundplane ratio.
+<em>Left</em> shows the Simons Array sinuous antenna feed design. The
+microstrip line to groundplane ratio was worst at the red box.
+<em>Center</em> shows the updated sinuous antenna feed design. This
+fanlike interior maintains the self-complementary nature of the rest of
+the antenna and moves the limiting microstrip line to groundplane ratio
+into the first wing of the antenna itself. <em>Right</em> shows how a
+cross sectional slice of the antenna-dielectric-microstrip line
+fabricated stack would look like. The microstrip line weaves between the
+slots of the antenna wings, allowing the metal between the antenna slots
+to act as an effective groundplane.</figcaption>
+</figure>
+<p>There are several ways a sinuous antenna geometry can be tuned. In
+practice, a planar geometry involves a microstrip line that winds in
+between the wings of the antenna slot (see Figure <a
+href="#fig:ch5:sinuousmsgp" data-reference-type="ref"
+data-reference="fig:ch5:sinuousmsgp">1.6</a>). The Simons Array sinuous
+antenna design, for example, had a center feed that was not
+self-complementary. The center feed was redesigned to maintain
+self-complementarity all the way to the center. Additionally, the
+microstrip line to groundplane ratio was studied. The Simons Array
+design had a 1:2 mictrostrip line to groundplane ratio near the antenna
+center, but literature recommends 1:5 or better (e.g. <span
+class="citation" data-cites="NurnbergerVolakis1995">(Nurnberger and
+Volakis 1995)</span>). This was improved by the center feed redesign.
+Optimizing a single pixel has involved playing with <span
+class="math inline">\(\tau\)</span> to decrease polarization wobble, and
+lower <span class="math inline">\(\tau\)</span>s are even more feasible
+for low-frequency designs. Additionally, different microstrip line
+widths were probed to account for deviations from simulation in the
+fabrication process. Probing different microstrip line widths can help
+understand antenna to microstrip line coupling as well as the effects of
+microstrip line to ground plane ratio. The original antenna design had a
+<span class="math inline">\(\tau\)</span> of 1.3, <span
+class="math inline">\(R_{in}\)</span> of 24<span
+class="math inline">\(\mu\)</span>m, microstrip line width near the
+antenna center at 1.8<span class="math inline">\(\mu\)</span>m, and a
+microstrip line to groundplane ratio of 1:2. The updated design in the
+image has a <span class="math inline">\(\tau\)</span> of 1.3, <span
+class="math inline">\(R_{in}\)</span> of 87<span
+class="math inline">\(\mu\)</span>m, microstrip line width near the
+antenna center at 0.8<span class="math inline">\(\mu\)</span>m, and a
+microstrip line to groundplane ratio of 1:12.5. This is one of several
+designs that were fabricated, with the current SO LF design using a
+1.8<span class="math inline">\(\mu\)</span>m microstrip line width. Note
+that <span class="math inline">\(\tau\)</span> of 1.2 also is a feasible
+candidate, which would both improve polarization wobble and improve the
+microstrip line to groundplane ratio.</p>
+<h2 id="sec:ch5:otheroptcouping">Other Types of CMB Optical
+Coupling</h2>
+<figure id="fig:ch5:cmboptcoupling">
+<img src="figures/chap5_pics/cmbopticalcoupling.png" />
+<figcaption>Optical coupling used in CMB experiments. (a)
+Lenslet-coupled double slot dipole used in POLARBEAR. Image from <span
+class="citation" data-cites="Arnold_2012">(K. Arnold et al.
+2012)</span>. (b) Lenslet-coupled sinuous antenna used in Simons
+Observatory, Simons Array, and SPT-3G. SPT-3G sinuous image from <span
+class="citation" data-cites="Sobrin_SPT_2022">(Sobrin et al.
+2022)</span>. (c) Dipole phased array used in BICEP/Keck 40GHz modules.
+Image from <span class="citation"
+data-cites="Soliman_BICEP_2020">(Soliman et al. 2020)</span>. (d)
+Feedhorn-coupled orthomode transducers used in Simons Observatory. Also
+shown is the universal focal plane module stack that includes the
+readout and optical components. Image from <span class="citation"
+data-cites="Healy_2022">(E. Healy et al. 2022)</span>.</figcaption>
+</figure>
+<p>In this subsection, four major types of optical coupling will be
+covered, shown in Figure <a href="#fig:ch5:cmboptcoupling"
+data-reference-type="ref"
+data-reference="fig:ch5:cmboptcoupling">1.7</a>: lenslet-coupled double
+slot dipole antennas, lenslet-coupled sinous antennas, dipole phased
+arrays, and the feedhorn-coupled OMTs.</p>
+<ul>
+<li><p><strong>Lenslet-coupled double slot dipole antenna:</strong> In
+the POLARBEAR experiment, a dual-polarized version of a traditional slot
+dipole antenna was used (see Figure <a href="#fig:ch5:cmboptcoupling"
+data-reference-type="ref"
+data-reference="fig:ch5:cmboptcoupling">1.7</a>(a)) <span
+class="citation" data-cites="Arnold_2012 Myers_2005 kamthesis">(K.
+Arnold et al. 2012; Myers et al. 2005; K. S. Arnold 2010)</span>. The
+double-slot dipole antenna is a planar, half-wavelength antenna. A
+lenslet focuses light towards antenna. This double-slot dipole antenna
+was an early version of planar focal planes that the field started
+gravitating towards from bulkier 3-D structures like the <em>Planck</em>
+horn arrays. Any slot dipole antenna usually has 25-30% fractional
+bandwidth due to its geometry. The broad single dipole radiation pattern
+can be made narrow and more directional by placing another dipole
+antenna a quarter wavelength away. Two polarizations can be overlaid on
+top of each other because the fields are perfectly orthogonal. For
+maximum constructive interference at zenith and nadir, the dipoles are
+excited in phase by being fed in opposite directions by two microstrip
+lines <span class="math inline">\(180^\circ\)</span> out of phase at the
+center of the slots. When a dielectric is placed on top, the effective
+resonance changes and the lengths must be adjusted accordingly. Thus, a
+silicon lenslet changes the resonant length to be roughly <span
+class="math inline">\(\lambda/3\)</span> where <span
+class="math inline">\(\lambda\)</span> here would be the free-space
+central wavelength. These antennas have highly stable polarization
+angles with respect to frequency, have round beams, and are simple to
+fabricate.</p></li>
+<li><p><strong>Lenslet-coupled sinuous antennas:</strong> The need for
+more detectors across more frequency bands motivated dichroic pixel
+designs. This movement to broadband antennas led Berkeley towards first
+using lenslet-coupled sinuous antennas in the Simons Array <span
+class="citation"
+data-cites="tokithesis suzuki2012 suzuki2016 suzuki2018 edwards">(Aritoki
+Suzuki 2013; Aritoki Suzuki et al. 2012, 2018; A. Suzuki et al. 2016;
+Edwards et al. 2012)</span>. See Figure <a
+href="#fig:ch5:cmboptcoupling" data-reference-type="ref"
+data-reference="fig:ch5:cmboptcoupling">1.7</a>(b) for SO and SPT-3G
+sinuous designs. The sinuous is ultra-wide bandwidth, easy to fabricate,
+scalable, and planar. Unlike most other log-periodic antennas its
+frequency-dependent polarization rotation is comparatively small.
+Besides the frequency-dependent polarization rotation, another technical
+challenge is the anti-reflection coatings, which are the
+bandwidth-limiting factor for this technology. See previous section for
+a more detailed review on lenslet-coupled sinuous antennas.</p></li>
+<li><p><strong>Dipole phased arrays:</strong> Dipole phased arrays have
+been successfully used in BICEP/Keck array experiments (see Figure <a
+href="#fig:ch5:cmboptcoupling" data-reference-type="ref"
+data-reference="fig:ch5:cmboptcoupling">1.7</a>(c)) <span
+class="citation" data-cites="BICEP_antennaTES_2015 optcoupling2009">(Ade
+et al. 2015; Bock et al. 2009)</span>. In phased arrays, the antenna are
+phase separated such that the superimposing beams create a uniform
+radiation pattern in a desired direction (here, skyward). This optical
+coupling technology is a very efficient use of focal plane space (since
+phased arrays work together), has a flat geometry, does not utilize
+complex 3-D structures, and thus does not run into coefficient of
+thermal expansion mismatch issues. The anti-reflection coating is
+quarter-wavelength quartz tiles sitting on top of a silicon substrate
+over the antenna layer. Technical challenges associated with this design
+include needing uniform material properties (phased arrays and
+associated microstrip lines require high uniformity), long microstrip
+lines to couple to the antenna (long microstrip lines are lossy), and
+bandwidth limitations due to the slot dipole antenna.</p></li>
+<li><p><strong>Feedhorn-coupled OMTs:</strong> The feedhorn-coupled OMT
+has been successfully used in several experiments, including ACT and
+SPIDER <span class="citation"
+data-cites="mcmahon2009 Datta_2016 Hubmayr_2016">(McMahon et al. 2009;
+Datta et al. 2016; Hubmayr et al. 2016)</span>. See Figure <a
+href="#fig:ch5:cmboptcoupling" data-reference-type="ref"
+data-reference="fig:ch5:cmboptcoupling">1.7</a>(d) for SO designs. The
+OMT is a waveguide polarization diplexer, which couples to scalable,
+direct-machined, spline-profiled feedhorns used by SO <span
+class="citation" data-cites="Simon_2018">(Simon et al. 2018)</span>.
+With recent advancements, this is scalable with direct machining. The
+beam pattern is defined by the horn geometry. The OMT is made broadband
+(analogous to e.g. a bow-tie antenna versus dipole antenna), and couples
+the split polarizations into co-planar waveguides (CPWs). The signal
+then transitions to a standard microstrip line, where it eventually
+meets bandpass filters. Technical challenges include difficulties in
+achieving a very wide bandwidth, getting very round beams, or using
+focal plane space efficiently. Achieving two bands can be tough because
+the waveguide gets overmoded, leading to beam distortions and
+sidelobes.</p></li>
+</ul>
+<h2 id="microwave-components">Microwave Components</h2>
+<p>Here we briefly summarize properties of microwave components that sit
+between the antenna and the bolometer. A microstrip line carries the
+signal from the antenna, which gets split by bandpass filters until it
+gets terminated at the bolometer. Along the way, impedance
+transformations are often required, and crossunder features are utilized
+to route overlapping microstrip lines. More rigorous discussion of these
+components can also be found in <span class="citation"
+data-cites="Pozar tokithesis arithesis">(Pozar 2005; Aritoki Suzuki
+2013; A. J. Cukierman 2018)</span>, and the specifics of the SO
+low-frequency designs are described in Section <a href="#sec:ch5:solf"
+data-reference-type="ref" data-reference="sec:ch5:solf">1.6</a>. It is a
+useful exercise to simulate even the simplest of these components (e.g.
+the microstrip line) in Sonnet or HFSS, and then build up to designing
+filters from there.</p>
+<figure id="fig:ch5:uwavecomponents">
+<img src="figures/chap5_pics/uwavecomponents.png" style="width:80.0%" />
+<figcaption>Example microwave components in L-Edit. Blue is the niobium
+microstrip line layer and beige is the slot cut into the niobium ground
+plane layer. A silicon nitride dielectric layer separates the two. (a)
+Impedance transformer for 7 to 20 <span
+class="math inline">\(\Omega\)</span> for band centered at 140 GHz. (b)
+Crossunder feature used in SO. (c) SO bandpass filter for the 30 GHz
+band.</figcaption>
+</figure>
+<h3 id="microstrip-lines-and-impedance-transformers">Microstrip Lines
+and Impedance Transformers</h3>
+<p>A microstrip line is a kind of transmission line constructed with a
+thin strip of metal sitting above a ground plane separated by a
+dielectric<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>. A microstrip line can be thought of
+as an unravelled coaxial cable, with the ground plane as the outer
+conductor, and the thin strip on top as the inner conductor. Basic
+parameters when tuning a microstrip line include the strip width and
+dielectric constant, thickness, and kinetic inductance. While the
+microstrip line is very easy to fabricate, it is a quasi-TEM
+transmission line due to fringing fields at the abrupt end of the thin
+metal strip. Because of the smallness of the cross-sectional size (which
+can be made much smaller than a wavelength) compared to the fields, this
+fringing is quite small and current dies out within a strip width from
+the thin strip. This is a particularly useful property near the center
+of the sinuous antenna, where feature size is quite small. The primary
+limitation on microstrip line dimensions comes from fabrication. Over
+the past decade, we have gone from attempting to fabricate microstrip
+line widths to couple to the sinuous at goal widths of 1.3 <span
+class="math inline">\(\mu\)</span>m with an achieved width reliably
+between 1-2 <span class="math inline">\(\mu\)</span>m <span
+class="citation" data-cites="tokithesis">(Aritoki Suzuki 2013)</span>,
+to fabricating a 0.8 <span class="math inline">\(\mu\)</span>m width
+mictrostrip line, accurate within 0.1 <span
+class="math inline">\(\mu\)</span>m. This enabled starting studies on
+microstrip line to groundplane ratio discussed in the previous section,
+where we have fabricated widths between 0.8-2.0 <span
+class="math inline">\(\mu\)</span>m to test how well the antenna couples
+to microstrip line in practice. These tests are ongoing.</p>
+<p>While antennas are usually in the <span class="math inline">\(\sim50
+\Omega\)</span> regime, our filters require usually <span
+class="math inline">\(\sim10 \Omega\)</span>, crossunders usually
+require <span class="math inline">\(\sim30 \Omega\)</span>, and the TES
+termination usually require <span class="math inline">\(\sim10
+\Omega\)</span>. An abrupt change in impedance from the antenna to the
+filter is analogous to the abrupt transition from the silicon lenslet to
+free-space, causing this interface to be highly reflective and radiate
+away much of the power. Thus, just as the AR coating smoothens the
+transition, we incorporate a smooth transition in impedance. A tapered
+line width using a stepped Dolph-Chebyshev profile <span
+class="citation" data-cites="impedancexform_1988">(McGinnis and Beyer
+1988)</span> is implemented to achieve <span
+class="math inline">\(\lesssim1\%\)</span> loss over long microstrip
+lines spanning several wavelengths (e.g. from antenna to filter is
+usually <span class="math inline">\(\mathcal{O}(10\lambda)\)</span>). An
+example of this microstrip line impedance transformer is shown in Figure
+<a href="#fig:ch5:uwavecomponents" data-reference-type="ref"
+data-reference="fig:ch5:uwavecomponents">1.8</a>(a).</p>
+<h3 id="crossunder">Crossunder</h3>
+<p>The sinuous antenna is differentially fed, dual-polarized, and
+planar, making it inevitable that microstrip lines will need to pass
+over or under each other to be routed to their respective filters and
+bolometers. While this can be solved post-fabrication with wire bonds,
+it is cleaner to create fabricated structures to handle this issue using
+either crossovers or crossunders. Crossovers require two extra
+fabrication steps where a dielectric is deposited, after which a metal
+strip layer can be added to cross over the other microstrip line. It is
+easier to just use crossunders and utilize the same three layers as the
+microstrip lines. At the point of crossing, a via connects one
+microstrip line to the ground plane layer which then re-emerges on the
+other side with another via. Of course, this section of the ground plane
+is not connected to true ground as shown in Figure <a href="#fig2"
+data-reference-type="ref" data-reference="fig2">1.24</a>(e). Since this
+ground plane is being used as a true ground plane here, the inductance
+at this crossing point is very high, which is compensated for with a
+widening of the microstrip line shown (roughly to <span
+class="math inline">\(\sim4 \mu\)</span>m for a <span
+class="math inline">\(\sim30 \Omega\)</span> impedance at crossing). The
+crossing point of the microstrip lines require thin strip widths to
+reduce crosstalk. Because of the small, closely packed features in these
+crossunders, this can be challenging to fabricate without shorting the
+layers. Both Simons Array and SO low-frequency wafers successfully use
+crossunders in their wafers. An example of this crossunder feature is
+shown in Figure <a href="#fig:ch5:uwavecomponents"
+data-reference-type="ref"
+data-reference="fig:ch5:uwavecomponents">1.8</a>(b).</p>
+<h3 id="filters">Filters</h3>
+<p>On-wafer, planar band-defining filters simplify bulky optical
+filtering requirements in the telescope, thereby also reducing spurious
+signals and ghosting from optical elements in the chain. Normally, we
+use multiplexing bandpass filters (BPFs) to define band edges, with all
+BPFs stemming from a common node. (Thus, two bands require diplexer,
+three bands require triplexers, and so on.) It is thus beneficial to
+make sure the bands do not overlap too much, and avoid atmospheric
+absorption lines as shown in Figure <a href="#fig:ch3:sosite"
+data-reference-type="ref"
+data-reference="fig:ch3:sosite">[fig:ch3:sosite]</a>. We have also at
+times utilized low-pass filters (LPFs) in series to cut out-of-band high
+frequency resonances that are a product of the lumped element filter
+geometries (particularly for LF bands). This lumped element approach is
+well-suited for fabrication and mates well with microstrip lines.</p>
+<p>Our designs use the insertion-loss method to determine the filter
+parameters, which provide a controlled way to tune desired
+characteristics (given that ideal filters with no insertion loss in the
+passband are impossible to design in practice). If we consider the
+filter taking signals from port 1 to port 2, we can define the
+power-loss ratio as:</p>
+<p><span class="math display">\[\label{eqn:ch5:plrgen}
+    P_{LR} = \frac{P_{in}}{P_{out}} = \frac{1}{(1 - \Gamma(\omega))^2} =
+\frac{1}{\lvert S_{21}\rvert^2},\]</span></p>
+<p>where <span class="math inline">\(\Gamma (\omega) = \frac{Z_{in} -
+1}{Z_{in} + 1}\)</span> is the reflection coefficient. The insertion
+loss is thus:</p>
+<p><span class="math display">\[IL = 10\log_{10}P_{LR}\]</span></p>
+<p>Defining the power-loss ratio determines the style of filter we are
+designing. For example, a Butterworth (or maximally flat) filter gives
+the flattest passband response, a Chebyshev (or equal ripple) filter
+gives a sharper cutoff with equal ripple amplitudes, an elliptic
+function filter has a steeper roll-off with both passband and stopband
+ripples, and a linear phase filter provides a better linear phase
+response at the cost of a much higher attenuation. For our designs, a
+3-pole Chebyshev filter is adequate. The power-loss ratio for a
+Chebyshev filter is:</p>
+<p><span class="math display">\[\label{eqn:ch5:plrchebyshev}
+    P_{LR} = 1 + k^2
+T_N^2\left(\frac{\omega}{\omega_c}\right),\]</span></p>
+<p>where <span class="math inline">\(\omega_c\)</span> is the cutoff
+frequency, <span class="math inline">\(k^2\)</span> gives the passband
+ripple level, N is the order of the filter (i.e. N = 3 for a 3-pole
+filter), and <span class="math inline">\(T_N\)</span> is the Chebyshev
+polynomial of the first kind. A higher order filter (i.e. more poles)
+corresponds with more ripples and steeper roll-offs (almost like an
+extension to the Butterworth filter, which has no ripples but a
+shallower roll-off).</p>
+<figure id="fig:ch5:filterxform">
+<figure id="subfig:ch5:filterxform1">
+<img src="figures/chap5_pics/filterxform1.png" style="height:2.5cm" />
+<figcaption>Low-pass prototype.</figcaption>
+</figure>
+<figure id="subfig:ch5:filterxform2">
+<img src="figures/chap5_pics/filterxform2.png" style="height:2.5cm" />
+<figcaption>Bandpass prototype.</figcaption>
+</figure>
+<figure id="subfig:ch5:filterxform3">
+<img src="figures/chap5_pics/filterxform3.png" />
+<figcaption>Invert shunt components to series using impedance transform
+with T-networks, and split series capacitance into two to maintain
+symmetry.</figcaption>
+</figure>
+<figure id="subfig:ch5:filterxform4">
+<img src="figures/chap5_pics/filterxform4.png" style="height:2.5cm" />
+<figcaption>Combine capacitances and relabel.</figcaption>
+</figure>
+<figure id="subfig:ch5:filterxform5">
+<img src="figures/chap5_pics/filterxform5.png" style="height:2.5cm" />
+<figcaption>Final form of bandpass filter after <span
+class="math inline">\(Y-\Delta\)</span> transformation.</figcaption>
+</figure>
+<figcaption>3-pole Chebyshev filter transformation starting from the
+low-pass protoype to final form used in Simons Array and SO. Starting
+simulations on ADS for this basic design helps inform the Sonnet
+simulations done for the planar fabricated design.</figcaption>
+</figure>
+<p>Once we have determined the filter specifications, we can start with
+a low-pass filter prototype and convert that to any desired high,
+bandpass, or bandstop filters with simple scalings and transformations.
+The process for this conversion to our bandpass designs is shown in
+Figure <a href="#fig:ch5:filterxform" data-reference-type="ref"
+data-reference="fig:ch5:filterxform">1.14</a>. The low-pass prototype in
+Figure <a href="#subfig:ch5:filterxform1" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform1">1.9</a> is used for
+transformations to our desired 3-pole Chebyshev filters<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+because they are normalized (and thus scalable) in impedance and
+frequency. We can start with calculating the input impedance <span
+class="math inline">\(Z_{in}\)</span> to get the power-loss ratio from
+(<a href="#eqn:ch5:plrgen" data-reference-type="ref"
+data-reference="eqn:ch5:plrgen">[eqn:ch5:plrgen]</a>) and then setting
+it equal to (<a href="#eqn:ch5:plrchebyshev" data-reference-type="ref"
+data-reference="eqn:ch5:plrchebyshev">[eqn:ch5:plrchebyshev]</a>). The
+allows us to then solve for <span class="math inline">\(L, C, R, \text{
+and } \omega\)</span>.</p>
+<p>We set <span class="math inline">\(R_0 = 1 \Omega\)</span> and <span
+class="math inline">\(\omega_c = 1\)</span> rad/sec for convenience. For
+3-pole (and any odd order) Chebyshev filters, <span
+class="math inline">\(R_{0} = R_{L}\)</span>, but note that this is not
+always true for any filter. We use a ripple level of 0.5 dB, and can
+work with the associated solved element values:</p>
+<p><span class="math display">\[\begin{aligned}
+    g_1 &amp;= 1.5963 \\
+    g_2 &amp;= 1.0967 \\
+    g_3 &amp;= 1.5963 \\
+    g_4 &amp;= 1.0000 \\
+\end{aligned}\]</span></p>
+<p>From the prototype design, the desired source resistance <span
+class="math inline">\(R_0\)</span> becomes a simple multiplicative
+factor in the impedance scalings. To transform the low-pass prototype to
+the bandpass<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> prototype as shown in Figure <a
+href="#subfig:ch5:filterxform2" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform2">1.10</a>, we can start by doing
+the following frequency scaling:</p>
+<p><span class="math display">\[\omega \rightarrow
+\frac{1}{\Delta}\left(\frac{\omega}{\omega_0} -
+\frac{\omega_0}{\omega}\right),\]</span></p>
+<p>where the fractional bandwidth of the passband is <span
+class="math inline">\(\Delta = \frac{\omega_2 -
+\omega_1}{\omega_0}\)</span> with central frequency <span
+class="math inline">\(\omega_0\)</span> (usually chosen as <span
+class="math inline">\(\omega_0 = \sqrt{\omega_1\omega_2}\)</span>) and
+band edges <span class="math inline">\(\omega_2\)</span> and <span
+class="math inline">\(\omega_1\)</span>. We can then transform the
+series reactance and shunt susceptances with <span
+class="math inline">\(k\)</span> referring to the <span
+class="math inline">\(k\)</span>th element in the filter:</p>
+<p><span class="math display">\[\begin{aligned}
+    j\omega L &amp;\rightarrow
+j\frac{1}{\Delta}\left(\frac{\omega}{\omega_0} -
+\frac{\omega_0}{\omega}\right)L_k = j\omega L&#39;_k - j\frac{1}{\omega
+C&#39;_k} \\
+    j\omega C &amp;\rightarrow
+j\frac{1}{\Delta}\left(\frac{\omega}{\omega_0} -
+\frac{\omega_0}{\omega}\right)C_k = j\omega C&#39;_k - j\frac{1}{\omega
+L&#39;_k}
+\end{aligned}\]</span></p>
+<p>We can see that the series inductor transforms to a series LC and a
+shunt capacitor transforms to a shunt LC. In Figure <a
+href="#subfig:ch5:filterxform2" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform2">1.10</a>, <span
+class="math inline">\(L&#39;_1, L&#39;_3, C&#39;_1, C&#39;_3\)</span>
+are series and <span class="math inline">\(L&#39;_2, C&#39;_2\)</span>
+are shunt LC elements. Combining the scaled source resistance, we get
+the following transformations of the element values to apply to the
+bandpass prototype:</p>
+<p><span class="math display">\[\begin{aligned}
+    L&#39;_{k, series} &amp;= \frac{R_0g_k}{\omega_0\Delta} \\
+    L&#39;_{k, shunt} &amp;= \frac{R_0\Delta}{\omega_0g_k} \\
+    C&#39;_{k, series} &amp;= \frac{\Delta}{\omega_0g_k\Delta} \\
+    C&#39;_{k, shunt} &amp;= \frac{g_k}{\omega_0R_0\Delta} \\
+\end{aligned}\]</span></p>
+<p>Now that we have our desired bandpass values, we want to transform
+this circuit into something less difficult to fabricate such as lumped
+elements. To accomplish this, we can use an impedance inverter (<span
+class="math inline">\(Y_{inv}\)</span> in Figure <a
+href="#subfig:ch5:filterxform3" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform3">1.11</a>) to invert the shunt
+LC to series. We can convert some shunt admittance <span
+class="math inline">\(Y_{shunt}\)</span> to a series impedance <span
+class="math inline">\(Z_{series}\)</span>. In our design, this is
+accomplished by using two capacitor T-networks, each consisting of two
+effectively negative series capacitors and one positive shunt capacitor.
+This narrowband impedance transformer is parameterized by <span
+class="math inline">\(K\)</span> where the inverter input impedance
+<span class="math inline">\(Z_{in} = \frac{K^2}{Z_L}\)</span> for some
+load impedance <span class="math inline">\(Z_L\)</span>. We can perform
+the desired transformation from shunt to series by sandwiching a shunt
+impedance between two inverters, where <span class="math inline">\(K =
+\sqrt{Z_{shunt}Z_{series}}\)</span>. In Figure <a
+href="#subfig:ch5:filterxform3" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform3">1.11</a>, the subscript <span
+class="math inline">\(T\)</span> denotes the T-network elements used in
+the inverter and <span class="math inline">\(s\)</span> denotes the
+series elements. Thus, for our circuit, we find that <span
+class="math inline">\(K = \sqrt{\frac{L&#39;_1}{C&#39;_2}}\)</span> when
+we set:</p>
+<p><span class="math display">\[\begin{aligned}
+    L_s &amp;= L&#39;_1 \\
+    C_s &amp;= \frac{L&#39;_2C&#39;_2}{L&#39;_1} =
+\frac{1}{L_s\omega_0^2}
+\end{aligned}\]</span></p>
+<p>The T-network shunt capacitance <span class="math inline">\(C_T =
+\frac{1}{\omega_0K}\)</span>. Note that we split the series capacitance
+(<span class="math inline">\(C_s\)</span>) into two (two capacitors with
+capacitance <span class="math inline">\(2C_s\)</span>) to maintain
+symmetry in the circuit. Combining the series capacitances and
+relabelling, we get:</p>
+<p><span class="math display">\[\begin{aligned}
+    C_a &amp;= \left(\frac{1}{C&#39;_1} - \frac{1}{C_T}\right)^{-1} =
+\frac{C&#39;_1C_T}{C_T - C&#39;_1} \\
+    C_b &amp;= C_T \\
+    C_c &amp;= \left(\frac{1}{2C_s} - \frac{1}{C_T}\right)^{-1} =
+\frac{2C_sC_T}{C_T - 2C_s}
+\end{aligned}\]</span></p>
+<p>This configuration can be seen in Figure <a
+href="#subfig:ch5:filterxform4" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform4">1.12</a>. Note that we, of
+course, require <span class="math inline">\(C_T\)</span> to be greater
+than both <span class="math inline">\(C&#39;_1\)</span> and <span
+class="math inline">\(2C_s\)</span>. Our final transformation is to make
+the series capacitance physically smaller to fabricate, as it would take
+up too much room on a wafer as is. We use a <span
+class="math inline">\(Y-\Delta\)</span> transform to accomplish this
+(named for the physical shapes of how the 3 component port transforms -
+i.e. from a <span class="math inline">\(Y\)</span> or <span
+class="math inline">\(T\)</span> shape to a <span
+class="math inline">\(\Delta\)</span> or <span
+class="math inline">\(\Pi\)</span> shape). The new component values are
+thus:</p>
+<p><span class="math display">\[C_N = \frac{1}{C_n\left[(C_aC_b)^{-1} +
+(C_aC_c)^{-1} + (C_bC_c)^{-1}\right]}\]</span></p>
+<p>where <span class="math inline">\(N = {A, B, \text{ or } C}\)</span>
+and <span class="math inline">\(n = {a, b, \text{ or } c}\)</span>. This
+final configuration is shown in Figure <a
+href="#subfig:ch5:filterxform5" data-reference-type="ref"
+data-reference="subfig:ch5:filterxform5">1.13</a>.</p>
+<p>In fabrication, series inductors are constructed as CPWs, shunt
+capacitors use wide microstrip lines, and series capacitors resemble
+parallel plate capacitors using an isolated section of the ground plane
+for the other plate. The design of these bandpass filters that lie
+between the antenna and the detector are tuned and simulated on ADS and
+Sonnet to account for unavoidable parasitic conductances and inductances
+from this lumped element method.</p>
+<figure id="fig:ch5:cmbs4_40bpf">
+<img src="figures/chap5_pics/cmbs4_40ghzbpf.png" />
+<figcaption>Example CMB-S4 prototype low-frequency bandpass filter
+Sonnet simulation. Note that here the lower case letters are actually
+analogous to the uppercase letters in our final bandpass form.
+</figcaption>
+</figure>
+<figure id="fig:ch5:cmbs4bpfoutput">
+<img src="figures/chap5_pics/CMBS4bpf.png" />
+<figcaption>Example results of CMB-S4 prototype low-frequency bandpass
+filter Sonnet simulation. Note the higher frequency resonances that are
+a product of any geometric filter design. Low-pass filters are often
+used in conjunction to cut these resonances. This low-pass filter is
+usually only necessary for low-frequency CMB designs, as the higher
+frequency bandpass filters have resonances that are normally filtered
+out by the optics of any CMB instrument.</figcaption>
+</figure>
+<p>An example of a 40 GHz band BPF simulated and optimized on Sonnet for
+the CMB-S4 low-frequency arrays is shown in Figure <a
+href="#fig:ch5:cmbs4_40bpf" data-reference-type="ref"
+data-reference="fig:ch5:cmbs4_40bpf">1.15</a>. The output of the
+proposed diplexing bandpasses for the 30GHz and 40GHz band is shown in
+Figure <a href="#fig:ch5:cmbs4bpfoutput" data-reference-type="ref"
+data-reference="fig:ch5:cmbs4bpfoutput">1.16</a>, where the full-width
+half-maximum bandwidth for the 30 GHz band was 21.5-28 GHz, and for the
+40 GHz band was 28-45 GHz. Note that these designs and specifications
+are preliminary, and just shown for pedagogical purposes. An example of
+how the Sonnet design is carried over to L-Edit for fabrication purposes
+is shown in Figure <a href="#fig:ch5:uwavecomponents"
+data-reference-type="ref"
+data-reference="fig:ch5:uwavecomponents">1.8</a>(c). An example of a
+final SO fabricated BPF taken from the L-Edit design can then be seen in
+Figure <a href="#fig2" data-reference-type="ref"
+data-reference="fig2">1.24</a>(a, c), which were constructed for the SO
+low-frequency arrays.</p>
+<h2 id="detectors">Detectors</h2>
+<h3 id="transition-edge-sensor-bolometers">Transition Edge Sensor
+Bolometers</h3>
+<figure id="fig:ch5:tesoperation">
+<img src="figures/chap5_pics/tesoperation.png" />
+<figcaption>Transition edge sensor basic operation shown for two
+different bolometer designs. Left is the Simons Observatory
+low-frequency TES design, and right is the BICEP/Keck TES design (BICEP
+TES image taken from <span class="citation"
+data-cites="BICEP_antennaTES_2015">(Ade et al. 2015)</span>). These
+designs follow the same basic principle. Incoming radiation from the
+antenna comes from a microstrip line, and is converted to heat on some
+resistive element. For SO low-frequency arrays, that is a lumped element
+titanium load resistor, and for BICEP/Keck that is a gold resistive
+meander that slows dissipates the heat. Either way the TES itself then
+acts as a superconducting thermometer and senses that heat. The SO
+low-frequency arrays use an aluminum manganese TES, while this
+BICEP/Keck TES used titanium for on-sky observations (the aluminum TES
+was just for lab testing purposes).<a href="#fn6" class="footnote-ref"
+id="fnref6" role="doc-noteref"><sup>6</sup></a></figcaption>
+</figure>
+<figure id="fig:ch5:tesbasics">
+<img src="figures/chap5_pics/tesbasics.png" />
+<figcaption>Transition edge sensor transition principles. <em>Left</em>
+shows how incoming optical power affects the TES, which deviates from
+its bias point. This small shift in temperature corresponds to a large
+change in resistance. <em>Right</em> shows how the TES is schematically
+weakly linked to a thermal bath. The TES resistance is part of a larger
+circuit that is coupled to a SQUID, and read out using some multiplexing
+scheme. In the above diagram, the read out method is microwave
+multiplexing for SO.</figcaption>
+</figure>
+<p>Once the antenna has coupled radiation onto a microstrip line and
+traversed impedance transforms, crossunders, and multiplexing filters,
+the signal eventually reaches the bolometer island (see Figure <a
+href="#fig:ch5:tesoperation" data-reference-type="ref"
+data-reference="fig:ch5:tesoperation">1.17</a>). Most modern CMB
+experiments use <em>transition-edge sensor (TES)</em> bolometers, which
+utilize a steep, tunable superconducting transition of a metal film. A
+small temperature change corresponds to a large change in resistance
+(see Figure <a href="#fig:ch5:tesbasics" data-reference-type="ref"
+data-reference="fig:ch5:tesbasics">1.18</a>), making this a highly
+sensitive device when an appropriate TES material (amongst other design
+choices) is chosen.</p>
+<p>At the bolometer island, the radiation is converted to heat which is
+detected by the TES acting like a superconducting thermometer. As shown
+in Figure <a href="#fig:ch5:tesbasics" data-reference-type="ref"
+data-reference="fig:ch5:tesbasics">1.18</a>, the TES is voltage-biased
+to stabilize the TES. Consider the average bias power on the TES for
+some root-mean-square (RMS) bias voltage <span
+class="math inline">\(V_{bias}\)</span> and bolometer resistance <span
+class="math inline">\(R_{bolo}\)</span>:</p>
+<p><span class="math display">\[P_{elec} =
+\frac{V_{bias}^2}{R_{bolo}}\]</span></p>
+<p>We can also define the steady state condition on the bolometer as the
+following, where <span class="math inline">\(P_{opt}\)</span> is the
+optical power and <span class="math inline">\(P_{tot}\)</span> gives the
+total power on the bolometer island. This island is weakly thermally
+linked to the thermal bath (i.e. the rest of the focal plane would be
+the thermal bath in a CMB telescope):</p>
+<p><span class="math display">\[P_{tot} = P_{elec} +
+P_{opt}\]</span></p>
+<p>To maintain the TES at its superconducting transition, <span
+class="math inline">\(P_{elec} + P_{opt}\)</span> should remain constant
+at some <span class="math inline">\(P_{tot}\)</span>. As shown in Figure
+<a href="#fig:ch5:tesbasics" data-reference-type="ref"
+data-reference="fig:ch5:tesbasics">1.18</a>, when optical power <span
+class="math inline">\(P_{opt}\)</span> (e.g. from a CMB photon)
+increases, this increases the temperature of the bolometer island, which
+in turn increases the bolometer resistance. Increasing the bolometer
+resistance decreases <span class="math inline">\(P_{elec}\)</span> and
+helps maintain the sum of the powers to be constant. This inherent
+stability via <em>electrothermal feedback</em> allows steep transitions
+which directly enables highly sensitive and responsive detectors.</p>
+<p>TES detectors are biased into their superconducting transition (or
+“critical") temperature <span class="math inline">\(T_C\)</span> (see
+Figure <a href="#fig:ch5:tesbasics" data-reference-type="ref"
+data-reference="fig:ch5:tesbasics">1.18</a>). We define <span
+class="math inline">\(C = dE/dT\)</span> as the dynamical heat capacity,
+<span class="math inline">\(\bar{G}\)</span> as the average thermal
+conductance of the thermal link, and <span class="math inline">\(G =
+dP_{tot}/dT\)</span> as the dynamical thermal conductance of the thermal
+link. This allows us to define a TES’s saturation power <span
+class="math inline">\(P_{sat}\)</span>, which quantifies the power
+dissipated from the TES into the thermal bath:</p>
+<p><span class="math display">\[P_{sat} = \bar{G}(T_C -
+T_{bath})\]</span></p>
+<p>To describe the thermal power flow in the bolometer, we can look to
+energy conservation to write:</p>
+<p><span class="math display">\[\begin{aligned}
+\label{eqn:ch5:bolo_consofE}
+    P_{opt} + P_{elec} - P_{sat} &amp;= \frac{dE}{dt} \nonumber \\
+    P_{opt} + \frac{V_{bias}^2}{R_{bolo}} - \bar{G}(T_C - T_{bath})
+&amp;= \frac{dE}{dT}\frac{dT}{dt}
+\end{aligned}\]</span></p>
+<p>We can now consider a Fourier mode of frequency <span
+class="math inline">\(\omega\)</span> when some additional
+time-dependent incoming optical signal <span
+class="math inline">\(\delta P_{opt}e^{i\omega t}\)</span> induces some
+temperature change on the bolometer <span class="math inline">\(\delta
+T_{bolo}e^{i\omega t}\)</span> (which in turn also induces a change in
+<span class="math inline">\(P_{elec}\)</span>). In non-Fourier space, we
+can think of each power having a small perturbation such that <span
+class="math inline">\(P_X = P_{X,0} + \delta P_X\)</span>, where <span
+class="math inline">\(P_{X,0}\)</span> is the steady-state condition. We
+can then write (<a href="#eqn:ch5:bolo_consofE"
+data-reference-type="ref"
+data-reference="eqn:ch5:bolo_consofE">[eqn:ch5:bolo_consofE]</a>)
+as:</p>
+<p><span class="math display">\[\begin{aligned}
+\label{eqn:ch5:bigboloeqn}
+     P_{opt, 0} + \delta P_{opt} + P_{elec, 0} + \delta P_{elec} &amp;=
+P_{sat, 0} + \delta P_{sat} + \frac{dE}{dT}\frac{dT}{dt} \nonumber \\
+     P_{opt, 0} + \delta P_{opt}e^{i\omega t} + P_{elec, 0} +
+\frac{dP_{elec}}{dT_{bolo}}\delta T_{bolo}e^{i\omega t} &amp;=
+\bar{G}(T_C - T_{bath}) + G\delta T_{bolo}e^{i\omega t} + i\omega
+C\delta T_{bolo}e^{i\omega t} \nonumber \\
+     P_{tot} + \delta P_{opt}e^{i\omega t} +
+\frac{dP_{elec}}{dT_{bolo}}\delta T_{bolo}e^{i\omega t} &amp;=
+\bar{G}(T_C - T_{bath}) + (G + i\omega C)\delta T_{bolo}e^{i\omega t},
+\end{aligned}\]</span></p>
+<p>where we switch to Fourier space in the second line, and use <span
+class="math inline">\(P_{tot} = P_{opt, 0} + P_{elec, 0}\)</span> in the
+last line. Normally, the TES is biased such that <span
+class="math inline">\(P_{tot} = P_{sat}\)</span>. As shown in Figure <a
+href="#fig:ch5:tesbasics" data-reference-type="ref"
+data-reference="fig:ch5:tesbasics">1.18</a>, the TES is
+<em>saturated</em> if <span class="math inline">\(T_{bolo} &gt;
+T_C\)</span> and thus <span class="math inline">\(P_{tot} &gt;
+P_{sat}\)</span>. Usually the term saturation implies detectors that see
+too much optical power, and the term <em>overbiased</em> is used more
+often when the detector has been biased purposefully into its normal (or
+saturated) state. Similarly, if the TES has gone superconducting such
+that <span class="math inline">\(T_{bolo} &lt; T_C\)</span> thus <span
+class="math inline">\(P_{tot} &lt; P_{sat}\)</span>, the the detector is
+considered <em>latched</em>. Note that the TES can be biased stably to a
+<span class="math inline">\(R_{frac}\)</span> range where <span
+class="math inline">\(R_{frac} = R/R_n\)</span> (see the figure), so the
+saturating and superconducting states are only reached when the
+bolometer temperature deviates too far from <span
+class="math inline">\(T_C\)</span> and becomes unstable in the
+transition.</p>
+<p>We define a dimensionless parameter <span
+class="math inline">\(\alpha\)</span> that quantifies the steepness of
+the superconducting transition at the bias point:</p>
+<p><span class="math display">\[\alpha =
+\frac{d(\log{R_{bolo}})}{d(\log{T_{bolo}})},\]</span></p>
+<p>which allows us write <span class="math inline">\(\delta
+P_{elec}\)</span> a bit differently in (<a href="#eqn:ch5:bigboloeqn"
+data-reference-type="ref"
+data-reference="eqn:ch5:bigboloeqn">[eqn:ch5:bigboloeqn]</a>) such
+that:</p>
+<p><span class="math display">\[\begin{aligned}
+    \frac{dP_{elec}}{dT_{bolo}} &amp;=
+-\frac{V_{bias}^2}{R_{bolo}^2}\frac{dR_{bolo}}{dT_{bolo}} &lt; 0
+\nonumber \\
+    &amp;= -\frac{P_{elec}\alpha}{T_C},
+\end{aligned}\]</span></p>
+<p>where the first line is derived from electrothermal feedback and is
+negative because <span class="math inline">\(dR/dT &lt; 0\)</span>. We
+can then focus on the time-dependent part of (<a
+href="#eqn:ch5:bigboloeqn" data-reference-type="ref"
+data-reference="eqn:ch5:bigboloeqn">[eqn:ch5:bigboloeqn]</a>) to better
+understand the effect of the incoming optical power:</p>
+<p><span class="math display">\[\begin{aligned}
+    \delta P_{opt} &amp;= \left[ \frac{P_{elec}\alpha}{T_C} + G +
+i\omega C\right]\delta T_{bolo} = G_{eff}\delta T_{bolo} \nonumber \\
+    &amp;= (\mathcal{L}(\omega) + 1)G(1 + i\omega\tau_0)\delta T_{bolo},
+\end{aligned}\]</span></p>
+<p>where the coefficient on the small change in temperature acts as an
+effective complex thermal conductance, and can be written in terms of
+the <em>loop gain</em> <span
+class="math inline">\(\mathcal{L}(\omega)\)</span> defined as:</p>
+<p><span class="math display">\[\begin{aligned}
+    \mathcal{L}(\omega) &amp;= -\frac{\delta P_{elec}}{\delta P_{tot}} =
+-\frac{\delta P_{elec}}{\delta P_{opt} + \delta P_{elec}} \nonumber \\
+    &amp;= \frac{\frac{P_{elec}\alpha}{T_C}}{\frac{P_{elec}\alpha}{T_C}
++ G(1 + i\omega\tau_0) - \frac{P_{elec}\alpha}{T_C}} \nonumber \\
+    &amp;= \frac{P_{elec}\alpha}{GT_C(1 + i\omega\tau_0)} =
+\frac{\mathcal{L}}{1 + i\omega\tau_0},
+\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(\tau_0 = C/G\)</span> is the
+<em>natural (i.e. steady state) time constant</em> of the bolometer such
+that the gain rolls off as <span class="math inline">\(1/\tau_0 =
+\omega\)</span> as in any first order system (i.e. a first order
+transfer function). Here, the <em>DC (i.e. steady state or open loop)
+gain</em> is defined as <span class="math inline">\(\mathcal{L} =
+P_{bias}\alpha/(GT_C)\)</span>.<a href="#fn7" class="footnote-ref"
+id="fnref7" role="doc-noteref"><sup>7</sup></a> Since the TES is
+voltage-biased (DC<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a>) to take advantage of electrothermal
+feedback, we can describe the responsivity of the bolometer by measuring
+its associate output current given the incident optical power:</p>
+<p><span class="math display">\[\label{eqn:ch5:tesresponsivity}
+    S_I = \frac{dI}{dP_{opt}} =
+-\frac{1}{V_{bias}}\frac{\mathcal{L}}{\mathcal{L} + 1}\frac{1}{1 +
+i\omega\tau_{eff}},\]</span></p>
+<p>where the subscript <span class="math inline">\(I\)</span> is to
+denote that this is the current responsivity, and we define the faster
+(i.e. responsivity rolls off at a higher frequency than loop gain)
+effective time constant <span class="math inline">\(\tau_{eff}\)</span>
+as:</p>
+<p><span class="math display">\[\tau_{eff} = \frac{\tau_0}{\mathcal{L} +
+1}.\]</span></p>
+<p>In the desirable high feedback regime where loop gain is high (i.e.
+<span class="math inline">\(\mathcal{L} \gg 1\)</span>, deep in the
+superconducting transition) and optical signals are slow (i.e. <span
+class="math inline">\(\omega \ll 1/\tau\)</span>), (<a
+href="#eqn:ch5:tesresponsivity" data-reference-type="ref"
+data-reference="eqn:ch5:tesresponsivity">[eqn:ch5:tesresponsivity]</a>)
+becomes:</p>
+<p><span class="math display">\[S_I = -\frac{1}{V_{bias}}\]</span></p>
+<p>Thus, the bolometer becomes very linear, and is not dependent on the
+optical loading or its environment like fluctuations in the bath
+temperature. In this regime, the changes in <span
+class="math inline">\(P_{bias}\)</span> perfectly compensate for the
+changes in <span class="math inline">\(P_{opt}\)</span>. While large
+loop gains are desirable, in practice it is challenging to both achieve
+a high loop gain and keep detectors stable. Also note that when we
+discuss “dark" bolometers, we are referring to a regime where <span
+class="math inline">\(P_{opt} = 0\)</span>. We can also see that the
+natural time constant is sped up by a factor of <span
+class="math inline">\(\mathcal{L} + 1\)</span>, and the loop gain <span
+class="math inline">\(\mathcal{L}\)</span> scales with electric bias
+power. Thus optical detectors need less bias power compared to dark
+detectors (think of the electrothermal feedback). Less bias power
+implies a smaller loop gain, which means that optical detectors have
+slower time constants!</p>
+<p>The TES current output is sensed and read out using
+<em>superconducting quantum interference devices (SQUIDs)</em>, which
+are high gain and low input impedance magnetometers that convert the TES
+signal into a voltage. SQUIDs are constructed using superconducting
+coils with one (i.e. RF SQUID) or two (i.e. DC SQUID) Josephson
+junctions that utilize the AC or DC Josephson effect respectively. This
+signal is then usually further amplified and digitally read out warm
+outside of the cryostat (see Section <a href="#sec:ch5:tesreadout"
+data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">1.5</a>).</p>
+<p>Now that we have described the TES in detail, it is useful to point
+out some design considerations that help tune the bolometer properties
+in fabrication (see bolometers in Figure <a href="#fig:ch5:tesoperation"
+data-reference-type="ref"
+data-reference="fig:ch5:tesoperation">1.17</a>). Often, the best way to
+test bolometer designs is to fabricate variations of design parameters,
+and then measure the effects of these physical design variations on
+bolometric properties in a cryostat. Please note that this discussion is
+just a brief summary, as fabrication is a nuanced and complex process.
+The saturation power can be tuned with the thermal conductance of the
+thin legs that separate the bolometer island from the rest of the focal
+plane (i.e. “bath"). (The thermal conductance is usually tuned by
+changing the leg length while keep the width and cross sectional area
+constant.) Thus, the length of the thin bolometer legs determine <span
+class="math inline">\(G\)</span>, or how weakly linked the bolometer
+island is to the bath. The readout design (see Section <a
+href="#sec:ch5:tesreadout" data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">1.5</a>) determines the resistance
+of the TES, because this involves readout noise considerations (see
+topics on NEP in Section <a href="#sec:ch3:sensitivity"
+data-reference-type="ref"
+data-reference="sec:ch3:sensitivity">[sec:ch3:sensitivity]</a> and the
+next section). Resistive elements like the load resistor and TES can be
+tuned by changing physical size or film thickness of the chosen
+material. The transition temperature <span
+class="math inline">\(T_C\)</span> is determined by the material of the
+TES as well as the specifics of the fabrication process used to yield
+the TES. For example, the SO LF aluminum manganese bolometers can
+achieve lower <span class="math inline">\(T_C\)</span> with higher
+doping of manganese. The thermal annealing process also affects <span
+class="math inline">\(T_C\)</span>. A higher <span
+class="math inline">\(T_C\)</span> can be a product of either a longer
+time or higher temperature of annealing. Finally, the time constant
+<span class="math inline">\(\tau_{TES}\)</span> can be tuned by using
+BLNG (pronounced “bling"). The SO LF bolometers use palladium (Pd),
+while the BICEP/Keck bolometer shown used gold (Ag). Adding BLNG slows
+down the TES time constant (since the time constant scales as heat
+capacity). This time constant is bound by the readout requirements and
+the telescope sky sampling rate. If the TES time constant is too fast,
+then issues with detector stability and readout aliasing emerge. The
+readout time constant must be faster than the TES to sample signals
+properly. If the TES time constant is too slow, then this leads to
+issues with the sky sampling. The TES must be effectively able to sample
+the sky faster than the Nyquist frequency. This frequency scales roughly
+as (beam size)/(telescope scan speed) for constant elevation scans. If
+you scan too slow, however, <span class="math inline">\(1/f\)</span>
+noise starts affecting the large angular scales.</p>
+<h3 id="detector-noise">Detector Noise</h3>
+<p>Here, we return to the discussion of noise equivalent power (NEP)
+from Chapter <a href="#ch:so" data-reference-type="ref"
+data-reference="ch:so">[ch:so]</a>. Recall that NEP is defined as the
+incident power of the signal required to get a signal to noise ratio of
+1 in 1 Hz of bandwidth <span class="citation"
+data-cites="richardsbolometers1994">(<span>“Bolometers for Infrared and
+Millimeter Waves”</span> 1994)</span>. Also recall that our goal is
+constructing focal planes with photon-noise limited detectors, where the
+dominant source of noise should be from the intrinsic uncertainty in the
+arrival rate of the photon due to its quantum mechanical nature.</p>
+<p>We can decompose a detector’s NEP into all (white, uncorrelated,
+Gaussian) noise sources:</p>
+<p><span class="math display">\[NEP_{det} = \sqrt{NEP_{\gamma}^2 +
+NEP_{Johnson}^2 + NEP_{g}^2 + NEP_{readout}^2},\]</span></p>
+<p>where the definitions of the individual components are:</p>
+<ul>
+<li><p><strong>Photon NEP, <span
+class="math inline">\(NEP_{\gamma}\)</span>:</strong> This arises from
+uncertainties (i.e. quantum mechanical fluctuations) in the occupation
+number for arriving photons.</p></li>
+<li><p><strong>Johnson NEP, <span
+class="math inline">\(NEP_{Johnson}\)</span>:</strong> This Johnson
+noise is a product of the TES resistance fluctuating due to thermal
+perturbations in the charge carriers of the film. This NEP approaches 0
+when the TES has a large <span class="math inline">\(dR/dT\)</span>
+which is possible with a large loop gain. Additionally, <span
+class="math inline">\(NEP_{Johnson} \propto \sqrt{T_C}\)</span>, so a
+cold focal plane reduces Johnson NEP greatly (SO operates at <span
+class="math inline">\(\sim 100mK\)</span>). Usually this noise is also
+subdominant to readout noise, and is usually considered negligible for
+CMB experiments.</p></li>
+<li><p><strong>Thermal carrier (or phonon) NEP, <span
+class="math inline">\(NEP_{g}\)</span>:</strong> This thermal carrier
+noise is sourced from thermal fluctuations in the weak link between the
+bolometer island and the thermal bath. A cold operating temperature
+again reduces this noise since <span class="math inline">\(NEP_g \propto
+T_C\)</span>.</p></li>
+<li><p><strong>Readout NEP, <span
+class="math inline">\(NEP_{readout}\)</span>:</strong> This is the noise
+from any readout electronics, which is an important and challenging
+design consideration for modern experiments as focal plane complexity
+and detector count increases. When considering readout noise, it is
+often useful to think in terms of the readout noise equivalent current
+(<span class="math inline">\(NEI_{readout}\)</span>)<a href="#fn9"
+class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>:
+<span class="math display">\[NEI_{readout} = S_INEP_{readout},\]</span>
+where <span class="math inline">\(V_{bias} =
+\sqrt{R_{bolo}P_{elec}}\)</span> in <span
+class="math inline">\(S_I\)</span>. Often, small <span
+class="math inline">\(R_{bolo}\)</span> is desirable to minimize readout
+NEP. In fact, for microwave multiplexing systems as in SO (see Section
+<a href="#sec:ch5:tesreadout" data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">1.5</a>), <span
+class="math inline">\(R_{bolo} \simeq 8m\Omega\)</span> which is very
+low and requires tight controlling of electronics<a href="#fn10"
+class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>
+such that <span class="math inline">\(R_{bolo}\)</span> is not on the
+same order as parasitic impedances (usually <span
+class="math inline">\(\sim 10m\Omega\)</span> for frequency domain
+multiplexing wiring schemes). For digital frequency multiplexing, for
+example, <span class="math inline">\(R_{bolo} \sim
+\mathcal{O}(1\Omega)\)</span>.</p></li>
+</ul>
+<h3 id="kinetic-inductance-detectors">Kinetic Inductance Detectors</h3>
+<p>Although TES bolometers are currently the primary technology used by
+CMB experiments, there have been major efforts in the field to reduce
+focal plane complexity. Here we take a detour to discuss some ongoing
+interesting efforts that may influence future cosmology research and
+development. High detector counts for these experiments require high
+multiplexing factors, which can be achieved using e.g. Kinetic
+Inductance Detectors (KIDs). Scalability is currently a critical
+challenge for deploying thousands of detectors. High technical readiness
+of KIDs will be a competitive technology for future observatories.
+Current TES bolometers interface with SQUID amplifiers, which require at
+least four wirebonds per detector channel, and focal plane real estate
+for supporting circuitry. KIDs will reduce the number of delicate
+wirebonds per detector and the complexity of focal plane
+architecture.</p>
+<p>KID-based technologies rely on the kinetic inductance of the
+superconductor, which is altered by incoming radiation. This intrinsic
+reactance from the kinetic inductance occurs below a superconductor’s
+transition temperature, and stems from the inertial, finite mass of
+charge carriers in a medium. For superconductors, these charge carriers
+are Cooper pairs, where the total inductive energy is equivalent to the
+kinetic energy of the Cooper pairs. A single incident photon may break
+Cooper pairs into quasiparticles, and so effectively change the kinetic
+inductance of the superconductor. A small change in the kinetic
+inductance paired with a capacitor creates a change in resonant
+frequency associated with such a microresonator. Thus, if a
+superconductor is placed in a resonator circuit, we can observe resonant
+frequency shifts for CMB observation.</p>
+<figure id="fig:ch5:kidmux">
+<embed src="figures/chap5_pics/kidmux.pdf" />
+<figcaption>Thermal kinetic inductance detectors versus microwave
+multiplexing techniques. (a) and (b) TKID bolometer diagram with thermal
+circuit in red and electrical circuit in black (left) and prototype chip
+(right) <span class="citation" data-cites="wandui2020">(Wandui et al.
+2020)</span> (c) Schematic of microwave multiplexing. Each readout
+channel has a unique resonance frequency, and there is a comb of probe
+tones with a single Low Noise Amplifier (LNA) for many detectors to be
+read out <span class="citation" data-cites="cmbs4_technology">(Abitbol
+et al. 2017)</span>.</figcaption>
+</figure>
+<p>A challenge with KIDs is achieving high quality factors for
+millimeter-wave observations. Different types of KID development are an
+active area of research: microwave KIDs (MKIDs), lumped element KIDs
+(LEKIDs), and thermal KIDs (TKIDs). MKIDs utilize an antenna-coupled
+microwave transmission line. LEKIDs use a direct-absorbing lumped
+element, which better couple photons to the resonator compared to MKIDs,
+but struggle with dual polarization or multi-band extensions. We will go
+into a little extra detail now to explain TKIDs. TKIDs take the
+principle of KIDs and operate similar to Transition Edge Sensors (TESs)
+in that the inductor is placed on a weakly thermally linked bolometer
+island along with a resistive heater (Figure <a href="#fig:ch5:kidmux"
+data-reference-type="ref" data-reference="fig:ch5:kidmux">1.19</a>(a)).
+This resistor is fed by the microstrip line-coupled-antenna array, and
+introduces thermal fluctuations on the bolometer island. This results in
+changes in quasiparticle density, which sparks a shift in the resonance
+frequency. Paired with unique capacitances as shown in Figure <a
+href="#fig:ch5:kidmux" data-reference-type="ref"
+data-reference="fig:ch5:kidmux">1.19</a>, many detectors can be read out
+on a single line. By combining the principle of KIDs with the
+fabrication principles of TESs, TKIDs are compelling candidates for use
+in CMB detector arrays.</p>
+<p>TKIDs have the high multiplexing factors of microwave multiplexing
+(see Section <a href="#sec:ch5:tesreadout" data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">1.5</a>), low noise of traditional
+TES bolometers, and do not require a SQUID on each channel to interface
+with the detector (Figure <a href="#fig:ch5:kidmux"
+data-reference-type="ref" data-reference="fig:ch5:kidmux">1.19</a>).
+SQUID-TES interfacing increases the complexity of the focal plane
+architecture and adds thermal load, limiting detector counts with
+traditional methods. Traditional time- and frequency-domain multiplexing
+such as those being used in Simons Array, BICEP/Keck, and ACT
+collaborations have achieved multiplexing factors of <span
+class="math inline">\(\sim\)</span><em>O</em>(100), but we can achieve
+more than an order of magnitude improvement with TKIDs and innovative RF
+multiplexing techniques.</p>
+<h2 id="sec:ch5:tesreadout">TES Readout</h2>
+<p>As CMB experiments have moved towards more detectors, the need to
+reduce focal plane complexity, thermal loading on the coldest stages,
+and more cost-efficient architecture has led to advancements in detector
+readout strategies. Several techniques attempt to efficiently multiplex
+100s to 1000s of detectors by reading them out on a single wire and set
+of amplifiers. In this section, we briefly describe three different kind
+of multiplexing used in CMB experiments currently: digital frequency,
+time domain, and microwave multiplexing.</p>
+<h3 id="digital-frequency-multiplexing">Digital Frequency
+Multiplexing</h3>
+<p>Digital frequency multiplexing (Dfmux) has been used by the EBEX,
+Simons Array and SPT collaborations, and will be used in
+<em>LiteBIRD</em>. The highest multiplexing factor for Dfmux used in the
+field was by SPT-3G, which was <span
+class="math inline">\(\times68\)</span> mux factor <span
+class="citation" data-cites="Montgomery_2022">(Montgomery et al.
+2022)</span> (see Figure <a href="#fig:ch5:dfmux"
+data-reference-type="ref" data-reference="fig:ch5:dfmux">1.20</a>)<a
+href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>. Dfmux operates at frequencies
+usually ranging from 100s of kHz to 10s of MHz with AC bias voltages
+<span class="citation"
+data-cites="Bender_2014 Montgomery_2022 cmbs4_technology">(Bender et al.
+2014; Montgomery et al. 2022; Abitbol et al. 2017)</span>. Combs of LC
+resonators set these frequencies, each paired with a voltage-biased TES.
+These resonant frequencies must not overlap and have adequate spacing
+between them, setting the bandwidth - thus, more recent generations of
+Dfmux have shifted towards using MHz tones. Incoming optical signals
+effectively amplitude-modulate the waveform similar to AM radio signals,
+and output some current waveform that are summed with the other carrier
+tones, amplified at the warmer cryogenic stages, and then demodulated on
+the warm 300K side to extract the sky signal.</p>
+<figure id="fig:ch5:dfmux">
+<img src="figures/chap5_pics/dfmuxannotated.png" />
+<figcaption>Basics of Dfmux operation. Incoming radiation interacts with
+voltage-biased TESs, which are paired with LC resonators as shown. Image
+taken from <span class="citation"
+data-cites="Montgomery_2022">(Montgomery et al. 2022)</span>, adapted
+from <span class="citation" data-cites="Bender_2014">(Bender et al.
+2014)</span>.</figcaption>
+</figure>
+<h3 id="time-domain-multiplexing">Time Domain Multiplexing</h3>
+<p>Time domain multiplexing (TDM) has been used by the ACT and
+BICEP/Keck Array collaborations, and will be used in CMB-S4. See Figure
+<a href="#fig:ch5:tdm" data-reference-type="ref"
+data-reference="fig:ch5:tdm">1.21</a> for a NIST-designed TDM
+multiplexing chip design. The highest multiplexing factor used in the
+field for TDM is by the Q&amp;U Bolometric Interferometer for Cosmology
+(QUBIC), with a <span class="math inline">\(\times128\)</span> mux
+factor <span class="citation" data-cites="QUBIC_TDM">(Prêle et al.
+2016)</span>. TESs are voltage-biased, and each TES is paired with a
+single SQUID amplifier at this first stage. The readout is organized in
+a 2-D logical grid, where rows are read out sequentially at some time
+interval (similar to how LED signs operate). Each column is one chain
+and routes to a single SQUID series array amplifier, and then is further
+amplified from there until it is read out by the warm electronics as the
+sky signal.</p>
+<figure id="fig:ch5:tdm">
+<img src="figures/chap5_pics/tdm.png" style="width:60.0%" />
+<figcaption>Basics of TDM operation. SQUID-coupled TESs are arranged in
+a 2-D logical array. Each column is a single chain amplified with
+another SQUID array, and each row is read out cyclically. Image from
+<span class="citation" data-cites="cmbs4_technology">(Abitbol et al.
+2017)</span>.</figcaption>
+</figure>
+<h3 id="microwave-multiplexing">Microwave Multiplexing</h3>
+<p>Microwave multiplexing (<span class="math inline">\(\mu\)</span>mux)
+is currently being deployed by Simons Observatory, and has shown
+efficacy in e.g. a retrofitted Keck array receiver and MUSTANG-2 <span
+class="citation" data-cites="Cukierman_2019 mustangmumux2018">(A.
+Cukierman et al. 2019; Stanchfield et al. 2018)</span>. More details on
+<span class="math inline">\(\mu\)</span>mux utilized in SO can be found
+in <span class="citation" data-cites="Yu_2023 Healy_2022">(Yu et al.
+2023; E. Healy et al. 2022)</span>. Unlike TDM or Dfmux, microwave
+multiplexing allows for <span
+class="math inline">\(\mathcal{O}(2000)\)</span> detectors to be read
+out on a single chain using GHz frequency phase modulation for DC-biased
+TESs. SO uses the SMuRF (SLAC Microresonator RF electronics) system
+developed by SLAC. Resonators have a unique frequency between 4-8GHz (SO
+only uses 4-6 GHz, as the full range is not required). Each resonator’s
+phase shifts as a response to changes in the flux in the SQUID loop,
+which induces a change in the effective inductance in the resonator. A
+kHz flux ramp (a 4 kHz sawtooth waveform) stabilizes the RF SQUIDs, and
+drives flux quanta through the SQUID. SMuRF’s tone tracking system uses
+a probe tone to track the shifting resonance, which is effectively a
+flux ramp-modulated frequency shift. Each readout line is then amplified
+at the 4K and 40K stages, and then digitized into the desired sky signal
+by the warm electronics.</p>
+<figure id="fig:ch5:mumux">
+<img src="figures/chap5_pics/mumux.png" />
+<figcaption>Basics of microwave multiplexing operation. SMuRF generates
+the TES voltage biases, the kHz flux ramp to linearize SQUIDs, and uses
+tone tracking to watch for shifting resonances in the TESs.
+SQUID-coupled TESs are inductively coupled to microwave resonators,
+which induces a phase shift when a signal is detected. Image from <span
+class="citation" data-cites="Healy_2020">(E. E. Healy et al.
+2020)</span>.</figcaption>
+</figure>
+<h2 id="sec:ch5:solf">Simons Observatory Low-Frequency Detectors</h2>
+<p>Recall from previous chapters that the Simons Observatory (SO) will
+make multi-frequency CMB maps from the Atacama Desert in Chile. SO is
+nominally aiming for science observations starting in 2024 with <span
+class="math inline">\(\sim\)</span>68,000 detectors to perform
+degree-scale surveys with three small aperture telescopes (SATs) and
+arcminute-resolution surveys with the large aperture telescope (LAT).
+These telescopes are specifically designed to reach key science targets
+including constraints of the tensor-to-scalar ratio <em>r</em>, the
+effective number of relativistic species <span
+class="math inline">\(N_{eff}\)</span>, the sum of neutrino masses <span
+class="math inline">\(\Sigma m_{\nu}\)</span>, deviations from the
+cosmological constant, galaxy evolution feedback efficiency, and the
+epoch of reionization <span class="citation" data-cites="SOscience">(The
+Simons Observatory Collaboration 2019)</span>. Galactic and
+extra-galactic foreground-subtracted CMB maps are critical to achieving
+these science goals <span class="citation"
+data-cites="smoot1999 wmap_2009 wmap_2009_2 foregrounds2016 Sponseller_2022 SOscience cmbs4science Kamionkowski_2016 planck2018_iv">(Smoot
+1999; Hinshaw et al. 2009; Komatsu et al. 2009; Krachmalnicoff, N. et
+al. 2016; Sponseller and Kogut 2022; The Simons Observatory
+Collaboration 2019; Abazajian et al. 2016; Kamionkowski and Kovetz 2016;
+Y. Akrami et al. 2020)</span>. To achieve sensitivities that enable this
+science, SO will be observing across six spectral bands from 27 to 285
+GHz. Focal planes across the telescopes will be dichroic, observing at
+the Low-Frequency (LF) bands centered at 27 and 39 GHz, the
+Mid-Frequency (MF) primary CMB bands centered at 93 and 145 GHz, and the
+Ultra-High-Frequency (UHF) bands centered at 225 and 285 GHz. The UHF
+bands will map thermal dust emission and the LF bands will map
+synchrotron emission, which are the dominant emissions in galactic
+polarization signals <span class="citation"
+data-cites="planck2018_1 Planck2018_xi planck2018_iv">(The Planck
+Collaboration 2020a, 2020b; Y. Akrami et al. 2020)</span>. Here, we
+focus on the LF focal plane development studying galactic synchrotron
+emission.</p>
+<h3 id="sec2">Design and Optimization</h3>
+<p>Here we briefly review design considerations and simulation-based
+optimizations for the SO LF pixel.</p>
+<h4 id="overview-optical-stack-and-pixel-design">Overview: Optical Stack
+and Pixel Design</h4>
+<p>All SO telescopes have hexagonally tiled focal planes. Each hexagonal
+tile is called a Universal Focal Plane Module (UFM), and houses optical
+and readout components. UFMs are interchangeable (i.e. “universal")
+between any of the SATs and LAT. For each LF-UFM, a Detector and Optical
+Stack (DOS) mates with a Universal Mutiplexing Module (UMM). Each UFM
+consists of 37 LF pixels, with 4 optical detectors and 2 dark detectors
+per pixel. Only one of each pair of dark detectors is bonded to be read
+out. The UMM consists of a routing wafer and multiplexer chips to enable
+the microwave multiplexing scheme that reads out <span
+class="math inline">\(O(1000)\)</span> detectors per readout channel
+<span class="citation" data-cites="mccarrick2021 Healy_2022">(McCarrick
+et al. 2021; E. Healy et al. 2022)</span>. The LF-DOS design includes an
+interlocking flange to mate with other UFMs on the focal plane, the
+lenslet array on the detector wafer, the copper backshort, and an array
+support structure (see Figure <a href="#fig1" data-reference-type="ref"
+data-reference="fig1">1.23</a>).</p>
+<p>The SO LF pixel arrays consist of lenslet-coupled sinuous antennas.
+The quarter wavelength anti-reflection (AR) coated lenslets help focus
+the incoming light onto the antenna and maximize its forward gain. The
+ultra-wide-band dual-polarized sinuous antenna covers 27 and 39 GHz
+bands with total <span class="math inline">\(\sim\)</span>75% fractional
+bandwidth, with diplexers splitting bands with 32% and 44% fractional
+bandwidth respectively. (Note that the 27 and 39 GHz bands are sometimes
+referred to as 30 and 40 GHz bands respectively.)</p>
+<p>The sinuous antenna couples to superconducting niobium (Nb)
+microstrip lines, which carry the signal to diplexing lumped element
+bandpass filters. After passing cross-unders, the signal is terminated
+at a transition edge sensor (TES) bolometer on a titanium (Ti) load
+resistor. Palladium (Pd) thermal ballasts control the time constant of
+the bolometer. The aluminum manganese (AlMn) TESs are tuned to their
+superconducting transition and operated by the warm microwave
+multiplexing readout electronics developed by SLAC <span
+class="citation"
+data-cites="Henderson_2018 Kernasovskiy_2018 Yu_2023">(Henderson et al.
+2018; Kernasovskiy et al. 2018; Yu et al. 2023)</span> with carefully
+designed readout chains <span class="citation"
+data-cites="mayuri_2020">(Rao et al. 2020)</span>).</p>
+<h4 id="optimization">Optimization</h4>
+<figure id="fig1">
+<embed src="design-opt.pdf" />
+<p>-1ex</p>
+<figcaption><em>Left:</em> DOS CAD exploded view. Components are: (a)
+vacuum plate**; (b) LF pixel array; (c) detector wafer; (d) invar clips;
+(e) bond-pad piece; (f) LF array support structure; (g) step-up aligner
+piece**; (h) copper backshort piece; and (i) interlocking flange.
+Components labelled ** were used for shipping/assembly purposes and then
+removed. <em>Center:</em> Single pixel simulation trimetric view. Blue
+is ground plane, green is AR coating. <em>Right:</em> Simulation front
+view with key parameters labels. </figcaption>
+</figure>
+<p>-1.5ex</p>
+<div id="tab1">
+<table>
+<caption>Optimized Pixel Parameters</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">=.8<strong>Parameter</strong></th>
+<th style="text-align: left;"><strong>Design Value/
+Consideration</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">=.8Cavity Radius</td>
+<td style="text-align: left;">6.5 mm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">=.8 Cavity Depth</td>
+<td style="text-align: left;">3 mm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">=.8 Gap between extension and
+backshort</td>
+<td style="text-align: left;">250 um [<span
+class="math inline">\(\leq\)</span>2% variation between 50-750um]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">=.8 L/R ratio</td>
+<td style="text-align: left;">0.43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">=.8 Swiss Cheese backshort</td>
+<td style="text-align: left;">performs comparably to standard flat
+backshort*</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>0.5ex <span>*Simulated forward integrated gain suggests new backshort
+performs better by <span
+class="math inline">\(\sim\)</span>1%.</span></p>
+<p>The pixel design was optimized using ANSYS HFSS simulations. As shown
+in Figure <a href="#fig1" data-reference-type="ref"
+data-reference="fig1">1.23</a>, the geometry consists of a hemispherical
+lenslet with AR coating, the device and extension wafer, and the copper
+backshort. A new AR coating material using borosilicate glass was used
+and compared to traditional epoxy coatings <span class="citation"
+data-cites="suzuki2012 suzuki2016 Westbrook_2018">(Aritoki Suzuki et al.
+2012; A. Suzuki et al. 2016; B. Westbrook et al. 2018)</span>, which
+will be discussed in an upcoming paper. A primary goal of these studies
+was to optimize the backshort design. Limited space from UFM design
+required a compact backshort to accommodate the UMM readout hardware. As
+a solution, the ‘swiss cheese’ backshort was designed. It consists of a
+metal slab with a small cavity behind the antenna to recover power
+transmitted in the backlobe. Given the silicon half-space and AR-coated
+lenslet sitting above the antenna itself, less than 5% of the signal is
+in the backlobe. We aimed to perform comparably to or better than a
+traditional flat backshort sitting <span
+class="math inline">\(\lambda_{center}/4\)</span> from the antenna
+plane, where <span class="math inline">\(\lambda_{center}\)</span>
+corresponds to the central frequency of the combined 30 and 40 GHz
+bands.</p>
+<figure id="fig2">
+<p>-1ex <embed src="fab.pdf" /> -0.5ex</p>
+<figcaption>SO LF wafer images taken with Keyence 7000.
+<strong>(a)</strong> Pixel view showing sinuous antenna, superconducting
+microstrip line, lumped element band pass filters, crossunders, and TES.
+<strong>(b)</strong> TES bolometer. Visible are the microstrip lines
+differentially feeding a Ti load resistor. Pd thermal ballasts separate
+the structure from the AlMn TES on the top end, which is also connected
+to two microstrip lines. <strong>(c)</strong> Zoomed in view of end of
+sinuous slot to signal diplexing into both 27 and 39 GHz band pass
+filters. 30GHz bolometer is also visible. <strong>(d)</strong> Sinuous
+antenna center fed by two microstrip lines. This is a new, updated
+center design to maintain self-complementarity compared to previous
+designs <span class="citation"
+data-cites="suzuki2012 suzuki2016 Westbrook_2018">(Aritoki Suzuki et al.
+2012; A. Suzuki et al. 2016; B. Westbrook et al. 2018)</span>.
+<strong>(e)</strong> Crossunders allow microstrip lines to cross over
+each other to reach TESs. Widening of the microstrip line near the via
+minimizes loss.</figcaption>
+</figure>
+<p>Each pixel in the array is backed by a single cavity. The cavity
+radius and depth were optimized by using iterative sweeps in simulation
+and choosing values with maximum band averaged forward integrated gain
+(in the skyward direction) first between <span
+class="math inline">\(\pm30^{\circ}\)</span> for coarse cuts, and then
+more finely between <span class="math inline">\(\pm13^{\circ}\)</span>
+for the LAT and <span class="math inline">\(\pm17^{\circ}\)</span> for
+the SAT Lyot stop <span class="citation"
+data-cites="ali2020 galitzki2018 harrington2020 Zhu_2021">(Ali et al.
+2020; Galitzki et al. 2018; Harrington et al. 2020; Zhu et al.
+2021)</span>.</p>
+<p>The gap between the extension wafer and the copper backshort piece
+was investigated to see how deviations from a 250um gap would also
+affect pixel performance. We saw less than 2% variation in forward
+integrated gain for gap sizes between 50 and 750um. Cross-talk effects
+are considered negligible with changes in gap dimension, because (1) the
+propagation space here is much smaller than if a flat backshort is used
+and (2) very little power is in the backlobe, as stated earlier.</p>
+<p>The ratio of the silicon extension (L) to the radius of the silicon
+lenslet (R) is defined as the L/R ratio. This parameter tunes how
+effectively the antenna is the focal point of the effective ellipsoid
+made by the lenslet plus extension geometry. We tuned this parameter in
+simulation to optimize pixel performance by varying the extension length
+with respect to a fixed lenslet radius. The final optimized L/R ratio
+was 0.43.</p>
+<p>The conclusion of these optimizations was that the swiss cheese
+backshort performs better or comparably to a standard flat backshort
+(see Figure <a href="#fig4" data-reference-type="ref"
+data-reference="fig4">1.27</a>(a)). A summary of final design values
+used are listed in Table <a href="#tab1" data-reference-type="ref"
+data-reference="tab1">1.1</a>.</p>
+<h3 id="sec3">Fabrication and Ongoing Testing</h3>
+<figure id="fig3">
+<p><embed src="detectors.pdf" /> -1ex</p>
+<p>-1ex</p>
+<figcaption><em>Left:</em> For left resistance map, note that opens are
+marked, and all of P22 is shorted. Without a lithography error on the
+dark bolometers which has since been solved, we achieve <span
+class="math inline">\(\sim\)</span>91% warm electrical yield on this
+wafer. <em>Right:</em> Transition figure hits all specs with measured
+<span class="math inline">\(R_n \approx\)</span> 8 m<span
+class="math inline">\(\Omega\)</span> and <span
+class="math inline">\(T_c \approx\)</span> 160 mK.</figcaption>
+</figure>
+<figure id="fig5">
+<p>-0.5ex <embed src="thermal.pdf" /> -0.5ex</p>
+<figcaption>Thermal parameter distributions for a tested half-wafer with
+a cold load. Note that “dark" here refers to dark bolometers, which have
+lower <span class="math inline">\(P_{sat}\)</span> by design. Similarly,
+“optical" refers to all antenna-coupled bolometers. <em>Left:</em>
+Saturation powers (<span class="math inline">\(P_{sat}\)</span>).
+<em>Center Left:</em> Transition temperatures (<span
+class="math inline">\(T_c\)</span>) <em>Center Right:</em> Thermal
+conductances (<span class="math inline">\(G\)</span>). <em>Right:</em>
+Normal resistance (<span
+class="math inline">\(R_n\)</span>).</figcaption>
+</figure>
+<p>Fabrication of the LF array is done at the Marvell Nanofabrication
+Laboratory at UC Berkeley. The fabrication flow is adapted from the
+fabrication flow used by UC Berkeley for the Simons Array focal planes
+<span class="citation"
+data-cites="suzuki2012 suzuki2016 Westbrook_2018 westbrook2022">(Aritoki
+Suzuki et al. 2012; A. Suzuki et al. 2016; B. Westbrook et al. 2018;
+Benjamin Westbrook et al. 2022)</span>.</p>
+<figure id="fig4">
+<p><embed src="optical-testing.pdf" /> -0.5ex</p>
+<p>-1ex</p>
+<figcaption><strong>(a)</strong> ‘Swiss cheese’ backshort performs
+better than a flat backshort in beam width and amplitude for both bands
+in simulation. <strong>(b)</strong> Measured polarization efficiency is
+<span class="math inline">\(&gt;\)</span>96% for 40T (shown) and <span
+class="math inline">\(\sim\)</span>97% for 40B (not shown). Here, T
+refers to “top" and B refers to “bottom," which are labels used on the
+wafer to route the two polarizations. <strong>(c)</strong> and
+<strong>(d)</strong> Left is simulated 40 GHz band beam using ANSYS
+HFSS. Right is 40 GHz band measured beam using a beam mapper. Contours
+are 2D gaussian fits, with <span class="math inline">\(\sim1\%\)</span>
+ellipticity for both simulated and measured beams.</figcaption>
+</figure>
+<p>The primary challenge to fabricating these devices is to realize the
+bolometric and radio frequency (RF) features simultaneously. Fabrication
+begins with 6 inch silicon wafers with a <span
+class="math inline">\(\sim\)</span>600 nm film of low-pressure chemical
+vapor deposition low-stress silicon nitride grown on both sides of the
+wafer in a furnace. The base of the RF circuit is created when a
+patterned layer of <span class="math inline">\(\sim\)</span>340 nm thick
+Nb is coated with <span class="math inline">\(\sim\)</span>1.0 <span
+class="math inline">\(\mu\)</span>m of silicon nitride. The nitride
+serves as the dielectric layer for the RF circuitry. Next, the Ti load
+resistor and AlMn TES are deposited, patterned and etched. The Ti
+resistor is <span class="math inline">\(\sim\)</span>80 nm thick and the
+AlMn TES is <span class="math inline">\(\sim\)</span>400 nm thick. An
+encapsulating layer of passivating silicon nitride is patterned over the
+load resistor and TES to protect these layers from the subsequent Nb
+etch and serves as a long term passivation layer for the devices.</p>
+<p>The RF circuit is then completed with the deposition and etching of a
+second Nb layer that forms both the RF microstrip line and the TES
+wiring layers. This wiring layer also provides access to the readout
+with bond pads at the edge of the wafer. We then evaporate <span
+class="math inline">\(\sim\)</span>500 nm of Pd on to the bolometer
+islands using a lift-off process. At this point, the wafer is ready for
+release and packaging. A layer of photoresist is patterned, allowing
+access to the silicon nitride layer that will eventually support the
+suspended bolometer arms. This nitride is etched before the wafer is
+diced into its final hexagonal shape with chamfers at the corners. The
+bolometers are released with xenon difluoride (XeF<span
+class="math inline">\(_{2}\)</span>) vapor providing thermal isolation
+of the TES from the rest of the substrate. With a final photoresist ash,
+the wafer is ready for inspection and characterization.</p>
+<p>Current testing result highlights are showing in Figures <a
+href="#fig3" data-reference-type="ref" data-reference="fig3">1.25</a>,
+<a href="#fig5" data-reference-type="ref"
+data-reference="fig5">1.26</a>, and <a href="#fig4"
+data-reference-type="ref" data-reference="fig4">1.27</a>. Thermal
+parameters including normal resistance, transition temperature,
+saturation power, and thermal conductance have met requirements, and
+wafers are showing promise of good warm electrical yields as seen in
+Figures <a href="#fig3" data-reference-type="ref"
+data-reference="fig3">1.25</a> and <a href="#fig5"
+data-reference-type="ref" data-reference="fig5">1.26</a>. Ongoing
+optical testing show good polarization efficiency, and beam measurements
+have low ellipticity and are consistent with simulated beam profiles
+(Figure <a href="#fig4" data-reference-type="ref"
+data-reference="fig4">1.27</a>). Full SO LF testing results will be
+detailed in an upcoming paper.</p>
+<h3 id="sec4">Current Status and Conclusions</h3>
+<p>SO is currently deploying the LAT and three SATs, and full science
+observations will begin in 2024. The LAT will consist of 444 LF
+detectors on the sky, with a future SAT to put an additional 1,036 LF
+detectors on the sky. The LF detectors will characterize synchrotron
+emission, an important foreground to understand and subtract from CMB
+maps to achieve key science targets. SO LF fabrication and testing is
+ongoing as described, with good TES thermal parameters, warm electrical
+yield, polarization efficiency, and round beams.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-cmbs4science" class="csl-entry" role="listitem">
+Abazajian, Kevork N., Peter Adshead, Zeeshan Ahmed, Steven W. Allen,
+David Alonso, Kam S. Arnold, Carlo Baccigalupi, et al. 2016.
+<span>“CMB-S4 Science Book, First Edition.”</span> <a
+href="https://arxiv.org/abs/1610.02743">https://arxiv.org/abs/1610.02743</a>.
+</div>
+<div id="ref-cmbs4_technology" class="csl-entry" role="listitem">
+Abitbol, Maximilian H., Zeeshan Ahmed, Darcy Barron, Ritoban Basu
+Thakur, Amy N. Bender, Bradford A. Benson, Colin A. Bischoff, et al.
+2017. <span>“CMB-S4 Technology Book, First Edition.”</span> <a
+href="https://arxiv.org/abs/1706.02464">https://arxiv.org/abs/1706.02464</a>.
+</div>
+<div id="ref-BICEP_antennaTES_2015" class="csl-entry" role="listitem">
+Ade, P. A. R., R. W. Aikin, M. Amiri, D. Barkats, S. J. Benton, C. A.
+Bischoff, J. J. Bock, et al. 2015. <span>“ANTENNA-COUPLED TES BOLOMETERS
+USED IN BICEP2, Keck Array, AND SPIDER.”</span> <em>The Astrophysical
+Journal</em> 812 (2): 176. <a
+href="https://doi.org/10.1088/0004-637X/812/2/176">https://doi.org/10.1088/0004-637X/812/2/176</a>.
+</div>
+<div id="ref-ali2020" class="csl-entry" role="listitem">
+Ali, Aamir M., Shunsuke Adachi, Kam Arnold, Peter Ashton, Andrew
+Bazarko, Yuji Chinone, Gabriele Coppi, et al. 2020. <span>“Small
+Aperture Telescopes for the Simons Observatory.”</span> <em>Journal of
+Low Temperature Physics</em> 200 (5-6): 461–71. <a
+href="https://doi.org/10.1007/s10909-020-02430-5">https://doi.org/10.1007/s10909-020-02430-5</a>.
+</div>
+<div id="ref-Arnold_2012" class="csl-entry" role="listitem">
+Arnold, K., P. A. R. Ade, A. E. Anthony, D. Barron, D. Boettger, J.
+Borrill, S. Chapman, et al. 2012. <span>“The Bolometric Focal Plane
+Array of the POLARBEAR CMB Experiment.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy VI</em>, edited by Wayne S. Holland. SPIE. <a
+href="https://doi.org/10.1117/12.927057">https://doi.org/10.1117/12.927057</a>.
+</div>
+<div id="ref-kamthesis" class="csl-entry" role="listitem">
+Arnold, Kam S. 2010. <span>“Design and Deployment of the POLARBEAR
+Cosmic Microwave Background Polarization Experiment.”</span> PhD thesis,
+UC Berkeley.
+</div>
+<div id="ref-Balanis-2012-antenna" class="csl-entry" role="listitem">
+Balanis, Constantine A. 2005. <em>Antenna Theory: Analysis and
+Design</em>. Wiley-Interscience.
+</div>
+<div id="ref-Bender_2014" class="csl-entry" role="listitem">
+Bender, Amy N., Jean-François Cliche, Tijmen de Haan, Matt A. Dobbs,
+Adam J. Gilbert, Joshua Montgomery, Neil Rowlands, Graeme M. Smecher,
+Ken Smith, and Andrew Wilson. 2014. <span>“Digital Frequency Domain
+Multiplexing Readout Electronics for the Next Generation of Millimeter
+Telescopes.”</span> In <em>Millimeter, Submillimeter, and Far-Infrared
+Detectors and Instrumentation for Astronomy VII</em>, edited by Wayne S.
+Holland and Jonas Zmuidzinas. SPIE. <a
+href="https://doi.org/10.1117/12.2054949">https://doi.org/10.1117/12.2054949</a>.
+</div>
+<div id="ref-optcoupling2009" class="csl-entry" role="listitem">
+Bock, J J, J Gundersen, A T Lee, P L Richards, and E Wollack. 2009.
+<span>“Optical Coupling.”</span> <em>Journal of Physics: Conference
+Series</em> 155 (1): 012005. <a
+href="https://doi.org/10.1088/1742-6596/155/1/012005">https://doi.org/10.1088/1742-6596/155/1/012005</a>.
+</div>
+<div id="ref-richardsbolometers1994" class="csl-entry" role="listitem">
+<span>“Bolometers for Infrared and Millimeter Waves.”</span> 1994.
+<em>Journal of Applied Physics</em> 76 (1): 1–24.
+</div>
+<div id="ref-Booker1946" class="csl-entry" role="listitem">
+Booker, Henry G. 1946. <span>“Slot Aerials and Their Relation to
+Complementary Wire Aerials (Babinet’s Principle).”</span> <em>Journal of
+the Institution of Electrical Engineers - Part IIIA: Radiolocation</em>
+93: 620–26. <a
+href="https://api.semanticscholar.org/CorpusID:111114642">https://api.semanticscholar.org/CorpusID:111114642</a>.
+</div>
+<div id="ref-chattopadhyay_zmuidzinas_2998" class="csl-entry"
+role="listitem">
+Chattopadhyay, G., and J. Zmuidzinas. 1998. <span>“A Dual-Polarized Slot
+Antenna for Millimeter Waves.”</span> <em>IEEE Transactions on Antennas
+and Propagation</em> 46 (5): 736–37. <a
+href="https://doi.org/10.1109/8.668920">https://doi.org/10.1109/8.668920</a>.
+</div>
+<div id="ref-Cukierman_2019" class="csl-entry" role="listitem">
+Cukierman, A., Z. Ahmed, S. Henderson, E. Young, C. Yu, D. Barkats, D.
+Brown, et al. 2019. <span>“Microwave Multiplexing on the Keck
+Array.”</span> <em>Journal of Low Temperature Physics</em> 199 (3–4):
+858–66. <a
+href="https://doi.org/10.1007/s10909-019-02296-2">https://doi.org/10.1007/s10909-019-02296-2</a>.
+</div>
+<div id="ref-arithesis" class="csl-entry" role="listitem">
+Cukierman, Ariel Jozef. 2018. <span>“Multiscale Multichroic Focal Planes
+for Measurements of the Cosmic Microwave Background.”</span> PhD thesis,
+UC Berkeley.
+</div>
+<div id="ref-Datta_2016" class="csl-entry" role="listitem">
+Datta, R., J. Austermann, J. A. Beall, D. Becker, K. P. Coughlin, S. M.
+Duff, P. A. Gallardo, et al. 2016. <span>“Design and Deployment of a
+Multichroic Polarimeter Array on the Atacama Cosmology
+Telescope.”</span> <em>Journal of Low Temperature Physics</em> 184
+(3–4): 568–75. <a
+href="https://doi.org/10.1007/s10909-016-1553-5">https://doi.org/10.1007/s10909-016-1553-5</a>.
+</div>
+<div id="ref-Deschamps1959" class="csl-entry" role="listitem">
+Deschamps, G. 1959. <span>“Impedance Properties of Complementary
+Multiterminal Planar Structures.”</span> <em>IRE Transactions on
+Antennas and Propagation</em> 7 (5): 371–78. <a
+href="https://doi.org/10.1109/TAP.1959.1144717">https://doi.org/10.1109/TAP.1959.1144717</a>.
+</div>
+<div id="ref-duhamel1987" class="csl-entry" role="listitem">
+DuHamel, Raymond H. 1987. <span>“Dual Polarized Sinuous
+Antennas.”</span>
+</div>
+<div id="ref-edwards" class="csl-entry" role="listitem">
+Edwards, Jennifer M., Roger O’Brient, Adrian T. Lee, and Gabriel M.
+Rebeiz. 2012. <span>“Dual-Polarized Sinuous Antennas on Extended
+Hemispherical Silicon Lenses.”</span> <em>IEEE Transactions on Antennas
+and Propagation</em> 60 (9): 4082–91. <a
+href="https://doi.org/10.1109/TAP.2012.2207048">https://doi.org/10.1109/TAP.2012.2207048</a>.
+</div>
+<div id="ref-galitzki2018" class="csl-entry" role="listitem">
+Galitzki, Nicholas, Taylor Baildon, Darcy Barron, Jacob Lashner, Adrian
+T. Lee, Yaqiong Li, Michele Limon, et al. 2018. <span>“The Simons
+Observatory: Instrument Overview.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>IX</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2312985">https://doi.org/10.1117/12.2312985</a>.
+</div>
+<div id="ref-gildemeisterthesis" class="csl-entry" role="listitem">
+Gildemeister, Jan M. 2000. <span>“Voltage-Biased Superconducting
+Bolometers for Infrared and Mm-Waves.”</span> PhD thesis, Lawrence
+Berkeley National Laboratory.
+</div>
+<div id="ref-harrington2020" class="csl-entry" role="listitem">
+Harrington, Kathleen, Carlos Sierra, Grace Chesmore, Shreya Sutariya,
+Aamir M. Ali, Steve K. Choi, Nicholas F. Cothard, et al. 2020.
+<span>“The Integration and Testing Program for the Simons Observatory
+Large Aperture Telescope Optics Tubes.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy x</em>, edited by Jonas Zmuidzinas and Jian-Rong Gao.
+<span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2562647">https://doi.org/10.1117/12.2562647</a>.
+</div>
+<div id="ref-Healy_2020" class="csl-entry" role="listitem">
+Healy, Erin E., Aamir M. Ali, Kam Arnold, Jason E. Austermann, James A.
+Beall, Sarah Marie Bruno, Steve K. Choi, et al. 2020. <span>“Assembly
+Development for the Simons Observatory Focal Plane Readout
+Module.”</span> In <em>Millimeter, Submillimeter, and Far-Infrared
+Detectors and Instrumentation for Astronomy x</em>, edited by Jonas
+Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2561743">https://doi.org/10.1117/12.2561743</a>.
+</div>
+<div id="ref-Healy_2022" class="csl-entry" role="listitem">
+Healy, Erin, Daniel Dutcher, Zachary Atkins, Jason Austermann, Steve K.
+Choi, Cody J. Duell, Shannon Duff, et al. 2022. <span>“The Simons
+Observatory 220 and 280 <span>GHz</span> Focal-Plane Module: Design and
+Initial Characterization.”</span> <em>Journal of Low Temperature
+Physics</em> 209 (5-6): 815–23. <a
+href="https://doi.org/10.1007/s10909-022-02788-8">https://doi.org/10.1007/s10909-022-02788-8</a>.
+</div>
+<div id="ref-Henderson_2018" class="csl-entry" role="listitem">
+Henderson, Shawn W., Zeeshan Ahmed, David Brown, Saptarshi Chaudhuri,
+Hsiao-Mei Sherry Cho, John M. D’Ewart, Bradley Dober, et al. 2018.
+<span>“Highly-Multiplexed Microwave SQUID Readout Using the SLAC
+Microresonator Radio Frequency (SMuRF) Electronics for Future CMB and
+Sub-Millimeter Surveys.”</span> In <em>Millimeter, Submillimeter, and
+Far-Infrared Detectors and Instrumentation for Astronomy IX</em>, edited
+by Jonas Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2314435">https://doi.org/10.1117/12.2314435</a>.
+</div>
+<div id="ref-charliethesis" class="csl-entry" role="listitem">
+Hill, Charles A. 2020. <span>“Sensitivity Simulations and Half-Wave
+Plate Polarization Modulators for Cosmic Microwave Background
+Observatories.”</span> <em>ProQuest Dissertations and Theses</em>. PhD
+thesis. <a
+href="https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2">https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2</a>.
+</div>
+<div id="ref-wmap_2009" class="csl-entry" role="listitem">
+Hinshaw, G., J. L. Weiland, R. S. Hill, N. Odegard, D. Larson, C. L.
+Bennett, J. Dunkley, et al. 2009. <span>“Five-Year Wilkinson Microwave
+Anisotropy Probe (WMAP) Observations: Data Processing, Sky Maps, and
+Basic Results.”</span> <em>The Astrophysical Journal Supplement
+Series</em> 180 (2): 225–45. <a
+href="https://doi.org/10.1088/0067-0049/180/2/225">https://doi.org/10.1088/0067-0049/180/2/225</a>.
+</div>
+<div id="ref-Hubmayr_2016" class="csl-entry" role="listitem">
+Hubmayr, Johannes, Jason E. Austermann, James A. Beall, Daniel T.
+Becker, Steven J. Benton, A. Stevie Bergman, J. Richard Bond, et al.
+2016. <span>“Design of 280 GHz Feedhorn-Coupled TES Arrays for the
+Balloon-Borne Polarimeter SPIDER.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy VIII</em>, edited by Wayne S. Holland and Jonas Zmuidzinas.
+SPIE. <a
+href="https://doi.org/10.1117/12.2231896">https://doi.org/10.1117/12.2231896</a>.
+</div>
+<div id="ref-IrwinHilton2005" class="csl-entry" role="listitem">
+Irwin, K. D., and G. C. Hilton. 2005. <span>“Transition-Edge
+Sensors.”</span> In <em>Cryogenic Particle Detection</em>, edited by
+Christian Enss, 63–150. Berlin, Heidelberg: Springer Berlin Heidelberg.
+<a
+href="https://doi.org/10.1007/10933596_3">https://doi.org/10.1007/10933596_3</a>.
+</div>
+<div id="ref-Kamionkowski_2016" class="csl-entry" role="listitem">
+Kamionkowski, Marc, and Ely D. Kovetz. 2016. <span>“The Quest for b
+Modes from Inflationary Gravitational Waves.”</span> <em>Annual Review
+of Astronomy and Astrophysics</em> 54 (1): 227–69. <a
+href="https://doi.org/10.1146/annurev-astro-081915-023433">https://doi.org/10.1146/annurev-astro-081915-023433</a>.
+</div>
+<div id="ref-Kernasovskiy_2018" class="csl-entry" role="listitem">
+Kernasovskiy, S. A., S. E. Kuenstner, E. Karpel, Z. Ahmed, D. D. Van
+Winkle, S. Smith, J. Dusatko, et al. 2018. <span>“<span>SLAC</span>
+Microresonator Radio Frequency (<span>SMuRF</span>) Electronics for Read
+Out of Frequency-Division-Multiplexed Cryogenic Sensors.”</span>
+<em>Journal of Low Temperature Physics</em> 193 (3-4): 570–77. <a
+href="https://doi.org/10.1007/s10909-018-1981-5">https://doi.org/10.1007/s10909-018-1981-5</a>.
+</div>
+<div id="ref-wmap_2009_2" class="csl-entry" role="listitem">
+Komatsu, E., J. Dunkley, M. R. Nolta, C. L. Bennett, B. Gold, G.
+Hinshaw, N. Jarosik, et al. 2009. <span>“Five-Year Wilkinson Microwave
+Anisotropy Probe (WMAP) Observations: Cosmological
+Interpretation.”</span> <em>The Astrophysical Journal Supplement
+Series</em> 180 (2): 330–76. <a
+href="https://doi.org/10.1088/0067-0049/180/2/330">https://doi.org/10.1088/0067-0049/180/2/330</a>.
+</div>
+<div id="ref-foregrounds2016" class="csl-entry" role="listitem">
+Krachmalnicoff, N., Baccigalupi, C., Aumont, J., Bersanelli, M., and
+Mennella, A. 2016. <span>“Characterization of Foreground Emission on
+Degree Angular Scales for CMB b-Mode Observations - Thermal Dust and
+Synchrotron Signal from Planck and WMAP Data.”</span>
+<em>A<span>&amp;</span>A</em> 588: A65. <a
+href="https://doi.org/10.1051/0004-6361/201527678">https://doi.org/10.1051/0004-6361/201527678</a>.
+</div>
+<div id="ref-manguLF" class="csl-entry" role="listitem">
+Mangu, Aashrita, Benjamin Westbrook, Shawn Beckman, Daniel Dutcher,
+Bradley R Johnson, Aritoki Suzuki, Bhoomija Prasad, Yuhan Wang, and
+Kaiwen Zheng. 2024. <span>“Design, Optimization, and Performance of the
+Simons Observatory Low Frequency Detectors.”</span> <em>Journal of Low
+Temperature Physics</em>.
+</div>
+<div id="ref-mccarrick2021" class="csl-entry" role="listitem">
+McCarrick, Heather, Kam Arnold, Zachary Atkins, Jason Austermann, Tanay
+Bhandarkar, Steve K. Choi, Cody J. Duell, et al. 2021. <span>“The 90 and
+150 GHz Universal Focal-Plane Modules for the Simons
+Observatory.”</span> <a
+href="https://arxiv.org/abs/2112.01458">https://arxiv.org/abs/2112.01458</a>.
+</div>
+<div id="ref-impedancexform_1988" class="csl-entry" role="listitem">
+McGinnis, D. P., and J. B. Beyer. 1988. <span>“A Broad-Band Microwave
+Superconducting Thin-Film Transformer.”</span> <em>IEEE Transactions on
+Microwave Theory and Techniques</em> 36 (11): 1521–25. <a
+href="https://doi.org/10.1109/22.8916">https://doi.org/10.1109/22.8916</a>.
+</div>
+<div id="ref-mcmahon2009" class="csl-entry" role="listitem">
+McMahon, J., J. W. Appel, J. E. Austermann, J. A. Beall, D. Becker, B.
+A. Benson, L. E. Bleem, et al. 2009. <span>“<span class="nocase">Planar
+Orthomode Transducers for Feedhorn‐coupled TES
+Polarimeters</span>.”</span> <em>AIP Conference Proceedings</em> 1185
+(1): 490–93. <a
+href="https://doi.org/10.1063/1.3292386">https://doi.org/10.1063/1.3292386</a>.
+</div>
+<div id="ref-Montgomery_2022" class="csl-entry" role="listitem">
+Montgomery, Joshua, Peter A. R. Ade, Zeeshan Ahmed, Ethan Anderes, Adam
+J. Anderson, Melanie Archipley, Jessica S. Avva, et al. 2022.
+<span>“Performance and Characterization of the SPT-3G Digital
+Frequency-Domain Multiplexed Readout System Using an Improved Noise and
+Crosstalk Model.”</span> <em>Journal of Astronomical Telescopes,
+Instruments, and Systems</em> 8 (01). <a
+href="https://doi.org/10.1117/1.jatis.8.1.014001">https://doi.org/10.1117/1.jatis.8.1.014001</a>.
+</div>
+<div id="ref-Myers_2005" class="csl-entry" role="listitem">
+Myers, Michael J., William Holzapfel, Adrian T. Lee, Roger O’Brient, P.
+L. Richards, Huan T. Tran, Peter Ade, Greg Engargiola, Andy Smith, and
+Helmuth Spieler. 2005. <span>“<span class="nocase">An antenna-coupled
+bolometer with an integrated microstrip bandpass filter</span>.”</span>
+<em>Applied Physics Letters</em> 86 (11): 114103. <a
+href="https://doi.org/10.1063/1.1879115">https://doi.org/10.1063/1.1879115</a>.
+</div>
+<div id="ref-NurnbergerVolakis1995" class="csl-entry" role="listitem">
+Nurnberger, M. W., and J. L. Volakis. 1995. <span>“<span
+class="nocase">A new planar feed for slot spiral
+antennas</span>.”</span>
+</div>
+<div id="ref-rogerthesis" class="csl-entry" role="listitem">
+O’Brient, Roger. 2010. <span>“A Log-Periodic Focal-Plane Architecture
+for Cosmic Microwave Background Polarimetry.”</span> PhD thesis, UC
+Berkeley.
+</div>
+<div id="ref-Pozar" class="csl-entry" role="listitem">
+Pozar, David M. 2005. <em><span class="nocase">Microwave engineering;
+3rd ed.</span></em> Hoboken, NJ: Wiley. <a
+href="https://cds.cern.ch/record/882338">https://cds.cern.ch/record/882338</a>.
+</div>
+<div id="ref-QUBIC_TDM" class="csl-entry" role="listitem">
+Prêle, D., F. Voisin, M. Piat, T. Decourcelle, C. Perbost, C. Chapron,
+D. Rambaud, S. Maestre, W. Marty, and L. Montier. 2016. <span>“A 128
+Multiplexing Factor Time-Domain SQUID Multiplexer.”</span> <em>Journal
+of Low Temperature Physics</em> 184 (1): 363–68. <a
+href="https://doi.org/10.1007/s10909-015-1449-9">https://doi.org/10.1007/s10909-015-1449-9</a>.
+</div>
+<div id="ref-mayuri_2020" class="csl-entry" role="listitem">
+Rao, Mayuri Sathyanarayana, Maximiliano Silva-Feaver, Aamir Ali, Kam
+Arnold, Peter Ashton, Bradley J. Dober, Cody J. Duell, et al. 2020.
+<span>“Simons Observatory Microwave <span>SQUID</span> Multiplexing
+Readout: Cryogenic <span>RF</span> Amplifier and Coaxial Chain
+Design.”</span> <em>Journal of Low Temperature Physics</em> 199 (3-4):
+807–16. <a
+href="https://doi.org/10.1007/s10909-020-02429-y">https://doi.org/10.1007/s10909-020-02429-y</a>.
+</div>
+<div id="ref-Rumsey_freqindepantenna" class="csl-entry" role="listitem">
+Rumsey, V. 1957. <span>“Frequency Independent Antennas.”</span> In
+<em>1958 IRE International Convention Record</em>, 5:114–18. <a
+href="https://doi.org/10.1109/IRECON.1957.1150565">https://doi.org/10.1109/IRECON.1957.1150565</a>.
+</div>
+<div id="ref-Simon_2018" class="csl-entry" role="listitem">
+Simon, Sara M., Joseph E. Golec, Aamir Ali, Jason Austermann, James A.
+Beall, Sarah Marie M. Bruno, Steve K. Choi, et al. 2018. <span>“Feedhorn
+Development and Scalability for Simons Observatory and Beyond.”</span>
+In <em>Millimeter, Submillimeter, and Far-Infrared Detectors and
+Instrumentation for Astronomy IX</em>, edited by Jonas Zmuidzinas and
+Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2313405">https://doi.org/10.1117/12.2313405</a>.
+</div>
+<div id="ref-smoot1999" class="csl-entry" role="listitem">
+Smoot, George F. 1999. <span>“Synchrotron Radiation as CMB
+Foreground.”</span> <a
+href="https://arxiv.org/abs/astro-ph/9902201">https://arxiv.org/abs/astro-ph/9902201</a>.
+</div>
+<div id="ref-Sobrin_SPT_2022" class="csl-entry" role="listitem">
+Sobrin, J. A., A. J. Anderson, A. N. Bender, B. A. Benson, D. Dutcher,
+A. Foster, N. Goeckner-Wald, et al. 2022. <span>“The Design and
+Integrated Performance of SPT-3G.”</span> <em>The Astrophysical Journal
+Supplement Series</em> 258 (2): 42. <a
+href="https://doi.org/10.3847/1538-4365/ac374f">https://doi.org/10.3847/1538-4365/ac374f</a>.
+</div>
+<div id="ref-Soliman_BICEP_2020" class="csl-entry" role="listitem">
+Soliman, A., P. A. R. Ade, Z. Ahmed, M. Amiri, D. Barkats, R. Basu
+Thakur, C. A. Bischoff, et al. 2020. <span>“Optical Design and
+Characterization of 40-GHz Detector and Module for the BICEP
+Array.”</span> <em>Journal of Low Temperature Physics</em> 199 (3–4):
+1118–26. <a
+href="https://doi.org/10.1007/s10909-019-02299-z">https://doi.org/10.1007/s10909-019-02299-z</a>.
+</div>
+<div id="ref-Sponseller_2022" class="csl-entry" role="listitem">
+Sponseller, Danielle, and Alan Kogut. 2022. <span>“Mitigating Bias in
+CMB b-Modes from Foreground Cleaning Using a Moment Expansion.”</span>
+<em>The Astrophysical Journal</em> 936 (1): 8. <a
+href="https://doi.org/10.3847/1538-4357/ac846f">https://doi.org/10.3847/1538-4357/ac846f</a>.
+</div>
+<div id="ref-mustangmumux2018" class="csl-entry" role="listitem">
+Stanchfield, Sara, Peter Ade, James Aguirre, Justus A. Brevik, Hsiao-Mei
+Cho, Rahul Datta, Mark Devlin, et al. 2018. <span>“<span
+class="nocase">Design and Performance of the Multiplexed SQUID/TES Array
+at Ninety Gigahertz</span>.”</span> In <em>American Astronomical Society
+Meeting Abstracts #231</em>, 231:215.02. American Astronomical Society
+Meeting Abstracts.
+</div>
+<div id="ref-suzuki2016" class="csl-entry" role="listitem">
+Suzuki, A., P. Ade, Y. Akiba, C. Aleman, K. Arnold, C. Baccigalupi, B.
+Barch, et al. 2016. <span>“The Polarbear-2 and the Simons Array
+Experiments.”</span> <em>Journal of Low Temperature Physics</em> 184
+(3-4): 805–10. <a
+href="https://doi.org/10.1007/s10909-015-1425-4">https://doi.org/10.1007/s10909-015-1425-4</a>.
+</div>
+<div id="ref-tokithesis" class="csl-entry" role="listitem">
+Suzuki, Aritoki. 2013. <span>“Multichroic Bolometric Detector
+Architecture for Cosmic Microwave Background Polarimetry
+Experiments.”</span> PhD thesis, UC Berkeley.
+</div>
+<div id="ref-suzuki2012" class="csl-entry" role="listitem">
+Suzuki, Aritoki, Kam Arnold, Jennifer Edwards, Greg Engargiola, Adnan
+Ghribi, William Holzapfel, Adrian T. Lee, et al. 2012.
+<span>“Multichroic Dual-Polarization Bolometric Detectors for Studies of
+the Cosmic Microwave Background.”</span> Edited by Wayne S.Editor
+Holland. <em>Millimeter, Submillimeter, and Far-Infrared Detectors and
+Instrumentation for Astronomy VI</em>. <a
+href="https://doi.org/10.1117/12.924869">https://doi.org/10.1117/12.924869</a>.
+</div>
+<div id="ref-suzuki2018" class="csl-entry" role="listitem">
+Suzuki, Aritoki, Chris Bebek, Maurice Garcia-Sciveres, Stephen Holland,
+Akito Kusaka, Adrian T. Lee, Nicholas Palaio, Natalie Roe, and Leo
+Steinmetz. 2018. <span>“Commercialization of Micro-Fabrication of
+Antenna-Coupled Transition Edge Sensor Bolometer Detectors for Studies
+of the Cosmic Microwave Background.”</span> <em>Journal of Low
+Temperature Physics</em> 193 (5): 744–51. <a
+href="https://doi.org/10.1007/s10909-018-1903-6">https://doi.org/10.1007/s10909-018-1903-6</a>.
+</div>
+<div id="ref-planck2018_1" class="csl-entry" role="listitem">
+The Planck Collaboration. 2020a. <span>“Planck 2018 Results. I. Overview
+and the Cosmological Legacy of Planck.”</span> <em>Astronomy
+<span>&amp;</span> Astrophysics</em> 641: A1. <a
+href="https://doi.org/10.1051%2F0004-6361%2F201833880">https://doi.org/10.1051%2F0004-6361%2F201833880</a>.
+</div>
+<div id="ref-Planck2018_xi" class="csl-entry" role="listitem">
+———. 2020b. <span>“Planck 2018 Results. XI. Polarized Dust
+Foregrounds.”</span> <em>Astronomy <span>&amp;</span> Astrophysics</em>
+641: A11. <a
+href="https://doi.org/10.1051%2F0004-6361%2F201832618">https://doi.org/10.1051%2F0004-6361%2F201832618</a>.
+</div>
+<div id="ref-SOscience" class="csl-entry" role="listitem">
+The Simons Observatory Collaboration. 2019. <span>“The Simons
+Observatory: Science Goals and Forecasts.”</span> <em>Journal of
+Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
+</div>
+<div id="ref-wandui2020" class="csl-entry" role="listitem">
+Wandui, Albert, James J. Bock, Clifford Frez, M. Hollister, Lorenzo
+Minutolo, Hien Nguyen, Bryan Steinbach, Anthony Turner, Jonas
+Zmuidzinas, and Roger O’Brient. 2020. <span>“Thermal Kinetic Inductance
+Detectors for Millimeter-Wave Detection.”</span> <em>Journal of Applied
+Physics</em> 128 (4). <a
+href="https://doi.org/10.1063/5.0002413">https://doi.org/10.1063/5.0002413</a>.
+</div>
+<div id="ref-Westbrook_2018" class="csl-entry" role="listitem">
+Westbrook, B., P. A. R. Ade, M. Aguilar, Y. Akiba, K. Arnold, C.
+Baccigalupi, D. Barron, et al. 2018. <span>“The POLARBEAR-2 and Simons
+Array Focal Plane Fabrication Status.”</span> <em>Journal of Low
+Temperature Physics</em> 193 (5): 758–70. <a
+href="https://doi.org/10.1007/s10909-018-2059-0">https://doi.org/10.1007/s10909-018-2059-0</a>.
+</div>
+<div id="ref-westbrook2022" class="csl-entry" role="listitem">
+Westbrook, Benjamin, Christopher Raum, Shawn Beckman, Adrian T. Lee,
+Nicole Farias, Andrew Bogdan, Amber Hornsby, et al. 2022.
+<span>“Development of the Low Frequency Telescope Focal Plane Detector
+Modules for <span>LiteBIRD</span>.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>XI</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2630574">https://doi.org/10.1117/12.2630574</a>.
+</div>
+<div id="ref-planck2018_iv" class="csl-entry" role="listitem">
+Y. Akrami, and, M. Ashdown, J. Aumont, C. Baccigalupi, M. Ballardini, A.
+J. Banday, R. B. Barreiro, et al. 2020. <span>“Planck 2018 Results. IV.
+Diffuse Component Separation.”</span> <em>Astronomy <span>&amp;</span>
+Astrophysics</em> 641: A4. <a
+href="https://doi.org/10.1051/0004-6361/201833881">https://doi.org/10.1051/0004-6361/201833881</a>.
+</div>
+<div id="ref-Yu_2023" class="csl-entry" role="listitem">
+Yu, Cyndia, Zeeshan Ahmed, Josef C. Frisch, Shawn W. Henderson, Max
+Silva-Feaver, Kam Arnold, David Brown, et al. 2023.
+<span>“<span>SLAC</span> Microresonator <span>RF</span>
+(<span>SMuRF</span>) Electronics: A Tone-Tracking Readout System for
+Superconducting Microwave Resonator Arrays.”</span> <em>Review of
+Scientific Instruments</em> 94 (1). <a
+href="https://doi.org/10.1063/5.0125084">https://doi.org/10.1063/5.0125084</a>.
+</div>
+<div id="ref-Zhu_2021" class="csl-entry" role="listitem">
+Zhu, Ningfeng, Tanay Bhandarkar, Gabriele Coppi, Anna M. Kofman, John L.
+Orlowski-Scherer, Zhilei Xu, Shunsuke Adachi, et al. 2021. <span>“The
+Simons Observatory Large Aperture Telescope Receiver.”</span> <em>The
+Astrophysical Journal Supplement Series</em> 256 (1): 23. <a
+href="https://doi.org/10.3847/1538-4365/ac0db7">https://doi.org/10.3847/1538-4365/ac0db7</a>.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Alumina (<span class="math inline">\(\epsilon \approx
+9.6\)</span>) is also a good candidate with high mechanical strength,
+but introduces an additional coefficient of thermal expansion mismatch.
+A homogeneous material choice in cryogenics is usually safer!<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>There is also a separate <em>ellipticity wobble</em>
+associated with this antenna which can also be understood by visually
+examining the sinuous. For a single polarization, if we again consider
+the double slot dipole approximation where a wing is resonating for some
+frequency, then the distance between the two wings for a single
+polarization are not perfectly perpendicular to each other.
+Additionally, the distance between slots affects ellipticity in a double
+slot dipole. This wobble averages away over the bandwidth of typical CMB
+observation bands to produce nice, round beams.<a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Note that co-planar waveguides mentioned a few times in
+this dissertation are also a kind of transmission line. The CPW is
+constructed similarly to the microstrip line, but the thin strip of
+metal has two conductors sitting on either side with a separation (i.e.
+the three metal pieces are coplanar). Like the microstrip line, these
+sit above a ground plane that is separated from this layer by a
+dielectric.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>This is also useful for 3-pole Butterworth filters.<a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>A bandstop prototype would use the inverse
+transformation we use for bandpass.<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Fabricating two TESs for in-lab versus on-sky testing is
+not uncommon due to the different transition temperatures needed with
+different cryostats and sky loading. For example, CMB-S4 pixels have
+double transition TESs to accommodate this.<a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>It’s useful to think of an analogous first order system
+like a simple RC circuit, where the transfer function <span
+class="math inline">\(H\)</span> can be classified as the ratio of
+output to input voltage such that: <span class="math inline">\(H =
+\frac{V_{out}}{V_{in}} = \frac{A}{1 + i\omega RC}\)</span>. It should be
+clearer here that A is some DC gain, while the pole <span
+class="math inline">\(\omega = 1/(RC) = 1/\tau_0\)</span> would
+characterize the gain roll off. The TES circuit Thevenin equivalent has
+a similar structure, see <span class="citation"
+data-cites="IrwinHilton2005">(Irwin and Hilton 2005)</span>.<a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>AC biasing would change the equation by a factor of
+<span class="math inline">\(\sqrt{2}\)</span>.<a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Not to be confused with the NEI of the SQUID.<a
+href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Time-domain multiplexing also uses <span
+class="math inline">\(R_{bolo} \sim \mathcal{O}(10m\Omega)\)</span><a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>The mux factor tells us how many detectors are read out
+in a single wire and therefore number of detectors per SQUID.<a
+href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span><a href="ch4.html">← ch4</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch6.html">ch6 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

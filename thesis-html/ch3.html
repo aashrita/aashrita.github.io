@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the simons observatory — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span><a href="ch2.html">← ch2</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch4.html">ch4 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+<h1 id="ch:so">The Simons Observatory</h1>
+<p>Over the past several decades, cosmic microwave background (CMB)
+experiments have brought new insights into the fundamental sciences and
+advanced the standard cosmological model (<span
+class="math inline">\(\Lambda\)</span>CDM) (e.g. <span class="citation"
+data-cites="cobe1992">(Efstathiou, Bond, and White 1992)</span>).
+Experiments like the Simons Observatory (SO) and CMB-Stage 4 (S4) are
+attempting to find evidence for inflation, a rapid expansion of
+space-time soon after the universe began, which would help solve issues
+in the <span class="math inline">\(\Lambda\)</span>CDM model and explain
+the path towards the current structure of the universe <span
+class="citation" data-cites="SOscience cmbs4science">(The Simons
+Observatory Collaboration 2019; K. N. Abazajian et al. 2016)</span>. As
+described in Chapter <a href="#ch:cmb" data-reference-type="ref"
+data-reference="ch:cmb">[ch:cmb]</a>, polarization signals in the CMB
+are often written as an effective Helmholtz decomposition into curl-free
+E and divergence-free B modes. Inflationary B-modes are hypothesized
+products of primordial gravitational waves. The search for this faint
+signal requires understanding and removing galactic and extragalactic
+foregrounds which contribute to the B-mode signal as well. In
+particular, synchrotron emission at low frequencies and dust emission at
+high frequencies within our observing windows must be removed. A
+primordial E-mode signal can also be gravitationally perturbed by large
+scale structure into a lensing B-mode signal. These lensing B-mode
+signals contain valuable information about the structure of the
+universe, but must be subtracted out to extract any inflationary
+signals. The inflationary B-mode signal can be parameterized by
+<em>r</em>, the tensor-to-scalar ratio of CMB polarization, as an
+effective energy scale for inflation <span class="citation"
+data-cites="Baumann_2009 seljack1997 Kamionkowski_1997 Kamionkowski_2016">(Baumann
+2009; Seljak and Zaldarriaga 1997; Kamionkowski, Kosowsky, and Stebbins
+1997; Kamionkowski and Kovetz 2016)</span>.</p>
+<p>This thesis is primarily focused on work in Simons Observatory, with
+some of Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> containing work also
+for CMB-S4 and the <em>LiteBIRD</em> satellite. To contextualize Simons
+Observatory (and other upcoming experiments), this chapter starts with a
+brief review of the state of the field and important considerations when
+thinking of instrument sensitivities that will be helpful in the later
+chapters of this dissertation. Finally, the Simons Observatory science
+and instruments will be introduced.</p>
+<h2 id="sec:ch3:stateoffield">State of the Field</h2>
+<p>CMB observatories have evolved in stages. Stage 2 observatories had
+<span class="math inline">\(\mathcal{O}(\lesssim 1000)\)</span>
+detectors, and included the ACTPol (ACT is the Atacama Cosmology
+Telescope), BICEP, SPTPol (SPT is the South Pole Telescope),
+<em>Planck</em>, SPIDER, and POLARBEAR experiments. Stage 3 experiments
+had <span class="math inline">\(\mathcal{O}(1000-10,000)\)</span>
+detectors and included Advanced ACTPol, BICEP/Keck Array, SPT-3G, Simons
+Array, and CLASS<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. Many of these experiments are
+currently taking data or have, like ACT, have completed their
+observations and decommissioned. BICEP/Keck Array and SPT-3G have since
+stepped into a pseudo-Stage “3.5" regime where they are deploying <span
+class="math inline">\(\mathcal{O}(50,000)\)</span> detectors. Simons
+Observatory is also currently deploying with the same order of detectors
+as an intermediate between Stage 3 and 4. Stage 4 experiments are CMB-S4
+and <em>LiteBIRD</em>, which are observatories that will operate in the
+2030s. CMB-S4 will have <span
+class="math inline">\(\mathcal{O}(500,000)\)</span> detectors on the
+sky. Note that satellites like <em>Planck</em> and <em>LiteBIRD</em>
+have much fewer detectors for two main reasons: power and weight is a
+precious resource in space, and there is no bright atmosphere to combat,
+which means high sensitivities can be achieved with fewer detectors. The
+atmosphere on Cerro Toco (<span
+class="math inline">\(\mathcal{O}(10)\)</span> K) is more than 100
+million times brighter than the predicted BB power spectra peak for
+<span class="math inline">\(r = 0.01\)</span> (<span
+class="math inline">\(\sim 100\)</span> nK) <span class="citation"
+data-cites="charliethesis">(Hill 2020)</span>. In fact, the High
+Frequency Instrument (HFI) for <em>Planck</em> covering the 100-857 GHz
+bands only has 52 bolometers, with an additional 2 “dark" bolometers
+(i.e. bolometers not coupled to an antenna) to measure thermal noise.
+<em>LiteBIRD</em> plans to launch with <span
+class="math inline">\(\mathcal{O}(2000)\)</span> detectors, which is 2
+orders of magnitude more!</p>
+<p>There have been large advances in technologies to deploy these 10s to
+100s of thousands of detectors without degrading sensitivity on the
+focal plane (see Section <a href="#sec:ch3:sensitivity"
+data-reference-type="ref" data-reference="sec:ch3:sensitivity">1.2</a>).
+A goal of this dissertation is to highlight some of these advances for
+Simons Observatory and CMB-S4 technologies, with an emphasis on
+technical goals for probing inflationary signals. Detection of
+inflationary B-modes will revolutionize modern cosmology, and open up
+new avenues of research into the quantum nature of gravity. Recall from
+Chapter <a href="#ch:cmb" data-reference-type="ref"
+data-reference="ch:cmb">[ch:cmb]</a>, that we are aiming to constrain
+the tensor-to-scalar ratio <span class="math inline">\(r\)</span>, and
+this will require cross-correlating CMB data to higher frequency thermal
+dust data and lower frequency synchrotron emission data to effectively
+subtract foreground contamination.</p>
+<h2 id="sec:ch3:sensitivity">CMB Instrument Sensitivities</h2>
+<p>Highly sensitive CMB instruments must untangle the effects of
+gravitational lensing that perturb CMB photons as they journey across
+space and time to our detectors, as well as galactic and extragalactic
+foreground contamination (see Section <a href="#sec:ch2:foregrounds"
+data-reference-type="ref"
+data-reference="sec:ch2:foregrounds">[sec:ch2:foregrounds]</a>) <span
+class="citation"
+data-cites="cibforegrounds cmbs4science SOscience Abitbol_2021">(Baleato-Lizancos
+et al. 2022; K. N. Abazajian et al. 2016; The Simons Observatory
+Collaboration 2019; Abitbol et al. 2021)</span>. Ground-based
+experiments have the added challenge of characterizing atmospheric and
+terrestrial effects <span class="citation"
+data-cites="SOscience cmbs4_sciencecase BICEP_2016">(The Simons
+Observatory Collaboration 2019; K. Abazajian et al. 2019; P. A. R. Ade
+et al. 2016)</span>. Even clouds scattering radiation from the ground
+affects polarization analysis <span class="citation"
+data-cites="Takakura2019">(Takakura et al. 2019)</span>. The data we
+receive is also affected by instrumental systematics and intrinsic white
+noise (e.g. <span class="citation"
+data-cites="Gudmundsson2021 salatino2018 Gallardo_2018">(Gudmundsson et
+al. 2021; Salatino et al. 2018; Gallardo et al. 2018)</span>).</p>
+<p>The error in the CMB power spectrum (see Chapter <a href="#ch:cmb"
+data-reference-type="ref" data-reference="ch:cmb">[ch:cmb]</a>) due to
+this instrumental noise can be written as:</p>
+<p><span class="math display">\[\label{eqn:ch3:pwrspecnoise}
+    \left(\triangle C_{\ell}\right)^2 = \frac{2}{(2\ell +
+1)f_{sky}}\left(C_{\ell} + N_{\ell}\right)^2,\]</span></p>
+<p>where <span class="math inline">\(N_{\ell}\)</span> gives instrument
+noise in units <span class="math inline">\(K^2\)</span>. Usually <span
+class="math inline">\(N_{\ell}\)</span> is some combination of white
+noise and “<span class="math inline">\(1/f\)</span>" noise. Simons
+Observatory forecasts model this noise spectrum as <span
+class="citation" data-cites="SOscience">(The Simons Observatory
+Collaboration 2019)</span>:</p>
+<p><span class="math display">\[N_{\ell} = N_{\ell}^{white} +
+N_{\ell}^{red}\left(\frac{\ell}{\ell_{knee}}\right)^{\alpha_{knee}}\]</span></p>
+<p>Traditionally, we often think of instrument sensitivity in terms of
+signal-to-noise ratio (SNR). For experiments such as for CMB, we build
+detectors to detect photons. It is useful to think of this SNR in terms
+of power at the detector level. Thus the <em>noise-equivalent power
+(NEP)</em> is defined as the incident power of the signal required to
+get SNR = 1 in 1 Hz of bandwidth <span class="citation"
+data-cites="richardsbolometers1994">(<span>“Bolometers for Infrared and
+Millimeter Waves”</span> 1994)</span>. NEPs are conventionally used at
+the detector level, where we must think about the detector-level
+efficiency (i.e. how much signal is incident and absorbed by the
+detector). See Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for more information on
+detector NEPs.</p>
+<p>In CMB map-space, it is often more useful to think in terms of
+temperature instead of power (e.g. see how the Planck temperature map is
+in units of K in Figure <a href="#fig:ch2:plancktempmap"
+data-reference-type="ref"
+data-reference="fig:ch2:plancktempmap">[fig:ch2:plancktempmap]</a>).
+Thus, if we are thinking of the detector SNR with respect to the sky
+temperature, it is more useful to think in terms of <em>noise-equivalent
+temperature (NET)</em>. So <span
+class="math inline">\(NET_{det}\)</span> would correspond to the CMB
+fluctuation in temperature to achieve an incident signal power such that
+SNR = 1 in 1 Hz of bandwidth (and let this bandwidth be denoted as <span
+class="math inline">\(\triangle f\)</span>):</p>
+<p><span class="math display">\[NET_{det} =
+\frac{NEP_{det}}{\sqrt{2}\left(dP/dT_{CMB}\right)}\]</span></p>
+<p>The <span class="math inline">\(dP/dT_{CMB}\)</span> term is what
+gives our fractional change in power with respect to the fractional
+change in temperature we need to convert the NEP to NET. The factor of
+<span class="math inline">\(\sqrt{2}\)</span> is just a product of the
+Nyquist-Shannon sampling theorem due to the change in units. The theorem
+states that for some sinusoidal signal <span
+class="math inline">\(f_{sig}\)</span>, a sufficient sampling rate <span
+class="math inline">\(f_{sample}\)</span> for signal reconstruction is
+when <span class="math inline">\(f_{sig} \leq f_{sample}/2\)</span>. We
+need our system to sample at the Nyquist sampling rate (<span
+class="math inline">\(\triangle t_{sample}\)</span>) such that <span
+class="math inline">\(\triangle f = 1/\left(2\triangle
+t_{sample}\right)\)</span>. While NEPs are spectral in nature and often
+quoted in units of <span class="math inline">\(W/\sqrt{Hz}\)</span>,
+NETs are more intuitive when we are taking timestreams of temperatures
+on sky with units of <span class="math inline">\(K\sqrt{s}\)</span>. For
+reference<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>, NEPs of single-moded CMB detectors
+are often on order 100 <span
+class="math inline">\(aW/\sqrt{Hz}\)</span>, and NETs are on order 100
+<span class="math inline">\(\mu K\sqrt{s}\)</span>.</p>
+<p>Of course, we are usually concerned with some integrated sensitivity
+that we can achieve with our instrument that incorporates the detector
+array <span class="math inline">\(NET_{array}\)</span>, how long we are
+observing <span class="math inline">\(t_{obs}\)</span>, what fraction of
+the sky we are scanning over <span
+class="math inline">\(f_{sky}\)</span>, and some measure of how
+efficiently we are actually able to scan over the chosen patch of sky
+<span class="math inline">\(\epsilon_{obs}\)</span>. See Chapter <a
+href="#ch:cmbobs" data-reference-type="ref"
+data-reference="ch:cmbobs">[ch:cmbobs]</a> for more details on how
+patches are chose for ground-based CMB observations. This is often
+quantified by converting our time-domain noise (i.e. NET in units <span
+class="math inline">\(\mu K\sqrt{s}\)</span> for CMB observations) to
+map-domain noise defined as <em>map depth</em> in units <span
+class="math inline">\(\mu\)</span>Karcmin. Map depth <span
+class="math inline">\(\sigma_{map}\)</span> is defined as:</p>
+<p><span class="math display">\[\begin{aligned}
+    \sigma_{map} &amp;= C\times
+NET_{array}\sqrt{\frac{f_{sky}}{\epsilon_{obs} t_{obs}}} \nonumber \\
+    &amp;= C\times \frac{\beta
+NET_{det}}{\sqrt{N_{det}Y}}\sqrt{\frac{f_{sky}}{\epsilon_{obs}
+t_{obs}}},
+\end{aligned}\]</span></p>
+<p>where C is a constant prefactor that absorbs the total sky area <span
+class="math inline">\(a_{sky}\)</span>. (In <span class="citation"
+data-cites="Barron_2018">(Barron et al. 2018)</span>, C = 3.07 for
+CMB-S4 estimated polarization map depth <span
+class="math inline">\(\sigma\)</span> at a single frequency band. Note
+that polarization map depth <span
+class="math inline">\(\sigma_{pol}\)</span> is worse than temperature
+map depth <span class="math inline">\(\sigma_{temp}\)</span> by a factor
+<span class="math inline">\(\sqrt{2}\)</span> because we observe both
+the Q and U polarizations.) First note how <span
+class="math inline">\(NET_{array}\)</span> is defined: <span
+class="math inline">\(NET_{array} = \frac{\beta
+NET_{det}}{\sqrt{N_{det}Y}}\)</span>. To convert the detector NET to a
+detector array NET, we add the <span
+class="math inline">\((N_{det}Y)^{-\frac{1}{2}}\)</span> factor, where Y
+gives the end-to-end deployed detector yield. High detector yields have
+been one of the drivers for detector research and development for
+current and upcoming observatories. For Stage 2 experiments, <span
+class="math inline">\(Y \sim 50\%\)</span><a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>,
+but for Stage 3 and 4 experiments, baseline goals (i.e. minimum
+operational requirements) boast a vast improvement with <span
+class="math inline">\(\gtrsim 70\%\)</span> for SO and <span
+class="math inline">\(\gtrsim 80\%\)</span> for CMB-S4 <span
+class="citation"
+data-cites="Dutcher_2023 Barron_2018 SOscience">(Dutcher et al. 2023;
+Barron et al. 2018; The Simons Observatory Collaboration 2019)</span>.
+The deviation from a nominal NET is captured in the <span
+class="math inline">\(\beta\)</span> factor. Major contributors to NET
+degradation comes from readout noise (see Chapter <a
+href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>) and observing
+conditions (assuming deployed detector wafers go through thorough
+pre-deployment reviews as done in the Simons Observatory).</p>
+<p>We can now turn our attention to the second half of the map depth
+equation, which is converting our <span
+class="math inline">\(NET_{array}\)</span> to the appropriate map depth
+units: <span
+class="math inline">\(\sqrt{\frac{f_{sky}}{\epsilon_{obs}t_{obs}}}\)</span>.
+The fraction of the sky we observe is set by the science goals of the
+experiment. For example, SO small aperture telescopes will scan <span
+class="math inline">\(f_{sky} \sim 10\%\)</span> for dedicated, deep
+scans on a small patch to search for the faint inflationary signals (see
+Figure <a href="#fig:ch6:soscansurvey" data-reference-type="ref"
+data-reference="fig:ch6:soscansurvey">[fig:ch6:soscansurvey]</a>, and
+Chapter <a href="#ch:cmbobs" data-reference-type="ref"
+data-reference="ch:cmbobs">[ch:cmbobs]</a> for more details). The
+observation time <span class="math inline">\(t_{obs}\)</span> is set by
+the observatory. For example, SO and CMB-S4 make estimates off of a
+nominal 5-year survey <span class="citation"
+data-cites="SOscience cmbs4_sciencecase Barron_2018">(The Simons
+Observatory Collaboration 2019; K. Abazajian et al. 2019; Barron et al.
+2018)</span>. Finally, observation efficiency <span
+class="math inline">\(\epsilon_{obs}\)</span> quantifies how efficiently
+we can observe the desired patches of sky. This number is heavily
+affected by weather quality, data quality cuts, calibration
+requirements, and any telescope maintenance needed. For Stage 2
+experiments, this number was <span class="math inline">\(\sim
+25\%\)</span> <span class="citation" data-cites="Barron_2018">(Barron et
+al. 2018)</span>, and optimizing scan strategies for current and
+upcoming experiments will play a key role in getting this number
+higher.</p>
+<p>It is clear the main ways to increase overall sensitivity outside of
+instrumental systematics is to increase the time observing (which has a
+financial limit based on funding, etc.) or to increase the number of
+detectors. Additionally, CMB detectors are approaching the
+<em>photon-noise limited</em> regime, so the only way to gain this leap
+in sensitivity is by scaling the number of detectors <span
+class="citation"
+data-cites="SOscience cmbs4_technology cmbs4science">(The Simons
+Observatory Collaboration 2019; Abitbol et al. 2017; K. N. Abazajian et
+al. 2016)</span>. Photon-noise limited means that the dominant source of
+noise in our detectors is from the statistical uncertainty associated
+with the arrival rate (and thus detection rate) of the photon because of
+its inherent quantum mechanical nature (see Chapter <a
+href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>).</p>
+<p>Every generation of CMB experiments has pushed to higher and higher
+detector counts: BICEP/Keck array is deploying <span
+class="math inline">\(&gt; 50,000\)</span> detectors, Simons Observatory
+is deploying <span class="math inline">\(&gt; 68,000\)</span> detectors,
+and CMB-S4 is aiming for <span class="math inline">\(500,000\)</span>
+detectors on the sky. Thus, to understand how many detector-hours are
+needed to achieve a desired sensitivity (i.e. map depth), we often turn
+to <em>mapping speed</em> to describe the rate at which we can reduce
+map noise:</p>
+<p><span class="math display">\[MS =
+\frac{1}{NET_{array}^2}\]</span></p>
+<p>Mapping speeds are ubiquitously used by CMB experimentalists to
+describe instrument sensitivity. A high mapping speed enables strong
+constraints on cosmological parameters, searching for inflationary
+signals, and probing new physics beyond the standard model. CMB-S4, for
+example, is increasing detector count by an order of magnitude compared
+to Stage 3 experiments, so a high system throughput and detector array
+sensitivity are required to achieve desired mapping speeds <span
+class="citation" data-cites="Niemack2016 cmbs4science">(Niemack 2016; K.
+N. Abazajian et al. 2016)</span>.</p>
+<p>Another important note on the role of the atmosphere in CMB
+observations is the <em>precipitable water vapor</em> (PWV) content in
+the atmosphere. PWV quantifies the amount of water vapor in a column
+stretching from the ground up. Very few locations on earth providing a
+dry enough environment to allow CMB observations, and this is why most
+experiments are at the South Pole or in the Atacama Desert in Chile. As
+shown in Figure <a href="#fig:ch3:sosite" data-reference-type="ref"
+data-reference="fig:ch3:sosite">1.1</a>, water vapor also increases in
+emissivity with higher frequency. Ground-based CMB observatories must
+also carefully choose their observation bands to avoid the oxygen and
+water lines, which separate some of the bands in the figure (e.g. <span
+class="math inline">\(O_2\)</span> around 60, 120, and <span
+class="math inline">\(H_2O\)</span> around 180 GHz).</p>
+<figure id="fig:ch3:sosite">
+<img src="figures/chap3_pics/SOsite.png" />
+<figcaption>Simons Observatory site layout and precipitable water vapor.
+<em>Left</em> is layout of Cerro Toco plateau showing where the Simons
+Observatory LAT and SATs sit relative to the other CMB experiments
+(Simons Array, Advanced ACTPol, and CLASS). Image adapted from SO
+gallery. <em>Top right</em> is a picture taken of the site from the LAT
+as of August 2023, with the SAT ground shields in the distance. Image
+adapted from SO media. <em>Bottom right</em> shows different
+precipitable water vapor (PWV) transmission at the Atacama site. The SO
+observation bands are overlaid labelled with band centers. Figure
+adapted from <span class="citation" data-cites="Errard2016">(Errard et
+al. 2016)</span>.</figcaption>
+</figure>
+<h2 id="sec:ch3:soscience">Simons Observatory Overview and Science</h2>
+<p>The Simons Observatory is currently deploying an array of three
+0.42-meter small aperture telescopes (SATs) and one 6-meter large
+aperture telescope (LAT) in the Atacama Desert in Chile. As shown in
+Figure <a href="#fig:ch3:sosite" data-reference-type="ref"
+data-reference="fig:ch3:sosite">1.1</a>, SO sits on the same plateau on
+Cerro Toco as Simons Array, Advanced ACTPol and CLASS. SO will make
+accurate measurements of the CMB spanning six frequency bands ranging
+from 27 to 285 GHz, fielding a total of <span
+class="math inline">\(\sim\)</span>68,000 detectors covering angular
+scales between one arcminute to tens of degrees <span class="citation"
+data-cites="Ali_2020 SOscience">(Ali, Adachi, Arnold, Ashton, Bazarko,
+Chinone, Coppi, Corbett, Crowley, Crowley, Devlin, Dicker, Duff, Ellis,
+Galitzki, Goeckner-Wald, Harrington, Healy, Hill, Ho, Hubmayr, Keating,
+Kiuchi, Kusaka, Lee, Ludlam, Aashrita Mangu, et al. 2020; The Simons
+Observatory Collaboration 2019)</span>. These observations windows are
+also shown in the bottom right of Figure <a href="#fig:ch3:sosite"
+data-reference-type="ref" data-reference="fig:ch3:sosite">1.1</a>, where
+the “low frequency" (LF) bands are centered on 27 and 39 GHz, the “mid
+frequency" (MF) bands are centered on 93 and 145 GHz, and the
+“ultra-high frequency" (UHF) bands are centered on 225 and 285 GHz.</p>
+<figure id="fig:ch3:sopowerspectra">
+<img src="figures/chap3_pics/sopowerspectra.png" />
+<figcaption>Power spectra illustrating Simons Observatory and
+<em>LiteBIRD</em> projected errors with current <em>Planck</em> and
+BICEP2/Keck Array data. SATs and LAT <span
+class="math inline">\(\ell\)</span> ranges are highlighted as well, with
+the SAT range shaded green and the LAT range shaded blue. Adapted from
+<span class="citation" data-cites="SOwhitepaper">(Collaboration
+2019)</span>.</figcaption>
+</figure>
+<p>SO is deploying both a large and small aperture telescopes (see
+Section <a href="#sec:ch3:soinstruments" data-reference-type="ref"
+data-reference="sec:ch3:soinstruments">1.4</a>), which allows us to more
+effectively access a large range of angular scales. The SAT is tailored
+to search for primordial B-modes and covers large angular scales; the
+LAT will cover the small angular scales. The SO SAT and LAT angular
+scale coverage is shown over the CMB power spectrum with SO (and
+<em>LiteBIRD</em>) projections and the most recent BICEP/Keck Array and
+<em>Planck</em> data in Figure <a href="#fig:ch3:sopowerspectra"
+data-reference-type="ref"
+data-reference="fig:ch3:sopowerspectra">1.2</a>. SAT and LAT data
+covering multiple frequency bands and angular scales will allow an
+effective foreground cleaning. The small angular scale LAT measurements,
+which more effectively measure and fit the gravitational lensing B-mode
+signal, will allow for removal of the lensed B-mode signal from SAT
+data. The LAT observation patch also greatly overlaps with LSS surveys
+(e.g. LSST and DESI), which can allow for interesting cross-correlations
+in lensing reconstruction. Note that the SAT <em>r</em> forecast
+actually does not assume any LAT lensing data.</p>
+<p>As mentioned, the SAT will thus mostly be focused on primordial
+fluctuations, measuring the primordial power at large scales and the
+tensor-to-scalar ratio <span class="math inline">\(r\)</span>. The LAT
+will be probing mostly later-time phenomena, such as summarized
+below:</p>
+<ul>
+<li><p>The number of relativistic species <span
+class="math inline">\(N_{eff}\)</span> and Helium abundances <span
+class="math inline">\(Y_P\)</span></p></li>
+<li><p>The duration of reionization (i.e. from kinetic Sunyaev-Zeldovich
+effect or kSZ<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>). Note that 21-cm line measurements
+<span class="citation" data-cites="fialkov21cm">(Fialkov and Loeb
+2016)</span> and deeper galaxy surveys <span class="citation"
+data-cites="oeschbrammer2016">(Oesch et al. 2016)</span> will also
+provide a wealth of information with CMB polarization data.</p></li>
+<li><p>The sum of neutrino masses <span class="math inline">\(\Sigma
+m_{\nu}\)</span> from the lensing potential and thermal
+Sunyaev-Zeldovich (tSZ) effect.</p></li>
+<li><p>Information on galaxy evolution from tSZ and kSZ to understand
+non-thermal pressure and feedback efficiency.</p></li>
+<li><p>Understanding dark energy through tSZ and lensing to probe <span
+class="math inline">\(\sigma_8\)</span><a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> at
+z=2-3 and growth of structure through kSZ.</p></li>
+</ul>
+<p>With projected constraints on cosmological parameters like
+<em>r</em>, the effective number of relativistic species <span
+class="math inline">\(N_{eff}\)</span>, the sum of neutrino masses <span
+class="math inline">\(\Sigma m_{\nu}\)</span>, deviations from the
+cosmological constant, galaxy evolution feedback efficiency, and the
+epoch of reionization better than previous experiments, SO must achieve
+unprecedented sensitivities <span class="citation"
+data-cites="planck2018_1 SOscience">(The Planck Collaboration 2020; The
+Simons Observatory Collaboration 2019)</span>. Characterizing and
+understanding foregrounds across multiple frequencies and angular
+resolutions is critical to achieving these sensitivities <span
+class="citation"
+data-cites="wmap_2009 wmap_2009_2 foregrounds2016">(Hinshaw et al. 2009;
+Komatsu et al. 2009; Krachmalnicoff, N. et al. 2016)</span>. Key science
+targets for SO are summarized in Table <a
+href="#table:ch3:socosmoparams" data-reference-type="ref"
+data-reference="table:ch3:socosmoparams">1.1</a>.</p>
+<div id="table:ch3:socosmoparams">
+<table>
+<caption>Summary of SO science goals with current best constraints taken
+from <span class="citation" data-cites="planck2018_1">(The Planck
+Collaboration 2020)</span>. Table adapted from <span class="citation"
+data-cites="SOscience">(The Simons Observatory Collaboration
+2019)</span>. <span class="math inline">\(^\star\)</span><span
+class="math inline">\(\sigma(r)\)</span> taken from <span
+class="citation" data-cites="BICEPKeck2022 BICEPKeck_2021">(P. A. R. Ade
+et al. 2022; P.  A.  R. Ade et al. 2021)</span>, where the <span
+class="math inline">\(r\)</span> upper limit is normally set by a <span
+class="math inline">\(3\sigma\)</span> measurement. SO will exclude
+<span class="math inline">\(r \geq 0.01\)</span> models with 99%
+confidence if no primordial B-modes are detected.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Title</strong></th>
+<th style="text-align: left;"><strong>Parameter</strong></th>
+<th style="text-align: left;"><strong>Baseline</strong></th>
+<th style="text-align: left;"><strong>Goal</strong></th>
+<th style="text-align: left;"><strong>Current</strong></th>
+<th style="text-align: left;"><strong>Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Primordial Perturbations</td>
+<td style="text-align: left;"><span
+class="math inline">\(r\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.003\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.002\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.009^\star\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(BB\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Relativistic Species</td>
+<td style="text-align: left;"><span
+class="math inline">\(N_{eff}\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.07\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.05\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(TT/TE/EE
++\kappa\kappa\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Neutrino Mass</td>
+<td style="text-align: left;"><span class="math inline">\(\sum
+m_{\nu}\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.04\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.03\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\kappa\kappa
++DESI\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Deviations from <span
+class="math inline">\(\Lambda\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(H_0(\Lambda
+CDM)\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.4\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.3\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.5\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(TT/TE/EE
++\kappa\kappa\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Galaxy Evolution</td>
+<td style="text-align: left;">Feedback efficiency in massive halos</td>
+<td style="text-align: left;"><span
+class="math inline">\(3\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(2\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(50-100\%\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(kSZ + tSZ
++DESI\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reionization</td>
+<td style="text-align: left;"><span class="math inline">\(\Delta
+z\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.6\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.3\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(1.4\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(TT
+(kSZ)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sec:ch3:soinstruments">Simons Observatory Instruments</h2>
+<figure id="fig:ch3:sonoise">
+<img src="figures/chap3_pics/sonoise.png" />
+<figcaption>Original planned detector passbands from <span
+class="citation" data-cites="SOscience">(The Simons Observatory
+Collaboration 2019)</span> for SATs and LAT with projected temperature
+white noise levels.</figcaption>
+</figure>
+<p>To achieve the science described in the previous section, SO
+telescopes are highly sensitive instruments. The noise performance for
+the SATs and LAT across the different observation bands is detailed in
+Figure <a href="#fig:ch3:sonoise" data-reference-type="ref"
+data-reference="fig:ch3:sonoise">1.3</a>.</p>
+<h3 id="large-aperture-telescope-lat">Large Aperture Telescope
+(LAT)</h3>
+<figure id="fig:ch3:latgeneral">
+<img src="figures/chap3_pics/latgeneral.jpg" />
+<figcaption>Large Aperture Telescope and cross-section schematic.
+<em>Left</em> shows the entire structure including the azimuth bearing
+and elevation structure. <em>Right</em> shows how light couples to the
+LAT receiver sitting in the receiver cabin. M1 is the primary 6 m mirror
+and M2 is the secondary 6m mirror. The LAT does constant elevation scans
+(CESs) and rotates in azimuth at that fixed elevation. The LATR
+independently rotates about its long axis to match a desired elevation.
+Image from <span class="citation" data-cites="galitzki2018">(Galitzki et
+al. 2018)</span>.</figcaption>
+</figure>
+<p>A schematic of the LAT including the optical path into the receiver
+(i.e. LATR) is shown in Figure <a href="#fig:ch3:latgeneral"
+data-reference-type="ref" data-reference="fig:ch3:latgeneral">1.4</a>.
+The LAT uses a Crossed Dragone design with two polylithic mirrors, which
+allows for good image quality over a large field-of-view. Note that the
+elevation structure and azimuth bearing provides access to a wide range
+of observation azimuths and elevations. This was a design choice built
+off of the Cerro Chajnantor Atacama Telescope prime (CCATp) existing
+design for a synergistic effort and reduced delivery risk.</p>
+<figure id="fig:ch3:latrcad">
+<img src="figures/chap3_pics/latrcross.png" />
+<figcaption>The large aperture telescope receiver with a cross sectional
+view. The 300 K, 80 K, 40 K, and 4 K stages are shown, with the 1 K and
+100 mK stages sitting within the 4 K shell. The G-10 tabs shown
+thermally isolate the 300 K and 40 K stages. The dilution refrigerator
+provides cooling power to the 1 K and 100 mK stages (and the respective
+thermal buses are shown as well). The optics tubes sit behind infrared
+filters at 300 K, 80 K, and 40 K stages. Within the optics tubes, the
+detector modules sit at 100 mK. Image from <span class="citation"
+data-cites="Zhu_2021">(Zhu et al. 2021)</span>.</figcaption>
+</figure>
+<p>The LATR is shown in Figure <a href="#fig:ch3:latrcad"
+data-reference-type="ref" data-reference="fig:ch3:latrcad">1.5</a> with
+13 compactly tiled optics tubes (OTs). Note that for nominal SO, only 7
+of these OTs slots are populated. Each OT uses refractive optics with
+three meta-material anti-reflection (AR) coated, single-crystal,
+reimaging silicon lenses. The first lens sits at 4 K and the other two
+sit at 1 K, which allow reimaging through the Lyot stop onto the 100 mK
+focal plane consisting of three hexagonally tiled detector wafers.
+Cryogenically, two PT90 pulse tube coolers (PTCs) cool 80 K, two PT420
+PTCs cool the 40 K and 4 K stages, and a PT420-backed dilution
+refrigerator (DR) cools the 1 K and 100 mK stages. (The PT420 that comes
+with the DR unit is the third PT420 to cool the 40 K and 4 K stages.)
+More information on the LAT and LATR can be found in <span
+class="citation"
+data-cites="Zhu_2021 galitzki2018 parshley2018_ccat dicker2019cold Gallardo_2018 OrlowskiScherer_2018">(Zhu
+et al. 2021; Galitzki et al. 2018; Parshley et al. 2018; Dicker et al.
+2019; Gallardo et al. 2018; Orlowski-Scherer et al. 2018)</span>.</p>
+<h3 id="small-aperture-telescopes-sats">Small Aperture Telescopes
+(SATs)</h3>
+<figure id="fig:ch3:satsgeneral">
+<figure id="subfig:ch3:fullsatgeneral">
+<img src="figures/chap3_pics/fullsatgeneral.png" />
+<figcaption aria-hidden="true"></figcaption>
+</figure>
+<figure id="subfig:ch3:satsarraygeneral">
+<img src="figures/chap3_pics/satsarraygeneral.png" />
+<figcaption aria-hidden="true"></figcaption>
+</figure>
+<figcaption>Small aperture telescope platform and ground shield at the
+Chilean site. <em>Left</em> shows the small aperture telescope platform
+(SATP). The azimuth, elevation, and boresight rotation cable wraps are
+visible. The grid loader used for polarization calibration is also
+shown, along with where the SAT itself sits. Finally, the forebaffle and
+comoving shield to block off-axis radiation. Image taken from <span
+class="citation" data-cites="ali2020">(Ali, Adachi, Arnold, Ashton,
+Bazarko, Chinone, Coppi, Corbett, Crowley, Crowley, Devlin, Dicker,
+Duff, Ellis, Galitzki, Goeckner-Wald, Harrington, Healy, Hill, Ho,
+Hubmayr, Keating, Kiuchi, Kusaka, Lee, Ludlam, Mangu, et al.
+2020)</span>. <em>Right</em> shows a rendering of how the three SATs sit
+in their ground shields at site. Image taken from SO media.</figcaption>
+</figure>
+<p>A schematic of the SATs as they are at the site is shown in Figure <a
+href="#fig:ch3:latgeneral" data-reference-type="ref"
+data-reference="fig:ch3:latgeneral">1.4</a>, where the right image
+includes the ground shields. The SAT platform allows rotation about the
+boresight of <span class="math inline">\(\pm 75^{\circ}\)</span> when
+pointing <span class="math inline">\(\leq 40^{\circ}\)</span> from
+zenith (i.e. scanning elevation of <span
+class="math inline">\(50^{\circ}\)</span>) <span class="citation"
+data-cites="galitzki2018">(Galitzki et al. 2018)</span>. This is an
+effect of the PTC’s cooling ability suffering as it tilts past <span
+class="math inline">\(40^{\circ}\)</span> <span class="citation"
+data-cites="TranTsan2021">(Tsan et al. 2021)</span>. The baffling as
+shown in the figure rejects off-axis emission, and the forebaffle in
+particular reflects radiation <span class="math inline">\(&gt;
+40^{\circ}\)</span> off-axis from the telescope. The automatic grid
+loader is a remote-controllable sparse wire grid to allow precise
+detector polarization angle calibration. Because the SAT is measuring
+degree angular scales, a mirror-free design without reimaging optics is
+possible (just like the BICEP/Keck Array). The SAT has a <span
+class="math inline">\(35^{\circ}\)</span> field-of-view (FOV) with a 42
+cm aperture and F#<a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> of <span class="math inline">\(\sim
+1.6\)</span>. This short focal length and large FOV along with the
+aperture stop and three silicon lenses sitting at 1 K maximizes the
+mapping speed for the SATs.</p>
+<figure id="fig:ch3:satcadnick">
+<img src="figures/chap3_pics/satcadgalitzki.png" />
+<figcaption>Small aperture telescope cross sectional and backend views.
+<em>Left</em> shows cross section of receiver. The dilution refrigerator
+cools the 1 K and 100 mK stages of the SAT, while the pulse tube coolers
+(not clearly visible) cool the 40 K and 4K stages. The optical chain
+includes a window, a cryogenic half wave plate, an aperture stop,
+several filters, three lenses, and the focal plane array. <em>Right</em>
+shows the backend view of the SAT. The dilution refrigerator is jutting
+out at an angle, with thermal buses connecting the 1 K and 100 mK stages
+to the optics tube and focal plane. Also shown are the housekeeping
+port, where all the thermometry is read out, and the readout electronics
+port, which is how all of the cryogenic detectors get biased and read
+out. Finally, the series of magnetic shielding at 40 K, 4 K, and 1 K are
+visible. Images taken from <span class="citation"
+data-cites="galitzki2018">(Galitzki et al. 2018)</span>.</figcaption>
+</figure>
+<p>As shown in Figure <a href="#fig:ch3:satcadnick"
+data-reference-type="ref" data-reference="fig:ch3:satcadnick">1.9</a>,
+the lenses focus the the light onto a <span class="math inline">\(\sim
+400\)</span> mm focal plane with 7 hexagonally tiled <span
+class="math inline">\(\sim 150\)</span> mm detector wafers. The SAT also
+houses a continuously-rotating cryogenic half wave plate (CHWP) that
+sits at 40 K directly above the aperture stop, and allows continuous
+polarization modulation. A PT420 PTC cools the system to 40K and 4K, and
+a PT420-backed DR cools the system further down to 1K and 100mK. The SAT
+design and integration will be discussed in detail in Chapter <a
+href="#ch:sosat" data-reference-type="ref"
+data-reference="ch:sosat">[ch:sosat]</a>, so the discussion here is
+brief.</p>
+<h3 id="advanced-so-souk-and-sojapan">Advanced SO, SO:UK, and
+SO:Japan</h3>
+<p>Full SO will consist of the currently deploying nominal SO, Advanced
+SO (ASO), SO:UK, and SO:Japan. ASO will include 6 new optics tubes in
+the LAT such that all 13 OTs are fully populated. This will be
+effectively doubling the mapping speed of the LAT, enabling transient
+science, and not requiring additional telescope development. It will
+also include significant data management advances, and replace 70% of
+power at site with solar energy using photovoltaic arrays. ASO will
+begin science observations in 2028. SO:UK and SO:Japan are also fully
+funded to double the number of SATs on the sky in Chile by 2026. SO:UK
+will deploy two MF SATs using Microwave Kinetic Inductance Detectors
+(MKIDs) instead of traditionally used transition edge sensor (TES)
+detectors (see Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for more information on
+TESs). SO:Japan will deploy the only LF SAT.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-cmbs4science" class="csl-entry" role="listitem">
+Abazajian, Kevork N., Peter Adshead, Zeeshan Ahmed, Steven W. Allen,
+David Alonso, Kam S. Arnold, Carlo Baccigalupi, et al. 2016.
+<span>“CMB-S4 Science Book, First Edition.”</span> <a
+href="https://arxiv.org/abs/1610.02743">https://arxiv.org/abs/1610.02743</a>.
+</div>
+<div id="ref-cmbs4_sciencecase" class="csl-entry" role="listitem">
+Abazajian, Kevork, Graeme Addison, Peter Adshead, Zeeshan Ahmed, Steven
+W. Allen, David Alonso, Marcelo Alvarez, et al. 2019. <span>“CMB-S4
+Science Case, Reference Design, and Project Plan.”</span> <a
+href="https://arxiv.org/abs/1907.04473">https://arxiv.org/abs/1907.04473</a>.
+</div>
+<div id="ref-cmbs4_technology" class="csl-entry" role="listitem">
+Abitbol, Maximilian H., Zeeshan Ahmed, Darcy Barron, Ritoban Basu
+Thakur, Amy N. Bender, Bradford A. Benson, Colin A. Bischoff, et al.
+2017. <span>“CMB-S4 Technology Book, First Edition.”</span> <a
+href="https://arxiv.org/abs/1706.02464">https://arxiv.org/abs/1706.02464</a>.
+</div>
+<div id="ref-Abitbol_2021" class="csl-entry" role="listitem">
+Abitbol, Maximilian H., David Alonso, Sara M. Simon, Jack Lashner, Kevin
+T. Crowley, Aamir M. Ali, Susanna Azzoni, et al. 2021. <span>“The Simons
+Observatory: Gain, Bandpass and Polarization-Angle Calibration
+Requirements for b-Mode Searches.”</span> <em>Journal of Cosmology and
+Astroparticle Physics</em> 2021 (05): 032. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2021%2F05%2F032">https://doi.org/10.1088%2F1475-7516%2F2021%2F05%2F032</a>.
+</div>
+<div id="ref-BICEPKeck2022" class="csl-entry" role="listitem">
+Ade, P. A. R. et al. 2022. <span>“<span class="nocase">The Latest
+Constraints on Inflationary B-modes from the BICEP/Keck
+Telescopes</span>.”</span> In <em><span class="nocase">56th Rencontres
+de Moriond on Cosmology</span></em>. <a
+href="https://arxiv.org/abs/2203.16556">https://arxiv.org/abs/2203.16556</a>.
+</div>
+<div id="ref-BICEP_2016" class="csl-entry" role="listitem">
+Ade, P. A. R., Z. Ahmed, R. W. Aikin, K. D. Alexander, D. Barkats, S. J.
+Benton, C. A. Bischoff, et al. 2016. <span>“BICEP2/KECK ARRAY. VII.
+MATRIX BASED e/b SEPARATION APPLIED TO BICEP2 AND THE KECK
+ARRAY.”</span> <em>The Astrophysical Journal</em> 825 (1): 66. <a
+href="https://doi.org/10.3847/0004-637X/825/1/66">https://doi.org/10.3847/0004-637X/825/1/66</a>.
+</div>
+<div id="ref-BICEPKeck_2021" class="csl-entry" role="listitem">
+Ade, P. A. R., Z. Ahmed, M. Amiri, D. Barkats, R. Basu Thakur, C. A.
+Bischoff, D. Beck, et al. 2021. <span>“Improved Constraints on
+Primordial Gravitational Waves Using Planck, WMAP, and BICEP/Keck
+Observations Through the 2018 Observing Season.”</span> <em>Physical
+Review Letters</em> 127 (15). <a
+href="https://doi.org/10.1103/physrevlett.127.151301">https://doi.org/10.1103/physrevlett.127.151301</a>.
+</div>
+<div id="ref-ali2020" class="csl-entry" role="listitem">
+Ali, Aamir M., Shunsuke Adachi, Kam Arnold, Peter Ashton, Andrew
+Bazarko, Yuji Chinone, Gabriele Coppi, Lance Corbett, Kevin D. Crowley,
+Kevin T. Crowley, Mark Devlin, Simon Dicker, Shannon Duff, Chris Ellis,
+Nicholas Galitzki, Neil Goeckner-Wald, Kathleen Harrington, Erin Healy,
+Charles A. Hill, Shuay-Pwu Patty Ho, Johannes Hubmayr, Brian Keating,
+Kenji Kiuchi, Akito Kusaka, Adrian T. Lee, Michael Ludlam, Aashrita
+Mangu, et al. 2020. <span>“Small Aperture Telescopes for the Simons
+Observatory.”</span> <em>Journal of Low Temperature Physics</em> 200
+(5-6): 461–71. <a
+href="https://doi.org/10.1007/s10909-020-02430-5">https://doi.org/10.1007/s10909-020-02430-5</a>.
+</div>
+<div id="ref-Ali_2020" class="csl-entry" role="listitem">
+Ali, Aamir M., Shunsuke Adachi, Kam Arnold, Peter Ashton, Andrew
+Bazarko, Yuji Chinone, Gabriele Coppi, Lance Corbett, Kevin D. Crowley,
+Kevin T. Crowley, Mark Devlin, Simon Dicker, Shannon Duff, Chris Ellis,
+Nicholas Galitzki, Neil Goeckner-Wald, Kathleen Harrington, Erin Healy,
+Charles A. Hill, Shuay-Pwu Patty Ho, Johannes Hubmayr, Brian Keating,
+Kenji Kiuchi, Akito Kusaka, Adrian T. Lee, Michael Ludlam, Aashrita
+Mangu, et al. 2020. <span>“Small Aperture Telescopes for the Simons
+Observatory.”</span> <em>Journal of Low Temperature Physics</em> 200
+(5-6): 461–71. <a
+href="https://doi.org/10.1007%2Fs10909-020-02430-5">https://doi.org/10.1007%2Fs10909-020-02430-5</a>.
+</div>
+<div id="ref-cibforegrounds" class="csl-entry" role="listitem">
+Baleato-Lizancos, Antón, Anthony Challinor, Blake D Sherwin, and Toshiya
+Namikawa. 2022. <span>“<span class="nocase">Delensing the CMB with the
+cosmic infrared background: the impact of foregrounds</span>.”</span>
+<em>Monthly Notices of the Royal Astronomical Society</em> 514 (4):
+5786–5812. <a
+href="https://doi.org/10.1093/mnras/stac1705">https://doi.org/10.1093/mnras/stac1705</a>.
+</div>
+<div id="ref-Barron_2018" class="csl-entry" role="listitem">
+Barron, Darcy, Yuji Chinone, Akito Kusaka, Julian Borril, Josquin
+Errard, Stephen Feeney, Simone Ferraro, et al. 2018. <span>“Optimization
+Study for the Experimental Configuration of CMB-S4.”</span> <em>Journal
+of Cosmology and Astroparticle Physics</em> 2018 (02): 009–9. <a
+href="https://doi.org/10.1088/1475-7516/2018/02/009">https://doi.org/10.1088/1475-7516/2018/02/009</a>.
+</div>
+<div id="ref-Baumann_2009" class="csl-entry" role="listitem">
+Baumann, Daniel. 2009. <span>“Cosmological Inflation: Theory and
+Observations.”</span> <em>Advanced Science Letters</em> 2 (2): 105–20.
+<a
+href="https://doi.org/10.1166/asl.2009.1019">https://doi.org/10.1166/asl.2009.1019</a>.
+</div>
+<div id="ref-richardsbolometers1994" class="csl-entry" role="listitem">
+<span>“Bolometers for Infrared and Millimeter Waves.”</span> 1994.
+<em>Journal of Applied Physics</em> 76 (1): 1–24.
+</div>
+<div id="ref-SOwhitepaper" class="csl-entry" role="listitem">
+Collaboration, The Simons Observatory. 2019. <span>“The Simons
+Observatory: Astro2020 Decadal Project Whitepaper.”</span> <a
+href="https://arxiv.org/abs/1907.08284">https://arxiv.org/abs/1907.08284</a>.
+</div>
+<div id="ref-dicker2019cold" class="csl-entry" role="listitem">
+Dicker, S. R., P. A. Gallardo, J. E Gudmundsson, P. D. Mauskopf, A. Ali,
+P. C. Ashton, G. Coppi, et al. 2019. <span>“Cold Optical Design for the
+Large Aperture Simons Observatory Telescope.”</span> <a
+href="https://arxiv.org/abs/1808.05058">https://arxiv.org/abs/1808.05058</a>.
+</div>
+<div id="ref-Dutcher_2023" class="csl-entry" role="listitem">
+Dutcher, Daniel, Shannon M. Duff, John C. Groh, Erin Healy, Johannes
+Hubmayr, Bradley R. Johnson, Dante Jones, et al. 2023. <span>“The Simons
+Observatory: Large-Scale Characterization of 90/150 GHz TES Detector
+Modules.”</span> <a
+href="https://doi.org/10.21203/rs.3.rs-3547073/v1">https://doi.org/10.21203/rs.3.rs-3547073/v1</a>.
+</div>
+<div id="ref-cobe1992" class="csl-entry" role="listitem">
+Efstathiou, G., J. R. Bond, and S. D. M. White. 1992. <span>“COBE
+Background Radiation Anisotropies and Large-Scale Structure in the
+Universe”</span> 258 (1): 1P–6P. <a
+href="https://doi.org/10.1093/mnras/258.1.1P">https://doi.org/10.1093/mnras/258.1.1P</a>.
+</div>
+<div id="ref-Errard2016" class="csl-entry" role="listitem">
+Errard, Josquin, Stephen M. Feeney, Hiranya V. Peiris, and Andrew H.
+Jaffe. 2016. <span>“Robust Forecasts on Fundamental Physics from the
+Foreground-Obscured, Gravitationally-Lensed <span>CMB</span>
+Polarization.”</span> <em>Journal of Cosmology and Astroparticle
+Physics</em> 2016 (03): 052–52. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2016%2F03%2F052">https://doi.org/10.1088%2F1475-7516%2F2016%2F03%2F052</a>.
+</div>
+<div id="ref-fialkov21cm" class="csl-entry" role="listitem">
+Fialkov, Anastasia, and Abraham Loeb. 2016. <span>“<span
+class="nocase">Precise Measurement of the Reionization Optical Depth
+from the Global 21 cm Signal Accounting for Cosmic
+Heating</span>.”</span> <em>The Astrophysical Journal</em> 821 (1): 59.
+<a
+href="https://doi.org/10.3847/0004-637X/821/1/59">https://doi.org/10.3847/0004-637X/821/1/59</a>.
+</div>
+<div id="ref-galitzki2018" class="csl-entry" role="listitem">
+Galitzki, Nicholas, Taylor Baildon, Darcy Barron, Jacob Lashner, Adrian
+T. Lee, Yaqiong Li, Michele Limon, et al. 2018. <span>“The Simons
+Observatory: Instrument Overview.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>IX</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2312985">https://doi.org/10.1117/12.2312985</a>.
+</div>
+<div id="ref-Gallardo_2018" class="csl-entry" role="listitem">
+Gallardo, Patricio A., Jon Gudmundsson, Aamir Ali, Sean Bryan, Yuji
+Chinone, Gabriele Coppi, Nicholas Cothard, et al. 2018.
+<span>“Systematic Uncertainties in the Simons Observatory: Optical
+Effects and Sensitivity Considerations.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>IX</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2312971">https://doi.org/10.1117/12.2312971</a>.
+</div>
+<div id="ref-Gudmundsson2021" class="csl-entry" role="listitem">
+Gudmundsson, Jon E., Patricio A. Gallardo, Roberto Puddu, Simon R.
+Dicker, Alexandre E. Adler, Aamir M. Ali, Andrew Bazarko, et al. 2021.
+<span>“The Simons Observatory: Modeling Optical Systematics in the Large
+Aperture Telescope.”</span> <em>Appl. Opt.</em> 60 (4): 823–37. <a
+href="https://doi.org/10.1364/AO.411533">https://doi.org/10.1364/AO.411533</a>.
+</div>
+<div id="ref-charliethesis" class="csl-entry" role="listitem">
+Hill, Charles A. 2020. <span>“Sensitivity Simulations and Half-Wave
+Plate Polarization Modulators for Cosmic Microwave Background
+Observatories.”</span> <em>ProQuest Dissertations and Theses</em>. PhD
+thesis. <a
+href="https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2">https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2</a>.
+</div>
+<div id="ref-wmap_2009" class="csl-entry" role="listitem">
+Hinshaw, G., J. L. Weiland, R. S. Hill, N. Odegard, D. Larson, C. L.
+Bennett, J. Dunkley, et al. 2009. <span>“Five-Year Wilkinson Microwave
+Anisotropy Probe (WMAP) Observations: Data Processing, Sky Maps, and
+Basic Results.”</span> <em>The Astrophysical Journal Supplement
+Series</em> 180 (2): 225–45. <a
+href="https://doi.org/10.1088/0067-0049/180/2/225">https://doi.org/10.1088/0067-0049/180/2/225</a>.
+</div>
+<div id="ref-Kamionkowski_1997" class="csl-entry" role="listitem">
+Kamionkowski, Marc, Arthur Kosowsky, and Albert Stebbins. 1997. <span>“A
+Probe of Primordial Gravity Waves and Vorticity.”</span> <em>Physical
+Review Letters</em> 78 (11): 2058–61. <a
+href="https://doi.org/10.1103/physrevlett.78.2058">https://doi.org/10.1103/physrevlett.78.2058</a>.
+</div>
+<div id="ref-Kamionkowski_2016" class="csl-entry" role="listitem">
+Kamionkowski, Marc, and Ely D. Kovetz. 2016. <span>“The Quest for b
+Modes from Inflationary Gravitational Waves.”</span> <em>Annual Review
+of Astronomy and Astrophysics</em> 54 (1): 227–69. <a
+href="https://doi.org/10.1146/annurev-astro-081915-023433">https://doi.org/10.1146/annurev-astro-081915-023433</a>.
+</div>
+<div id="ref-wmap_2009_2" class="csl-entry" role="listitem">
+Komatsu, E., J. Dunkley, M. R. Nolta, C. L. Bennett, B. Gold, G.
+Hinshaw, N. Jarosik, et al. 2009. <span>“Five-Year Wilkinson Microwave
+Anisotropy Probe (WMAP) Observations: Cosmological
+Interpretation.”</span> <em>The Astrophysical Journal Supplement
+Series</em> 180 (2): 330–76. <a
+href="https://doi.org/10.1088/0067-0049/180/2/330">https://doi.org/10.1088/0067-0049/180/2/330</a>.
+</div>
+<div id="ref-foregrounds2016" class="csl-entry" role="listitem">
+Krachmalnicoff, N., Baccigalupi, C., Aumont, J., Bersanelli, M., and
+Mennella, A. 2016. <span>“Characterization of Foreground Emission on
+Degree Angular Scales for CMB b-Mode Observations - Thermal Dust and
+Synchrotron Signal from Planck and WMAP Data.”</span>
+<em>A<span>&amp;</span>A</em> 588: A65. <a
+href="https://doi.org/10.1051/0004-6361/201527678">https://doi.org/10.1051/0004-6361/201527678</a>.
+</div>
+<div id="ref-lahav2014cosmoparams" class="csl-entry" role="listitem">
+Lahav, Ofer, and Andrew R Liddle. 2014. <span>“The Cosmological
+Parameters 2014.”</span> <a
+href="https://arxiv.org/abs/1401.1389">https://arxiv.org/abs/1401.1389</a>.
+</div>
+<div id="ref-Niemack2016" class="csl-entry" role="listitem">
+Niemack, Michael D. 2016. <span>“Designs for a Large-Aperture Telescope
+to Map the CMB 10x Faster.”</span> <em>Appl. Opt.</em> 55 (7): 1688–96.
+<a
+href="https://opg.optica.org/ao/abstract.cfm?URI=ao-55-7-1688">https://opg.optica.org/ao/abstract.cfm?URI=ao-55-7-1688</a>.
+</div>
+<div id="ref-oeschbrammer2016" class="csl-entry" role="listitem">
+Oesch, P. A., G. Brammer, P. G. van Dokkum, G. D. Illingworth, R. J.
+Bouwens, I. Labbé, M. Franx, et al. 2016. <span>“<span class="nocase">A
+Remarkably Luminous Galaxy at z=11.1 Measured with Hubble Space
+Telescope Grism Spectroscopy</span>.”</span> <em>The Astrophysical
+Journal</em> 819 (2): 129. <a
+href="https://doi.org/10.3847/0004-637X/819/2/129">https://doi.org/10.3847/0004-637X/819/2/129</a>.
+</div>
+<div id="ref-OrlowskiScherer_2018" class="csl-entry" role="listitem">
+Orlowski-Scherer, John L., Ningfeng Zhu, Xhilei Zhu, Kam S. Arnold, Sara
+M. Simon, Nicholas Galitzki, Simon Dikcer, et al. 2018. <span>“Simons
+Observatory Large Aperture Receiver Simulation Overview.”</span> In
+<em>Millimeter, Submillimeter, and Far-Infrared Detectors and
+Instrumentation for Astronomy IX</em>, edited by Jonas Zmuidzinas and
+Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2312868">https://doi.org/10.1117/12.2312868</a>.
+</div>
+<div id="ref-parshley2018_ccat" class="csl-entry" role="listitem">
+Parshley, Stephen C., Michael Niemack, Richard Hills, Simon R. Dicker,
+Rolando Dünner, Jens Erler, Patricio A. Gallardo, et al. 2018.
+<span>“<span class="nocase">The optical design of the six-meter
+CCAT-prime and Simons Observatory telescopes</span>.”</span> In
+<em>Ground-Based and Airborne Telescopes VII</em>, edited by Heather K.
+Marshall and Jason Spyromilio, 10700:1070041. International Society for
+Optics; Photonics; SPIE. <a
+href="https://doi.org/10.1117/12.2314073">https://doi.org/10.1117/12.2314073</a>.
+</div>
+<div id="ref-salatino2018" class="csl-entry" role="listitem">
+Salatino, Maria, Jacob Lashner, Martina Gerbino, Sara M. Simon, Joy
+Didier, Aamir Ali, Peter C. Ashton, et al. 2018. <span>“Studies of
+Systematic Uncertainties for Simons Observatory: Polarization Modulator
+Related Effects.”</span> <a
+href="https://arxiv.org/abs/1808.07442">https://arxiv.org/abs/1808.07442</a>.
+</div>
+<div id="ref-seljack1997" class="csl-entry" role="listitem">
+Seljak, Uros, and Matias Zaldarriaga. 1997. <span>“Signature of Gravity
+Waves in the Polarization of the Microwave Background.”</span> <em>Phys.
+Rev. Lett.</em> 78: 2054–57. <a
+href="https://doi.org/10.1103/PhysRevLett.78.2054">https://doi.org/10.1103/PhysRevLett.78.2054</a>.
+</div>
+<div id="ref-Takakura2019" class="csl-entry" role="listitem">
+Takakura, S., M. A. O. Aguilar-Faúndez, Y. Akiba, K. Arnold, C.
+Baccigalupi, D. Barron, D. Beck, et al. 2019. <span>“Measurements of
+Tropospheric Ice Clouds with a Ground-Based CMB Polarization Experiment,
+POLARBEAR.”</span> <em>The Astrophysical Journal</em> 870 (2): 102. <a
+href="https://doi.org/10.3847/1538-4357/aaf381">https://doi.org/10.3847/1538-4357/aaf381</a>.
+</div>
+<div id="ref-planck2018_1" class="csl-entry" role="listitem">
+The Planck Collaboration. 2020. <span>“Planck 2018 Results. I. Overview
+and the Cosmological Legacy of Planck.”</span> <em>Astronomy
+<span>&amp;</span> Astrophysics</em> 641: A1. <a
+href="https://doi.org/10.1051%2F0004-6361%2F201833880">https://doi.org/10.1051%2F0004-6361%2F201833880</a>.
+</div>
+<div id="ref-SOscience" class="csl-entry" role="listitem">
+The Simons Observatory Collaboration. 2019. <span>“The Simons
+Observatory: Science Goals and Forecasts.”</span> <em>Journal of
+Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
+</div>
+<div id="ref-TranTsan2021" class="csl-entry" role="listitem">
+Tsan, Tran, Nicholas Galitzki, Aamir M. Ali, Kam Arnold, Gabriele Coppi,
+Tamar Ervin, Logan Foote, et al. 2021. <span>“The Effects of Inclination
+on a Two Stage Pulse Tube Cryocooler for Use with a Ground Based
+Observatory.”</span> <em>Cryogenics</em> 117: 103323. https://doi.org/<a
+href="https://doi.org/10.1016/j.cryogenics.2021.103323">https://doi.org/10.1016/j.cryogenics.2021.103323</a>.
+</div>
+<div id="ref-Zhu_2021" class="csl-entry" role="listitem">
+Zhu, Ningfeng, Tanay Bhandarkar, Gabriele Coppi, Anna M. Kofman, John L.
+Orlowski-Scherer, Zhilei Xu, Shunsuke Adachi, et al. 2021. <span>“The
+Simons Observatory Large Aperture Telescope Receiver.”</span> <em>The
+Astrophysical Journal Supplement Series</em> 256 (1): 23. <a
+href="https://doi.org/10.3847/1538-4365/ac0db7">https://doi.org/10.3847/1538-4365/ac0db7</a>.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Technically, CLASS has e.g. 72 detectors total in the
+Q-band (40 GHz), but these detector counts by Stage are just a
+generalized approximation. Lower frequencies require larger antennas,
+and thus fewer detectors fit on the focal plane. Just like space-based
+telescopes follow different detector count trajectories, not all CMB
+experiments probe the same phase space in frequency and angular scale.
+CLASS scans over 70% of the sky and targets the largest angular scales!
+See Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for more details on
+antenna-coupled detector arrays.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Of course, these are rough estimates. Different
+observatories (and in particular, different <em>generations</em> of
+experiments as described in Section <a href="#sec:ch3:stateoffield"
+data-reference-type="ref" data-reference="sec:ch3:stateoffield">1.1</a>)
+can have vastly different NETs and NEPs. These values were provided to
+just give a rough scale of what CMB experimentalists use.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This is just a rough estimate, just as the
+classification by “stage" has some wiggle room. Some experiments like
+SPT-3G achieved much higher final yields (<span
+class="math inline">\(\sim73\%\)</span>)<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The Sunyaev-Zeldovich (SZ) effect is from
+inverse-Compton scattering during <span class="math inline">\(z \leq
+6\)</span> when electrons in galaxy clusters were much hotter than cold
+CMB photons. This increase in energy of the upscattered CMB photons
+resulted in a distorted CMB spectrum from a perfect blackbody. If the
+electrons impart energy due to their higher temperature, this is the
+thermal SZ (tSZ) effect. If the electrons impart energy due to their
+motion (i.e. have a bulk flow/peculiar velocity), then the effective
+Doppler shifting of the CMB photons results in a secondary effect known
+as the kinetic SZ (kSZ) effect.<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><span class="math inline">\(\sigma_8\)</span> is usually
+a normalization parameter defined as the RMS amplitude of the matter
+power spectrum at 8<span class="math inline">\(h^{-1}Mpc\)</span>,
+because a sphere of that radius contains roughly enough matter to form a
+cluster <span class="citation" data-cites="lahav2014cosmoparams">(Lahav
+and Liddle 2014)</span>.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The f-number, or focal ratio, is the ratio of focal
+length to the diameter of the aperture stop (here, the Lyot stop). The
+focal length in our finely-tuned system would be the distance of the
+aperture stop from the focal plane. This number quantifies the
+magnification provided by the optics in a diffraction-limited system.
+Thus, for example, a smaller F# corresponds to a larger focal plane size
+(i.e. more magnification).<a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span><a href="ch2.html">← ch2</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch4.html">ch4 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

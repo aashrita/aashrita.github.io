@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>front matter & abstract — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch1.html">ch1 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch1.html">ch1 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

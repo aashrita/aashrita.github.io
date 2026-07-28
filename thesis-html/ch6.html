@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>observing the cmb and future work — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span><a href="ch5.html">← ch5</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch7.html">ch7 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+<h1 id="ch:cmbobs">Observing the CMB and Future Work</h1>
+<p>Experiments like SO, CMB-S4, BICEP/Keck Array, SPT-3G, and CCAT-Prime
+are attempting to probe the CMB at unprecedented sensitivities from the
+ground. As discussed in Section <a href="#sec:ch3:sensitivity"
+data-reference-type="ref"
+data-reference="sec:ch3:sensitivity">[sec:ch3:sensitivity]</a>,
+observation strategies are a critical component of reaching science
+goals, and key considerations must be taken to keep foreground
+contamination low. Recall from Section <a href="#sec:ch3:sensitivity"
+data-reference-type="ref"
+data-reference="sec:ch3:sensitivity">[sec:ch3:sensitivity]</a> that the
+map depth is proportional to noise equivalent temperature (NET), which
+quantifies the CMB fluctuation in temperature needed to achieve an
+incident signal power such that the signal-to-noise ratio = 1 in 1 Hz of
+bandwidth:</p>
+<p><span class="math display">\[\sigma_{map} \propto
+NET_{array}\sqrt{\frac{f_{sky}}{t_{obs}}},\]</span></p>
+<p>The map depth is essentially the map-domain white noise<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+converted from the time-domain NET. The rate at which noise is reduced
+is quantified by the mapping speed, which is inversely proportional to
+<span class="math inline">\(NET^2\)</span>. Thus, smaller sky fraction
+<span class="math inline">\(f_{sky}\)</span> (a fraction of the total
+sky area) allows for greater integration time (which directly improves
+NET) at the cost of larger cosmic variance. Of course, these equations
+are simplified versions of reality, wherein the instrument hardware
+considerations, scan strategy, calibration choices, and post-processing
+and analysis affect the final sensitivities achieved. In this chapter,
+we describe some of these considerations in the Simons Observatory, with
+a greater emphasis on the small aperture telescopes.</p>
+<p>Experiments searching for the faint inflationary B-mode signals (e.g.
+BICEP/Keck array) observe small sky areas that allow statistically
+significant observations of large angular scales (low <span
+class="math inline">\(\ell\)</span>) in the lowest galactic emission
+patches available. Telescopes that target smaller angular scales (higher
+<span class="math inline">\(\ell\)</span>), on the other hand, often
+deal with science cases where statistical significance improves with
+larger sky area. Thus, they often have much larger throws<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.
+The large sky area coverage measures some finite number of sky modes to
+reduce sample variance. These large sky patch, small scale science scan
+strategies are less targeted and more optimized for sky coverage than
+the telescopes performing deep surveys on small sky patches for large
+angular scales.</p>
+<figure id="fig:ch6:scanningfields">
+<img src="figures/chap6_pics/scanningfields.png" />
+<figcaption>Original proposed fields for large aperture (left) and small
+aperture (right) surveys over <em>Planck</em> thermal dust maps <span
+class="citation" data-cites="Stevens-Goeckner_Wald_2018">(Goeckner-Wald
+et al. 2018)</span>.</figcaption>
+</figure>
+<p>Common low galactic foreground regions used by CMB observatories are
+shown in Figure <a href="#fig:ch6:scanningfields"
+data-reference-type="ref"
+data-reference="fig:ch6:scanningfields">1.1</a>. South Pole experiments
+enjoy a featureless horizon and constant access to the CMB patch since
+the sky only rotates in azimuth (because the celestial sphere south pole
+and zenith are roughly aligned). Additionally, the sun stays low in the
+horizon at all times (and is completely below the horizon for <span
+class="math inline">\(\sim6\)</span> months), favoring high elevation
+scans. Chilean experiments have an advantage of greater sky coverage,
+but must combat more complex ground pick up and less uniform atmosphere.
+Additionally, scan strategies must be optimized to observe the CMB patch
+since it rises and sets. Sun and moon avoidance must also be optimized
+in the constant elevation scans done by Chilean experiments. Thus,
+Chilean observation strategies are a complex process, and SO will
+dedicate time during initial science observations (ISO) to optimize the
+scan strategy, particularly for the SATs.</p>
+<h2 id="overview-of-so-baseline-scan-strategy">Overview of SO Baseline
+Scan Strategy</h2>
+<figure id="fig:ch6:soscansurvey">
+<img src="figures/chap6_pics/soscansurvey.png" />
+<figcaption>Simons Observatory small and large aperture surveys and sky
+fractions in equatorial coordinates. Image adapted from <span
+class="citation" data-cites="SOscience">(The Simons Observatory
+Collaboration 2019)</span>.</figcaption>
+</figure>
+<p>As shown in Figure <a href="#fig:ch6:soscansurvey"
+data-reference-type="ref" data-reference="fig:ch6:soscansurvey">1.2</a>,
+the nominal SO plan is for the SATs to observe <span
+class="math inline">\(\sim 10\%\)</span> of the sky and the LAT to
+observe <span class="math inline">\(\sim 40\%\)</span> of the sky,
+avoiding areas with high galactic emission. The LAT overlaps with the
+Rubin Observatory Legacy Survey of Space and Time (LSST) and the Dark
+Energy Spectroscopic Instrument (DESI) surveys, as shown in the figure.
+The LAT chooses a larger sky coverage rather than smaller, deeper maps
+overlapping with the SAT to enable reaching the high sensitivities
+required for high <span class="math inline">\(\ell\)</span> science and
+transient searches. The baseline LAT strategy involves constant
+elevation scans at a speed of <span
+class="math inline">\(1^{\circ}/s\)</span>.</p>
+<figure id="fig:ch6:baselinesatscan">
+<img src="figures/chap6_pics/baselinesatscan.png" style="width:60.0%" />
+<figcaption>SO SAT baseline scan strategy hit map.</figcaption>
+</figure>
+<p>The original proposed baseline SAT scan strategy (see Figure <a
+href="#fig:ch6:baselinesatscan" data-reference-type="ref"
+data-reference="fig:ch6:baselinesatscan">1.3</a>) utilized an
+opportunistic scheduler that covered southern and northern patches in
+low foreground areas. This opportunistic scheduler built a schedule by
+prioritizing targets given some base conditions (e.g. observation
+elevations, sun and moon avoidance distances, observing sky patch), as
+described in <span class="citation"
+data-cites="Stevens-Goeckner_Wald_2018">(Goeckner-Wald et al.
+2018)</span>. However, although this scheduler yielded better
+efficiency, it was changing the azimuth and elevation very frequently.
+In the field, this would affect our ability to integrate down and
+mitigate <em>scan synchronous signals</em>, a primary systematic in
+B-mode science.</p>
+<p>The calibration observations in the opportunistic scheduler are
+fitted into gaps in the schedule (e.g. when the CMB patch is not at the
+desired elevation). This baseline had the caveats of giving no penalty
+for changing elevations, no restrictions on the number of elevations
+observed, and no restriction in changes in the azimuth range <span
+class="citation" data-cites="Stevens-Goeckner_Wald_2018">(Goeckner-Wald
+et al. 2018)</span>. These are important limitations in real science
+observations. Moving the telescope (such as during changing elevations)
+can heat up the focal plane from vibration, and requires a settling time
+before a scan can begin. Small things like scan speed need to be
+carefully considered (see e.g. on <a href="#sec:ch5:tesreadout"
+data-reference-type="ref"
+data-reference="sec:ch5:tesreadout">[sec:ch5:tesreadout]</a> on detector
+time constants). While the opportunistic scheduler is not being used for
+SO scan strategy, it provided a useful starting point for developing the
+current schedule.</p>
+<p>The improved current baseline for the SAT builds the schedule by
+prioritizing CMB and calibration targets and including similar base
+conditions as the opportunistic scheduler (e.g. sun and moon avoidance).
+We prioritize integration time in the following order: the southern
+field first, then the northern field, and finally the galaxy. The
+schedule uses time efficiently by observing the galaxy at the same
+azimuth and elevation when the CMB patch is unavailable. (Additionally,
+some targets will interrupt the CMB field.) Calibration schedules are
+optimized to minimize loss of CMB observation time. This current
+strategy uses constant elevation scans, has four set azimuth ranges,
+and, where possible, changes boresight angle daily between <span
+class="math inline">\(\pm45^{\circ}\)</span> and <span
+class="math inline">\(0^{\circ}\)</span>. All of these considerations
+were set to minimize scan synchronous signals and effectively deal with
+systematics. More details are provided in the next section.</p>
+<h2 id="ongoing-sat-calibration-and-scan-strategy-work">Ongoing SAT
+Calibration and Scan Strategy Work</h2>
+<figure id="fig:ch6:isoflowchart">
+<img src="figures/chap6_pics/iso_flowchart.png" />
+<figcaption>SO initial science observations flow chart from raw
+time-ordered data to multi-frequency maps to analysis products. The blue
+boxes show more detailed steps that lead us from the first green box
+(raw TODs) to the second (multi-frequency maps).</figcaption>
+</figure>
+<p>Current work includes building a framework to take SAT-UHF
+time-ordered data (TOD) to maps once the SAT starts scanning the sky.
+Much of this work has already been developing while the other MF SATs
+have come online for preliminary sky scans. Additionally, modeling and
+mitigating ground pick up for the SATs will be a key aspect of
+systematics testing. Ground pick up (also known as scan synchronous
+signals discussed earlier) couples to the scan strategy and has direct
+impacts on the ability to constrain <em>r</em>. Following a
+commissioning period, the scan strategy baseline review occurs roughly 3
+months into initial science observations (ISO). Refer to Figure <a
+href="#fig:ch6:isoflowchart" data-reference-type="ref"
+data-reference="fig:ch6:isoflowchart">1.4</a>. A brief summary of ISO
+goals are:</p>
+<ul>
+<li><p><strong>Pre-processing</strong> of the data will involve cleaning
+up raw timestreams. Cosmic ray hits, glitches, and jumps are examples of
+what gets masked or fixed at the TOD level. Data is also cut due to
+issues such as loading, poor scans, or poor calibration data. This is
+the point at which scan synchronous signals are corrected, and areas
+with higher noise can be masked off along with point sources. Instrument
+calibration will be used to remove known systematics.</p></li>
+<li><p><strong>Mapmaking</strong> uses the pre-processed data with the
+pointing and noise model to use a filter and bin mapmaker. (The LAT will
+use a maximum likelihood mapmaker with a noise model built off of ACT’s
+noise model.)</p></li>
+<li><p><strong>Systematics testing</strong> will involve jackknife (i.e.
+null) tests for each systematic, including rising versus setting scans,
+left vs right scans, varying elevations and azimuths scans, precipitable
+water vapor (PWV) scan separation, wafer-to-wafer splits, and
+polarization splits. At this point, if the tests fail, then we must
+return to pre-processing. Refining this testing period to fail less is a
+key goal of ISO.</p></li>
+<li><p><strong>Systematics residuals</strong> involve propagating
+uncertainties in the data due to known systematics to power spectrum
+uncertainties (once systematics testing is passed).</p></li>
+<li><p><strong>Multi-frequency maps</strong> are then made to
+effectively subtract non-gaussian contributions from the foregrounds.
+The galaxy emission is often masked out to not greatly bias the noise
+matrix.</p></li>
+</ul>
+<p>Details of the observation strategy are being finalized as we enter
+science observation periods this year. This refinement in scan strategy
+during the currently ongoing commissioning period will require testing
+for instrumental effects. We plan to compare noise and scan synchronous
+signals at with different parameters and then select a baseline. The
+current considerations for commissioning are:</p>
+<ul>
+<li><p>Mount Speeds<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>: 0.8, 1.5 degrees/s</p></li>
+<li><p>Mount Accelerations (at turnarounds): 1, 2, 3 degrees/s<span
+class="math inline">\(^2\)</span></p></li>
+<li><p>Elevations: 50, 60 degrees</p></li>
+<li><p>Boresight angles: -45, 0, 45 degrees</p></li>
+</ul>
+<p>This will also inform detector thermal settling times after an
+elevation slew, as mentioned earlier. From these commissioning tests, we
+will then pick the fastest acceleration feasible for the primary chosen
+scan speeds. Two scan speeds will be carried into ISO, which will be
+useful for additional systematics testing (e.g. cryogenic half wave
+plate data analysis or other time constant-dependent testing).
+Additionally, ISO will use <span
+class="math inline">\(60^{\circ}\)</span> elevation, but <span
+class="math inline">\(50^{\circ}\)</span> elevation will be tested as a
+back up. A hybrid sun and moon sidelobe measurement approach will be
+prioritized. Sidelobes at angles <span
+class="math inline">\(&gt;45^{\circ}\)</span> for the sun and angles
+<span class="math inline">\(&lt;45^{\circ}\)</span> for the moon will be
+measured to determine the sun and moon avoidance for each SAT. Different
+baffling and detectors between SATs required independent determination
+of these angles for each. ISO will also help determine if more or less
+than the three boresight angles are required.</p>
+<p>ISO data products will include:</p>
+<ul>
+<li><p>Maps and power spectra</p></li>
+<li><p>Sun-centered maps, moon-centered maps, ground maps and phase
+maps</p></li>
+<li><p>Scan, transfer functions, null and consistency spectra
+meta-data</p></li>
+</ul>
+<figure id="fig:ch6:newbaselinesatscan">
+<img src="figures/chap6_pics/newbaselinesatscan.png" />
+<figcaption>Proposed SO initial science observations baseline scan
+strategy using a SW/SE/NW/NE style prioritization.</figcaption>
+</figure>
+<p>After the roughly 3 months of using the baseline scan strategy, key
+scan strategy parameters will be assessed including the scan speed,
+boresight angles and switching cadence, sun and moon avoidance radii,
+scan throw, calibration cadence, and elevation. The baseline SAT scan
+strategy is summarized as follows, with the understanding that the
+strategy can be optimized further with regular maintenance and
+calibration (and that ISO will help determine the rest of the scan
+parameters discussed earlier):</p>
+<ul>
+<li><p>Elevation: 60 degrees</p></li>
+<li><p>Azimuth throw (on mount): 40 degrees</p></li>
+<li><p>Scan style: SW/SE/NW/NE, with four repeating central azimuth
+pointing (<span class="math inline">\(75^{\circ}\)</span>, <span
+class="math inline">\(120^{\circ}\)</span>, <span
+class="math inline">\(240^{\circ}\)</span>, <span
+class="math inline">\(285^{\circ}\)</span>). When the southern field is
+unavailable, the north will be scanned. If neither is available, the
+galaxy will be observed at the SE/SW. If that is unavailable, then the
+galaxy will be observed at the NW/NE. Prioritization of southern field
+directly improves <span class="math inline">\(r\)</span> constraints.
+See Figure <a href="#fig:ch6:newbaselinesatscan"
+data-reference-type="ref"
+data-reference="fig:ch6:newbaselinesatscan">1.5</a>. Azimuth scans with
+boresight centers around (minimum azimuth, maximum azimuth) are:</p>
+<ul>
+<li><p>SW: (208.51,248.51)</p></li>
+<li><p>SE: (111.49, 151.49)</p></li>
+<li><p>NW: (270.89, 310.89)</p></li>
+<li><p>NE: (49.11, 89.11)</p></li>
+</ul></li>
+<li><p>Rising and setting scans will be equally observed and
+prioritized. This prioritization will depend on the sun and moon
+avoidance determined during ISO.</p></li>
+<li><p>The cryogenic half wave plate rotation direction will change
+every week during regular operation</p></li>
+<li><p>If the SAT is able to boresight rotate, then it will be done
+daily.</p></li>
+</ul>
+<p>ISO will be an exciting time for SO, and we will learn much about the
+instrument and optimal Chilean observations strategies from these
+efforts in the coming months. This work will also be applicable to
+SO:UK, SO:Japan, ASO, and CMB-S4 in the coming years.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-Stevens-Goeckner_Wald_2018" class="csl-entry"
+role="listitem">
+Goeckner-Wald, Neil, Reijo Keskitalo, Yuji Chinone, Patricio A.
+Gallardo, Akito Kusaka, Adrian T. Lee, Jeff McMahon, et al. 2018.
+<span>“Designs for Next Generation CMB Survey Strategies from
+Chile.”</span> In <em>Millimeter, Submillimeter, and Far-Infrared
+Detectors and Instrumentation for Astronomy IX</em>, edited by Jonas
+Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2313898">https://doi.org/10.1117/12.2313898</a>.
+</div>
+<div id="ref-SOscience" class="csl-entry" role="listitem">
+The Simons Observatory Collaboration. 2019. <span>“The Simons
+Observatory: Science Goals and Forecasts.”</span> <em>Journal of
+Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Correlated noise is much more complex.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If we are performing a constant elevation scan and
+approximate the telescope scans as a square wave, then the
+<em>throw</em> is the amplitude of that square wave.<a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Scanning faster is desirable for “freezing" out the
+atmosphere, but it can also impact observing efficiency because of
+losses at the turnarounds<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span><a href="ch5.html">← ch5</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch7.html">ch7 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

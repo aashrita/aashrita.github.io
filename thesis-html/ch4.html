@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the simons observatory small aperture telescopes — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .thesis-wrap {
+      max-width: 700px;
+      padding: 4rem 2rem 6rem;
+      margin: 0 auto;
+    }
+
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+
+    /* Body text */
+    .thesis-wrap p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .thesis-wrap h1 {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+    .thesis-wrap h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .thesis-wrap h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+      text-transform: lowercase;
+    }
+
+    /* Figures */
+    .thesis-wrap figure {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .thesis-wrap figure img {
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    .thesis-wrap figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Tables */
+    .thesis-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+      color: var(--ink-soft);
+    }
+    .thesis-wrap th {
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .thesis-wrap td {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.4rem 0.75rem;
+    }
+
+    /* Citations */
+    .thesis-wrap .citation a { color: var(--accent); }
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.88em; }
+
+    /* Bibliography */
+    .thesis-wrap .csl-bib-body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .thesis-wrap .csl-entry {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .thesis-wrap .csl-entry a {
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Math display */
+    .thesis-wrap .math.display {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body class="page-thesis">
+
+  <div id="nav-root"></div>
+
+  <div class="thesis-wrap">
+
+    <div class="chapter-nav">
+      <span><a href="ch3.html">← ch3</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch5.html">ch5 →</a></span>
+    </div>
+
+    <span class="accent-rule"></span>
+
+<h1 id="ch:sosat">The Simons Observatory Small Aperture Telescopes</h1>
+<p><em>Parts of this chapter are adapted from <span class="citation"
+data-cites="manguTAUP">(Mangu et al. 2023)</span>.</em><br />
+<br />
+This section will focus on the SATs, which are tailored to search for
+primordial gravitational waves, with the primary science goal of
+measuring the primordial tensor-to-scalar ratio <em>r</em>. The
+integration and deployment of SAT-UHF will be discussed in detail, as
+that effort was led by the Berkeley group. More details on general SAT
+integration and testing efforts can be found in an upcoming
+collaboration paper (Galitzki et. al. 2024).</p>
+<h2 id="the-simons-observatory">The Simons Observatory</h2>
+<p>To review the previous chapters, SO is a CMB experiment currently
+deploying an array of three 0.42-meter small aperture telescopes (SATs)
+and one 6-meter large aperture telescope (LAT) in the Atacama Desert in
+Chile at an elevation of 5200 meters <span class="citation"
+data-cites="Xu_2020 Xu_2021 Ali_2020 galitzki2018 Kiuchi_2020">(Zhilei
+Xu et al. 2020; Zhilei Xu et al. 2021; Ali et al. 2020; Galitzki et al.
+2018; Kiuchi et al. 2020)</span>. SO will nominally make accurate
+measurements of the CMB, fielding a total of <span
+class="math inline">\(\sim\)</span>68,000 Transition Edge Sensor (TES)
+detectors covering angular scales between one arcminute to tens of
+degrees <span class="citation" data-cites="Ali_2020 SOscience">(Ali et
+al. 2020; The Simons Observatory Collaboration 2019)</span>. The SATs
+and the LAT will be observing mid-frequencies (MF) centered at 93 and
+145 GHz, ultra-high-frequencies (UHF) centered at 225 and 280 GHz, and
+low-frequencies (LF) centered at 27 and 39 GHz. We are currently
+deploying the LAT, two MF SATs, and one UHF SAT. The SATs aim to map 10%
+of the sky at a 2 <span class="math inline">\(\mu\)</span>K-arcmin noise
+level. SO will search for inflationary signatures and study particle
+physics beyond the Standard Model by constraining the sum of neutrino
+masses, probing the nature of dark energy and dark matter, and enabling
+a model-independent search for light relic particles from the early
+universe. The SATs are tailored to search for primordial gravitational
+waves, with the primary science goal of measuring <em>r</em> at a target
+level of <span class="math inline">\(\sigma(r) \approx 0.003\)</span>
+after a five year observation period <span class="citation"
+data-cites="planck2018_1 SOscience">(The Planck Collaboration 2020; The
+Simons Observatory Collaboration 2019)</span>.</p>
+<h2 id="sat-design">SAT Design</h2>
+<figure id="fig:sat">
+<embed src="satbackend_dimslabelled.pdf" />
+<figcaption>SAT structure, cross sectional view. Forebaffle structure is
+cropped in the above image. Not labelled explicitly are the series of
+low pass and alumina filters located at 40 K, 4 K, 1 K, and 100
+mK.</figcaption>
+</figure>
+<figure id="fig:satback">
+<embed src="sat_backend_labelled.pdf" />
+<figcaption>SAT structure, backend view CAD of full
+assembly.</figcaption>
+</figure>
+<p>All SATs contain the same basic 3 lens refractor structure, as shown
+in Figures <a href="#fig:sat" data-reference-type="ref"
+data-reference="fig:sat">1.1</a> and <a href="#fig:satback"
+data-reference-type="ref" data-reference="fig:satback">1.2</a>. More
+details can also be found in <span class="citation"
+data-cites="Kiuchi_2020 galitzki2018 Ali_2020">(Kiuchi et al. 2020;
+Galitzki et al. 2018; Ali et al. 2020)</span>. The major cryogenic
+components include a Cryomech PT420 Pulse Tube Cooler (PTC) and
+PT420-backed BlueFors SD-400 Dilution Refrigerator (DR). The two PTCs
+help get the cryostat to 40K and 4K, and the DR allows the SAT optics
+tube to sit at 1K and focal plane to sit at 100mK. The 300K, 40K, and 4K
+shells are held together by aluminum rings separated by G-10 tabs (see
+Section <a href="#sec:ch4:inlabtesting" data-reference-type="ref"
+data-reference="sec:ch4:inlabtesting">1.4</a> for details). These shells
+are also separated by layers of multi-layer insulation (MLI) blankets,
+which reduce radiative loading in the cryogenic system. The 4K-1K and
+1K-100mK components are separated by carbon fiber trusses. Each of these
+thermal breaks contain a layer of aluminized mylar to serve as an RF
+shield around the trusses, continuing electrical continuity as an
+effective Faraday cage for the magnetically-sensitive detectors sitting
+at 100mK. The cryostat thus is pumped out from the front and back end to
+avoid pressure gradients that could break this thin RF layer.</p>
+<p>The SAT itself has a <span class="math inline">\(\sim\)</span>35<span
+class="math inline">\(^{\circ}\)</span> field-of-view. The forebaffle
+encompassing a volume above the window reflects radiation incident at
+angles greater than <span class="math inline">\(\sim\)</span>40<span
+class="math inline">\(^{\circ}\)</span> off-axis out of the telescope to
+reduce loading into the system. The gridloader assembly loads a sparse
+wire grid to allow precise polarization calibration with a detector
+angle systematic error of 0.08<span
+class="math inline">\(^{\circ}\)</span> <span class="citation"
+data-cites="gridloader2023">(Murata et al. 2023)</span>.</p>
+<p>The optical path of a CMB photon can be followed from the window all
+the way down to the focal plane. After passing the
+ultra-high-molecular-weight polyethylene (UHMWPE) window, a photon first
+interacts with one 300K and one 40K double-sided infrared (DSIR) metal
+mesh blockers. These were later replaced by a stack of
+radio-transmissive multi-layer insulation (RT-MLI) due to fabrication
+issues, discussed in Section <a href="#sec:ch4:siteintegration"
+data-reference-type="ref"
+data-reference="sec:ch4:siteintegration">1.5</a>. Sitting behind this is
+a 40K Al<span class="math inline">\(_2\)</span>O<span
+class="math inline">\(_3\)</span> IR blocker (or alumina filter)
+followed by a continuously rotating cryogenic half-wave plate (CHWP) .
+The CHWP is a magnetically levitating, rotating 3-layer birefringent
+(sapphire) polarization modulator. It reduces low frequency atmospheric
+noise and mitigates systematic effects that would otherwise occur from
+pair-differencing orthogonal detectors <span class="citation"
+data-cites="yamada2023 Hill_2020">(Yamada et al. 2023; C. A. Hill et al.
+2020)</span>. The sapphire is mounted onto a rotor assembly (the
+spinning component), consisting of G-10 ring enclosing neodymium (NdFeB)
+magnets. The rotor sits over the stator (the stationary component)
+consisting of superconducting yttrium barium copper oxide (YBCO), which
+transitions below <span class="math inline">\(\sim 90K\)</span>. Via
+flux pinning, the rotor only maintains rotational degrees of freedom
+once this transition temperature is reached. The sapphire is held in
+place with a gripping mechanism during the cool down and warm up
+procedures, but released below the transition temperatures. See <a
+href="#sec:ch4:inlabtesting" data-reference-type="ref"
+data-reference="sec:ch4:inlabtesting">1.4</a> for CHWP testing done in
+SAT-UHF.</p>
+<p>From the CHWP, a photon then interacts with a 4K alumina filter. The
+cold optics assembly (COA) begins with a 1K Lyot stop. The first of
+three meta-material anti-reflection-coated silicon lenses (Lens1) sits
+just behind. A series of ring baffles and the black tiles lining the COA
+absorb spillover signals at the cold stages. Following a 1K low-density
+polyethylene low-pass edge (LPE) filter sit two more silicon lenses
+(Lens2 followed by Lens3). Finally, right before the focal plane
+assembly (FPA) there is a 100mK LPE filter. All of the filters, CHWP,
+and window have anti-reflection coatings, and each filter type serves a
+different purpose. The DSIR filters reflect out-of-band incident
+radiation, the alumina filters absorb remaining spurious radiation and
+re-radiate them at lower temperatures, and the LPE filters blue (i.e.
+high-frequency) leaks from getting to the focal plane. See Section <a
+href="#sec:ch4:inlabtesting" data-reference-type="ref"
+data-reference="sec:ch4:inlabtesting">1.4</a> for examples of how blue
+light leaks were tested.</p>
+<p>The focal plane in the SATs and LAT are hexagonally tiled with
+Universal Focal Plane Modules (UFMs), which house the dual-polarized,
+dichroic TESs. These UFMs consist of both optical components and readout
+components <span class="citation"
+data-cites="mccarrick_2021mf Healy_2022 Healy_2020">(McCarrick, Arnold,
+et al. 2021; E. Healy et al. 2022; E. E. Healy et al. 2020)</span>. SO
+uses microwave multiplexing, which allows <em>O</em>(1000) detectors per
+readout chain. Each readout chain traverses a cold readout assembly
+(CRA) and universal readout harness (URH) <span class="citation"
+data-cites="Rao_2020 moore2022development">(Sathyanarayana Rao et al.
+2020; Moore et al. 2022)</span>. The CRA takes the signal from 100mK to
+4K, and the URH takes the signal from 4K to the 300K readout port on the
+SAT. This signal is amplified at the 4K and 40K stages and demodulated
+with the warm readout electronics developed by SLAC (i.e. SLAC
+Microresonator Radio Frequency or SMuRF electronics) <span
+class="citation" data-cites="Henderson_2018 Yu_2023">(Henderson et al.
+2018; Yu et al. 2023)</span>. The focal plane is protected from magnetic
+fields by a series of magnetic shields at the 1K, 4K, and 40K stages
+<span class="citation"
+data-cites="galitzki2018 Ali_2020 Kiuchi_2020">(Galitzki et al. 2018;
+Ali et al. 2020; Kiuchi et al. 2020)</span>. The 40K and 4K magnetic
+shield are made with A4K (high-permeability, or <span
+class="math inline">\(\mu\)</span>, metal), and the 1K magnetic shield
+is superconducting. Finally, the thermal environment of the SAT is
+tracked through the housekeeping port, which reads out all diodes and
+ruthenium oxide (ROX) sensors strategically placed around the SAT.</p>
+<p>In an effort to streamline design and production of the SO
+telescopes, there are some key components that are designed to be
+interchangeable between the LAT and any of the SATs. For example, any
+component labelled with ‘Universal’ has this characteristic like the URH
+and UFMs (which also consist of a Universal Multiplexing Module attached
+to the optical stack) <span class="citation"
+data-cites="Healy_2022 Healy_2020 McCarrick_2021">(E. Healy et al. 2022;
+E. E. Healy et al. 2020; McCarrick, Healy, et al. 2021)</span>.
+Similarly, the SMuRF system is used across all telescopes. Conversely,
+there are some non-negligible differences between the SATs. Different
+frequency bands require different optics: specifically, the filters,
+filter thicknesses, lenses, CHWP sapphire stack thickness, and different
+detector parameters (which live in the UFMs). Also, while SAT-MF1 and
+SAT-UHF use mullite-duroid anti-reflection coatings, SAT-MF2 uses
+meta-material coatings. Small mechanical differences between all SATs
+are expected, and are taken into account for integration and testing
+requirements.</p>
+<h2 id="integration-and-testing-strategy">Integration and Testing
+Strategy</h2>
+<figure id="fig:satassembled">
+<embed src="sat_assembled.pdf" />
+<figcaption>SAT assembly. <strong>(a)</strong> SAT-UHF focal plane for
+final in-lab testing. <strong>(b)</strong> Universal Focal Plane Modules
+(UFMs) at Chilean site before being placed in SAT-MF1.
+<strong>(c)</strong> SAT-MF1 integration in the highbay at Chilean site
+prior to being closed up and placed on the SAT platform.</figcaption>
+</figure>
+<p>Every SAT has been carefully integrated and tested in steps to ensure
+deployment readiness. SO is an important precursor to experiments like
+CMB-S4 to ensure technological readiness and resource allocation. Such
+large scale experiments involve deployment strategies to get many
+telescopes to the field. For SO, all 3 SATs have the same basic
+structure. Thus, it was prudent to stagger integration of the SATs
+sequentially to match hardware production timelines. Any design changes
+that were needed from testing the first SAT (SAT-MF1) trickled down to
+SAT-MF2 and SAT-UHF to save integration and testing time on the
+following SATs. Here we provide a brief outline of testing for
+deployment readiness:</p>
+<ul>
+<li><p><strong>Mechanical:</strong> Thermal and vacuum performance, CHWP
+mechanical performance, grid loader and rotator mechanical performance,
+magnetic shielding performance, equipment enclosures status</p></li>
+<li><p><strong>Electrical:</strong> Readout performance, detector
+performance, cryogenic thermal sensing and control, warm housekeeping
+sensor performance</p></li>
+<li><p><strong>Optical:</strong> Optical component performance, spectral
+performance, near and far-field optical response, end-to-end optical
+efficiency, polarization performance</p></li>
+<li><p><strong>Safety:</strong> Motion controllers and actuators,
+integrated system safety</p></li>
+<li><p><strong>Site Preparation:</strong> Commissioning and operations
+software, packing and shipping plan, deployment plan</p></li>
+</ul>
+<p>SAT-MF1 did a thorough review of all deployment requirements and
+retired many risks for the other SATs. As a result, SAT-MF2 and SAT-UHF
+were able to reach deployment readiness faster. For example, grid loader
+mechanical performance became a retired risk. This strategy also allowed
+SAT-MF2 and SAT-UHF to diverge from the SAT-MF1 testing plans and tackle
+new problems. For example, SAT-MF2 was able to test the CHWP sag at
+different elevation angles, and SAT-UHF was able to test truss strength
+and search for high frequency leaks in its optical chain. Thus, the
+later SATs could perform focused studies to address new concerns and
+formulate a more comprehensive picture of the telescope operation. On
+the software side, much of the pipeline and analysis development was
+pushed to near-completion for SAT-MF1. Thus, deployment readiness review
+of certain software such as commissioning and operations software were
+not repeated for other SATs, and were instead further developed directly
+at the Chilean site.</p>
+<p>While SAT-MF1 was reviewed on all the above topics, the last
+deploying nominal SAT (SAT-UHF) was reviewed on the following condensed
+version of this: thermal and vacuum performance, CHWP mechanical
+performance, equipment enclosure status, readout performance, detector
+performance, optical component performance, personnel and instrument
+safety, and a combined shipping and deployment plan. Basic mechanical,
+electrical, and optical performance across all SATs was ensured prior to
+packing approval. For site, each SAT had to develop an independent
+packing and shipping plan along with a deployment plan. Staggered
+deployment at the Chilean site allows solutions of new issues to trickle
+down to the other SATs similar to the in-lab integration and testing
+strategy.</p>
+<h2 id="sec:ch4:inlabtesting">In-Lab Integration and Testing of
+SAT-UHF</h2>
+<p>SAT-UHF was integrated and tested extensively at Berkeley. The truss
+testing, thermal and vacuum validation, CHWP validation, readout
+validation, and detector validation will be summarized in this section
+to outline key pre-ship challenges and successes.</p>
+<p>In this section, Run3 refers to a cooldown where only the PTC, DR,
+and housekeeping were installed. This was a run performed after the DR
+had a superfluid leak, and the DR unit had to be replaced by BlueFors.
+The original leak was very slow, and warmed up the SAT after about 3
+weeks in a previous cooldown. Helium was detected in the SAT body. The
+Princeton SAT (SAT-MF2) had also faced a superfluid leak that was much
+faster, and had similarly replaced their DR unit. For Run4 the following
+where installed: magnetic shields (4K and 1K), OT, window and all
+filters except 100mK low pass edge (LPE) filter, DR heat straps, a
+temporary focal plane base (FPB), new CHWP actuator shafts and the
+sapphire with its cradle. This run did not have: 4K and 1K magnetic
+shield lids (4K and 1K), the superconducting magnetic shield, the 100mK
+filter or filter holder, any of the 3 lenses, UFMs, a 1K cylindrical
+shield piece, the 1K-100mK RF shield, or the DR heat strap strain
+relief. It was also missing one copper heat strap for the 100mK stage.
+Finally, Run5 was our final pre-deployment run which had everything
+installed with 2 UFMs (as the final 7 deployment UFMs were screened and
+sent directly to site).</p>
+<h3 id="truss-testing">Truss Testing</h3>
+<figure id="fig:ch4:trusstesting">
+<img src="figures/chap4_pics/trusstesting.png" />
+<figcaption>SAT truss testing. (a) Example of delamination at the epoxy
+joint between the G-10 piece and the aluminum foot. (b) The redesigned
+300K-40K-4K truss with a full G-10 tab with aluminum bars. (c) Jigging
+on the SAT front end during disassembly to remove old truss. (d) CAD
+layout of truss testing design. (e) Truss testing of the 1500 kgf load
+test. (f) Truss testing physical set up.</figcaption>
+</figure>
+<figure id="fig:ch4:trussfailure">
+<figure id="subfig:ch4:truss300k40kfailure">
+<img src="figures/chap4_pics/truss300k-40kfailure.png" />
+<figcaption>There are 24 total tabs. Red represents damage/de-adhesion
+on both 300K and 40K joints. Cyan represents damage/de-adhesion on 300K
+joint. Yellow represents damage/de-adhesion on 40K joint. Underline
+represents partial damage/de-adhesion.</figcaption>
+</figure>
+<figure id="subfig:ch4:truss40k4kfailure">
+<img src="figures/chap4_pics/truss40k-4kfailure.png" />
+<figcaption>There are 24 total tabs. Red represents damage/de-adhesion
+on both 40K and 4K joints. Cyan represents damage/de-adhesion on 40K
+joint. Yellow represents damage/de-adhesion on 4K joint. Underline
+represents partial damage/de-adhesion.</figcaption>
+</figure>
+<figcaption>Summary of truss damage in SAT-UHF. Note that this SAT was
+thermally cycled fewer times at this measurement point compared to the
+other two MF SATs because of the staggering scheme discussed
+earlier.</figcaption>
+</figure>
+<p>The 300K-40K-4K truss that holds the 300K shell, 40K shell, and 4K
+shell together went through a redesign after SAT-MF1 had a truss
+failure. The truss structure is shown in Figure <a
+href="#fig:ch4:trusstesting" data-reference-type="ref"
+data-reference="fig:ch4:trusstesting">1.4</a>(a, b, d), where each stage
+is thermally shorted to an aluminum (Al) ring and separated by a set of
+24 G-10 tabs. G-10 is a type of fiberglass-epoxy laminate material that
+has very low thermal and electric conductivity, and thus acts as an
+excellent insulating material between stages. The original tab design in
+Figure <a href="#fig:ch4:trusstesting" data-reference-type="ref"
+data-reference="fig:ch4:trusstesting">1.4</a>(a) had a piece of G-10
+inserted and epoxied into an Al foot piece that bolted into the Al
+rings. As shown in Figure <a href="#fig:ch4:trussfailure"
+data-reference-type="ref" data-reference="fig:ch4:trussfailure">1.7</a>,
+there were significant delamination issues with this design, with the
+failure at the epoxy joint.</p>
+<p>The surface area for the epoxy to bind to was insufficient, and the
+groove in the Al foot did not have space in the pockets to hold the
+epoxy properly (e.g. a dolphin tail shaped groove is a good option over
+a rectangular groove meant to fit the G-10 insert). This was a
+significant technical challenge since the SAT in an asymmetric shape
+(most telescopes are axially symmetric), and has a very large volume
+compared to other small aperture telescopes. It is clear in Figure <a
+href="#fig:ch4:trussfailure" data-reference-type="ref"
+data-reference="fig:ch4:trussfailure">1.7</a> that there was a
+“potato-chipping" effect from the axial asymmetry. Significant forces at
+play here were vacuum deflection, the physical weight carried by each
+stage (<span class="math inline">\(\sim 500\)</span>kg total), and
+thermal contraction. Thermal contraction was calculated to be an order
+of magnitude more important than the other two forces, and this was
+taken into account in the research and development process.</p>
+<p>The redesign effort in the collaboration resulted in <a
+href="#fig:ch4:trusstesting" data-reference-type="ref"
+data-reference="fig:ch4:trusstesting">1.4</a>(b), with each tab a fully
+G-10 piece in an “I" shape. There are 4 small Al rods per tab that rest
+on each foot, and are screwed down with the tab itself. These serve to
+evenly distribute the load bearing across the G-10 foot since the tab
+itself is quite thin to allow for differential thermal contraction
+between temperature stages from cryogenic cycling. Figure <a
+href="#fig:ch4:trusstesting" data-reference-type="ref"
+data-reference="fig:ch4:trusstesting">1.4</a>(d, e, f) shows the warm
+truss testing done at Berkeley. The 4K load was a 3G test with 300kg (4K
+nominal load) <span class="math inline">\(\times\)</span> 3 = 900 kgf
+load test, and the 40K load was a 3G test with (300kg (4K nominal load)
+<span class="math inline">\(+\)</span> 200kg (40K nominal load)) <span
+class="math inline">\(\times\)</span> 3 = 1500 kgf load test. In both
+cases, the force was applied for 2 minutes. The test setup involved a
+lead screw/threaded rod attached to a beam assembly with a jam nut,
+washer stack, and thrust bearing. An adapter plate attached to the truss
+ring and a mass/load plate to appropriately spread the applied load. We
+incorporated a through-hole style compression load cell to measure the
+applied load. We also had the end of the lead screw machined to turn the
+entire rod safely from a distance from the top of the cryostat. Turning
+a nut welded to the rod at the top pushed the adapter plate down at the
+location of the center-of-mass (COM) for either the 4K or 40K stage (as
+they both have a different COM). The flatness of the truss rings were
+tested before and after the load test, and passed the criteria in that
+the truss conformed to the shape of the SAT as expected. Sufficient
+cryogenic cycling across all of the SATs has been done since the truss
+replacements, and these new rings have successfully been used in the
+Chilean site.</p>
+<h3 id="thermal-and-vacuum-validation">Thermal and Vacuum
+Validation</h3>
+<figure id="fig:ch4:fpthermo">
+<img src="figures/chap4_pics/runfp_thermometry.png"
+style="width:60.0%" />
+<figcaption>In-lab final focal plane thermometry configuration for
+pre-deployment testing. The ruthenium oxide (ROX) arrangement on the
+focal plane at 100mK are shown. The heater allowed us to control the
+temperature of the focal plane depending on what was read by the main
+ROX.</figcaption>
+</figure>
+<p>The thermal and vacuum validation went through several rounds of
+checks. The final requirements involved checking the SAT cryostat
+internal operating environment, the general mechanical performance, cold
+stage loading, temperature control, DR still (1K) and mixing chamber
+(“MXC" 100mK) heaters, and temperature measurement and control
+performance. Refer to Figure <a href="#fig:ch4:fpthermo"
+data-reference-type="ref" data-reference="fig:ch4:fpthermo">1.8</a> for
+the focal plane thermometry configuration used in this section.</p>
+<div id="table:ch4:basetemps">
+<table>
+<caption>SAT-UHF pre-deployment in-lab testing base temperatures
+achieved for key stages.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">PTC 40K</th>
+<th style="text-align: center;">PTC 4K</th>
+<th style="text-align: center;">DR 4K</th>
+<th style="text-align: center;">DR 1K</th>
+<th style="text-align: center;">DR 100mK</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">SAT-UHF</td>
+<td style="text-align: center;">31.9K</td>
+<td style="text-align: center;">2.95K</td>
+<td style="text-align: center;">3.17K</td>
+<td style="text-align: center;">0.842K</td>
+<td style="text-align: center;">29.3mK</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">FPB</td>
+<td style="text-align: center;">UFM</td>
+<td style="text-align: center;">40K Filter</td>
+<td style="text-align: center;">4K Filter</td>
+<td style="text-align: center;">Lens 1 Mount</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">SAT-UHF</td>
+<td style="text-align: center;">62.8m</td>
+<td style="text-align: center;">63.6mK</td>
+<td style="text-align: center;">62.1K</td>
+<td style="text-align: center;">4.75K</td>
+<td style="text-align: center;">1.03K</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the cold stages, the internal operating environment temperature
+range was 0.060K at the focal plane base (FPB) to 65K at the 40K filter
+on the front end at base. This satisfied the requirement of <span
+class="math inline">\(\delta T \leq 80\)</span> K, where the <span
+class="math inline">\(\delta T\)</span> is the difference between the
+maximum temperature read on the 40K stage and the minimum temperature
+read at the focal plane stage. This requirement is set by the required
+transition temperature of the CHWP YBCO superconducting magnets. See
+Table <a href="#table:ch4:basetemps" data-reference-type="ref"
+data-reference="table:ch4:basetemps">1.1</a> for a complete
+documentation of Run 5 base temperatures.</p>
+<p>The cold mechanical performance was split by the four temperature
+stages:</p>
+<ul>
+<li><p><strong>40K stage:</strong> The stage temperature was a minimum
+at the PTC cold head (31.9K), and maximum at the front end filter
+(66.1K). This satisfied the 30-70K range requirement. At the PTC cold
+head, the temperature did not exceed 33.6K, which satisfied the <span
+class="math inline">\(\leq 40\)</span>K requirement<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
+With the spinning CHWP, the temperature fluctuation was 3.5K peak to
+peak, which met the <span class="math inline">\(\leq 4\)</span>K peak to
+peak requirement. There was 28K/hr cooling rate for the first 7 hours on
+the PTC 40K cold head while cooling.</p></li>
+<li><p><strong>4K stage:</strong> The stage temperature was a minimum at
+the PTC cold head (2.95K), and maximum at the front end filter (5.46K).
+This satisfied the <span class="math inline">\(\leq 6\)</span>K range
+requirement. At the PTC cold head, the temperature did not exceed 3.19K,
+which satisfied the <span class="math inline">\(\leq 4\)</span>K
+requirement. With the spinning CHWP, the temperature fluctuation was
+0.23K peak to peak, which met the <span class="math inline">\(\leq
+1\)</span>K peak to peak requirement. There was 19K/hr cooling rate for
+the first 7 hours on the PTC cold head while cooling.</p></li>
+<li><p><strong>1K stage:</strong> The stage temperature was a minimum at
+the DR cold head (0.751K assuming non-zero still power applied), and
+maximum at the Lens1 mount (1.05K) while the CHWP was spinning. This
+satisfied the 0.7-1.5K range requirement. At the DR cold head, the
+temperature did not exceed 0.874K (with 10mW power applied), which
+satisfied the <span class="math inline">\(\leq 1.2\)</span>K
+requirement. With the spinning CHWP, the temperature fluctuation was
+0.02K peak to peak at Lens1 and Lens2, which met the <span
+class="math inline">\(\leq 0.4\)</span>K peak to peak requirement. There
+was 1.8K/hr cooling rate on the DR still after turning on the DR cooling
+loop.</p></li>
+<li><p><strong>100mK stage:</strong> The stage temperature 60mK at base,
+which satisfied the <span class="math inline">\(\leq 100\)</span>mK
+requirement. With the spinning CHWP, the temperature fluctuation was
+<span class="math inline">\(&lt;0.01\)</span>mK change over a period of
+5 minutes at the base temperature, which met the <span
+class="math inline">\(\leq 1\)</span>mK peak to peak requirement. There
+was 2.2K/hr cooling rate on the DR MXC after turning on the DR cooling
+loop.</p></li>
+</ul>
+<div id="table:ch4:baseloadingest">
+<table>
+<caption>SAT-UHF still and mixing chamber loading estimation. Prediction
+comes from calculations done within SO. The Run 4 and 5 average comes
+from a predictive, comparative interpolation method.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Nominal Prediction</th>
+<th style="text-align: center;">Run 4 Average</th>
+<th style="text-align: center;">Run 5 Average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Still Base Loading (mW)</td>
+<td style="text-align: center;">4.6</td>
+<td style="text-align: center;">4.7</td>
+<td style="text-align: center;">3.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">MXC Base Loading (mW)</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The SAT cold stage loading at 40K had not been measured in a fully
+integrated SAT-UHF because the heater at that stage had broken. However,
+this was superseded by the nominal temperature performance to meet
+passing criteria. The 4K base loading was 0.45W (meeting <span
+class="math inline">\(\sim0.5\)</span> W typical/expected loading) and
+1K base loading was 3.3mW (meeting <span
+class="math inline">\(\sim5\)</span> mW typical estimate). The 100mK
+loading was <span class="math inline">\(33\mu\)</span> W which was above
+the typical <span class="math inline">\(25\mu\)</span>W, but was again
+superseded by the temperature performance to meet passing criteria.
+Table <a href="#table:ch4:baseloadingest" data-reference-type="ref"
+data-reference="table:ch4:baseloadingest">1.2</a> summarizes the Run 4
+and 5 base loading estimates. See Figure <a href="#fig:ch4:4kloadcurve"
+data-reference-type="ref" data-reference="fig:ch4:4kloadcurve">1.11</a>
+for the 4K load curve analysis, Figure <a href="#fig:ch4:drloadcurve"
+data-reference-type="ref" data-reference="fig:ch4:drloadcurve">1.14</a>
+for the DR load curves, Figure <a href="#fig:ch4:mxcload"
+data-reference-type="ref" data-reference="fig:ch4:mxcload">1.10</a> to
+see which still power was used for the base MXC temperature, and Figure
+<a href="#fig:ch4:hsload" data-reference-type="ref"
+data-reference="fig:ch4:hsload">1.9</a> for the 1K and 100mK thermal
+conductance performance shorting the DR cold heads to the focal
+plane.</p>
+<figure id="fig:ch4:hsload">
+<img src="figures/chap4_pics/hsload.png" />
+<figcaption>SAT-UHF 1 K and 100 mK thermal conductance measurements,
+where G denotes the conductance as usual. Some of these measurements
+(labelled) involved heat strapping to the DR 1K and mK cold heads (i.e.
+still and MXC respectively).</figcaption>
+</figure>
+<figure id="fig:ch4:mxcload">
+<img src="figures/chap4_pics/mxcload.png" />
+<figcaption>Analysis of SAT-UHF mixing chamber temperature versus power
+applied. This was used to determine the ideal still power to achieve the
+lowest base temperature at the 100mK stage. Right is a zoomed-in view of
+left plot to show the y-intercept, where a 10.0mW still power was shown
+to be favorable.</figcaption>
+</figure>
+<figure id="fig:ch4:4kloadcurve">
+<img src="figures/chap4_pics/4kloadcurve.png" />
+<figcaption>SAT-UHF 4K load curve with base loading estimate (left) and
+heat strap performance (right).</figcaption>
+</figure>
+<figure id="fig:ch4:drloadcurve">
+<figure id="subfig:ch4:run5drloadcurve">
+<img src="figures/chap4_pics/run5_drloadcurve.png" />
+<figcaption>Final in-lab dilution refrigerator load curve. Annotations
+shown are (still power applied (mW), mixing chamber power applied (<span
+class="math inline">\(\mu\)</span>W)).</figcaption>
+</figure>
+<figure id="subfig:ch4:run3run5drloadcurve">
+<img src="figures/chap4_pics/run3run5_drloadcurve.png" />
+<figcaption>Comparison of loading data taken in Run3 (where only the
+PTC, DR, and thermometry were in the SAT) with loading data taken in
+Run5 (full, final pre-deployment configuration). Fewer points are shown
+because Run3 loading data contained fewer samples.</figcaption>
+</figure>
+<figcaption>SAT-UHF dilution refrigerator load curves.</figcaption>
+</figure>
+<p>For vacuum performance, the internal operating requirement for
+pressure was <span class="math inline">\(\leq 133 \mu\)</span>Pa. This
+was met with <span class="math inline">\(60\mu\)</span> Pa on the
+warmest day of testing (i.e. <span
+class="math inline">\(90^{\circ}\)</span> F ambient temperature). For
+the general mechanical performance, the cool down time was 9 days (which
+met the maximum requirement). The warm up requirement was <span
+class="math inline">\(\leq 7\)</span> days, which was not rigorously
+measured due to CHWP tests that were prioritized during warm up
+(discussed in the additional testing subsection). The time taken from
+pumping out to starting the cooling process (i.e. turning on PTCs) was 3
+days for both Run 4 and 5, which met the requirement of <span
+class="math inline">\(\leq 4\)</span> days. Note that it took 3 days to
+reach <span class="math inline">\(2.1\times10^{-2}\)</span> mbar after
+pump/purging using a non-deployment pump. We did not have a needle valve
+for this pump down, so our pressure rate of change (<span
+class="math inline">\(\sim 15\)</span> hPa/min) was above the
+conservative 5 hPa/min requirement, but was comparable to the rate of
+change by other SATs (e.g. SAT-MF1 pumped down at 12 hPa/min).</p>
+<p>Finally the temperature measurement and control involved a closed
+loop temperature circuit controlling a Lakeshore 372 sample heater to
+stabilize the detector array temperatures for optimal operation (see
+Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> for information on
+detector operation). The DR still heater was controlled by a Lakeshore
+372 warm up heater output, and the MXC heater was controlled by the same
+Lakeshore but using the sample heater output. The 40 K and 4 K diodes
+and the 1 K and 100 mK ROXs were calibrated by Yale. The heater control
+closed loop stability likely had a grounding issue. The PID
+(proportional-integral-derivative controller) was stable with a
+dedicated Lakeshore LS372, and the closed loop response time was <span
+class="math inline">\(&lt;1\)</span> s response, as per the requirement.
+There was a suspected grounding issue in the lab, and so the ROX noise
+level was unreliable.</p>
+<p>In summary, all the internal temperatures, pump down, and cool down
+characteristics were within the specifications and highly stable. Some
+additional notes are that the focal plane base (FPB) and UFM
+temperatures are quite close, suggesting good heat sinking between
+detectors and focal plane. Additionally, the YBCO temperatures in the
+CHWP were <span class="math inline">\(\sim49.8\)</span> K, which was
+well under the YBCO transition temperature. The focal plane, still, and
+MXC temperature control was implemented and effective. The pre-ship
+deployment risks included the pump down time and rate since the full
+deployment configuration is different from the system that was used for
+in-lab testing.</p>
+<h3 id="chwp-validation">CHWP Validation</h3>
+<figure id="fig:ch4:chwprun5">
+<figure id="subfig:ch4:chwppcu">
+<img src="figures/chap4_pics/chwp_pcu.png" />
+<figcaption>CHWP spinning down with final phase compensation unit
+stop.</figcaption>
+</figure>
+<figure id="subfig:ch4:chwpjitter">
+<img src="figures/chap4_pics/chwp_anglejitter.png" />
+<figcaption>CHWP angle jitter.</figcaption>
+</figure>
+<figcaption>SAT-UHF final pre-deployment cryogenic half wave plate spin
+down and angle jitter. Phase compensation unit allows the full breaking
+of the CHWP and provides good rotation stability. See details on phase
+compensation unit benefits and angle jitter calculations in <span
+class="citation" data-cites="yamada2023">(Yamada et al. 2023)</span>. As
+shown, SAT-UHF met the jitter requirements.</figcaption>
+</figure>
+<p>The CHWP requirements for SAT-UHF were largely related to the
+rotation mechanism. The maximum spin speed was 2.75 Hz, which was within
+the requirements. The time to spin up to stable rotation was 1 minute
+(within the 5 minute limit), and the spin down time to stationary was
+less than 10 minutes using a phase compensation unit. This phase
+compensation unit is useful for getting the CHWP below 1 Hz (see Figure
+<a href="#subfig:ch4:chwppcu" data-reference-type="ref"
+data-reference="subfig:ch4:chwppcu">1.15</a>). Once the CHWP is
+spinning, the rotation stability is very important. The speed variation
+over one hour was <span class="math inline">\(&lt;0.0005\)</span> Hz
+which was well within the <span class="math inline">\(&lt;0.01\)</span>
+Hz requirement. The rotation decentering from the optical axis of the
+telescope was less than 1 mm as required. Note that the CHWP sags when
+tilted (e.g. when the SAT is observing at some elevation) at some
+predictable amount (see <span class="citation"
+data-cites="charliethesis">(Charles A. Hill 2020)</span> for details on
+CHWP sag). In the field, the centering of the sapphire will compensate
+for this sag. Additionally, the angle jitter measurement met the
+requirement, as shown in Figure <a href="#subfig:ch4:chwpjitter"
+data-reference-type="ref"
+data-reference="subfig:ch4:chwpjitter">1.16</a>. The angle jitter
+encapsulates any angle encoding errors from data acquisition timing
+jitter and encoder readout noise (see <span class="citation"
+data-cites="yamada2023 charliethesis">(Yamada et al. 2023; Charles A.
+Hill 2020)</span>). Gripping and ungripping the sapphire has a cycle
+time that was within the 30 s requirement. The final major requirement
+was that sensed limits be implemented for any SAT motion control
+systems, which was made compliant by using two limit switches per one
+actuator. This requires a final tuning procedure once the actuator
+controller is deployed in final configuration at the Chilean site.</p>
+<p>In summary, the CHWP successfully spun in both directions (using a
+phase compensation unit). It was tested to spin constantly for more than
+10 days at 2 Hz very stably with a standard deviation of <span
+class="math inline">\(&lt;5\times10^{-4}\)</span> Hz/hr. The CHWP could
+be put into a hard stop remotely with a phase compensation unit, which
+improved rotation stability (details are provided in <span
+class="citation" data-cites="yamada2023">(Yamada et al. 2023)</span>).
+The CHWP remote control successfully sent PID loop controlled frequency
+commands. This was using a lab agent for in-lab use, and would need to
+be updated for site agents. Finally, the thermal and magnetic effect of
+the CHWP was nominal. We saw that the CHWP did not dump too much power
+onto other stages because all temperatures measured in the SAT were
+within the specifications that took into account CHWP thermal loading.
+Additionally, no thermal resonances in the focal plane temperature were
+found at the nominal operation frequency of 2 Hz. A Hall probe
+continuously checked the magnetic field intensity around the YBCOs, and
+showed good magnetic health of the system. The potential pre-ship risk
+was that some external electronics and cables were not checked during
+the in-lab testing (as they were not delivered in time) and were
+scheduled to be checked directly at the Chilean site. For more
+information on the SO SAT CHWPs, please refer to <span class="citation"
+data-cites="yamada2023 Sugiyama_2024">(Yamada et al. 2023; Sugiyama et
+al. 2024)</span>.</p>
+<h3 id="readout-validation">Readout Validation</h3>
+<figure id="fig:ch4:run5ufmconfig">
+<img src="figures/chap4_pics/run5_uv31masking.png"
+style="width:95.0%" />
+<figcaption>SAT-UHF final in-lab focal plane configuration.
+<em>Left</em> shows how bias lines go through a mid-frequency universal
+focal plane module. Image adapted from <span class="citation"
+data-cites="healythesis">(E. E. Healy 2023)</span>. <em>Right</em> shows
+how the single pixel box, single mux box, and two focal plane modules
+were tiled in this final run. The red trapezoid on Uv31 shows how the
+half masking was done and corresponds to the shaded trapezoid in the
+left diagram. Uv8 was completely masked.</figcaption>
+</figure>
+<p>The readout validation involved requirements covering overall
+performance, the cryostat readout interconnects, and the warm readout
+interface. Refer to Figure <a href="#fig:ch4:run5ufmconfig"
+data-reference-type="ref"
+data-reference="fig:ch4:run5ufmconfig">1.18</a> for the Run5 detector
+array focal plane configuration. One fully masked UFM (Uv8) and one
+half-masked half-optical UFM (Uv31) were installed along with a Single
+Pixel Box (SPB) and Single Mux Box (SMB). The SPB and SMB were installed
+in case of debugging needs, and ended up not being necessary for the
+run. For more information on microwave multiplexing readout, please
+refer to Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> to better understand
+this and the detector validation section! From hereon out, we refer to
+the UFM detector arrays simply as Uv8 and Uv31 for simplicity.</p>
+<p>For overall readout performance, the UHF readout yield was calculated
+by dividing the number of possible tracking channels by 1820. For a UHF
+UFM, there are 1848 resonators in total, of which 1820 are coupled to
+SQUIDs, of which 1756 are coupled to TESs, of which 1720 are optically
+coupled (i.e. connected to an antenna). Note that there are 66
+resonators on each mux chip, and <span class="math inline">\((66 - 1)
+\times 28 = 1820\)</span> in an assembly where 1 resonator is uncoupled
+to a SQUID on each chip. Here, “channel" refers to how many resonators
+are found by the SMuRF itself, and “tracked channel" refers to how many
+SQUID-coupled resonators are available<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.
+Thus the number of tracking channels simply refers to the number of
+channels on which SMuRF is measuring noise. SAT-UHF measured readout
+yields of 85% for Uv8 and 87% for Uv31, which met the minimum
+requirement of <span class="math inline">\(&gt;78\%\)</span>. For basic
+noise measurements from SMuRF, the readout white noise level was
+measured to be 55.9 pA/<span class="math inline">\(\sqrt{Hz}\)</span>
+for Uv8 and 61.8 pA/<span class="math inline">\(\sqrt{Hz}\)</span> for
+Uv31, satisfying the <span class="math inline">\(&lt;65\)</span>
+pA/<span class="math inline">\(\sqrt{Hz}\)</span> requirement. The
+readout 1/f noise knee frequency met the requirements of <span
+class="math inline">\(&lt;0.1Hz\)</span>.</p>
+<p>For the readout interconnect performance, the radio frequency (RF)
+behavior was checked using a Vector Network Analyzer (VNA). The warm
+(300K) and cryogenic measurements are in Figure <a
+href="#fig:ch4:lab_craurhperformance" data-reference-type="ref"
+data-reference="fig:ch4:lab_craurhperformance">1.19</a>, and were
+compliant with the requirements. No direct current (DC) shorts to ground
+were found in the DC lines during probing before Run 5. There were known
+issues with Channels 3, 6, and 12 during Run 5 (which also led to
+strategic UFM placements). Channels 3 and 6 had unstable 40K amplifier
+behavior in the URH and were sent to Arizona State University (ASU)
+directly after Run5 for potential repairs. Channel 6 had a frayed
+coaxial cable that was replaced after Run5 in lab, and later had to
+require a 4K amplifier replacement during Chile site integration (see
+Section <a href="#sec:ch4:siteintegration" data-reference-type="ref"
+data-reference="sec:ch4:siteintegration">1.5</a>). As shown in Section
+<a href="#sec:ch4:siteintegration" data-reference-type="ref"
+data-reference="sec:ch4:siteintegration">1.5</a>, all channels are
+currently working at site.</p>
+<figure id="fig:ch4:lab_craurhperformance">
+<img src="figures/chap4_pics/run5_craurhperformance.png"
+style="width:95.0%" />
+<figcaption>SAT-UHF final in-lab cold and warm loopback readout chain
+transmission. Channel 3 was not working properly during this final run
+and was later repaired for site.</figcaption>
+</figure>
+<p>Finally, the warm readout interface performance was tested, which
+involved a set of SMuRF quality control checks. The RF readout noise was
+complaint, in that SMuRF loopback tests (on the Advanced Mezzanine
+Cards, or AMCs) had a noise of about -100 dBc/Hz which were the maximum
+limits. The high frequency detectors required a particularly high TES
+bias voltage of <span class="math inline">\(\pm\)</span>35V in high
+current mode, and a TES bias current of <span
+class="math inline">\(\pm\)</span>12.8mA in high current mode. The RF
+frequency range between 4-6 GHz saw no excess attenuation, and the RF
+output power was not of concern (but on the higher side).</p>
+<p>In summary, all readout channels (except channels 3, 6, and 12) were
+working within specifications. The SMuRF quality control testing was
+nominal but would need to be checked with the final configuration at the
+Chilean site. Potential risks in pre-shipment were the problem channels
+in the readout chain, but the issues had been narrowed down and the risk
+management was already in place (e.g. shipping the URH to ASU). This
+risk has since already been mitigated. The warm compliance for the SMuRF
+system needs to be rechecked, especially because a complete SAT system
+was not shipped to Berkeley and needs to be assembled fully at site. One
+of two ATCA crates (and one of two Vadatech network switches) were thus
+used in lab, with 6 of 7 SMuRF blades. There was one AMC that needed to
+be fixed, and has since been fixed. Additionally, there was discussion
+in choosing a different resistor for the cryocards in the field to
+accommodate UHF detectors operating with such high bias compared to MF
+detectors.</p>
+<h3 id="detector-validation">Detector Validation</h3>
+<figure id="fig:ch4:run5maskingtable">
+<img src="figures/chap4_pics/run5_maskingtable.png"
+style="width:60.0%" />
+<figcaption>SAT-UHF in-lab testing UFM masking configuration. Bias line,
+UHF band, and masked state is shown for both Uv31 (half masked) and Uv8
+(fully masked).</figcaption>
+</figure>
+<p>The detector validation was split by UFM, so each of the two UFMs in
+Run 5 (Uv8 and Uv31) were used to evaluate detector performance and
+design. Note that both of these UFMs were not final deployment sets, and
+were sent back to Princeton afterwards. The final deployment sets of
+UFMs are outlined in Section <a href="#sec:ch4:siteintegration"
+data-reference-type="ref"
+data-reference="sec:ch4:siteintegration">1.5</a>. Each UHF UFM contains
+both 220 (“UHF-1") and 280 GHz (“UHF-2") bands, and the detectors are
+biased along the “bias line" they are connected to. A schematic of how
+bias lines run in an MF UFM is shown in Figure <a
+href="#fig:ch4:run5ufmconfig" data-reference-type="ref"
+data-reference="fig:ch4:run5ufmconfig">1.18</a>, and the bias line
+mapping to frequency band and optical configuration are listed in Figure
+<a href="#fig:ch4:run5maskingtable" data-reference-type="ref"
+data-reference="fig:ch4:run5maskingtable">1.20</a>. Both UFMs were held
+at an operating temperature of 100mK, which satisfied the range
+requirement of <span class="math inline">\(90-110\)</span>mK. Although
+not measured in SAT-UHF, Princeton measured the TES average <span
+class="math inline">\(T_c\)</span> (where <span
+class="math inline">\(T_c\)</span> is the bolometer’s operating
+temperature, see Chapter <a href="#ch:detarrays"
+data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>) to be 165mK (within
+150-170mK requirement), with a dispersion of 2mK (within <span
+class="math inline">\(\leq\)</span>4mK requirement).</p>
+<p>The first set of requirements are related to the full-masked UFM Uv8.
+The UHF detector yield is defined as the number of measured IV curves,
+out of 1756 total possible (and further split by frequency band). Recall
+that there are 1756 SQUID-coupled TESs on these UHF UFMs. The 220 GHz
+(UHF-1) band had 73% detector yield and the 280 GHz (UHF-2) band had 82%
+detector yield, both of which surpassed the <span
+class="math inline">\(&gt;70\%\)</span> yield requirement. Note that
+bias line 11 on the UFM did not work, and was removed from this
+calculation.</p>
+<p>In examining the detector (TES) performance, the measured normal
+resistance of the TES (<span class="math inline">\(R_n\)</span>) was
+8.8m<span class="math inline">\(\Omega\)</span>. All detectors for both
+bands were biased at 50% <span class="math inline">\(R_n\)</span>. The
+TES time constants (i.e. <span class="math inline">\(\tau_{eff}\)</span>
+at 50% <span class="math inline">\(R_n\)</span>) were measured to be
+1.1ms for UHF-1 and 0.73ms for UHF-2, which was higher than the
+requirement (0.20-0.65ms for UHF1 and 0.18-0.57ms for UHF-2), but this
+was expected and consistent with results from previous measurements done
+at Princeton University, who are in charge of UFM screening. The TES
+total noise level (i.e. the NEP at 50% <span
+class="math inline">\(R_n\)</span>) was measured as 32.1 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and 46.9 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span>, which were well within the
+requirement of <span class="math inline">\(&lt;76.0\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and <span
+class="math inline">\(&lt;103.8\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2.</p>
+<p>Finally, the detector design performance was also tested. For UHF-1,
+the TES thermal noise level simply referred to the G noise (see Chapter
+<a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a> - G noise, thermal
+noise, and Johnson noise are all the same thing) which was 13 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and 16 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2, meeting the
+requirements of <span class="math inline">\(&lt;27\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and <span
+class="math inline">\(&lt;30.7\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2. The TES saturation
+power (<span class="math inline">\(P_{sat}\)</span>) was measured to be
+14 pW for UHF-1 and 19.1 pW for UHF-2, with requirements of 16.9-28.10
+pW for UHF-1 and 18.30-30.50 pW for UHF-2. While the <span
+class="math inline">\(P_{sat}\)</span>s are below the range for UHF-1
+and on the lower end of the range for UHF-2, this is consistent with
+Princeton’s non-compliance in their screening and thus not a
+concern.</p>
+<p>The second set of requirements are related to the half-masked UFM
+Uv31. The 220 GHz (UHF-1) band had 77% detector yield and the 280 GHz
+(UHF-2) band had 83% detector yield, both of which surpassed the <span
+class="math inline">\(&gt;70\%\)</span> yield requirement. The optical
+detectors were fully saturated and therefore made it difficult to get an
+optical yield. Thus, it is useful to also look at the detector yield of
+only the masked detectors, which was 76% for UHF-1 and 89% for UHF-2.
+Again not measured in SAT-UHF, but Princeton measured the TES average
+<span class="math inline">\(T_c\)</span> (where <span
+class="math inline">\(T_c\)</span> is the bolometer’s operating
+temperature, see Chapter <a href="#ch:detarrays"
+data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>) to be 174mK (a little
+above 150-170mK requirement but not a concern), with a dispersion of 2mK
+(within <span class="math inline">\(\leq\)</span>4mK requirement).</p>
+<p>In examining the detector (TES) performance, the measured normal
+resistance of the TES (<span class="math inline">\(R_n\)</span>) was
+7.2m<span class="math inline">\(\Omega\)</span>. The masked detectors
+for both bands were biased at 50% <span
+class="math inline">\(R_n\)</span>, but the non-fully masked detectors
+were biased to a range of 40-60% <span
+class="math inline">\(R_n\)</span> during operation. The TES time
+constants (i.e. <span class="math inline">\(\tau_{eff}\)</span> at 50%
+<span class="math inline">\(R_n\)</span>) were measured to be 0.8ms for
+UHF-1 and 0.59ms for UHF-2, which was higher than the requirement
+(0.20-0.65ms for UHF1 and 0.18-0.57ms for UHF-2). Each UFM is divided
+into three rhombuses (A, B, and C), and this tested UFM had different
+fabrication techniques associated with each rhombus since it was
+initially used for screening. (Rhombus A is bias lines 0-3, B is 4-7,
+and C is 8-11). In this detector array, rhombuses A and B had a PdAu
+BLNG (pronounced “bling," see Chapter <a href="#ch:detarrays"
+data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>), and rhombus C did not
+have any BLNG. BLNG is some metal (e.g. gold or palladium) that also
+sits in the bolometer island and often serves to tune/slow time
+constants. Optical time constants also tend to be slower than the
+“natural" time constants <span class="math inline">\(\tau_0\)</span>
+(see Chapter <a href="#ch:detarrays" data-reference-type="ref"
+data-reference="ch:detarrays">[ch:detarrays]</a>), and the optical
+detectors on rhombus C are slower as well. Additionally, the loading
+in-lab of optical detectors is greater than sky loading at site<a
+href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> <span class="citation"
+data-cites="charliethesis">(Charles A. Hill 2020)</span>. These
+pre-deployment numbers were for masked Uv31 detectors on rhombus B, and
+were thus expected to be slower than the requirements. Princeton rhombus
+B numbers are comparable, and consistent with being slower than the
+requirement. The TES total noise level (i.e. the NEP at 50% <span
+class="math inline">\(R_n\)</span>) was measured as 45 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and 49.5 aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2, which was well
+within the requirement of <span class="math inline">\(&lt;76.0\)</span>
+aW/<span class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and <span
+class="math inline">\(&lt;103.8\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2.</p>
+<p>Finally, the detector design performance was also tested. For UHF-1,
+the TES thermal noise level again simply referred to the G noise, which
+was 22 aW/<span class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and
+23 aW/<span class="math inline">\(\sqrt{Hz}\)</span> for UHF-2, meeting
+the requirements of <span class="math inline">\(&lt;27\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-1 and <span
+class="math inline">\(&lt;30.7\)</span> aW/<span
+class="math inline">\(\sqrt{Hz}\)</span> for UHF-2. The TES saturation
+power (<span class="math inline">\(P_{sat}\)</span>) for the masked
+detectors was measured to be 30.1 pW for UHF-1 and 31.4 pW for UHF-2,
+above the requirements of 16.9-28.10 pW for UHF-1 and 18.30-30.50 pW for
+UHF-2. However, this was again expected consistent with Princeton’s
+non-compliance in their screening process for Uv31.</p>
+<p>In summary, we saw good compliance with the requirements overall,
+with any deviations a result of the designs of the UFMs sent of us.
+There was good consistency seen between the tests done in SAT-UHF and
+Princeton’s screening measurements. The main pre-ship risks were that a
+fully populated focal plane with 7 UFMs was not tested as the UFMs were
+not fully ready at that time. We also did not have a complete SMuRF
+system to read out a full focal plane, as mentioned in the readout
+validation subsection. The UFMs we did test were not our final UFMs for
+site, and the high bias voltage/current and high <span
+class="math inline">\(P_{sat}\)</span> will need to be accounted for
+during field operation (also briefly mentioned in the readout validation
+subsection).</p>
+<h3 id="additional-run5-tests">Additional Run5 Tests</h3>
+<p>Since SAT-UHF was the last SAT to ship to Chile, we performed some
+tests for risk mitigation for the other MF SATs already in the field.
+Outlined here are three examples of some of these tests.</p>
+<figure id="fig:ch4:satcovervsnocover">
+<img src="figures/chap4_pics/satcovervsnocover.png" />
+<figcaption>SAT-UHF detector saturation powers for an open window versus
+covered window. Top shows the detector biasing table. Bottom show
+histogram of the detector saturation powers. Masking state, band, and
+median saturation powers are shown in the legend.</figcaption>
+</figure>
+<p>One of the first tests performed was actually initially done out of
+interest, but became relevant for MF SAT risk mitigation. Because the
+UHF detectors have much higher <span
+class="math inline">\(P_{sat}\)</span>s compared with MF detectors, we
+can get optical detectors into their transition by putting a cover on
+the window. MF SATs were unable to perform this test because their
+optical detectors remained saturated in lab, since the sky is much
+colder at site than in the lab <span class="citation"
+data-cites="charliethesis">(Charles A. Hill 2020)</span>. Figure <a
+href="#fig:ch4:satcovervsnocover" data-reference-type="ref"
+data-reference="fig:ch4:satcovervsnocover">1.21</a> shows this ability
+to transition with a window cover very clearly, and is promising for UHF
+detectors performing favorably at the site.</p>
+<figure id="fig:ch4:hfleak">
+<img src="figures/chap4_pics/uv31hfleak.png" />
+<figcaption>SAT-UHF high frequency leaks test setup and results. The
+leftmost column shows the test setup with a chopper and heat source. The
+centermost column shows the signal seen at 2 different chopper
+frequencies as a sanity check. It is clear that the above and below
+plots have different chopper frequencies. The rightmost column shows the
+high pass filter behaviors for the 220 and 280 GHz bands, where high
+pass filter pucks were used for the test at 190 GHz, 270 GHz, and 320
+GHz. Note how all signal is cut with the 320 GHz, implying we did not
+have a blue light leak.</figcaption>
+</figure>
+<figure id="fig:ch4:satrays">
+<img src="figures/chap4_pics/satrays.png" style="width:70.0%" />
+<figcaption>Approximate optical ray traces over SAT cross sectional
+view. Orange boxes show rough placement of Uv8 and Uv31, and where
+expected beam should peak outside the window. Image adapted from <span
+class="citation" data-cites="yamada2023">(Yamada et al.
+2023)</span>.</figcaption>
+</figure>
+<p>Another useful test was to check for high frequency leaks in the
+optical chain. This would rule out any “blue light" leaks that might
+cause our detectors to saturate in the field. The test set up is shown
+in Figure <a href="#fig:ch4:hfleak" data-reference-type="ref"
+data-reference="fig:ch4:hfleak">1.22</a>, where a small 2 inch diameter
+hole was cut into a large aluminum plate with a chopper and heat source.
+Then, small wire grid high-pass filter (HPF) pucks were used at 190,
+270, and 320 GHz cutoffs. The behavior seen was as expected, with 320
+GHz cutting all of the signal from both 220 and 280 GHz band detectors.
+Notice where the two UFMs were placed in a ray diagram <a
+href="#fig:ch4:satrays" data-reference-type="ref"
+data-reference="fig:ch4:satrays">1.23</a>. As a rough sidelobe test, the
+small 2 inch aperture was moved across the diameter of the window to
+make sure no spurious signals were seen both with and without the
+HPFs.</p>
+<p>A simple test performed last was related to starting and stopping the
+CHWP while the SAT was tilted at an observing elevation (we chose <span
+class="math inline">\(50^{\circ}\)</span>) since the in-lab testing must
+be done with the window pointing close to zenith due to the length of
+hoses between the DR gas handling system and the turbo table attachment
+on the side of the SAT. (The site configuration is very different, of
+course.) Thus, once the He3-He4 mixture was collected back into the DR
+gas handling system during the first part of the warm up process and
+only the PTCs were providing cooling power, we could disconnect these
+hoses to perform tilt tests. The CHWP sits at the 40K stage, so only the
+cooling power from the two PTCs (one of which is a part of the DR
+system) is necessary. We tilted the cryostat, and completely turned off
+power to simulate a site power outage which would stop the CHWP
+spinning. Then we turned power back on and started spinning the CHWP at
+the same tilt angle and let it spin stably for <span
+class="math inline">\(&gt; 2\)</span> minutes. Then, we rotated it back
+to zenith while it was spinning and turned it off. The test was a
+success with the CHWP displaying healthy behavior throughout.</p>
+<h2 id="sec:ch4:siteintegration">Chile Site Integration of SAT-UHF</h2>
+<p>This section will briefly cover the complete integration of SAT-UHF
+receiver in Chile. Currently, equipment enclosures are being assembled
+that are required for operating the SAT on the platform. In the coming
+months, SAT-UHF will begin observations once it is placed on the
+platform with the completed enclosures!</p>
+<figure id="fig:ch4:siteintegration1">
+<img src="figures/chap4_pics/siteintegration1.png" />
+<figcaption>Site integration initial installations. (a) Author with
+SAT-UHF when it arrived at site. (b) The PTC insertion set up, with the
+vibration isolation and multi-layer insulation (MLI) around 40K and 4K.
+The angled white shell mates the PTC to the SAT 300K shell. (c) The cart
+to hold the SAT had to be taken apart for shipment, and was rebuilt at
+the site. (d) The BlueFors Dilution Refrigerator unit without external
+shells. (e) The final preparation step of the DR before installation
+into the SAT. Again, the white shell mates the DR to the SAT 300K shell.
+In this picture, it still needs to slide over the MLI directly above it
+before insertion.</figcaption>
+</figure>
+<p>At the Chilean site, the initial goal was to unpack and set up, and
+immediately do a pump down and leak check of the SAT with cryogenic
+components and the site window installed. Some pictures detailing this
+process is shown in Figure <a href="#fig:ch4:siteintegration1"
+data-reference-type="ref"
+data-reference="fig:ch4:siteintegration1">1.24</a>. At the high
+elevation of the site, the air pressure is much lower than at sea level
+during in-lab testing. To accommodate this, the lab testing UHMWPE
+window was 12mm thick, but the site window was 10mm thick. Although the
+site window had been vacuum tested and UCSD, it had not been used at
+site yet. Additionally, all of the o-rings were swapped from the lab
+testing Buna-N material to more weather-resistance Viton. Once the site
+window and o-rings were swapped and the PTC and DR were inserted, the
+pump down process was started. The leak check was successful, and
+integration could continue.</p>
+<figure id="fig:ch4:siteBE1">
+<img src="figures/chap4_pics/siteBEintegration1.png" />
+<figcaption>SAT-UHF backend integration: universal readout harness
+(URH), cold readout assembly (CRA), and optics tube (OT). (a) Benchtop
+preparation of URH. (b) URH after insertion into SAT, but before final
+close up of assembly. (c) OT being craned into the SAT. The 4K magnetic
+shield and 4K-1K truss surrounding the OT and are visible. (d) 4K-1K CRA
+being craned into the SAT. (e) SAT backend during integration. Dilution
+refrigerator is visible with the 100mK shield over just to protect the
+stage during integration. Going from out to in on the optics side, we
+see that the 40K magnetic shield, 4K-1K CRA, and 4K magnetic shield are
+installed. The superconducting magnetic shield is in place for a fit
+check in the picture. Finally, Lens2 is visible, since Lens3 was not
+initially integrated.</figcaption>
+</figure>
+<p>The backend integration will be discussed first, although the
+integration process itself integrated both the front and backend roughly
+at the same time. Refer to Figure <a href="#fig:ch4:siteBE1"
+data-reference-type="ref" data-reference="fig:ch4:siteBE1">1.25</a>. The
+URH was prepared, inserted, and tested in loopback configuration to
+ensure the readout chain and 40K amplifier were not damaged during
+shipment. The optics tube was inserted without Lens3, because there was
+a design error and the lens had cracked during the Run5 cooldown. There
+will be a Lens3 retrofit summer of 2024. For context, Lens3 sits closest
+to the focal plane. Lens2 is visible in <a href="#fig:ch4:siteBE1"
+data-reference-type="ref" data-reference="fig:ch4:siteBE1">1.25</a>(e)
+at the center. The optics tube mates with SAT via a 4K-1K truss that
+isolates the 1K optics from the 4K SAT shell - the truss is visible in
+<a href="#fig:ch4:siteBE1" data-reference-type="ref"
+data-reference="fig:ch4:siteBE1">1.25</a>(c) as it is also used to rig
+the optics tube for craning. Note that the SAT was shipped with the 40K
+magnetic shield attached. The 4K magnetic shield is craned in with the
+optics tube. Finally, the superconducting magnetic shield is installed
+after the 4K-1K and 1K-100mK CRA are craned in. The 1K-100mK CRA was
+craned in the with the 100mK LPE filter and gold plated focal plane
+attached. This can be seen in <a href="#fig:ch4:siteBE2"
+data-reference-type="ref" data-reference="fig:ch4:siteBE2">1.27</a>(a).
+Note that the DR 40K and 4K heat strapping were also complete in that
+picture. Once the readout chain was complete from 100mK to 300K, warm
+CRA and URH loopback testing was completed with all chains and
+amplifiers working well as shown in <a
+href="#fig:ch4:site_craurhperformance" data-reference-type="ref"
+data-reference="fig:ch4:site_craurhperformance">1.26</a>.</p>
+<figure id="fig:ch4:site_craurhperformance">
+<img src="figures/chap4_pics/site_craurhperformance.png"
+style="width:95.0%" />
+<figcaption>SAT-UHF final in-lab cold and warm loopback readout chain
+transmission. All chains were working well. Only difference from the
+in-lab testing was VNA input power was set to -8.0dBm instead of
+0.0dBm.</figcaption>
+</figure>
+<figure id="fig:ch4:siteBE2">
+<img src="figures/chap4_pics/satBEintegration2.png" />
+<figcaption>SAT-UHF backend integration: universal focal plane module
+(UFM) installation and close up. (a) Backend prior to UFM installation.
+Sitting directly behind the focal plane is the 100mK metal mesh filter.
+At this point, the 1K-100mK CRA was fully installed. (b) Full, final
+installation of UFMs on focal plane. (c) Author wiring up readout
+chains. (d) Final close up with all magnetic shield lids, 1K and 100mK
+heat strapping, and housekeeping. </figcaption>
+</figure>
+<p>Then, all 7 UHF UFMs were installed and connected as shown in <a
+href="#fig:ch4:siteBE2" data-reference-type="ref"
+data-reference="fig:ch4:siteBE2">1.27</a>(b). All DC lines were probed
+carefully and checked for shorts to ground several times. A thorough
+grounding and anti-static set up was required for UFM installation,
+which is especially needed for the dry Atacama desert air. All backend
+thermometry for 40 K and 4 K diodes, 1 K and 100 mK ROXs, and any
+heaters (the most important one on the focal plane for temperature
+control) were routed to the housekeeping box and probed out before close
+up. The magnetic shield lids were attached, with heat strapping
+completed intermittently at every temperature stage.</p>
+<figure id="fig:ch4:siteFE">
+<img src="figures/chap4_pics/siteFEintegration1.png" />
+<figcaption>SAT-UHF front end integration. (a) 4K alumina filter
+installation. Multi-layer insulation is partially taped down in the
+picture. (b) Cryogenic half wave plate (CHWP) final installation after
+actuators gripped the sapphire. (c) CHWP before sapphire was gripped
+right after it was craned in. (d) 40K alumina filter installation. (e)
+Radio-transparent multi-layer insulation (RT-MLI) during installation
+prior to MLI tape down. (e) Final RT-MLI installation before window was
+craned on.</figcaption>
+</figure>
+<p>The front end integration (see Figure <a href="#fig:ch4:siteFE"
+data-reference-type="ref" data-reference="fig:ch4:siteFE">1.28</a>)
+involved installation in the following order: 4 K AR-coated alumina
+filter, CHWP, 40 K AR-coated alumina filter, 40K RT-MLI, and the 300 K
+AR-coated UHMWPE window piece (with a small 300 K cylindrical piece that
+extended into the SAT inside). Note that the 40K and 300K DSIR filters
+used in Run4 and Run5 were swapped out for the RT-MLI stack. This was
+because there was an error in the complex and long time-scale DSIR
+fabrication process which created a non-negligible polarization bias
+(instrument polarization) in the optics. RT-MLI has been widely used in
+CMB experiments <span class="citation"
+data-cites="Sobrin_SPT_2022 BICEPupgrade_2018">(Sobrin et al. 2022; Ade
+et al. 2018)</span>, and was a convenient swap for blocking IR radiation
+<span class="citation" data-cites="Choi_2013">(Choi et al. 2013)</span>.
+The RT-MLI currently installed in SAT-UHF is made with a 46mm stack (one
+6 mm thick foam, 22 thin sheets with <span
+class="math inline">\(\sim34\)</span> mm total thickness, and then one 6
+mm thick foam again) of foamed polystyrene, but there are also other
+viable options used in CMB experiments (such as the Zotefoam HD30 used
+by the BICEP team) <span class="citation"
+data-cites="BICEPupgrade_2018">(Ade et al. 2018)</span>.</p>
+<figure id="fig:ch4:siteBE3">
+<img src="figures/chap4_pics/satBEintegration3.png" />
+<figcaption>SAT-UHF final close up pictures. <em>Left</em> post-UFM
+installation group picture featuring this author. Blue anti-static lab
+coats were used as a part of UFM handling. <em>Right</em> is the fully
+integrated SAT before being placed on the platform. The ‘Cosmic Plasma’
+name was given by this author’s third grade pen pal class.</figcaption>
+</figure>
+<p>The final integrated SAT is shown in Figure <a
+href="#fig:ch4:siteBE3" data-reference-type="ref"
+data-reference="fig:ch4:siteBE3">1.29</a>. The image also shows the SAT
+and UFM installation teams (with this author as the commonality between
+the two teams) once the UFMs had been installed, as that was a major
+milestone for the UHF team. The UHF SAT has been named <em>Cosmic
+Plasma</em> by this author’s third grade pen pal class “Courage
+Base"!</p>
+<h2 id="current-status-and-future-developments">Current Status and
+Future Developments</h2>
+<p>SAT-MF1 is currently on the platform at the Chilean site and is on
+track for starting science observations in 2024. Reassembly,
+integration, and testing in a highbay at site was done prior to placing
+the SAT on the platform. SAT systematics testing is currently underway
+prior to full science observation. As described earlier, SAT-MF1 retired
+many site-related risks and enabled the quick integration of SAT-MF2.
+Now that much of the site infrastructure is in place from SAT-MF1
+integration, SAT-MF2 is already on the platform as well. SAT-UHF is
+currently site, preparing to begin full observations summer 2024. The
+final in-lab cooldown was a success and the SAT is fully integrated at
+site. All SATs are thus on track for the 2024 science observations
+goal.</p>
+<p>We reviewed the design, integration, testing and current status of
+the SO SATs, which are currently in a deployment phase. Nominal SO
+deployment will begin full observations in 2024. The SATs will enable
+the high sensitivities needed to search for inflationary signals with
+the target level of <span class="math inline">\(\sigma(r) \approx
+0.003\)</span> over the five year observing period. There are also plans
+to reach for higher sensitivities by adding additional LF and MF SATs in
+the next few years. The LF and UHF SATs will allow foreground cleaning
+for the primary CMB MF SATs, aided by the LAT which will also support
+both delensing and foreground subtraction efforts. Updated forecasting
+and instrument papers are in progress from the collaboration.</p>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-BICEPupgrade_2018" class="csl-entry" role="listitem">
+Ade, Peter A., Zeeshan Ahmed, Randol Aikin, Kate D. Alexander, Denis
+Barkats, Steve J. Benton, Colin A. Bischoff, et al. 2018. <span>“2017
+Upgrade and Performance of BICEP3: A 95GHz Refracting Telescope for
+Degree-Scale CMB Polarization.”</span> In <em>Millimeter, Submillimeter,
+and Far-Infrared Detectors and Instrumentation for Astronomy IX</em>,
+edited by Jonas Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2313854">https://doi.org/10.1117/12.2313854</a>.
+</div>
+<div id="ref-Ali_2020" class="csl-entry" role="listitem">
+Ali, Aamir M., Shunsuke Adachi, Kam Arnold, Peter Ashton, Andrew
+Bazarko, Yuji Chinone, Gabriele Coppi, et al. 2020. <span>“Small
+Aperture Telescopes for the Simons Observatory.”</span> <em>Journal of
+Low Temperature Physics</em> 200 (5-6): 461–71. <a
+href="https://doi.org/10.1007%2Fs10909-020-02430-5">https://doi.org/10.1007%2Fs10909-020-02430-5</a>.
+</div>
+<div id="ref-Choi_2013" class="csl-entry" role="listitem">
+Choi, J., H. Ishitsuka, S. Mima, S. Oguri, K. Takahashi, and O. Tajima.
+2013. <span>“Radio-Transparent Multi-Layer Insulation for Radiowave
+Receivers.”</span> <em>Review of Scientific Instruments</em> 84 (11). <a
+href="https://doi.org/10.1063/1.4827081">https://doi.org/10.1063/1.4827081</a>.
+</div>
+<div id="ref-galitzki2018" class="csl-entry" role="listitem">
+Galitzki, Nicholas, Taylor Baildon, Darcy Barron, Jacob Lashner, Adrian
+T. Lee, Yaqiong Li, Michele Limon, et al. 2018. <span>“The Simons
+Observatory: Instrument Overview.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy <span>IX</span></em>, edited by Jonas Zmuidzinas and Jian-Rong
+Gao. <span>SPIE</span>. <a
+href="https://doi.org/10.1117/12.2312985">https://doi.org/10.1117/12.2312985</a>.
+</div>
+<div id="ref-healythesis" class="csl-entry" role="listitem">
+Healy, Erin E. 2023. <span>“The Universal Focal-Plane Module for Simons
+Observatory.”</span> PhD thesis, Princeton University.
+</div>
+<div id="ref-Healy_2020" class="csl-entry" role="listitem">
+Healy, Erin E., Aamir M. Ali, Kam Arnold, Jason E. Austermann, James A.
+Beall, Sarah Marie Bruno, Steve K. Choi, et al. 2020. <span>“Assembly
+Development for the Simons Observatory Focal Plane Readout
+Module.”</span> In <em>Millimeter, Submillimeter, and Far-Infrared
+Detectors and Instrumentation for Astronomy x</em>, edited by Jonas
+Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2561743">https://doi.org/10.1117/12.2561743</a>.
+</div>
+<div id="ref-Healy_2022" class="csl-entry" role="listitem">
+Healy, Erin, Daniel Dutcher, Zachary Atkins, Jason Austermann, Steve K.
+Choi, Cody J. Duell, Shannon Duff, et al. 2022. <span>“The Simons
+Observatory 220 and 280 <span>GHz</span> Focal-Plane Module: Design and
+Initial Characterization.”</span> <em>Journal of Low Temperature
+Physics</em> 209 (5-6): 815–23. <a
+href="https://doi.org/10.1007/s10909-022-02788-8">https://doi.org/10.1007/s10909-022-02788-8</a>.
+</div>
+<div id="ref-Henderson_2018" class="csl-entry" role="listitem">
+Henderson, Shawn W., Zeeshan Ahmed, David Brown, Saptarshi Chaudhuri,
+Hsiao-Mei Sherry Cho, John M. D’Ewart, Bradley Dober, et al. 2018.
+<span>“Highly-Multiplexed Microwave SQUID Readout Using the SLAC
+Microresonator Radio Frequency (SMuRF) Electronics for Future CMB and
+Sub-Millimeter Surveys.”</span> In <em>Millimeter, Submillimeter, and
+Far-Infrared Detectors and Instrumentation for Astronomy IX</em>, edited
+by Jonas Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2314435">https://doi.org/10.1117/12.2314435</a>.
+</div>
+<div id="ref-Hill_2020" class="csl-entry" role="listitem">
+Hill, C. A., A. Kusaka, P. Ashton, P. Barton, T. Adkins, K. Arnold, B.
+Bixler, et al. 2020. <span>“A Cryogenic Continuously Rotating Half-Wave
+Plate Mechanism for the POLARBEAR-2b Cosmic Microwave Background
+Receiver.”</span> <em>Review of Scientific Instruments</em> 91 (12). <a
+href="https://doi.org/10.1063/5.0029006">https://doi.org/10.1063/5.0029006</a>.
+</div>
+<div id="ref-charliethesis" class="csl-entry" role="listitem">
+Hill, Charles A. 2020. <span>“Sensitivity Simulations and Half-Wave
+Plate Polarization Modulators for Cosmic Microwave Background
+Observatories.”</span> <em>ProQuest Dissertations and Theses</em>. PhD
+thesis. <a
+href="https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2">https://www.proquest.com/dissertations-theses/sensitivity-simulations-half-wave-plate/docview/2510190971/se-2</a>.
+</div>
+<div id="ref-Kiuchi_2020" class="csl-entry" role="listitem">
+Kiuchi, Kenji, Shunsuke Adachi, Aamir M. Ali, Kam Arnold, Peter Ashton,
+Jason E. Austermann, Andrew Bazako, et al. 2020. <span>“The Simons
+Observatory Small Aperture Telescope Overview.”</span> In
+<em>Ground-Based and Airborne Telescopes VIII</em>, edited by Heather K.
+Marshall, Jason Spyromilio, and Tomonori Usuda. SPIE. <a
+href="https://doi.org/10.1117/12.2562016">https://doi.org/10.1117/12.2562016</a>.
+</div>
+<div id="ref-manguTAUP" class="csl-entry" role="listitem">
+Mangu, Aashrita, Lance Corbett, Sanah Bhimani, Fred Carl, Samuel
+Day-Weiss, Brooke DiGia, Josquin Errard, et al. 2023. <span>“The Simons
+Observatory Small Aperture Telescopes: Current Status and Deployment
+Strategy.”</span> <em>Proceedings of Science</em>.
+</div>
+<div id="ref-mccarrick_2021mf" class="csl-entry" role="listitem">
+McCarrick, Heather, Kam Arnold, Zachary Atkins, Jason Austermann, Tanay
+Bhandarkar, Steve K. Choi, Cody J. Duell, et al. 2021. <span>“The 90 and
+150 GHz Universal Focal-Plane Modules for the Simons
+Observatory.”</span> <a
+href="https://arxiv.org/abs/2112.01458">https://arxiv.org/abs/2112.01458</a>.
+</div>
+<div id="ref-McCarrick_2021" class="csl-entry" role="listitem">
+McCarrick, Heather, Erin Healy, Zeeshan Ahmed, Kam Arnold, Zachary
+Atkins, Jason E. Austermann, Tanay Bhandarkar, et al. 2021. <span>“The
+Simons Observatory Microwave SQUID Multiplexing Detector Module
+Design.”</span> <em>The Astrophysical Journal</em> 922 (1): 38. <a
+href="https://doi.org/10.3847/1538-4357/ac2232">https://doi.org/10.3847/1538-4357/ac2232</a>.
+</div>
+<div id="ref-moore2022development" class="csl-entry" role="listitem">
+Moore, Jenna E., Tanay Bhandarkar, Brooke DiGia, Cody Duell, Nicholas
+Galitzki, Justin Mathewson, John Orlowski-Scherer, et al. 2022.
+<span>“Development and Performance of Universal Readout Harnesses for
+the Simons Observatory.”</span> <a
+href="https://arxiv.org/abs/2207.13737">https://arxiv.org/abs/2207.13737</a>.
+</div>
+<div id="ref-gridloader2023" class="csl-entry" role="listitem">
+Murata, Masaaki, Hironobu Nakata, Kengo Iijima, Shunsuke Adachi, Yudai
+Seino, Kenji Kiuchi, Frederick Matsuda, et al. 2023. <span>“The Simons
+Observatory: A Fully Remote Controlled Calibration System with a Sparse
+Wire Grid for Cosmic Microwave Background Telescopes.”</span> <a
+href="https://arxiv.org/abs/2309.02035">https://arxiv.org/abs/2309.02035</a>.
+</div>
+<div id="ref-Rao_2020" class="csl-entry" role="listitem">
+Sathyanarayana Rao, Mayuri, Maximiliano Silva-Feaver, Aamir Ali, Kam
+Arnold, Peter Ashton, Bradley J. Dober, Cody J. Duell, et al. 2020.
+<span>“Simons Observatory Microwave SQUID Multiplexing Readout:
+Cryogenic RF Amplifier and Coaxial Chain Design.”</span> <em>Journal of
+Low Temperature Physics</em> 199 (3–4): 807–16. <a
+href="https://doi.org/10.1007/s10909-020-02429-y">https://doi.org/10.1007/s10909-020-02429-y</a>.
+</div>
+<div id="ref-Sobrin_SPT_2022" class="csl-entry" role="listitem">
+Sobrin, J. A., A. J. Anderson, A. N. Bender, B. A. Benson, D. Dutcher,
+A. Foster, N. Goeckner-Wald, et al. 2022. <span>“The Design and
+Integrated Performance of SPT-3G.”</span> <em>The Astrophysical Journal
+Supplement Series</em> 258 (2): 42. <a
+href="https://doi.org/10.3847/1538-4365/ac374f">https://doi.org/10.3847/1538-4365/ac374f</a>.
+</div>
+<div id="ref-Sugiyama_2024" class="csl-entry" role="listitem">
+Sugiyama, Junna, Tomoki Terasaki, Kana Sakaguri, Bryce Bixler, Yuki
+Sakurai, Kam Arnold, Kevin T. Crowley, et al. 2024. <span>“The Simons
+Observatory: Development and Optical Evaluation of Achromatic Half-Wave
+Plates.”</span> <em>Journal of Low Temperature Physics</em> 214 (3):
+173–81. <a
+href="https://doi.org/10.1007/s10909-023-03036-3">https://doi.org/10.1007/s10909-023-03036-3</a>.
+</div>
+<div id="ref-planck2018_1" class="csl-entry" role="listitem">
+The Planck Collaboration. 2020. <span>“Planck 2018 Results. I. Overview
+and the Cosmological Legacy of Planck.”</span> <em>Astronomy
+<span>&amp;</span> Astrophysics</em> 641: A1. <a
+href="https://doi.org/10.1051%2F0004-6361%2F201833880">https://doi.org/10.1051%2F0004-6361%2F201833880</a>.
+</div>
+<div id="ref-SOscience" class="csl-entry" role="listitem">
+The Simons Observatory Collaboration. 2019. <span>“The Simons
+Observatory: Science Goals and Forecasts.”</span> <em>Journal of
+Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
+href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
+</div>
+<div id="ref-Xu_2020" class="csl-entry" role="listitem">
+Xu, Zhilei ., Tanay Bhandarkar, Gabriele Coppi, Anna Kofman, John
+Orlowski-Scherer, Ningfeng Zhu, Aamir Ali, et al. 2020. <span>“The
+Simons Observatory: The Large Aperture Telescope Receiver (LATR)
+Integration and Validation Results.”</span> In <em>Millimeter,
+Submillimeter, and Far-Infrared Detectors and Instrumentation for
+Astronomy x</em>, edited by Jonas Zmuidzinas and Jian-Rong Gao. SPIE. <a
+href="https://doi.org/10.1117/12.2576151">https://doi.org/10.1117/12.2576151</a>.
+</div>
+<div id="ref-Xu_2021" class="csl-entry" role="listitem">
+Xu, Zhilei, Shunsuke Adachi, Peter Ade, J. A. Beall, Tanay Bhandarkar,
+J. Richard Bond, Grace E. Chesmore, et al. 2021. <span>“The Simons
+Observatory: The Large Aperture Telescope (LAT).”</span> <em>Research
+Notes of the AAS</em> 5 (4): 100. <a
+href="https://doi.org/10.3847/2515-5172/abf9ab">https://doi.org/10.3847/2515-5172/abf9ab</a>.
+</div>
+<div id="ref-yamada2023" class="csl-entry" role="listitem">
+Yamada, K., B. Bixler, Y. Sakurai, P. C. Ashton, J. Sugiyama, K. Arnold,
+J. Begin, et al. 2023. <span>“The Simons Observatory: Cryogenic Half
+Wave Plate Rotation Mechanism for the Small Aperture Telescopes.”</span>
+<a
+href="https://arxiv.org/abs/2309.14803">https://arxiv.org/abs/2309.14803</a>.
+</div>
+<div id="ref-Yu_2023" class="csl-entry" role="listitem">
+Yu, Cyndia, Zeeshan Ahmed, Josef C. Frisch, Shawn W. Henderson, Max
+Silva-Feaver, Kam Arnold, David Brown, et al. 2023.
+<span>“<span>SLAC</span> Microresonator <span>RF</span>
+(<span>SMuRF</span>) Electronics: A Tone-Tracking Readout System for
+Superconducting Microwave Resonator Arrays.”</span> <em>Review of
+Scientific Instruments</em> 94 (1). <a
+href="https://doi.org/10.1063/5.0125084">https://doi.org/10.1063/5.0125084</a>.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>These requirements come from SO SAT loading estimates
+and the associated expected PT420 cold head base temperature for each
+stage.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Any unused resonators, SQUIDs, or TESs in SAT-UHF
+testing were actually previously used during the UFM development process
+to separate e.g. resonator noise from SQUID noise. These different
+measurements help the iterative wafer development process.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Sky temperature can be thought of as an integral of the
+optical depth in the direction the telescope points. Thus, the lower PWV
+at the Chilean observation site contributes to a colder sky (roughly
+<span class="math inline">\(\sim5-30\)</span>K depending on the
+frequency band since higher frequencies tend towards higher sky
+temperatures from the PWV increase - see Figure <a
+href="#fig:ch3:sosite" data-reference-type="ref"
+data-reference="fig:ch3:sosite">[fig:ch3:sosite]</a>). Compare this to
+the the primordial CMB B-mode signal at <span
+class="math inline">\(\sim100\)</span>nK)<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+
+    <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
+      <span><a href="ch3.html">← ch3</a></span>
+      <span><a href="../thesis.html">↑ thesis</a></span>
+      <span><a href="ch5.html">ch5 →</a></span>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
