@@ -24,13 +24,20 @@
   --vermillion:   #C0392B;   /* classic Indian red */
   --peacock:      #1A6B5A;   /* deep teal-green */
 
-  /* Active accent — change this one variable to shift the whole site */
+  /* Active accent — default turmeric (about page) */
   --accent:       var(--turmeric);
 
   /* Type */
   --sans:         'DM Sans', system-ui, sans-serif;
   --mono:         'DM Mono', monospace;
 }
+
+/* ── Per-page accent colors ─────────────── */
+/* about    → turmeric   (default, no override needed) */
+/* research → vermillion */
+/* wiki     → peacock    */
+body.page-research { --accent: var(--vermillion); }
+body.page-wiki     { --accent: var(--peacock); }
 
 /* ── Reset ──────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -164,24 +171,30 @@ p:last-child { margin-bottom: 0; }
 /* ── About / Hero ───────────────────────── */
 #about { padding-top: 5rem; }
 
-/* Photo sits above the name, left-aligned, portrait */
-.hero-photo-wrap {
-  margin-bottom: 2rem;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 3.5rem;
+  align-items: start;
 }
 
+.hero-text { min-width: 0; }
+
 .hero-photo {
-  width: 200px;
-  height: 260px;
+  width: 180px;
+  height: 240px;
   border-radius: 2px;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 10%;
   filter: grayscale(8%);
   display: block;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
 }
 
 .hero-photo-placeholder {
-  width: 200px;
-  height: 260px;
+  width: 180px;
+  height: 240px;
   border-radius: 2px;
   background: var(--rule);
   display: flex;
@@ -409,8 +422,15 @@ footer .container {
 
 /* ── Responsive ─────────────────────────── */
 @media (max-width: 580px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-photo-placeholder { display: none; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo {
+    width: 140px;
+    height: 185px;
+    margin-top: 0;
+    order: -1; /* photo above text on mobile */
+  }
   .nav-links { gap: 1.25rem; }
   footer .container { flex-direction: column; gap: 0.5rem; }
 }
