@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>aashrita mangu</title>
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
   <div id="nav-root"></div>
 
-  <!-- ── About ──────────────────────────── -->
   <section id="about">
     <div class="container">
       <div class="hero-grid">
@@ -21,22 +20,30 @@
           <span class="accent-rule"></span>
 
           <p>
-            <!-- Your bio — one or two sentences.
-                 What do you study? What's the animating question? -->
-          </p>
-          <p>
-            <!-- Optional second paragraph -->
+            I am an experimental physicist interested in using interdisciplinary
+            techniques for cosmological applications. Currently I am primarily
+            working on instrumentation and data analysis for the Simons Observatory,
+            a cosmic microwave experiment located in the Atacama Desert in Chile.
+            When I am not turning screws or grumbling at my computer, I can be found
+            biking, kicking a soccer ball around, or watching terrible reality television.
           </p>
 
-          <div class="contact-row">
-            <a href="mailto:amangu@uchicago.edu">email</a>
-            <!-- a href="https://scholar.google.com" target="_blank">google scholar</a> -->
-            <!-- <a href="/cv.pdf" target="_blank">cv</a> -->
+          <p style="margin-top: 1.25rem;">
+            <span class="eyebrow" style="display:inline; margin:0;">background</span>
+          </p>
+          <p style="margin-top: 0.5rem; line-height: 1.9;">
+            PhD &amp; MA, Physics, University of California, Berkeley<br>
+            BSc, Electrical Engineering, California Institute of Technology
+          </p>
+
+          <div class="contact-row" style="margin-top: 1.75rem; flex-direction: column; gap: 0.25rem; align-items: flex-start;">
+            <span class="contact-plain"><!-- your email, e.g. amangu@uchicago.edu --></span>
+            <span class="contact-plain"><!-- google scholar URL or handle, written out as text --></span>
+            <span class="contact-plain">cv available upon request</span>
           </div>
         </div>
 
-        <!-- swap for: <img class="hero-photo" src="/assets/photo.jpg" alt="aashrita mangu"> -->
-        <div class="hero-photo-placeholder">photo</div>
+        <img class="hero-photo" src="assets/photo.jpg" alt="aashrita mangu">
 
       </div>
     </div>
@@ -49,7 +56,7 @@
     </div>
   </footer>
 
-  <script src="/assets/nav.js"></script>
+  <script src="assets/nav.js"></script>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
