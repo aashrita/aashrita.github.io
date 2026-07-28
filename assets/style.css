@@ -172,16 +172,17 @@ p:last-child { margin-bottom: 0; }
 }
 
 .hero-photo {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 190px;
   border-radius: 2px;
   object-fit: cover;
-  filter: grayscale(15%);
+  object-position: center top;
+  filter: grayscale(10%);
 }
 
 .hero-photo-placeholder {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 190px;
   border-radius: 2px;
   background: var(--rule);
   display: flex;
@@ -215,6 +216,14 @@ p:last-child { margin-bottom: 0; }
 .contact-row a:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.contact-plain {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+  user-select: all; /* lets someone triple-click to copy easily */
 }
 
 /* ── Research cards ─────────────────────── */
