@@ -37,7 +37,8 @@
 /* research → vermillion */
 /* wiki     → peacock    */
 body.page-research { --accent: var(--vermillion); }
-body.page-wiki     { --accent: var(--peacock); }
+body.page-thesis   { --accent: var(--peacock); }
+body.page-wiki     { --accent: var(--turmeric); }
 
 /* ── Reset ──────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
