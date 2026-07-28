@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>research — aashrita mangu</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+  <div id="nav-root"></div>
+
+  <section>
+    <div class="container">
+      <p class="eyebrow">Selected work</p>
+      <h2>research</h2>
+      <span class="accent-rule"></span>
+
+      <p>
+        <!-- Optional: one sentence framing your research program.
+             What is the through-line across your work? -->
+      </p>
+
+      <div class="project-list" style="margin-top: 2.5rem;">
+
+        <!-- ── Project — duplicate this block to add more ── -->
+        <div class="project">
+          <p class="project-meta"><!-- Year · Venue, e.g. 2024 · Nature --></p>
+          <h3>paper or project title</h3>
+          <p>
+            <!-- 2–3 sentences: what problem, what approach, what finding.
+                 Write for a smart reader outside your subfield. -->
+          </p>
+          <div class="project-tags">
+            <span class="tag">topic</span>
+            <span class="tag">topic</span>
+          </div>
+          <div class="project-links">
+            <a href="#">paper →</a>
+            <a href="#">code →</a>
+          </div>
+        </div>
+        <!-- ── end project ── -->
+
+        <div class="project">
+          <p class="project-meta"></p>
+          <h3>paper or project title</h3>
+          <p></p>
+          <div class="project-tags">
+            <span class="tag">topic</span>
+          </div>
+          <div class="project-links">
+            <a href="#">paper →</a>
+          </div>
+        </div>
+
+        <!-- add more by duplicating the block above -->
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="/assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

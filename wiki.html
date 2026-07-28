@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>wiki — aashrita mangu</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+  <div id="nav-root"></div>
+
+  <section>
+    <div class="container">
+      <p class="eyebrow">Public notes</p>
+      <h2>wiki</h2>
+      <span class="accent-rule"></span>
+
+      <p style="margin-bottom: 2.5rem;">
+        <!-- Describe what this wiki is.
+             Example: Working notes from my research — written for my own
+             clarity and shared in case they're useful. Living documents,
+             not finished writing. -->
+      </p>
+
+      <!-- ── Wiki grid ──────────────────── -->
+      <!-- Each card links to a file in the /wiki/ folder.
+           Duplicate a card block to add a note.
+           The label is the category (e.g. methods, theory, readings).
+           Change --accent in style.css to shift the hover color. -->
+
+      <div class="wiki-grid">
+
+        <a class="wiki-card" href="/wiki/note-template.html">
+          <p class="wiki-card-label">category</p>
+          <p class="wiki-card-title">note title</p>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <a class="wiki-card" href="/wiki/note-template.html">
+          <p class="wiki-card-label">category</p>
+          <p class="wiki-card-title">note title</p>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <a class="wiki-card" href="/wiki/note-template.html">
+          <p class="wiki-card-label">category</p>
+          <p class="wiki-card-title">note title</p>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <!-- duplicate above to add more notes -->
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="/assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
