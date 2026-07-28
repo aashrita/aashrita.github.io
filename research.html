@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>research — aashrita mangu</title>
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
@@ -12,49 +12,54 @@
 
   <section>
     <div class="container">
-      <p class="eyebrow">Selected work</p>
+      <p class="eyebrow">Work &amp; contributions</p>
       <h2>research</h2>
       <span class="accent-rule"></span>
 
-      <p>
-        <!-- Optional: one sentence framing your research program.
-             What is the through-line across your work? -->
+      <p style="margin-bottom: 2.5rem;">
+        <!-- Optional: one sentence on your research approach or through-line. -->
       </p>
 
-      <div class="project-list" style="margin-top: 2.5rem;">
+      <!-- ── Project card ──────────────────────────────────────────────
+           Use this for experiments, instruments, analyses, software,
+           fieldwork — anything you've contributed to, published or not.
+           Duplicate the block below to add more.
+      ─────────────────────────────────────────────────────────────── -->
 
-        <!-- ── Project — duplicate this block to add more ── -->
+      <div class="project-list">
+
         <div class="project">
-          <p class="project-meta"><!-- Year · Venue, e.g. 2024 · Nature --></p>
-          <h3>paper or project title</h3>
+          <p class="project-meta">
+            <!-- Collaboration or experiment name, e.g. Simons Observatory -->
+          </p>
+          <h3><!-- Contribution title, e.g. "receiver characterization for LAT" --></h3>
           <p>
-            <!-- 2–3 sentences: what problem, what approach, what finding.
-                 Write for a smart reader outside your subfield. -->
+            <!-- What did you do and why does it matter?
+                 2–3 sentences for a reader outside your subfield.
+                 No publication needed — describe the work itself. -->
           </p>
           <div class="project-tags">
-            <span class="tag">topic</span>
-            <span class="tag">topic</span>
+            <span class="tag"><!-- e.g. instrumentation --></span>
+            <span class="tag"><!-- e.g. CMB --></span>
           </div>
+          <!-- Links are optional — only include if something exists publicly -->
           <div class="project-links">
-            <a href="#">paper →</a>
-            <a href="#">code →</a>
+            <!-- <a href="#">paper →</a> -->
+            <!-- <a href="#">code →</a> -->
+            <!-- <a href="#">talk →</a> -->
           </div>
         </div>
-        <!-- ── end project ── -->
 
         <div class="project">
           <p class="project-meta"></p>
-          <h3>paper or project title</h3>
+          <h3></h3>
           <p></p>
           <div class="project-tags">
-            <span class="tag">topic</span>
-          </div>
-          <div class="project-links">
-            <a href="#">paper →</a>
+            <span class="tag"></span>
           </div>
         </div>
 
-        <!-- add more by duplicating the block above -->
+        <!-- duplicate the block above to add more projects -->
 
       </div>
     </div>
@@ -67,7 +72,7 @@
     </div>
   </footer>
 
-  <script src="/assets/nav.js"></script>
+  <script src="assets/nav.js"></script>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
