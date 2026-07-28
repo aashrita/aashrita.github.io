@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --ink:       #1a1a1a;
+      --ink-soft:  #4a4a4a;
+      --ink-muted: #888;
+      --paper:     #f9f8f5;
+      --rule:      #ddd9d0;
+      --accent:    #2d5be3;      /* a cool, considered blue — not warm clay */
+      --accent-dim:#e8eeff;
+      --mono:      'DM Mono', monospace;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    /* ─── Reset + Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Layout ─────────────────────────────────────────────── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 248, 245, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── Sections ───────────────────────────────────────────── */
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1.25rem;
+    }
+    h1, h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); margin-bottom: 1.25rem; }
+    h2 { font-size: 2rem; margin-bottom: 1.25rem; }
+    h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    p { color: var(--ink-soft); margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── Hero / About ───────────────────────────────────────── */
+    #about {
+      padding-top: 6rem;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 4px;
+      background: var(--rule);
+      object-fit: cover;
+      /* Replace with your photo — remove this comment when done */
+    }
+    .hero-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 4px;
+      background: var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      text-align: center;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .contact-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      color: var(--ink-soft);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .contact-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── Research ───────────────────────────────────────────── */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .project {
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+    .project:hover { border-color: var(--accent); }
+    .project-meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 2px;
+    }
+    .project-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .project-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ─── Wiki ───────────────────────────────────────────────── */
+    .wiki-intro {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+    .wiki-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+    .wiki-card {
+      padding: 1.25rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+    .wiki-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(45,91,227,0.07);
+      text-decoration: none;
+    }
+    .wiki-card-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .wiki-card h3 { margin-bottom: 0.3rem; }
+    .wiki-card p { font-size: 0.875rem; margin: 0; }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-photo-placeholder { display: none; }
+      nav .container { gap: 1rem; }
+      .nav-links { gap: 1.2rem; }
+      footer .container { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <a class="nav-name" href="#about">Your Name</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#wiki">Wiki</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── About ──────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="hero-layout">
+        <div>
+          <p class="eyebrow"><!-- e.g. PhD Candidate · University Name --></p>
+          <h1>Your Name</h1>
+          <p>
+            <!-- One or two sentences: what you study, where, and why it matters.
+                 Example: I study how large language models reason under uncertainty,
+                 with a focus on calibration in low-resource settings. -->
+          </p>
+          <p>
+            <!-- Optionally: a second paragraph — your broader interests,
+                 methods you use, or what drew you to this field. -->
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:you@example.com">Email</a>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+            <a href="/cv.pdf" target="_blank">CV (PDF)</a>
+            <!-- Add or remove links as needed -->
+          </div>
+        </div>
+
+        <!-- Replace with <img class="hero-photo" src="photo.jpg" alt="Your Name"> -->
+        <div class="hero-photo-placeholder">Photo<br>goes here</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research ───────────────────────────────────────────── -->
+  <section id="research">
+    <div class="container">
+      <p class="eyebrow">Selected Work</p>
+      <h2>Research</h2>
+      <p>
+        <!-- Optional framing sentence about your research program
+             or methodology. -->
+      </p>
+
+      <div class="project-list" style="margin-top: 2rem;">
+
+        <!-- ── Project 1 ── -->
+        <div class="project">
+          <p class="project-meta">
+            <!-- Year · Venue (e.g. 2024 · NeurIPS) -->
+          </p>
+          <h3>Paper or Project Title</h3>
+          <p>
+            <!-- One to three sentences describing the contribution,
+                 method, or finding. What problem did you solve?
+                 What does someone take away from this work? -->
+          </p>
+          <div class="project-tags">
+            <span class="tag">Topic A</span>
+            <span class="tag">Topic B</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Paper →</a>
+            <a href="#">Code →</a>
+            <!-- <a href="#">Talk →</a> -->
+          </div>
+        </div>
+
+        <!-- ── Project 2 ── -->
+        <div class="project">
+          <p class="project-meta">
+            <!-- Year · Venue -->
+          </p>
+          <h3>Paper or Project Title</h3>
+          <p>
+            <!-- Description -->
+          </p>
+          <div class="project-tags">
+            <span class="tag">Topic</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Paper →</a>
+          </div>
+        </div>
+
+        <!-- ── Add more projects by duplicating the block above ── -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Wiki ───────────────────────────────────────────────── -->
+  <section id="wiki">
+    <div class="container">
+      <p class="eyebrow">Public Notes</p>
+      <h2>Wiki</h2>
+
+      <div class="wiki-intro">
+        <!--
+          Describe what this wiki is and who it's for.
+          Example: "These are working notes from my research — compiled
+          for my own clarity and shared in case they're useful to others.
+          Treat them as living documents, not finished writing."
+        -->
+      </div>
+
+      <div class="wiki-grid">
+
+        <!-- ── Note card ── -->
+        <a class="wiki-card" href="wiki/topic-one.html">
+          <p class="wiki-card-label">Category <!-- e.g. Methods --></p>
+          <h3>Note Title</h3>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <!-- ── Note card ── -->
+        <a class="wiki-card" href="wiki/topic-two.html">
+          <p class="wiki-card-label">Category</p>
+          <h3>Note Title</h3>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <!-- ── Note card ── -->
+        <a class="wiki-card" href="wiki/topic-three.html">
+          <p class="wiki-card-label">Category</p>
+          <h3>Note Title</h3>
+          <p>One sentence on what this note covers.</p>
+        </a>
+
+        <!-- ── Duplicate cards above to add more notes ── -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <span>© <span id="yr"></span> Your Name</span>
+      <span>Built with GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
