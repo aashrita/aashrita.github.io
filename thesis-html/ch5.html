@@ -195,7 +195,7 @@ Arrays</h1>
 <p><em>Parts of this chapter are adapted from <span class="citation"
 data-cites="manguLF">(Mangu et al. 2024)</span>.</em><br />
 <br />
-In Chapter <span class="math inline">\(\ref{ch:sosat}\)</span>, the
+In Chapter <strong>4</strong>, the
 construction of a small aperture telescope for SO was discussed. In this
 chapter, we focus on what happens after the telescope optics couple to
 the focal plane. This mode of <em>optical coupling</em> is often done
@@ -307,7 +307,7 @@ complicated antenna geometries, and are also often feeds for other
 antennas like the horn antenna. Additionally, double-slot dipole
 antennas (briefly described in Section <span
 class="math inline">\(\ref{sec:ch5:otheroptcouping}\)</span> and Figure
-<span class="math inline">\(\ref{fig:ch5:miscantenna}\)</span>) are an
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.miscantenna</span>) are an
 excellent simulation replacement for a sinuous antenna when narrow-band,
 quick, computationally inexpensive simulations are required to test
 other optical coupling geometries and parameters (e.g. new
@@ -342,7 +342,7 @@ experiments, where the antenna must transfer the radiation to a detector
 plane acts as an effective RF shield for anything sitting behind the
 detector wafer. This additional layer of protection is particularly
 useful for electromagnetically sensitive elements like SQUIDs (see
-Section <span class="math inline">\(\ref{sec:ch5:tesreadout}\)</span>).
+Section <span style="font-style:italic;color:var(--ink-muted);">§ch5.tesreadout</span>).
 Note that CMB instruments usually contain several layers of RF and
 magnetic shielding (see Chapters <span
 class="math inline">\(\ref{ch:so}\)</span> or <span
@@ -389,7 +389,7 @@ frequency, and we often make sure that <span
 class="math inline">\(Re(Z)\)</span> oscillates about some desired
 impedance to couple a microstrip line to, and that <span
 class="math inline">\(Im(Z)\)</span> oscillates about zero. See Figure
-<span class="math inline">\(\ref{fig:ch5:antennaimpedances}\)</span> for
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.antennaimpedances</span> for
 a comparison of the sinuous antenna and double slot dipole impedance
 behavior. For more information on self-complementarity and Babinet’s
 principle, see <span class="citation"
@@ -397,7 +397,7 @@ data-cites="Deschamps1959 Booker1946">(Deschamps 1959; Booker
 1946)</span>.</p></li>
 <li><p><strong>Widening a resonant region increases bandwidth.</strong>
 See e.g. the bow-tie antenna compared to the dipole antenna. See Figure
-<span class="math inline">\(\ref{fig:ch5:miscantenna}\)</span>. The
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.miscantenna</span>. The
 bow-tie antenna broadens the resonant regions of the dipole to make it
 slightly more broadband. However, the bandwidth is limited by the sharp
 current termination at the fin edges. The log-periodic class of antennas
@@ -454,7 +454,7 @@ often used, where <span class="math inline">\(\lambda\)</span> is
 usually the central frequency of the observation bands (see simulation
 set up in Figure <span
 class="math inline">\(\ref{fig:ch5:miscantenna}\)</span>(e)). In Section
-<span class="math inline">\(\ref{sec:ch5:solf}\)</span>, a new backshort
+<span style="font-style:italic;color:var(--ink-muted);">§ch5.solf</span>, a new backshort
 design is discussed to accommodate mechanical requirements for the
 multiplexing hardware. Additionally, the lenslet helps focus the beam
 onto the planar antenna. When a hemispherical lens sits on a rectangular
@@ -976,7 +976,7 @@ simulations done for the planar fabricated design.</figcaption>
 a low-pass filter prototype and convert that to any desired high,
 bandpass, or bandstop filters with simple scalings and transformations.
 The process for this conversion to our bandpass designs is shown in
-Figure <span class="math inline">\(\ref{fig:ch5:filterxform}\)</span>.
+Figure <span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.filterxform</span>.
 The low-pass prototype in Figure <span
 class="math inline">\(\ref{subfig:ch5:filterxform1}\)</span> is used for
 transformations to our desired 3-pole Chebyshev filters<a href="#fn23"
@@ -984,7 +984,7 @@ class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
 because they are normalized (and thus scalable) in impedance and
 frequency. We can start with calculating the input impedance <span
 class="math inline">\(Z_{in}\)</span> to get the power-loss ratio from
-(<span class="math inline">\(\ref{eqn:ch5:plrgen}\)</span>) and then
+(<span style="font-style:italic;color:var(--ink-muted);">Eq. ch5.plrgen</span>) and then
 setting it equal to (<span
 class="math inline">\(\ref{eqn:ch5:plrchebyshev}\)</span>). The allows
 us to then solve for <span class="math inline">\(L, C, R, \text{ and }
@@ -1193,7 +1193,7 @@ highly sensitive device when an appropriate TES material (amongst other
 design choices) is chosen.</p>
 <p>At the bolometer island, the radiation is converted to heat which is
 detected by the TES acting like a superconducting thermometer. As shown
-in Figure <span class="math inline">\(\ref{fig:ch5:tesbasics}\)</span>,
+in Figure <span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.tesbasics</span>,
 the TES is voltage-biased to stabilize the TES. Consider the average
 bias power on the TES for some root-mean-square (RMS) bias voltage <span
 class="math inline">\(V_{bias}\)</span> and bolometer resistance <span
@@ -1211,7 +1211,7 @@ P_{opt}\]</span></p>
 <p>To maintain the TES at its superconducting transition, <span
 class="math inline">\(P_{elec} + P_{opt}\)</span> should remain constant
 at some <span class="math inline">\(P_{tot}\)</span>. As shown in Figure
-<span class="math inline">\(\ref{fig:ch5:tesbasics}\)</span>, when
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.tesbasics</span>, when
 optical power <span class="math inline">\(P_{opt}\)</span> (e.g. from a
 CMB photon) increases, this increases the temperature of the bolometer
 island, which in turn increases the bolometer resistance. Increasing the
@@ -1222,7 +1222,7 @@ the powers to be constant. This inherent stability via
 enables highly sensitive and responsive detectors.</p>
 <p>TES detectors are biased into their superconducting transition (or
 “critical") temperature <span class="math inline">\(T_C\)</span> (see
-Figure <span class="math inline">\(\ref{fig:ch5:tesbasics}\)</span>). We
+Figure <span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.tesbasics</span>). We
 define <span class="math inline">\(C = dE/dT\)</span> as the dynamical
 heat capacity, <span class="math inline">\(\bar{G}\)</span> as the
 average thermal conductance of the thermal link, and <span
@@ -1268,7 +1268,7 @@ C\delta T_{bolo}e^{i\omega t} \nonumber \\
 class="math inline">\(P_{tot} = P_{opt, 0} + P_{elec, 0}\)</span> in the
 last line. Normally, the TES is biased such that <span
 class="math inline">\(P_{tot} = P_{sat}\)</span>. As shown in Figure
-<span class="math inline">\(\ref{fig:ch5:tesbasics}\)</span>, the TES is
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.tesbasics</span>, the TES is
 <em>saturated</em> if <span class="math inline">\(T_{bolo} &gt;
 T_C\)</span> and thus <span class="math inline">\(P_{tot} &gt;
 P_{sat}\)</span>. Usually the term saturation implies detectors that see
@@ -1391,7 +1391,7 @@ usually tuned by changing the leg length while keep the width and cross
 sectional area constant.) Thus, the length of the thin bolometer legs
 determine <span class="math inline">\(G\)</span>, or how weakly linked
 the bolometer island is to the bath. The readout design (see Section
-<span class="math inline">\(\ref{sec:ch5:tesreadout}\)</span>)
+<span style="font-style:italic;color:var(--ink-muted);">§ch5.tesreadout</span>)
 determines the resistance of the TES, because this involves readout
 noise considerations (see topics on NEP in Section <span
 class="math inline">\(\ref{sec:ch3:sensitivity}\)</span> and the next
@@ -1423,7 +1423,7 @@ noise starts affecting the large angular scales.</p>
 <h3 data-number="5.4.2" id="detector-noise"><span
 class="header-section-number">5.4.2</span> Detector Noise</h3>
 <p>Here, we return to the discussion of noise equivalent power (NEP)
-from Chapter <span class="math inline">\(\ref{ch:so}\)</span>. Recall
+from Chapter <strong>3</strong>. Recall
 that NEP is defined as the incident power of the signal required to get
 a signal to noise ratio of 1 in 1 Hz of bandwidth <span class="citation"
 data-cites="richardsbolometers1994">(<span>“Bolometers for Infrared and
@@ -1472,7 +1472,7 @@ where <span class="math inline">\(V_{bias} =
 class="math inline">\(S_I\)</span>. Often, small <span
 class="math inline">\(R_{bolo}\)</span> is desirable to minimize readout
 NEP. In fact, for microwave multiplexing systems as in SO (see Section
-<span class="math inline">\(\ref{sec:ch5:tesreadout}\)</span>), <span
+<span style="font-style:italic;color:var(--ink-muted);">§ch5.tesreadout</span>), <span
 class="math inline">\(R_{bolo} \simeq 8m\Omega\)</span> which is very
 low and requires tight controlling of electronics<a href="#fn29"
 class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>
@@ -1606,7 +1606,7 @@ from <span class="citation" data-cites="Bender_2014">(Bender et al.
 class="header-section-number">5.5.2</span> Time Domain Multiplexing</h3>
 <p>Time domain multiplexing (TDM) has been used by the ACT and
 BICEP/Keck Array collaborations, and will be used in CMB-S4. See Figure
-<span class="math inline">\(\ref{fig:ch5:tdm}\)</span> for a
+<span style="font-style:italic;color:var(--ink-muted);">Fig. ch5.tdm</span> for a
 NIST-designed TDM multiplexing chip design. The highest multiplexing
 factor used in the field for TDM is by the Q&amp;U Bolometric
 Interferometer for Cosmology (QUBIC), with a <span
@@ -1797,7 +1797,7 @@ backshort*</td>
 performs better by <span
 class="math inline">\(\sim\)</span>1%.</span></p>
 <p>The pixel design was optimized using ANSYS HFSS simulations. As shown
-in Figure <span class="math inline">\(\ref{fig1}\)</span>, the geometry
+in Figure <span style="font-style:italic;color:var(--ink-muted);">fig1</span>, the geometry
 consists of a hemispherical lenslet with AR coating, the device and
 extension wafer, and the copper backshort. A new AR coating material
 using borosilicate glass was used and compared to traditional epoxy
@@ -1867,7 +1867,7 @@ with respect to a fixed lenslet radius. The final optimized L/R ratio
 was 0.43.</p>
 <p>The conclusion of these optimizations was that the swiss cheese
 backshort performs better or comparably to a standard flat backshort
-(see Figure <span class="math inline">\(\ref{fig4}\)</span>(a)). A
+(see Figure <span style="font-style:italic;color:var(--ink-muted);">fig4</span>(a)). A
 summary of final design values used are listed in Table <span
 class="math inline">\(\ref{tab1}\)</span>.</p>
 <h3 data-number="5.6.2" id="sec3"><span
