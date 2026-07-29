@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>note title — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body class="page-wiki">
+
+  <div id="nav-root"></div>
+
+  <section>
+    <div class="container">
+
+      <p class="eyebrow">
+        category &nbsp;·&nbsp; last updated: month year
+      </p>
+      <h2>note title</h2>
+      <span class="accent-rule"></span>
+
+      <div class="note-body">
+
+        <!-- Write your note here in plain HTML.
+             Use the components below as needed — keep or delete. -->
+
+        <p>
+          <!-- Overview: what is this, why does it matter? -->
+        </p>
+
+        <!-- Callout — key insight, definition, or caveat -->
+        <div class="callout">
+          <!-- e.g. "This is a working note. Treat it as a draft." -->
+        </div>
+
+        <h2>section heading</h2>
+        <p><!-- Body text --></p>
+        <ul>
+          <li><!-- point --></li>
+          <li><!-- point --></li>
+        </ul>
+
+        <h2>another section</h2>
+        <p><!-- Duplicate h2 + p blocks freely to extend the note. --></p>
+
+        <!-- Code block (uncomment when needed)
+        <pre><code>paste code here</code></pre>
+        -->
+
+        <h2>references</h2>
+        <ul>
+          <li><a href="#">Author (Year). Title. Venue.</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
