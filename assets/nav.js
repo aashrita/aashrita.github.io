@@ -2,8 +2,15 @@
    To add a nav item: edit the `links` array below only.
 */
 (function () {
-  const depth = window.location.pathname.split('/').length - 2;
-  const root  = depth > 1 ? '../' : '';
+  // Count how many folders deep we are.
+  // /index.html          → depth 0 → root = ''
+  // /thesis-html/ch1.html → depth 1 → root = '../'
+  // /wiki/note.html       → depth 1 → root = '../'
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  // parts for /thesis-html/ch1.html = ['thesis-html', 'ch1.html'] → length 2
+  // folder depth = parts.length - 1 (subtract the filename itself)
+  const folderDepth = parts.length > 1 ? parts.length - 1 : 0;
+  const root = '../'.repeat(folderDepth);
 
   const links = [
     { label: "about",    href: root + "index.html" },
@@ -20,7 +27,8 @@
         <a class="nav-name" href="${root}index.html">aashrita mangu</a>
         <ul class="nav-links">
           ${links.map(l => {
-            const isActive = current.endsWith(l.label === 'about' ? 'index.html' : l.label + '.html')
+            const check = l.label === 'about' ? 'index.html' : l.label + '.html';
+            const isActive = current.endsWith(check)
                           || (current.endsWith('/') && l.label === 'about');
             return `<li><a href="${l.href}"${isActive ? ' class="active"' : ''}>${l.label}</a></li>`;
           }).join('')}
