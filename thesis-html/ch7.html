@@ -5,28 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>conclusion — aashrita mangu</title>
   <link rel="stylesheet" href="../assets/style.css" />
-  <!-- MathJax for LaTeX equations -->
-  <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['\\(', '\\)']],
-      displayMath: [['\\[', '\\]']],
-      tags: 'ams',
-      packages: {'[+]': ['ams']}
-    },
-    options: {
-      skipHtmlTags: ['script','noscript','style','textarea','pre']
-    }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
   <style>
     .thesis-wrap {
       max-width: 700px;
       padding: 4rem 2rem 6rem;
       margin: 0 auto;
     }
-
     .chapter-nav {
       display: flex;
       justify-content: space-between;
@@ -41,7 +26,6 @@
     .chapter-nav a { color: var(--accent); text-decoration: none; }
     .chapter-nav a:hover { text-decoration: underline; }
 
-    /* Body text */
     .thesis-wrap p {
       color: var(--ink-soft);
       font-size: 0.95rem;
@@ -57,6 +41,8 @@
       text-transform: lowercase;
       color: var(--ink);
     }
+    /* Hide pandoc section numbers */
+    .thesis-wrap .header-section-number { display: none; }
     .thesis-wrap h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -64,7 +50,6 @@
       margin-bottom: 0.6rem;
       text-transform: lowercase;
       color: var(--ink);
-      letter-spacing: 0;
     }
     .thesis-wrap h3 {
       font-size: 0.95rem;
@@ -74,23 +59,25 @@
       color: var(--ink);
       text-transform: lowercase;
     }
-
-
-    /* ── Improved figure layout ── */
+    .thesis-wrap h4 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: 1.25rem;
+      margin-bottom: 0.3rem;
+      color: var(--ink-soft);
+    }
+    /* Figures */
     .thesis-wrap figure {
       margin: 2.5rem auto;
       text-align: center;
       max-width: 100%;
     }
-
-    /* Subfigure grids — pandoc wraps these in nested figures */
     .thesis-wrap figure > figure {
       display: inline-block;
       vertical-align: top;
       margin: 0.5rem;
       max-width: 48%;
     }
-
     .thesis-wrap figure img {
       max-width: 100%;
       height: auto;
@@ -98,7 +85,6 @@
       display: block;
       margin: 0 auto;
     }
-
     .thesis-wrap figcaption {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -110,10 +96,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
-    /* Figure numbers bold */
-    .thesis-wrap figcaption strong { color: var(--ink-soft); }
-
     /* Tables */
     .thesis-wrap table {
       width: 100%;
@@ -131,31 +113,18 @@
       border-top: 1px solid var(--rule);
       padding: 0.5rem 0.75rem;
       text-align: left;
-      white-space: nowrap;
     }
     .thesis-wrap td {
       border-bottom: 1px solid var(--rule);
       padding: 0.4rem 0.75rem;
     }
-
-    /* Math display breathing room */
+    /* Math */
     .thesis-wrap .math.display {
       overflow-x: auto;
       margin: 1.75rem 0;
       padding: 0.5rem 0;
       text-align: center;
     }
-    .thesis-wrap .math.inline { font-size: 0.95em; }
-
-    /* Block quotes / epigraphs */
-    .thesis-wrap blockquote {
-      border-left: 2px solid var(--accent);
-      padding: 0.5rem 1.25rem;
-      margin: 1.5rem 0;
-      color: var(--ink-muted);
-      font-style: italic;
-    }
-
     /* Lists */
     .thesis-wrap ul, .thesis-wrap ol {
       color: var(--ink-soft);
@@ -163,18 +132,10 @@
       margin-bottom: 1rem;
       line-height: 1.8;
     }
-
-    /* Footnotes */
-    .thesis-wrap .footnotes {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-      font-size: 0.8rem;
-      color: var(--ink-muted);
-    }
-    .thesis-wrap .footnotes ol { font-size: 0.8rem; }
-
-    /* Bibliography entries */
+    /* Citations */
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.9em; }
+    .thesis-wrap .citation a { color: var(--accent); }
+    /* Bibliography */
     .thesis-wrap .csl-bib-body { font-size: 0.85rem; line-height: 1.7; }
     .thesis-wrap .csl-entry {
       color: var(--ink-soft);
@@ -183,40 +144,32 @@
       text-indent: -1.75rem;
     }
     .thesis-wrap .csl-entry a { color: var(--accent); word-break: break-all; }
-
-    /* Citations inline */
-    .thesis-wrap .citation { color: var(--accent); font-size: 0.9em; }
-    .thesis-wrap .citation a { color: var(--accent); }
-
-    /* Code/verbatim */
-    .thesis-wrap pre, .thesis-wrap code {
-      font-family: var(--mono);
-      font-size: 0.82em;
-      background: #f5f5f7;
-      border-radius: 2px;
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
     }
-    .thesis-wrap pre {
-      padding: 1rem 1.25rem;
-      overflow-x: auto;
-      margin: 1rem 0;
+    .thesis-wrap blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 0.5rem 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--ink-muted);
+      font-style: italic;
     }
-
   </style>
 </head>
 <body class="page-thesis">
-
   <div id="nav-root"></div>
-
   <div class="thesis-wrap">
-
     <div class="chapter-nav">
       <span><a href="ch6.html">← ch6</a></span>
       <span><a href="../thesis.html">↑ thesis</a></span>
       <span><a href="bibliography.html">bibliography →</a></span>
     </div>
-
     <span class="accent-rule"></span>
-
 <h1 id="ch:conclusion">Conclusion</h1>
 <p>Modern CMB experiments such as the Simons Observatory (SO) and CMB-S4
 aim to investigate models of early universe inflation, constrain the sum
@@ -249,22 +202,18 @@ time to be a part of the CMB community, and SO will be starting full
 science observations soon with much exciting development happening with
 upcoming experiments like CMB-S4!</p>
 
-
     <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
       <span><a href="ch6.html">← ch6</a></span>
       <span><a href="../thesis.html">↑ thesis</a></span>
       <span><a href="bibliography.html">bibliography →</a></span>
     </div>
-
   </div>
-
   <footer>
     <div class="container">
       <span>aashrita mangu</span>
       <span id="yr"></span>
     </div>
   </footer>
-
   <script src="../assets/nav.js"></script>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>

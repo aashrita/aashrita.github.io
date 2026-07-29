@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>the cosmic microwave background — aashrita mangu</title>
   <link rel="stylesheet" href="../assets/style.css" />
-  <!-- MathJax for LaTeX equations -->
   <script>
   MathJax = {
     tex: {
       inlineMath: [['\\(', '\\)']],
       displayMath: [['\\[', '\\]']],
       tags: 'ams',
+      macros: {
+        Bar: ['\\overline{#1}', 1],
+        Vec: ['\\vec{#1}', 1],
+        uvect: ['\\boldsymbol{\\hat{#1}}', 1],
+        vect: ['\\mathbf{#1}', 1]
+      },
       packages: {'[+]': ['ams']}
     },
     options: {
@@ -26,7 +31,6 @@
       padding: 4rem 2rem 6rem;
       margin: 0 auto;
     }
-
     .chapter-nav {
       display: flex;
       justify-content: space-between;
@@ -41,7 +45,6 @@
     .chapter-nav a { color: var(--accent); text-decoration: none; }
     .chapter-nav a:hover { text-decoration: underline; }
 
-    /* Body text */
     .thesis-wrap p {
       color: var(--ink-soft);
       font-size: 0.95rem;
@@ -57,6 +60,8 @@
       text-transform: lowercase;
       color: var(--ink);
     }
+    /* Hide pandoc section numbers */
+    .thesis-wrap .header-section-number { display: none; }
     .thesis-wrap h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -64,7 +69,6 @@
       margin-bottom: 0.6rem;
       text-transform: lowercase;
       color: var(--ink);
-      letter-spacing: 0;
     }
     .thesis-wrap h3 {
       font-size: 0.95rem;
@@ -74,23 +78,25 @@
       color: var(--ink);
       text-transform: lowercase;
     }
-
-
-    /* ── Improved figure layout ── */
+    .thesis-wrap h4 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: 1.25rem;
+      margin-bottom: 0.3rem;
+      color: var(--ink-soft);
+    }
+    /* Figures */
     .thesis-wrap figure {
       margin: 2.5rem auto;
       text-align: center;
       max-width: 100%;
     }
-
-    /* Subfigure grids — pandoc wraps these in nested figures */
     .thesis-wrap figure > figure {
       display: inline-block;
       vertical-align: top;
       margin: 0.5rem;
       max-width: 48%;
     }
-
     .thesis-wrap figure img {
       max-width: 100%;
       height: auto;
@@ -98,7 +104,6 @@
       display: block;
       margin: 0 auto;
     }
-
     .thesis-wrap figcaption {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -110,10 +115,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
-    /* Figure numbers bold */
-    .thesis-wrap figcaption strong { color: var(--ink-soft); }
-
     /* Tables */
     .thesis-wrap table {
       width: 100%;
@@ -131,31 +132,18 @@
       border-top: 1px solid var(--rule);
       padding: 0.5rem 0.75rem;
       text-align: left;
-      white-space: nowrap;
     }
     .thesis-wrap td {
       border-bottom: 1px solid var(--rule);
       padding: 0.4rem 0.75rem;
     }
-
-    /* Math display breathing room */
+    /* Math */
     .thesis-wrap .math.display {
       overflow-x: auto;
       margin: 1.75rem 0;
       padding: 0.5rem 0;
       text-align: center;
     }
-    .thesis-wrap .math.inline { font-size: 0.95em; }
-
-    /* Block quotes / epigraphs */
-    .thesis-wrap blockquote {
-      border-left: 2px solid var(--accent);
-      padding: 0.5rem 1.25rem;
-      margin: 1.5rem 0;
-      color: var(--ink-muted);
-      font-style: italic;
-    }
-
     /* Lists */
     .thesis-wrap ul, .thesis-wrap ol {
       color: var(--ink-soft);
@@ -163,18 +151,10 @@
       margin-bottom: 1rem;
       line-height: 1.8;
     }
-
-    /* Footnotes */
-    .thesis-wrap .footnotes {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-      font-size: 0.8rem;
-      color: var(--ink-muted);
-    }
-    .thesis-wrap .footnotes ol { font-size: 0.8rem; }
-
-    /* Bibliography entries */
+    /* Citations */
+    .thesis-wrap .citation { color: var(--accent); font-size: 0.9em; }
+    .thesis-wrap .citation a { color: var(--accent); }
+    /* Bibliography */
     .thesis-wrap .csl-bib-body { font-size: 0.85rem; line-height: 1.7; }
     .thesis-wrap .csl-entry {
       color: var(--ink-soft);
@@ -183,41 +163,35 @@
       text-indent: -1.75rem;
     }
     .thesis-wrap .csl-entry a { color: var(--accent); word-break: break-all; }
-
-    /* Citations inline */
-    .thesis-wrap .citation { color: var(--accent); font-size: 0.9em; }
-    .thesis-wrap .citation a { color: var(--accent); }
-
-    /* Code/verbatim */
-    .thesis-wrap pre, .thesis-wrap code {
-      font-family: var(--mono);
-      font-size: 0.82em;
-      background: #f5f5f7;
-      border-radius: 2px;
+    /* Footnotes */
+    .thesis-wrap .footnotes {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--ink-muted);
     }
-    .thesis-wrap pre {
-      padding: 1rem 1.25rem;
-      overflow-x: auto;
-      margin: 1rem 0;
+    .thesis-wrap blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 0.5rem 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--ink-muted);
+      font-style: italic;
     }
-
   </style>
 </head>
 <body class="page-thesis">
-
   <div id="nav-root"></div>
-
   <div class="thesis-wrap">
-
     <div class="chapter-nav">
       <span><a href="ch1.html">← ch1</a></span>
       <span><a href="../thesis.html">↑ thesis</a></span>
       <span><a href="ch3.html">ch3 →</a></span>
     </div>
-
     <span class="accent-rule"></span>
-
-<h1 id="ch:cmb">The Cosmic Microwave Background</h1>
+<h1 data-number="2" id="ch:cmb"><span
+class="header-section-number">2</span> The Cosmic Microwave
+Background</h1>
 <p>The cosmic microwave background (CMB) is the oldest light in the
 universe and a powerful probe of cosmic history. Characterization of the
 CMB combined with ancillary data has led to the establishment of the
@@ -228,7 +202,7 @@ Experiments like the Simons Observatory (SO) and CMB-Stage 4 (CMB-S4)
 are attempting to find evidence for inflation, a superluminal expansion
 of space-time soon after the universe began <span class="citation"
 data-cites="SOscience cmbs4science">(The Simons Observatory
-Collaboration 2019; Abazajian et al. 2016)</span>. A definitive
+Collaboration 2019; K. N. Abazajian et al. 2016)</span>. A definitive
 measurement of <em>r</em>, the tensor-to-scalar ratio of CMB
 polarization, would provide an energy scale for inflation, solve issues
 in <span class="math inline">\(\Lambda\)</span>CDM, and usher in a new
@@ -245,40 +219,38 @@ rest of this thesis. While this chapter is a review of some key
 discoveries, more thorough explanations can be found in any good
 cosmology textbook (e.g. Modern Cosmology <span class="citation"
 data-cites="dodelson2020modern">(Dodelson and Schmidt 2020)</span>), the
-CMB-S4 Science Book <span class="citation"
-data-cites="cmbs4science">(Abazajian et al. 2016)</span>, the Particle
-Data Group reviews <span class="citation" data-cites="PDG">(Group et al.
-2020)</span>, or any <em>Planck</em> or <em>WMAP</em> papers (e.g. <span
-class="citation" data-cites="planck2018_1 wmap_2009">(The Planck
-Collaboration 2020a; Hinshaw et al. 2009)</span>). Throughout this
-chapter, we will set <span class="math inline">\(c = \hbar =
-1\)</span>.</p>
-<h2 id="the-expanding-universe">The Expanding Universe</h2>
-<p>In Chapter <a href="#ch:intro" data-reference-type="ref"
-data-reference="ch:intro">[ch:intro]</a>, the Big Bang paradigm was
-briefly discussed. The early universe was a hot, dense, highly energetic
-environment. Thus, its constituents (consisting of a <em>primordial
-plasma</em>) were in thermal equilibrium. As the universe expanded, this
-plasma cooled below some nuclear binding energies (<span
-class="math inline">\(T\lesssim1\)</span> MeV) until eventually light
-elements could form. Once this process known as <em>Big Bang
-Nucleosynthesis</em> (BBN) was complete, the universe cooled further
-until Compton scattering became inefficient (see <span class="citation"
-data-cites="cyburt_bbn">(Cyburt et al. 2016)</span> for more details on
-BBN). Thus, photons <em>decoupled</em> from the electrons and baryons
-around <span class="math inline">\(T\lesssim1\)</span> eV. This period
-of <em>recombination</em> where neutral hydrogen could form released the
+CMB-S4 Science Book <span class="citation" data-cites="cmbs4science">(K.
+N. Abazajian et al. 2016)</span>, the Particle Data Group reviews <span
+class="citation" data-cites="PDG">(Group et al. 2020)</span>, or any
+<em>Planck</em> or <em>WMAP</em> papers (e.g. <span class="citation"
+data-cites="planck2018_1 wmap_2009">(The Planck Collaboration 2020a;
+Hinshaw et al. 2009)</span>). Throughout this chapter, we will set <span
+class="math inline">\(c = \hbar = 1\)</span>.</p>
+<h2 data-number="2.1" id="the-expanding-universe"><span
+class="header-section-number">2.1</span> The Expanding Universe</h2>
+<p>In Chapter <span class="math inline">\(\ref{ch:intro}\)</span>, the
+Big Bang paradigm was briefly discussed. The early universe was a hot,
+dense, highly energetic environment. Thus, its constituents (consisting
+of a <em>primordial plasma</em>) were in thermal equilibrium. As the
+universe expanded, this plasma cooled below some nuclear binding
+energies (<span class="math inline">\(T\lesssim1\)</span> MeV) until
+eventually light elements could form. Once this process known as <em>Big
+Bang Nucleosynthesis</em> (BBN) was complete, the universe cooled
+further until Compton scattering became inefficient (see <span
+class="citation" data-cites="cyburt_bbn">(Cyburt et al. 2016)</span> for
+more details on BBN). Thus, photons <em>decoupled</em> from the
+electrons and baryons around <span
+class="math inline">\(T\lesssim1\)</span> eV. This period of
+<em>recombination</em> where neutral hydrogen could form released the
 decoupled CMB photons to <em>free stream</em> to us today. The CMB is
-described amazingly well by a blackbody spectrum (see Figure <a
-href="#fig:ch1:cmb_blackbody" data-reference-type="ref"
-data-reference="fig:ch1:cmb_blackbody">[fig:ch1:cmb_blackbody]</a>) with
-the best estimate of the CMB temperature as: <span
-class="math inline">\(T = 2.7255 \pm 0.0006\)</span>K, as measured by
-the <em>COBE</em> satellite <span class="citation"
-data-cites="cobe1992">(Efstathiou, Bond, and White 1992)</span>. Note
-that the universe today is largely composed of diffuse, ionized gas and
-so a period of <em>reionization</em> must have occurred later in
-time.</p>
+described amazingly well by a blackbody spectrum (see Figure <span
+class="math inline">\(\ref{fig:ch1:cmb_blackbody}\)</span>) with the
+best estimate of the CMB temperature as: <span class="math inline">\(T =
+2.7255 \pm 0.0006\)</span>K, as measured by the <em>COBE</em> satellite
+<span class="citation" data-cites="cobe1992">(Efstathiou, Bond, and
+White 1992)</span>. Note that the universe today is largely composed of
+diffuse, ionized gas and so a period of <em>reionization</em> must have
+occurred later in time.</p>
 <p>The current most compelling mathematical framework of the universe is
 encompassed in the <span class="math inline">\(\Lambda\)</span>CDM model
 (often referred to as the “standard model" of cosmology). This model
@@ -303,9 +275,9 @@ theory, which aims to tackle key issues within <span
 class="math inline">\(\Lambda\)</span>CDM. This theory postulates a
 superluminal, quasi-exponential expansion roughly <span
 class="math inline">\(10^{-35}\)</span> seconds after the universe
-began. See Section <a href="#sec:ch2:inflation"
-data-reference-type="ref" data-reference="sec:ch2:inflation">1.3</a> for
-a more detailed treatment of inflation.</p>
+began. See Section <span
+class="math inline">\(\ref{sec:ch2:inflation}\)</span> for a more
+detailed treatment of inflation.</p>
 <p>The most basic assumption of <span
 class="math inline">\(\Lambda\)</span>CDM is that the universe is
 homogeneous and isotropic on the largest scales (order <span
@@ -322,14 +294,14 @@ universe <span class="citation" data-cites="rydenintrocosmology">(Ryden
 perturbation theory starting with the basic homogeneity and isotropy
 assumption. (Gravitational lensing of the CMB delves into the non-linear
 power spectrum since we start dealing with the effects of LSS on the CMB
-photons. See Section <a href="#sec:ch2:foregrounds"
-data-reference-type="ref" data-reference="sec:ch2:foregrounds">1.7</a>
-for more information on gravitational lensing.) However, as we start
-looking at smaller scales, we start to deviate into a non-linear regime
-where linear perturbation theory breaks down. Gravity pockets cause
-large local density contrasts, thereby violating our assumptions of
-small deviations from isotropy and homogeneity. These inhomogeneities in
-the universe imply structure formation.</p>
+photons. See Section <span
+class="math inline">\(\ref{sec:ch2:foregrounds}\)</span> for more
+information on gravitational lensing.) However, as we start looking at
+smaller scales, we start to deviate into a non-linear regime where
+linear perturbation theory breaks down. Gravity pockets cause large
+local density contrasts, thereby violating our assumptions of small
+deviations from isotropy and homogeneity. These inhomogeneities in the
+universe imply structure formation.</p>
 <figure id="fig:ch2:cosmic_expansion">
 <figure id="subfig:ch2:cosmicdistances">
 <img src="figures/chap2_pics/cosmicdistances.png" />
@@ -339,11 +311,10 @@ the universe imply structure formation.</p>
 <img src="figures/chap2_pics/expansion1.png" />
 <figcaption aria-hidden="true"></figcaption>
 </figure>
-<figcaption>Expansion of the universe. Figure <a
-href="#subfig:ch2:cosmicdistances" data-reference-type="ref"
-data-reference="subfig:ch2:cosmicdistances">1.1</a> illustrates cosmic
-distances described in the text over a comoving grid. In the current
-standard model of cosmology, the comoving distance <span
+<figcaption>Expansion of the universe. Figure <span
+class="math inline">\(\ref{subfig:ch2:cosmicdistances}\)</span>
+illustrates cosmic distances described in the text over a comoving grid.
+In the current standard model of cosmology, the comoving distance <span
 class="math inline">\(\chi(t)\)</span> stays constant as the universe
 expands. The scale factor <span class="math inline">\(a(t)\)</span>
 accounts for the expanding spacetime such that a physical distance <span
@@ -353,12 +324,11 @@ have the same comoving distance but larger physical distance due to
 expansion as shown in the figure. Similarly, a wavelength <span
 class="math inline">\(\lambda\)</span> stretches with spacetime which is
 a redshift proportional again to the scale factor <span
-class="math inline">\(a(t)\)</span>. Figure <a
-href="#subfig:ch2:expansion" data-reference-type="ref"
-data-reference="subfig:ch2:expansion">1.2</a> is taken from <span
-class="citation" data-cites="dodelson2020modern">(Dodelson and Schmidt
-2020)</span> and demonstrates the expansion rate of the universe with
-respect to time. As radiation, then matter, and then a cosmological
+class="math inline">\(a(t)\)</span>. Figure <span
+class="math inline">\(\ref{subfig:ch2:expansion}\)</span> is taken from
+<span class="citation" data-cites="dodelson2020modern">(Dodelson and
+Schmidt 2020)</span> and demonstrates the expansion rate of the universe
+with respect to time. As radiation, then matter, and then a cosmological
 constant dominated the energy density of the universe, the expansion
 rate too thus changed with time.</figcaption>
 </figure>
@@ -381,17 +351,16 @@ such that:</p>
 <p><span class="math display">\[1 + z \equiv
 \frac{a_{obs}}{a_{emit}},\]</span></p>
 <p>where <span class="math inline">\(a_{obs} = 1\)</span> if observing
-today. To better visualize this, refer to Figure <a
-href="#subfig:ch2:cosmicdistances" data-reference-type="ref"
-data-reference="subfig:ch2:cosmicdistances">1.1</a>. Instead of thinking
-in terms of a physical distance <span class="math inline">\(d\)</span>
-which grows larger with the expansion of spacetime and can be tricky to
-use<a href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>, it is often more meaningful to turn
-to the comoving distance <span class="math inline">\(\chi (t)\)</span>.
-The total comoving distance traversed by light from a distant object
-(with no peculiar velocity) to reach us today at <span
-class="math inline">\(t_0\)</span> is:</p>
+today. To better visualize this, refer to Figure <span
+class="math inline">\(\ref{subfig:ch2:cosmicdistances}\)</span>. Instead
+of thinking in terms of a physical distance <span
+class="math inline">\(d\)</span> which grows larger with the expansion
+of spacetime and can be tricky to use<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>, it is often more
+meaningful to turn to the comoving distance <span
+class="math inline">\(\chi (t)\)</span>. The total comoving distance
+traversed by light from a distant object (with no peculiar velocity) to
+reach us today at <span class="math inline">\(t_0\)</span> is:</p>
 <p><span class="math display">\[\label{eqn:ch2:comovingdist}
     \chi (t) = \int_{t}^{t_0} \frac{dt&#39;}{a(t&#39;)}\]</span></p>
 <p>In this thesis, we focus on largely the linear regime for an
@@ -410,9 +379,8 @@ Friedmann–Lemaître–Robertson–Walker (FLRW) metric:</p>
     ds^2 &amp;= -dt^2 + a^2(t) d\vec{x}^2 \nonumber \\
     &amp;= -dt^2 +a^2(t)[dr^2 + S_k^2(r)d\Omega^2]
 \end{aligned}\]</span></p>
-<p>In the second line of (<a href="#eqn:ch2:metric"
-data-reference-type="ref"
-data-reference="eqn:ch2:metric">[eqn:ch2:metric]</a>), we have expanded
+<p>In the second line of (<span
+class="math inline">\(\ref{eqn:ch2:metric}\)</span>), we have expanded
 the space component (<span class="math inline">\(d\vec{x}^2\)</span>)
 defined on a maximally symmetric 3-manifold more explicitly to
 hyperspherical coordinates, where <span
@@ -432,13 +400,16 @@ curvature)}\\
         \frac{\sinh(\sqrt{\lvert k \rvert}r)}{\sqrt{\lvert k \rvert}},
 &amp;k &lt; 0 \text{ (negative curvature)}
     \end{cases}\]</span></p>
+<p></p>
 <p>Closer examination of how <span class="math inline">\(a(t)\)</span>
 evolves requires breaking down the constituents of the universe into
 radiation, matter, and dark energy. In the next section we turn to
 relating the geometry of the universe to its constituents (i.e. its
 energy composition).</p>
-<h2 id="general-relativistic-framework-to-cosmology">General
-Relativistic Framework to Cosmology</h2>
+<h2 data-number="2.2"
+id="general-relativistic-framework-to-cosmology"><span
+class="header-section-number">2.2</span> General Relativistic Framework
+to Cosmology</h2>
 <p>We can start with the stress-energy tensor <span
 class="math inline">\(T^\mu_{\ \nu}\)</span> of a perfect fluid<a
 href="#fn3" class="footnote-ref" id="fnref3"
@@ -497,9 +468,8 @@ equation of state with some scaling factor <span
 class="math inline">\(w\)</span>:</p>
 <p><span class="math display">\[\label{eqn:ch2:eqnofstate}
     p = w\rho\]</span></p>
-<p>Rearranging and solving (<a href="#eqn:ch2:intermediateconservation"
-data-reference-type="ref"
-data-reference="eqn:ch2:intermediateconservation">[eqn:ch2:intermediateconservation]</a>)
+<p>Rearranging and solving (<span
+class="math inline">\(\ref{eqn:ch2:intermediateconservation}\)</span>)
 we get:</p>
 <p><span class="math display">\[\frac{\dot{\rho}}{\rho} = -3(1 +
 w)\frac{\dot{a}}{a}\]</span> <span class="math display">\[\rho(a)
@@ -516,12 +486,11 @@ class="math inline">\(w = 0\)</span> in the equation of state.</p></li>
 <li><p><strong>Radiation</strong> is relativistic. Like matter, its
 energy density falls with number density. However, there is additional
 energy loss due to the redshift (i.e. stretching of its wavelength as
-shown in Figure <a href="#subfig:ch2:cosmicdistances"
-data-reference-type="ref"
-data-reference="subfig:ch2:cosmicdistances">1.1</a>). Thus the energy
-density of radiation falls faster than matter as the universe expands:
-<span class="math inline">\(\rho_{rad} \propto a^{-4}\)</span>, and
-<span class="math inline">\(w = 1/3\)</span> in the equation of
+shown in Figure <span
+class="math inline">\(\ref{subfig:ch2:cosmicdistances}\)</span>). Thus
+the energy density of radiation falls faster than matter as the universe
+expands: <span class="math inline">\(\rho_{rad} \propto a^{-4}\)</span>,
+and <span class="math inline">\(w = 1/3\)</span> in the equation of
 state.</p></li>
 <li><p><strong>Dark energy</strong> (or the <strong>cosmological
 constant</strong>) by definition has a constant energy density. Thus we
@@ -529,25 +498,23 @@ are left with: <span class="math inline">\(\rho_{\Lambda} \propto
 a^{0}\)</span>, and <span class="math inline">\(w = -1\)</span> in the
 equation of state.</p></li>
 </ul>
-<p>Putting this together with Figure <a href="#subfig:ch2:expansion"
-data-reference-type="ref" data-reference="subfig:ch2:expansion">1.2</a>,
-we can see that the universe likely started out radiation-dominated when
-it was hot and dense. Because the energy density of radiation falls
-faster than that of matter, matter would have dominated the energy
-density of the universe for some period of time. Very recently, it seems
-that dark energy has become dominant.</p>
+<p>Putting this together with Figure <span
+class="math inline">\(\ref{subfig:ch2:expansion}\)</span>, we can see
+that the universe likely started out radiation-dominated when it was hot
+and dense. Because the energy density of radiation falls faster than
+that of matter, matter would have dominated the energy density of the
+universe for some period of time. Very recently, it seems that dark
+energy has become dominant.</p>
 <p>Now that we understand the composition of the universe, we can turn
 back to relating it to its geometry. Energy and momentum encapsulated in
 the stress-energy tensor (<span class="math inline">\(T^\mu_{\
 \nu}\)</span>) affects spacetime curvature. Typically, we can describe
 spacetime curvature mathematically with the Riemann (“curvature") tensor
-shown in (<a href="#eqn:ch2:riemann" data-reference-type="ref"
-data-reference="eqn:ch2:riemann">[eqn:ch2:riemann]</a>), where an object
-only affected by gravity will follow the path of a geodesic (the
-equivalent of a straight line in curved spacetime). The geodesic
-equation is given in (<a href="#eqn:ch2:geodesic"
-data-reference-type="ref"
-data-reference="eqn:ch2:geodesic">[eqn:ch2:geodesic]</a>). Note that in
+shown in (<span class="math inline">\(\ref{eqn:ch2:riemann}\)</span>),
+where an object only affected by gravity will follow the path of a
+geodesic (the equivalent of a straight line in curved spacetime). The
+geodesic equation is given in (<span
+class="math inline">\(\ref{eqn:ch2:geodesic}\)</span>). Note that in
 Euclidean space with Cartesian coordinates, the geodesic equation
 simplifies to the familiar straight line equation <span
 class="math inline">\(d^2x^\mu/d\lambda^2 = 0\)</span>.</p>
@@ -560,12 +527,10 @@ class="math inline">\(d^2x^\mu/d\lambda^2 = 0\)</span>.</p>
     \frac{d^2x^\mu}{d\lambda^2} + \Gamma^\mu_{\rho\sigma}
     \frac{dx^\rho}{d\lambda} \frac{dx^\sigma}{d\lambda} = 0\]</span></p>
 <p>We can use a more symmetric pseudo-Riemannian tensor to describe our
-spacetime by contracting the first and third indices in (<a
-href="#eqn:ch2:riemann" data-reference-type="ref"
-data-reference="eqn:ch2:riemann">[eqn:ch2:riemann]</a>). This is the
-Ricci tensor, shown in (<a href="#eqn:ch2:riccitensor"
-data-reference-type="ref"
-data-reference="eqn:ch2:riccitensor">[eqn:ch2:riccitensor]</a>) after
+spacetime by contracting the first and third indices in (<span
+class="math inline">\(\ref{eqn:ch2:riemann}\)</span>). This is the Ricci
+tensor, shown in (<span
+class="math inline">\(\ref{eqn:ch2:riccitensor}\)</span>) after
 relabelling the indices. Intuitively we can think of the Ricci tensor as
 describing how spacetime deviates from Euclidean locally (i.e. “curves")
 for a small volume moving along a geodesic. In our 3-dimensional
@@ -580,10 +545,9 @@ more complex Riemann tensor.</p>
     \Gamma^\lambda_{\alpha\nu}\Gamma^\alpha_{\mu\lambda}
 \end{aligned}\]</span></p>
 <p>We can also take the trace of the Ricci tensor to derive the Ricci
-(or “curvature") scalar as shown in (<a href="#eqn:ch2:ricciscalar"
-data-reference-type="ref"
-data-reference="eqn:ch2:ricciscalar">[eqn:ch2:ricciscalar]</a>). The
-Ricci scalar gives the scalar curvature of some Riemannian manifold, and
+(or “curvature") scalar as shown in (<span
+class="math inline">\(\ref{eqn:ch2:ricciscalar}\)</span>). The Ricci
+scalar gives the scalar curvature of some Riemannian manifold, and
 captures the intrinsic curvature of spacetime at that point.</p>
 <p><span class="math display">\[\label{eqn:ch2:ricciscalar}
     R = R^\mu_{\ \mu} = g^{\mu\nu}R_{\mu\nu}\]</span></p>
@@ -609,17 +573,14 @@ dark energy are used interchangeably for the purposes of this thesis.
 Dark energy is also theorized to be the vacuum energy in the universe
 (i.e. the zero point energy in quantum mechanics). For ease of finding
 solutions in the FLRW metric, let’s absorb the cosmological constant
-into the stress-energy tensor as shown in (<a
-href="#eqn:ch2:tensordarkenergy" data-reference-type="ref"
-data-reference="eqn:ch2:tensordarkenergy">[eqn:ch2:tensordarkenergy]</a>).
-For the cosmological constant, <span class="math inline">\(w =
--1\)</span> and thus <span class="math inline">\(\rho = -p\)</span>
-according to (<a href="#eqn:ch2:eqnofstate" data-reference-type="ref"
-data-reference="eqn:ch2:eqnofstate">[eqn:ch2:eqnofstate]</a>), and we
-can see this clearly by manipulating (<a href="#eqn:ch2:einsteineqn"
-data-reference-type="ref"
-data-reference="eqn:ch2:einsteineqn">[eqn:ch2:einsteineqn]</a>). We
-define <span class="math inline">\(\rho_\Lambda \equiv \Lambda/(8\pi
+into the stress-energy tensor as shown in (<span
+class="math inline">\(\ref{eqn:ch2:tensordarkenergy}\)</span>). For the
+cosmological constant, <span class="math inline">\(w = -1\)</span> and
+thus <span class="math inline">\(\rho = -p\)</span> according to (<span
+class="math inline">\(\ref{eqn:ch2:eqnofstate}\)</span>), and we can see
+this clearly by manipulating (<span
+class="math inline">\(\ref{eqn:ch2:einsteineqn}\)</span>). We define
+<span class="math inline">\(\rho_\Lambda \equiv \Lambda/(8\pi
 G)\)</span>.</p>
 <p><span class="math display">\[\label{eqn:ch2:tensordarkenergy}
 T^{\ \ \mu}_{(\Lambda) \ \nu} =
@@ -632,9 +593,8 @@ T^{\ \ \mu}_{(\Lambda) \ \nu} =
 <p>We can solve the Einstein field equations in a FLRW metric to derive
 the Friedmann equations (so called “first" and “second" respectively)
 below. Here <span class="math inline">\(k\)</span> again refers to
-spacetime curvature as in (<a href="#eqn:ch2:Skmetric"
-data-reference-type="ref"
-data-reference="eqn:ch2:Skmetric">[eqn:ch2:Skmetric]</a>).</p>
+spacetime curvature as in (<span
+class="math inline">\(\ref{eqn:ch2:Skmetric}\)</span>).</p>
 <p><span class="math display">\[\label{eqn:ch2:friedmann1}
     \left(\frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3}\rho
 -\frac{k}{a^2}\]</span></p>
@@ -648,11 +608,10 @@ class="math inline">\(\dot{a}/a\)</span> a few times - it is the
 <p>Current measurements of the Hubble parameter today give a <em>Hubble
 constant</em> of: <span class="math inline">\(H_0 \approx 70 \pm
 10\)</span> km/s/Mpc<a href="#fn5" class="footnote-ref" id="fnref5"
-role="doc-noteref"><sup>5</sup></a>. See Table <a
-href="#table:ch2:cosmoparams" data-reference-type="ref"
-data-reference="table:ch2:cosmoparams">1.1</a> for the current best
-estimate. We can also parameterize density by defining a <em>critical
-density</em>:</p>
+role="doc-noteref"><sup>5</sup></a>. See Table <span
+class="math inline">\(\ref{table:ch2:cosmoparams}\)</span> for the
+current best estimate. We can also parameterize density by defining a
+<em>critical density</em>:</p>
 <p><span class="math display">\[\rho_{c} = \frac{3H_0^2}{8\pi
 G}\]</span></p>
 <p>Using this, we can define the <em>density parameter</em> below, where
@@ -677,14 +636,13 @@ density). <span class="math display">\[\begin{aligned}
 <caption>Current best estimates from most recent <em>Planck</em> data
 release <span class="citation" data-cites="planck2018_1">(The Planck
 Collaboration 2020a)</span>, and can be referenced throughout this
-dissertation but especially for this chapter and Chapter <a
-href="#ch:so" data-reference-type="ref"
-data-reference="ch:so">[ch:so]</a>. This table follows the same ordering
-as in <span class="citation" data-cites="planck2018_1">(The Planck
-Collaboration 2020a)</span>, where the first set of errors are 68%
-confidence limits, the second set are derived parameters also with 68%
-confidence limits, and the third set are 95% confidence limits. Note the
-flatness of the universe (i.e. <span
+dissertation but especially for this chapter and Chapter <span
+class="math inline">\(\ref{ch:so}\)</span>. This table follows the same
+ordering as in <span class="citation" data-cites="planck2018_1">(The
+Planck Collaboration 2020a)</span>, where the first set of errors are
+68% confidence limits, the second set are derived parameters also with
+68% confidence limits, and the third set are 95% confidence limits. Note
+the flatness of the universe (i.e. <span
 class="math inline">\(\Omega_k\sim0\)</span>) and the slight tilt (i.e.
 deviation from 1) in <span class="math inline">\(n_S\)</span>.</caption>
 <thead>
@@ -752,9 +710,10 @@ class="math inline">\(\Omega_k\)</span></td>
 </table>
 </div>
 <p>The current best estimates for these parameters are summarized in
-Table <a href="#table:ch2:cosmoparams" data-reference-type="ref"
-data-reference="table:ch2:cosmoparams">1.1</a>.</p>
-<h2 id="sec:ch2:inflation">Inflation</h2>
+Table <span
+class="math inline">\(\ref{table:ch2:cosmoparams}\)</span>.</p>
+<h2 data-number="2.3" id="sec:ch2:inflation"><span
+class="header-section-number">2.3</span> Inflation</h2>
 <p>While we have described the evolution of the universe, the initial
 conditions required to set this up is a more complex problem. The highly
 specific features we observe today cannot be posited from a
@@ -790,13 +749,12 @@ superluminal, quasi-exponential expansion of spacetime.</p></li>
 <li><p><strong>Flatness problem:</strong> Why is the universe so flat?
 The flatness of the universe (i.e. <span class="math inline">\(1 -
 \Omega_{tot,0}\ll1\)</span>) demands a finely tuned set of initial
-conditions. As can be deduced by looking at (<a
-href="#eqn:ch2:friedmanndensities" data-reference-type="ref"
-data-reference="eqn:ch2:friedmanndensities">[eqn:ch2:friedmanndensities]</a>),
-any deviations from flatness in the curvature term would grow
-exponentially over time. Inflation provides a solution with the same
-mechanism for the above horizon problem, where the exponential expansion
-drives the universe curvature to zero.</p></li>
+conditions. As can be deduced by looking at (<span
+class="math inline">\(\ref{eqn:ch2:friedmanndensities}\)</span>), any
+deviations from flatness in the curvature term would grow exponentially
+over time. Inflation provides a solution with the same mechanism for the
+above horizon problem, where the exponential expansion drives the
+universe curvature to zero.</p></li>
 <li><p><strong>Initial conditions problem:</strong> How did the seed
 perturbations needed to form the large scale structure we see today
 arise? Inflation provides a mechanism for the nearly scale-invariant
@@ -819,9 +777,8 @@ verified that the initial conditions should be adiabatic, Gaussian, and
 roughly scale-invariant amongst other signatures of inflation.</p>
 <p>We can start by breaking down the major effect of an inflationary
 period: there was some finite time of accelerated expansion where the
-universe drastically increased in size. If we change the limits on (<a
-href="#eqn:ch2:comovingdist" data-reference-type="ref"
-data-reference="eqn:ch2:comovingdist">[eqn:ch2:comovingdist]</a>) to get
+universe drastically increased in size. If we change the limits on
+(<span class="math inline">\(\ref{eqn:ch2:comovingdist}\)</span>) to get
 the comoving distance from <span class="math inline">\(t&#39; =
 0\)</span> to <span class="math inline">\(t\)</span>, then the integral
 gives us the <em>comoving horizon</em>, <span
@@ -830,9 +787,9 @@ class="math inline">\(\eta\)</span> is the logarithmic integral of the
 <em>comoving Hubble radius</em> <span class="math inline">\(R_H =
 1/aH\)</span>, which encapsulates the time it takes for the scale factor
 to increase by a factor of <span class="math inline">\(e\)</span>
-(termed an “e-fold"). We can see in Figure <a href="#fig:ch2:modes"
-data-reference-type="ref" data-reference="fig:ch2:modes">1.4</a> that
-inflation solves the horizon problem by introducing a period where <span
+(termed an “e-fold"). We can see in Figure <span
+class="math inline">\(\ref{fig:ch2:modes}\)</span> that inflation solves
+the horizon problem by introducing a period where <span
 class="math inline">\(R_H\)</span> decreases. The initial quantum
 mechanical perturbations are better understood in Fourier space, where
 each mode is denoted by <span class="math inline">\(k\)</span> (i.e. the
@@ -888,9 +845,9 @@ d^4x\sqrt{-g}\)</span>, where <span class="math inline">\(g \equiv
 det(g_{\mu\nu})\)</span>. By varying the action (i.e. <span
 class="math inline">\(S = \int d^4x\sqrt{-g}\mathcal{L}\)</span>) with
 respect to spacetime, we can derive the Euler-Lagrange equations shown
-in (<a href="#eqn:ch2:inflationeqofmotion" data-reference-type="ref"
-data-reference="eqn:ch2:inflationeqofmotion">[eqn:ch2:inflationeqofmotion]</a>).
-See any quantum field theory textbook for more details, although this
+in (<span
+class="math inline">\(\ref{eqn:ch2:inflationeqofmotion}\)</span>). See
+any quantum field theory textbook for more details, although this
 treatment does not really require more than a classical mechanics level
 understanding. For the associated action, we can write the stress-energy
 tensor (which, remember, is a preserved quantity by definition):</p>
@@ -909,15 +866,14 @@ V(\phi)\right]g_{\mu\nu}\]</span></p>
 class="math inline">\(\partial_i\phi = 0\)</span> where <span
 class="math inline">\(i = \{1,2,3\}\)</span> such that only time
 derivatives matter) and comparing <span
-class="math inline">\(T^{\mu\nu}\)</span> for a perfect fluid (see <a
-href="#eqn:ch2:Tperfectfluid" data-reference-type="ref"
-data-reference="eqn:ch2:Tperfectfluid">[eqn:ch2:Tperfectfluid]</a>), we
-can derive the following equations for the energy density and pressure.
-Note that spatial gradients get redshifted (i.e. disappear) with
-expansion, and so we ignore them here at zeroth order (which also adhere
-to our demands for a flat spacetime after expansion). The first is using
-only the <span class="math inline">\(T^0_0\)</span> component to derive
-an energy density:</p>
+class="math inline">\(T^{\mu\nu}\)</span> for a perfect fluid (see <span
+class="math inline">\(\ref{eqn:ch2:Tperfectfluid}\)</span>), we can
+derive the following equations for the energy density and pressure. Note
+that spatial gradients get redshifted (i.e. disappear) with expansion,
+and so we ignore them here at zeroth order (which also adhere to our
+demands for a flat spacetime after expansion). The first is using only
+the <span class="math inline">\(T^0_0\)</span> component to derive an
+energy density:</p>
 <p><span class="math display">\[\label{eqn:ch2:inflationrho}
     \rho = \frac{1}{2}\dot{\phi}^2 + V(\phi)\]</span></p>
 <p>The second is using only the <span
@@ -926,16 +882,14 @@ class="math display">\[\label{eqn:ch2:inflationp}
     p = \frac{1}{2}\dot{\phi}^2 - V(\phi)\]</span></p>
 <p>Using these equation and the conservation of the stress-energy tensor
 (<span class="math inline">\(\nabla_\mu T^\mu_{\ \nu} = 0\)</span>; see
-(<a href="#eqn:ch2:EMtensorconservation" data-reference-type="ref"
-data-reference="eqn:ch2:EMtensorconservation">[eqn:ch2:EMtensorconservation]</a>)
-and (<a href="#eqn:ch2:intermediateconservation"
-data-reference-type="ref"
-data-reference="eqn:ch2:intermediateconservation">[eqn:ch2:intermediateconservation]</a>)),
-we can write (<a href="#eqn:ch2:inflationeqofmotion"
-data-reference-type="ref"
-data-reference="eqn:ch2:inflationeqofmotion">[eqn:ch2:inflationeqofmotion]</a>)
-more intuitively below. Note that <span
-class="math inline">\(V&#39;(\phi) = \frac{dV}{d\phi}\)</span> here.</p>
+(<span
+class="math inline">\(\ref{eqn:ch2:EMtensorconservation}\)</span>) and
+(<span
+class="math inline">\(\ref{eqn:ch2:intermediateconservation}\)</span>)),
+we can write (<span
+class="math inline">\(\ref{eqn:ch2:inflationeqofmotion}\)</span>) more
+intuitively below. Note that <span class="math inline">\(V&#39;(\phi) =
+\frac{dV}{d\phi}\)</span> here.</p>
 <p><span class="math display">\[\begin{aligned}
 \label{eqn:ch2:kgeqnofmotion}
     0 &amp;= \frac{d\rho}{dt} + 3H(\rho + p) \nonumber \\
@@ -946,22 +900,19 @@ V(\phi)\right) \nonumber\\
 \end{aligned}\]</span></p>
 <p>What we just did here is start with the Klein-Gordon action for
 curved spacetime on a scalar field, and then effectively reduce it to a
-Klein-Gordon equation of motion (<a href="#eqn:ch2:kgeqnofmotion"
-data-reference-type="ref"
-data-reference="eqn:ch2:kgeqnofmotion">[eqn:ch2:kgeqnofmotion]</a>).</p>
+Klein-Gordon equation of motion (<span
+class="math inline">\(\ref{eqn:ch2:kgeqnofmotion}\)</span>).</p>
 <p>The accelerated expansion that is demanded by inflation (i.e. <span
 class="math inline">\(\ddot{a} &gt; 0\)</span>) is a similar requirement
 to that of dark energy where we need a negative pressure to adhere to
-the negative equation of state. Looking at (<a
-href="#eqn:ch2:inflationp" data-reference-type="ref"
-data-reference="eqn:ch2:inflationp">[eqn:ch2:inflationp]</a>), we can
-see that negative pressure requires more potential energy than kinetic
-energy. The equation (<a href="#eqn:ch2:kgeqnofmotion"
-data-reference-type="ref"
-data-reference="eqn:ch2:kgeqnofmotion">[eqn:ch2:kgeqnofmotion]</a>) also
-tells us that we need a shallow potential to achieve this. In space,
-this field acts like a simple harmonic oscillator where the Hubble
-parameter acts as a damping term, so a large <span
+the negative equation of state. Looking at (<span
+class="math inline">\(\ref{eqn:ch2:inflationp}\)</span>), we can see
+that negative pressure requires more potential energy than kinetic
+energy. The equation (<span
+class="math inline">\(\ref{eqn:ch2:kgeqnofmotion}\)</span>) also tells
+us that we need a shallow potential to achieve this. In space, this
+field acts like a simple harmonic oscillator where the Hubble parameter
+acts as a damping term, so a large <span
 class="math inline">\(H\)</span> will dampen motion as the field rolls
 down the potential. If the field “rolls slowly" down this potential, the
 low kinetic energy will stay below a non-zero potential energy allowing
@@ -1025,7 +976,8 @@ can disentangle this model from the rest by searching for these elusive
 primordial gravitational waves, which are considered a smoking-gun
 signature for this theory. In the next section, we will discuss the
 details of these primordial perturbations.</p>
-<h2 id="sec:ch2:primordialperturbations">Primordial Scalar and Tensor
+<h2 data-number="2.4" id="sec:ch2:primordialperturbations"><span
+class="header-section-number">2.4</span> Primordial Scalar and Tensor
 Perturbations</h2>
 <p>Inflation (or any other hypothesized mechanism for generating
 primordial perturbations) can theoretically produce scalar, vector, and
@@ -1046,17 +998,15 @@ t)\]</span></p>
 fluctuations as small deviations (<span
 class="math inline">\(\delta\phi(\vec{x}, t)\)</span>) from a uniform
 background scalar field (<span
-class="math inline">\(\Bar{\phi}(t)\)</span>) as shown in (<a
-href="#eqn:ch2:perturbationsonfield" data-reference-type="ref"
-data-reference="eqn:ch2:perturbationsonfield">[eqn:ch2:perturbationsonfield]</a>).
+class="math inline">\(\Bar{\phi}(t)\)</span>) as shown in (<span
+class="math inline">\(\ref{eqn:ch2:perturbationsonfield}\)</span>).
 Similarly, we can also see the perturbative effect on the FLRW metric
 (where <span class="math inline">\(g_{\mu\nu}^{(0)}\)</span> is the
-usual homogeneous FLRW metric) as shown in (<a
-href="#eqn:ch2:perturbationsonmetric" data-reference-type="ref"
-data-reference="eqn:ch2:perturbationsonmetric">[eqn:ch2:perturbationsonmetric]</a>).</p>
-<p>Recall from section <a href="#sec:ch2:inflation"
-data-reference-type="ref" data-reference="sec:ch2:inflation">1.3</a>,
-that these perturbations<a href="#fn9" class="footnote-ref" id="fnref9"
+usual homogeneous FLRW metric) as shown in (<span
+class="math inline">\(\ref{eqn:ch2:perturbationsonmetric}\)</span>).</p>
+<p>Recall from section <span
+class="math inline">\(\ref{sec:ch2:inflation}\)</span>, that these
+perturbations<a href="#fn9" class="footnote-ref" id="fnref9"
 role="doc-noteref"><sup>9</sup></a> are better understood in Fourier
 space, where each mode is denoted by <span
 class="math inline">\(k\)</span> and uncorrelated from another mode. The
@@ -1106,9 +1056,8 @@ perturbation variance, and <span class="math inline">\(n_S\)</span> is
 the scalar spectral index. In the second line, we have equated the
 scalar power spectrum to <span class="math inline">\(\epsilon\)</span>,
 the slow-roll parameter<a href="#fn10" class="footnote-ref" id="fnref10"
-role="doc-noteref"><sup>10</sup></a> defined in Section <a
-href="#sec:ch2:inflation" data-reference-type="ref"
-data-reference="sec:ch2:inflation">1.3</a> (and <span
+role="doc-noteref"><sup>10</sup></a> defined in Section <span
+class="math inline">\(\ref{sec:ch2:inflation}\)</span> (and <span
 class="math inline">\(m_p\)</span> refers again to the Planck mass,
 which we have left in here). The primordial scalar spectral index
 measures the scalar tilt:</p>
@@ -1135,12 +1084,10 @@ primordial tensor amplitude:</p>
     &amp;= \left.16\epsilon\right\rvert_{aH = k}
 \end{aligned}\]</span></p>
 <p>We can now also directly relate the amplitude of primordial tensor
-fluctuations to the energy scale of inflation by using (<a
-href="#eqn:ch2:energyscalefriedmann" data-reference-type="ref"
-data-reference="eqn:ch2:energyscalefriedmann">[eqn:ch2:energyscalefriedmann]</a>)
-where <span class="math inline">\(H^2 \sim V/m_p^2\)</span> along with
-<a href="#eqn:ch2:scalarpwrspec" data-reference-type="ref"
-data-reference="eqn:ch2:scalarpwrspec">[eqn:ch2:scalarpwrspec]</a>:</p>
+fluctuations to the energy scale of inflation by using (<span
+class="math inline">\(\ref{eqn:ch2:energyscalefriedmann}\)</span>) where
+<span class="math inline">\(H^2 \sim V/m_p^2\)</span> along with <span
+class="math inline">\(\ref{eqn:ch2:scalarpwrspec}\)</span>:</p>
 <p><span class="math display">\[V^{\frac{1}{4}} = 10^{16} \text{
 GeV}\left(\frac{r}{0.01}\right)^{\frac{1}{4}}\]</span></p>
 <p>Here, V corresponds to the primordial energy density assuming
@@ -1154,11 +1101,10 @@ data-cites="BICEPKeck_2021 BICEPKeck2022">(P.  A.  R. Ade et al. 2021;
 P. A. R. Ade et al. 2022)</span>:</p>
 <p><span class="math display">\[r &lt; 0.036, \sigma(r) =
 0.009\]</span></p>
-<p>Figure <a href="#fig:ch2:planckr-ns" data-reference-type="ref"
-data-reference="fig:ch2:planckr-ns">1.5</a> shows the constraints on
-<span class="math inline">\(r\)</span> and <span
-class="math inline">\(n_S\)</span> from the Planck 2018 data release
-with contours for 95% confidence levels.</p>
+<p>Figure <span class="math inline">\(\ref{fig:ch2:planckr-ns}\)</span>
+shows the constraints on <span class="math inline">\(r\)</span> and
+<span class="math inline">\(n_S\)</span> from the Planck 2018 data
+release with contours for 95% confidence levels.</p>
 <figure id="fig:ch2:planckr-ns">
 <img src="figures/chap2_pics/planck_randns.png" />
 <figcaption><em>Planck</em> 2018 release tensor-to-scalar ratio <span
@@ -1169,18 +1115,17 @@ inflation and number of <span class="math inline">\(e\)</span>-folds
 class="citation" data-cites="planck2018_1">(The Planck Collaboration
 2020a)</span>.</figcaption>
 </figure>
-<h2 id="cmb-anisotropies">CMB Anisotropies</h2>
+<h2 data-number="2.5" id="cmb-anisotropies"><span
+class="header-section-number">2.5</span> CMB Anisotropies</h2>
 <p>We have seen that the CMB is a Gaussian random field that holds
 information about the primordial plasma from the recombination epoch. We
 observe the CMB sky, and convert the measured temperature perturbations
-into maps (see Figure <a href="#fig:ch2:plancktempmap"
-data-reference-type="ref"
-data-reference="fig:ch2:plancktempmap">1.6</a>) that tell us about the
-statistics of these fluctuations to get useful cosmological parameters
-such as those in Table <a href="#table:ch2:cosmoparams"
-data-reference-type="ref"
-data-reference="table:ch2:cosmoparams">1.1</a>. We can write the
-observed fractional temperature fluctuations <span
+into maps (see Figure <span
+class="math inline">\(\ref{fig:ch2:plancktempmap}\)</span>) that tell us
+about the statistics of these fluctuations to get useful cosmological
+parameters such as those in Table <span
+class="math inline">\(\ref{table:ch2:cosmoparams}\)</span>. We can write
+the observed fractional temperature fluctuations <span
 class="math inline">\(\Theta(\vec{x}, \hat{\vec{p}}, \eta) = \delta T /
 T\)</span> in the CMB radiation field as:</p>
 <figure id="fig:ch2:plancktempmap">
@@ -1243,20 +1188,18 @@ can estimate this relation as:</p>
 \frac{180^\circ}{\ell}\]</span></p>
 <p>If we think of an observation in frequency space (as most CMB
 experiments do), we can think of these temperature fluctuations as
-intensity fluctuations on the blackbody spectrum in Figure <a
-href="#fig:ch1:cmb_blackbody" data-reference-type="ref"
-data-reference="fig:ch1:cmb_blackbody">[fig:ch1:cmb_blackbody]</a>. Note
-that 1 <span class="math inline">\(\text{cm}^{-1} \sim 30\)</span> GHz,
-and the CMB peaks around <span class="math inline">\(\sim 150\)</span>
-GHz. The CMB temperature anisotropies are very faint, at order <span
+intensity fluctuations on the blackbody spectrum in Figure <span
+class="math inline">\(\ref{fig:ch1:cmb_blackbody}\)</span>. Note that 1
+<span class="math inline">\(\text{cm}^{-1} \sim 30\)</span> GHz, and the
+CMB peaks around <span class="math inline">\(\sim 150\)</span> GHz. The
+CMB temperature anisotropies are very faint, at order <span
 class="math inline">\(\sim 10^{-5}\)</span>.</p>
 <p>The CMB is also faintly polarized at order <span
 class="math inline">\(\sim 10^{-6}\)</span>. Returning to the primordial
 plasma of the universe, photons were scattering off of electrons before
 decoupling. The CMB polarization is sourced from this Thomson scattering
-due to localized quadrupolar anisotropies specifically (see Figure <a
-href="#subfig:ch2:thomsonscattering" data-reference-type="ref"
-data-reference="subfig:ch2:thomsonscattering">1.7</a>).</p>
+due to localized quadrupolar anisotropies specifically (see Figure <span
+class="math inline">\(\ref{subfig:ch2:thomsonscattering}\)</span>).</p>
 <figure id="fig:ch2:cmbpolarization">
 <figure id="subfig:ch2:thomsonscattering">
 <img src="figures/chap2_pics/thomsonscattering.png" />
@@ -1266,25 +1209,23 @@ data-reference="subfig:ch2:thomsonscattering">1.7</a>).</p>
 <img src="figures/chap2_pics/ebmodes.png" />
 <figcaption aria-hidden="true"></figcaption>
 </figure>
-<figcaption>Figure <a href="#subfig:ch2:thomsonscattering"
-data-reference-type="ref"
-data-reference="subfig:ch2:thomsonscattering">1.7</a> shows how incoming
-quadrupolar radiation produces linear polarization after Thomson
-scattering off of an electron. These hot and cold spots (orange and
-blue) are gravitational over-densities and under-densities respectively.
-An over-density corresponds to photons needing to climb out of deeper
-potential wells, which renders them as cold photons. Similarly, an
-under-density corresponds to photons needing to climb out of shallower
-potential wells, which makes them hotter photons. Figure <a
-href="#subfig:ch2:ebmodes" data-reference-type="ref"
-data-reference="subfig:ch2:ebmodes">1.8</a> top is from <span
-class="citation" data-cites="Lazear_2014">(Lazear et al. 2014)</span>
-and shows even parity E-modes and odd parity B-modes. Figure <a
-href="#subfig:ch2:ebmodes" data-reference-type="ref"
-data-reference="subfig:ch2:ebmodes">1.8</a> bottom is from <span
-class="citation" data-cites="Kamionkowski_2016">(Kamionkowski and Kovetz
-2016)</span> and shows a purely E-mode polarization map and a purely
-B-mode polarization map.</figcaption>
+<figcaption>Figure <span
+class="math inline">\(\ref{subfig:ch2:thomsonscattering}\)</span> shows
+how incoming quadrupolar radiation produces linear polarization after
+Thomson scattering off of an electron. These hot and cold spots (orange
+and blue) are gravitational over-densities and under-densities
+respectively. An over-density corresponds to photons needing to climb
+out of deeper potential wells, which renders them as cold photons.
+Similarly, an under-density corresponds to photons needing to climb out
+of shallower potential wells, which makes them hotter photons. Figure
+<span class="math inline">\(\ref{subfig:ch2:ebmodes}\)</span> top is
+from <span class="citation" data-cites="Lazear_2014">(Lazear et al.
+2014)</span> and shows even parity E-modes and odd parity B-modes.
+Figure <span class="math inline">\(\ref{subfig:ch2:ebmodes}\)</span>
+bottom is from <span class="citation"
+data-cites="Kamionkowski_2016">(Kamionkowski and Kovetz 2016)</span> and
+shows a purely E-mode polarization map and a purely B-mode polarization
+map.</figcaption>
 </figure>
 <p>While the temperature anisotropies formed a scalar field, the
 polarization anisotropies are not just associated with a single scalar
@@ -1314,10 +1255,9 @@ by rotating the polarizer by <span
 class="math inline">\(180^{\circ}\)</span>. Detecting <span
 class="math inline">\(Q\)</span> and <span
 class="math inline">\(U\)</span> (e.g. with antenna arrays for each
-polarization orientation in our observatories as discussed in Chapter <a
-href="#ch:detarrays" data-reference-type="ref"
-data-reference="ch:detarrays">[ch:detarrays]</a>) is thus necessary to
-completely describe the polarization of CMB radiation.</p>
+polarization orientation in our observatories as discussed in Chapter
+<span class="math inline">\(\ref{ch:detarrays}\)</span>) is thus
+necessary to completely describe the polarization of CMB radiation.</p>
 <p>Dealing with polarization on a curved sky can be tricky, so we turn
 to the <em>flat-sky approximation</em> which is valid for a sufficiently
 small sky patch (often used for ground-based analysis). We convert the
@@ -1335,12 +1275,11 @@ magnetic field decomposition) in the flat-sky approximation:</p>
 <p>In the above equations, <span
 class="math inline">\(\phi_{\vec{\ell}}\)</span> is the orientation of
 the vector with respect to the coordinate axes. A schematic of how
-E-modes and B-modes manifest on CMB maps is shown in Figure <a
-href="#subfig:ch2:ebmodes" data-reference-type="ref"
-data-reference="subfig:ch2:ebmodes">1.8</a>, where the hot and cold
-spots are surrounded by a superposition of waves. Note that E-modes are
-parity even (unchanged under a parity inversion), but B-modes are parity
-odd (change signs under a parity inversion).</p>
+E-modes and B-modes manifest on CMB maps is shown in Figure <span
+class="math inline">\(\ref{subfig:ch2:ebmodes}\)</span>, where the hot
+and cold spots are surrounded by a superposition of waves. Note that
+E-modes are parity even (unchanged under a parity inversion), but
+B-modes are parity odd (change signs under a parity inversion).</p>
 <p>This decomposition is a valuable tool for CMB analyses. E-modes hold
 information about the primordial plasma velocity gradients, and are
 sourced by both tensor gravitational waves and scalar density
@@ -1349,17 +1288,18 @@ primordial gravitational wave perturbations. Thus, B-modes are a unique
 tracer of the single-field slow-roll inflation discussed earlier. Many
 modern CMB experiments are trying to detect these inflationary
 signatures using highly sensitive instruments, like the one discussed in
-this thesis! As we will see in Section <a href="#sec:ch2:foregrounds"
-data-reference-type="ref" data-reference="sec:ch2:foregrounds">1.7</a>,
-there are other later-time phenomena (“foregrounds") that also produce
-B-modes that must be studied and subtracted out. Also note that these
+this thesis! As we will see in Section <span
+class="math inline">\(\ref{sec:ch2:foregrounds}\)</span>, there are
+other later-time phenomena (“foregrounds") that also produce B-modes
+that must be studied and subtracted out. Also note that these
 polarization signals are much lower in intensity than the temperature
 anisotropies, and this reduces cosmic variance limits significantly. The
 effect for B-modes in particular (which are much fainter than even
 E-modes) is a tighter constrain on the tensor-to-scalar ratio
 <em>r</em>, which is what drives our search for inflationary
 signals.</p>
-<h2 id="cmb-power-spectrum">CMB Power Spectrum</h2>
+<h2 data-number="2.6" id="cmb-power-spectrum"><span
+class="header-section-number">2.6</span> CMB Power Spectrum</h2>
 <figure id="fig:ch2:cmbpowerspec_planck">
 <img src="figures/chap2_pics/CMBpwrspec_Planck.png" />
 <figcaption>Measured CMB power spectrum from <em>Planck</em>. Image from
@@ -1367,10 +1307,9 @@ signals.</p>
 Collaboration 2020a)</span>.</figcaption>
 </figure>
 <p>The temperature and polarization anisotropies can be effectively
-summarized by plotting the power spectrum as shown in Figure <a
-href="#fig:ch2:cmbpowerspec_planck" data-reference-type="ref"
-data-reference="fig:ch2:cmbpowerspec_planck">1.10</a>. It is useful to
-visualize this by flattening the spectra after rescaling <span
+summarized by plotting the power spectrum as shown in Figure <span
+class="math inline">\(\ref{fig:ch2:cmbpowerspec_planck}\)</span>. It is
+useful to visualize this by flattening the spectra after rescaling <span
 class="math inline">\(C_{\ell}\)</span> to the quantity <span
 class="math inline">\(D_{\ell}\)</span>:</p>
 <p><span class="math display">\[D_{\ell}^{XX} = \frac{\ell(\ell +
@@ -1385,9 +1324,8 @@ class="math inline">\(EB\)</span> cross-correlation spectra. We require
 <span class="math inline">\(TB\)</span> and <span
 class="math inline">\(EB\)</span> to be zero to avoid parity violations,
 but the other spectra provide a wealth of cosmological information. In
-particular, we can see in Figure <a href="#subfig:ch2:foregrounds2"
-data-reference-type="ref"
-data-reference="subfig:ch2:foregrounds2">1.12</a> that as CMB
+particular, we can see in Figure <span
+class="math inline">\(\ref{subfig:ch2:foregrounds2}\)</span> that as CMB
 experiments set better limits on <span class="math inline">\(r\)</span>,
 we are closing in on the parameter space to probe for inflationary
 B-modes buried in the <span class="math inline">\(BB\)</span>
@@ -1432,11 +1370,10 @@ at <span class="math inline">\(\ell\lesssim 10\)</span> corresponding to
 modes entering the horizon after reionization. Measuring this peak is
 extremely difficult due to cosmic variance limits, as well as
 atmospheric noise and a limited sky area for ground-based experiments
-(see Chapter <a href="#ch:so" data-reference-type="ref"
-data-reference="ch:so">[ch:so]</a> and <a href="#ch:detarrays"
-data-reference-type="ref"
-data-reference="ch:detarrays">[ch:detarrays]</a>).</p>
-<h2 id="sec:ch2:foregrounds">Foregrounds</h2>
+(see Chapter <span class="math inline">\(\ref{ch:so}\)</span> and <span
+class="math inline">\(\ref{ch:detarrays}\)</span>).</p>
+<h2 data-number="2.7" id="sec:ch2:foregrounds"><span
+class="header-section-number">2.7</span> Foregrounds</h2>
 <p>The <span class="math inline">\(BB\)</span> spectrum is actually
 dominated by <em>gravitational lensing</em> signals for <span
 class="math inline">\(\ell\gtrsim50\)</span>. Recall that primordial
@@ -1464,29 +1401,27 @@ masses (<span class="math inline">\(\Sigma m_\nu\)</span>).</p>
 <figcaption aria-hidden="true"></figcaption>
 </figure>
 <figcaption>CMB and foregrounds rms brightness temperature in
-polarization and angular power spectra. Figure <a
-href="#subfig:ch2:planckforegrounds" data-reference-type="ref"
-data-reference="subfig:ch2:planckforegrounds">1.11</a> illustrates the
-frequency-dependent brightness of major foregrounds compared to the CMB
-in polarization <span class="citation" data-cites="planck2018_1">(The
-Planck Collaboration 2020a)</span>. Figure <a
-href="#subfig:ch2:expansion" data-reference-type="ref"
-data-reference="subfig:ch2:expansion">1.2</a> shows dust and synchrotron
-emission for two frequencies and sky fractions ranging from 1-90%
-compared to temperature, E-mode, lensing B-mode, and theorized
-primordial B-mode spectra <span class="citation"
+polarization and angular power spectra. Figure <span
+class="math inline">\(\ref{subfig:ch2:planckforegrounds}\)</span>
+illustrates the frequency-dependent brightness of major foregrounds
+compared to the CMB in polarization <span class="citation"
+data-cites="planck2018_1">(The Planck Collaboration 2020a)</span>.
+Figure <span class="math inline">\(\ref{subfig:ch2:expansion}\)</span>
+shows dust and synchrotron emission for two frequencies and sky
+fractions ranging from 1-90% compared to temperature, E-mode, lensing
+B-mode, and theorized primordial B-mode spectra <span class="citation"
 data-cites="Errard2016">(Errard et al. 2016)</span>.</figcaption>
 </figure>
 <p>Additionally, understanding and modeling galactic and extragalactic
 foregrounds will play critical roles in mining cosmological information
-from CMB maps (see polarized foregrounds in Figure <a
-href="#subfig:ch2:planckforegrounds" data-reference-type="ref"
-data-reference="subfig:ch2:planckforegrounds">1.11</a>). While the CMB
-blackbody peaks at <span class="math inline">\(\sim150\)</span> GHz as
-we saw earlier, the minima of these foregrounds allows another ideal
-observing window at <span class="math inline">\(\sim90\)</span> GHz.
-Thermal dust emission at high frequencies and synchrotron emission at
-low frequencies are much brighter than the CMB.</p>
+from CMB maps (see polarized foregrounds in Figure <span
+class="math inline">\(\ref{subfig:ch2:planckforegrounds}\)</span>).
+While the CMB blackbody peaks at <span
+class="math inline">\(\sim150\)</span> GHz as we saw earlier, the minima
+of these foregrounds allows another ideal observing window at <span
+class="math inline">\(\sim90\)</span> GHz. Thermal dust emission at high
+frequencies and synchrotron emission at low frequencies are much
+brighter than the CMB.</p>
 <p>Synchrotron radiation comes from cosmic rays accelerated by high
 energy events (e.g supernovae) that spiral through the galaxy in helical
 motions because of the galactic magnetic field. Photons are emitted as
@@ -1497,13 +1432,13 @@ There is also a polarization effect from the dust grains aligning
 slightly with the galactic magnetic fields. Dust polarization especially
 contributes non-negligibly to delensing, which has a direct impact on
 recovering the faint inflationary B-mode signals <span class="citation"
-data-cites="cmbs4science">(Abazajian et al. 2016)</span>. There is the
-additional complication that behavior can vary spatially in the sky
+data-cites="cmbs4science">(K. N. Abazajian et al. 2016)</span>. There is
+the additional complication that behavior can vary spatially in the sky
 <span class="citation"
 data-cites="Sponseller_2022 dust2023 SOscience cmbs4science foregrounds2016 Planck2018_xi BICEPKeck2022 Kamionkowski_2016 cibforegrounds">(Sponseller
 and Kogut 2022; Abril-Cabezas et al. 2023; The Simons Observatory
-Collaboration 2019; Abazajian et al. 2016; Krachmalnicoff, N. et al.
-2016; The Planck Collaboration 2020b; P. A. R. Ade et al. 2022;
+Collaboration 2019; K. N. Abazajian et al. 2016; Krachmalnicoff, N. et
+al. 2016; The Planck Collaboration 2020b; P. A. R. Ade et al. 2022;
 Kamionkowski and Kovetz 2016; Baleato-Lizancos et al. 2022)</span>.</p>
 <p>Foregrounds are a complex problem in modern CMB cosmology. There has
 been a huge push in current and upcoming CMB experiments to create
@@ -1512,302 +1447,18 @@ these foregrounds. Probing for new physics will require a better
 understanding of these signals that dominate the brightness of the CMB
 sky, and a strong understanding of our highly sensitive instrumentation
 and associated systematics.</p>
-<div id="refs" class="references csl-bib-body hanging-indent"
-role="list">
-<div id="ref-cmbs4science" class="csl-entry" role="listitem">
-Abazajian, Kevork N., Peter Adshead, Zeeshan Ahmed, Steven W. Allen,
-David Alonso, Kam S. Arnold, Carlo Baccigalupi, et al. 2016.
-<span>“CMB-S4 Science Book, First Edition.”</span> <a
-href="https://arxiv.org/abs/1610.02743">https://arxiv.org/abs/1610.02743</a>.
-</div>
-<div id="ref-dust2023" class="csl-entry" role="listitem">
-Abril-Cabezas, Irene, Carlos Hervı́as-Caimapo, Sebastian von Hausegger,
-Blake D. Sherwin, and David Alonso. 2023. <span>“<span
-class="nocase">Impact of Galactic dust non-Gaussianity on searches for
-B-modes from inflation</span>.”</span> <a
-href="https://arxiv.org/abs/2309.09978">https://arxiv.org/abs/2309.09978</a>.
-</div>
-<div id="ref-BICEPKeck2022" class="csl-entry" role="listitem">
-Ade, P. A. R. et al. 2022. <span>“<span class="nocase">The Latest
-Constraints on Inflationary B-modes from the BICEP/Keck
-Telescopes</span>.”</span> In <em><span class="nocase">56th Rencontres
-de Moriond on Cosmology</span></em>. <a
-href="https://arxiv.org/abs/2203.16556">https://arxiv.org/abs/2203.16556</a>.
-</div>
-<div id="ref-BICEPKeck_2021" class="csl-entry" role="listitem">
-Ade, P. A. R., Z. Ahmed, M. Amiri, D. Barkats, R. Basu Thakur, C. A.
-Bischoff, D. Beck, et al. 2021. <span>“Improved Constraints on
-Primordial Gravitational Waves Using Planck, WMAP, and BICEP/Keck
-Observations Through the 2018 Observing Season.”</span> <em>Physical
-Review Letters</em> 127 (15). <a
-href="https://doi.org/10.1103/physrevlett.127.151301">https://doi.org/10.1103/physrevlett.127.151301</a>.
-</div>
-<div id="ref-cibforegrounds" class="csl-entry" role="listitem">
-Baleato-Lizancos, Antón, Anthony Challinor, Blake D Sherwin, and Toshiya
-Namikawa. 2022. <span>“<span class="nocase">Delensing the CMB with the
-cosmic infrared background: the impact of foregrounds</span>.”</span>
-<em>Monthly Notices of the Royal Astronomical Society</em> 514 (4):
-5786–5812. <a
-href="https://doi.org/10.1093/mnras/stac1705">https://doi.org/10.1093/mnras/stac1705</a>.
-</div>
-<div id="ref-Baumann_2009" class="csl-entry" role="listitem">
-Baumann, Daniel. 2009. <span>“Cosmological Inflation: Theory and
-Observations.”</span> <em>Advanced Science Letters</em> 2 (2): 105–20.
-<a
-href="https://doi.org/10.1166/asl.2009.1019">https://doi.org/10.1166/asl.2009.1019</a>.
-</div>
-<div id="ref-grcarroll" class="csl-entry" role="listitem">
-Carroll, Sean. 2003. <em>Spacetime and Geometry: An Introduction to
-General Relativity</em>. Benjamin Cummings. <a
-href="http://www.amazon.com/Spacetime-Geometry-Introduction-General-Relativity/dp/0805387323">http://www.amazon.com/Spacetime-Geometry-Introduction-General-Relativity/dp/0805387323</a>.
-</div>
-<div id="ref-cyburt_bbn" class="csl-entry" role="listitem">
-Cyburt, Richard H., Brian D. Fields, Keith A. Olive, and Tsung-Han Yeh.
-2016. <span>“Big Bang Nucleosynthesis: Present Status.”</span> <em>Rev.
-Mod. Phys.</em> 88: 015004. <a
-href="https://doi.org/10.1103/RevModPhys.88.015004">https://doi.org/10.1103/RevModPhys.88.015004</a>.
-</div>
-<div id="ref-dodelson2020modern" class="csl-entry" role="listitem">
-Dodelson, S., and F. Schmidt. 2020. <em>Modern Cosmology</em>. Elsevier
-Science. <a
-href="https://books.google.com/books?id=GGjfywEACAAJ">https://books.google.com/books?id=GGjfywEACAAJ</a>.
-</div>
-<div id="ref-spherexscience" class="csl-entry" role="listitem">
-Doré, Olivier, Michael W. Werner, Matthew L. N. Ashby, Lindsey E. Bleem,
-Jamie Bock, Jennifer Burt, Peter Capak, et al. 2018. <span>“Science
-Impacts of the SPHEREx All-Sky Optical to Near-Infrared Spectral Survey
-II: Report of a Community Workshop on the Scientific Synergies Between
-the SPHEREx Survey and Other Astronomy Observatories.”</span> <a
-href="https://arxiv.org/abs/1805.05489">https://arxiv.org/abs/1805.05489</a>.
-</div>
-<div id="ref-cobe1992" class="csl-entry" role="listitem">
-Efstathiou, G., J. R. Bond, and S. D. M. White. 1992. <span>“COBE
-Background Radiation Anisotropies and Large-Scale Structure in the
-Universe”</span> 258 (1): 1P–6P. <a
-href="https://doi.org/10.1093/mnras/258.1.1P">https://doi.org/10.1093/mnras/258.1.1P</a>.
-</div>
-<div id="ref-Errard2016" class="csl-entry" role="listitem">
-Errard, Josquin, Stephen M. Feeney, Hiranya V. Peiris, and Andrew H.
-Jaffe. 2016. <span>“Robust Forecasts on Fundamental Physics from the
-Foreground-Obscured, Gravitationally-Lensed <span>CMB</span>
-Polarization.”</span> <em>Journal of Cosmology and Astroparticle
-Physics</em> 2016 (03): 052–52. <a
-href="https://doi.org/10.1088%2F1475-7516%2F2016%2F03%2F052">https://doi.org/10.1088%2F1475-7516%2F2016%2F03%2F052</a>.
-</div>
-<div id="ref-PDG" class="csl-entry" role="listitem">
-Group, Particle Data, P A Zyla, R M Barnett, J Beringer, O Dahl, D A
-Dwyer, D E Groom, et al. 2020. <span>“<span class="nocase">Review of
-Particle Physics</span>.”</span> <em>Progress of Theoretical and
-Experimental Physics</em> 2020 (8): 083C01. <a
-href="https://doi.org/10.1093/ptep/ptaa104">https://doi.org/10.1093/ptep/ptaa104</a>.
-</div>
-<div id="ref-guth1981" class="csl-entry" role="listitem">
-Guth, Alan H. 1981. <span>“Inflationary Universe: A Possible Solution to
-the Horizon and Flatness Problems.”</span> <em>Phys. Rev. D</em> 23:
-347–56. <a
-href="https://doi.org/10.1103/PhysRevD.23.347">https://doi.org/10.1103/PhysRevD.23.347</a>.
-</div>
-<div id="ref-wmap_2009" class="csl-entry" role="listitem">
-Hinshaw, G., J. L. Weiland, R. S. Hill, N. Odegard, D. Larson, C. L.
-Bennett, J. Dunkley, et al. 2009. <span>“Five-Year Wilkinson Microwave
-Anisotropy Probe (WMAP) Observations: Data Processing, Sky Maps, and
-Basic Results.”</span> <em>The Astrophysical Journal Supplement
-Series</em> 180 (2): 225–45. <a
-href="https://doi.org/10.1088/0067-0049/180/2/225">https://doi.org/10.1088/0067-0049/180/2/225</a>.
-</div>
-<div id="ref-thooftmonopoles" class="csl-entry" role="listitem">
-Hooft, G.’t. 1974. <span>“Magnetic Monopoles in Unified Gauge
-Theories.”</span> <em>Nuclear Physics B</em> 79 (2): 276–84.
-https://doi.org/<a
-href="https://doi.org/10.1016/0550-3213(74)90486-6">https://doi.org/10.1016/0550-3213(74)90486-6</a>.
-</div>
-<div id="ref-Kamionkowski_1997" class="csl-entry" role="listitem">
-Kamionkowski, Marc, Arthur Kosowsky, and Albert Stebbins. 1997. <span>“A
-Probe of Primordial Gravity Waves and Vorticity.”</span> <em>Physical
-Review Letters</em> 78 (11): 2058–61. <a
-href="https://doi.org/10.1103/physrevlett.78.2058">https://doi.org/10.1103/physrevlett.78.2058</a>.
-</div>
-<div id="ref-Kamionkowski_2016" class="csl-entry" role="listitem">
-Kamionkowski, Marc, and Ely D. Kovetz. 2016. <span>“The Quest for b
-Modes from Inflationary Gravitational Waves.”</span> <em>Annual Review
-of Astronomy and Astrophysics</em> 54 (1): 227–69. <a
-href="https://doi.org/10.1146/annurev-astro-081915-023433">https://doi.org/10.1146/annurev-astro-081915-023433</a>.
-</div>
-<div id="ref-ekpyrotic_khoury" class="csl-entry" role="listitem">
-Khoury, Justin, Burt A. Ovrut, Paul J. Steinhardt, and Neil Turok. 2001.
-<span>“<span class="nocase">Ekpyrotic universe: Colliding branes and the
-origin of the hot big bang</span>.”</span> <em>Physics Review D</em> 64
-(12): 123522. <a
-href="https://doi.org/10.1103/PhysRevD.64.123522">https://doi.org/10.1103/PhysRevD.64.123522</a>.
-</div>
-<div id="ref-foregrounds2016" class="csl-entry" role="listitem">
-Krachmalnicoff, N., Baccigalupi, C., Aumont, J., Bersanelli, M., and
-Mennella, A. 2016. <span>“Characterization of Foreground Emission on
-Degree Angular Scales for CMB b-Mode Observations - Thermal Dust and
-Synchrotron Signal from Planck and WMAP Data.”</span>
-<em>A<span>&amp;</span>A</em> 588: A65. <a
-href="https://doi.org/10.1051/0004-6361/201527678">https://doi.org/10.1051/0004-6361/201527678</a>.
-</div>
-<div id="ref-Lazear_2014" class="csl-entry" role="listitem">
-Lazear, Justin, Peter A. R. Ade, Dominic Benford, Charles L. Bennett,
-David T. Chuss, Jessie L. Dotson, Joseph R. Eimer, et al. 2014.
-<span>“The Primordial Inflation Polarization Explorer (PIPER).”</span>
-In <em>Millimeter, Submillimeter, and Far-Infrared Detectors and
-Instrumentation for Astronomy VII</em>, edited by Wayne S. Holland and
-Jonas Zmuidzinas. SPIE. <a
-href="https://doi.org/10.1117/12.2056806">https://doi.org/10.1117/12.2056806</a>.
-</div>
-<div id="ref-linde1982" class="csl-entry" role="listitem">
-Linde, A. D. 1982. <span>“A New Inflationary Universe Scenario: A
-Possible Solution of the Horizon, Flatness, Homogeneity, Isotropy and
-Primordial Monopole Problems.”</span> <em>Physics Letters B</em> 108
-(6): 389–93. https://doi.org/<a
-href="https://doi.org/10.1016/0370-2693(82)91219-9">https://doi.org/10.1016/0370-2693(82)91219-9</a>.
-</div>
-<div id="ref-linde2005" class="csl-entry" role="listitem">
-Linde, Andrei. 2005. <span>“Particle Physics and Inflationary
-Cosmology.”</span> <a
-href="https://arxiv.org/abs/hep-th/0503203">https://arxiv.org/abs/hep-th/0503203</a>.
-</div>
-<div id="ref-grmisnerthornewheeler" class="csl-entry" role="listitem">
-Misner, C. W., K. S. Thorne, and J. A. Wheeler. 1973.
-<em><span>Gravitation</span></em>. Edited by Misner, C. W., Thorne,
-K. S., and Wheeler, J. A.
-</div>
-<div id="ref-Perlmutter_1999" class="csl-entry" role="listitem">
-Perlmutter, S., G. Aldering, G. Goldhaber, R. A. Knop, P. Nugent, P. G.
-Castro, S. Deustua, et al. 1999. <span>“Measurements of <span><span
-class="math inline">\(\Omega\)</span></span> and <span><span
-class="math inline">\(\Lambda\)</span></span> from 42 High‐redshift
-Supernovae.”</span> <em>The Astrophysical Journal</em> 517 (2): 565–86.
-<a
-href="https://doi.org/10.1086/307221">https://doi.org/10.1086/307221</a>.
-</div>
-<div id="ref-polyakovmonopoles" class="csl-entry" role="listitem">
-Polyakov, Alexander M. 1974. <span>“<span class="nocase">Particle
-Spectrum in Quantum Field Theory</span>.”</span> Edited by J. C. Taylor.
-<em>JETP Lett.</em> 20: 194–95.
-</div>
-<div id="ref-Riess_1998" class="csl-entry" role="listitem">
-Riess, Adam G., Alexei V. Filippenko, Peter Challis, Alejandro
-Clocchiatti, Alan Diercks, Peter M. Garnavich, Ron L. Gilliland, et al.
-1998. <span>“<span class="nocase">Observational Evidence from Supernovae
-for an Accelerating Universe and a Cosmological Constant</span>.”</span>
-<em>The Astronomical Journal</em> 116 (3): 1009–38. <a
-href="https://doi.org/10.1086/300499">https://doi.org/10.1086/300499</a>.
-</div>
-<div id="ref-rydenintrocosmology" class="csl-entry" role="listitem">
-Ryden, Barbara. 2003. <em><span class="nocase">Introduction to
-cosmology</span></em>.
-</div>
-<div id="ref-seljack1997" class="csl-entry" role="listitem">
-Seljak, Uros, and Matias Zaldarriaga. 1997. <span>“Signature of Gravity
-Waves in the Polarization of the Microwave Background.”</span> <em>Phys.
-Rev. Lett.</em> 78: 2054–57. <a
-href="https://doi.org/10.1103/PhysRevLett.78.2054">https://doi.org/10.1103/PhysRevLett.78.2054</a>.
-</div>
-<div id="ref-Sponseller_2022" class="csl-entry" role="listitem">
-Sponseller, Danielle, and Alan Kogut. 2022. <span>“Mitigating Bias in
-CMB b-Modes from Foreground Cleaning Using a Moment Expansion.”</span>
-<em>The Astrophysical Journal</em> 936 (1): 8. <a
-href="https://doi.org/10.3847/1538-4357/ac846f">https://doi.org/10.3847/1538-4357/ac846f</a>.
-</div>
-<div id="ref-planck2018_1" class="csl-entry" role="listitem">
-The Planck Collaboration. 2020a. <span>“Planck 2018 Results. I. Overview
-and the Cosmological Legacy of Planck.”</span> <em>Astronomy
-<span>&amp;</span> Astrophysics</em> 641: A1. <a
-href="https://doi.org/10.1051%2F0004-6361%2F201833880">https://doi.org/10.1051%2F0004-6361%2F201833880</a>.
-</div>
-<div id="ref-Planck2018_xi" class="csl-entry" role="listitem">
-———. 2020b. <span>“Planck 2018 Results. XI. Polarized Dust
-Foregrounds.”</span> <em>Astronomy <span>&amp;</span> Astrophysics</em>
-641: A11. <a
-href="https://doi.org/10.1051%2F0004-6361%2F201832618">https://doi.org/10.1051%2F0004-6361%2F201832618</a>.
-</div>
-<div id="ref-SOscience" class="csl-entry" role="listitem">
-The Simons Observatory Collaboration. 2019. <span>“The Simons
-Observatory: Science Goals and Forecasts.”</span> <em>Journal of
-Cosmology and Astroparticle Physics</em> 2019 (02): 056–56. <a
-href="https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056">https://doi.org/10.1088%2F1475-7516%2F2019%2F02%2F056</a>.
-</div>
-<div id="ref-grwald" class="csl-entry" role="listitem">
-Wald, Robert M. 1984. <em><span>General Relativity</span></em>. Chicago,
-USA: Chicago Univ. Pr. <a
-href="https://doi.org/10.7208/chicago/9780226870373.001.0001">https://doi.org/10.7208/chicago/9780226870373.001.0001</a>.
-</div>
-</div>
-<aside id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p>See discussions on measuring distance in any cosmology
-textbook such as <span class="citation"
-data-cites="dodelson2020modern">(Dodelson and Schmidt 2020)</span><a
-href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Any good cosmology or GR textbook will walk through
-these details!<a href="#fnref2" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Note that not all constituents of the universe
-necessarily behave as perfect fluids despite this treatment.<a
-href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Note that we use the regular notation <span
-class="math inline">\(\frac{\partial f}{\partial x^{\mu}} = \partial_\mu
-f = f,_\mu\)</span> to describe the gradient of a scalar function <span
-class="math inline">\(f\)</span> where <span class="math inline">\(\mu =
-0, 1, 2, 3\)</span><a href="#fnref4" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>This value is uncertain. For more information, read
-about the Hubble tension.<a href="#fnref5" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Similarly, being outside of the horizon such as during
-inflation implies <span class="math inline">\(k\ll aH\)</span>.
-Inflation took modes that were <span class="math inline">\(k\gg
-aH\)</span> initially to <span class="math inline">\(k\ll aH\)</span> at
-the end of the inflationary epoch.<a href="#fnref6"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>The equations provided stay consistent to keeping <span
-class="math inline">\(c = \hbar = 1\)</span>, but the more intuitive
-form is as such: <span class="math inline">\(\epsilon \equiv
-\frac{m_{pl}^2}{16\pi}\left(\frac{V&#39;}{V}\right)^2 \text{ and } \eta
-\equiv
-\frac{m_{pl}^2}{8\pi}\left(\frac{V&#39;&#39;}{V}\right)^2\)</span> where
-<span class="math inline">\(m_{pl} = \sqrt{\frac{\hbar c}{G}} \sim 1.2
-\times 10^{19}\)</span> GeV is the Planck mass<a href="#fnref7"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>This is assuming we have made a correct (and easy) gauge
-choice where the vector perturbations indeed go to zero. We will thus
-ignore vector perturbations in this thesis.<a href="#fnref8"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Think of perturbations as small deviations from some
-homogeneous density field such that <span
-class="math inline">\(\delta(\vec{x}) = \left(\rho(\vec{x}) -
-\langle\rho\rangle\right)/\langle\rho\rangle\)</span>. Thus the Fourier
-decomposition is <span class="math inline">\(\delta(\vec{x}) =
-\sum\delta_{\vec{k}} e^{-i\vec{k}\cdot\vec{x}}\)</span>.<a
-href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Note that in these equations, the Hubble parameter and
-the slow roll parameters refer to when the respective mode exists the
-horizon.<a href="#fnref10" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-
-
     <div class="chapter-nav" style="margin-top:3rem; border-top:1px solid var(--rule); border-bottom:none; padding-top:1rem; margin-bottom:0;">
       <span><a href="ch1.html">← ch1</a></span>
       <span><a href="../thesis.html">↑ thesis</a></span>
       <span><a href="ch3.html">ch3 →</a></span>
     </div>
-
   </div>
-
   <footer>
     <div class="container">
       <span>aashrita mangu</span>
       <span id="yr"></span>
     </div>
   </footer>
-
   <script src="../assets/nav.js"></script>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
