@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cmb & the uhf sat — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    .research-figure {
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .research-figure img {
+      max-width: 100%;
+      border-radius: 2px;
+      display: block;
+      margin: 0 auto;
+    }
+    .research-figure figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .instrument-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+    .instrument-cell {
+      background: var(--surface);
+      padding: 1.1rem 1rem;
+    }
+    .instrument-cell h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      text-transform: lowercase;
+    }
+    .instrument-cell p {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+    @media (max-width: 580px) {
+      .instrument-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-research">
+
+  <div id="nav-root"></div>
+
+  <section>
+    <div class="container">
+
+      <p class="eyebrow">research · instrumentation &amp; cosmology</p>
+      <h2>the cosmic microwave background &amp; the uhf small aperture telescope</h2>
+      <span class="accent-rule"></span>
+
+      <div class="note-body">
+
+        <p>
+          The cosmic microwave background (CMB) is the oldest light in the universe —
+          thermal radiation released roughly 380,000 years after the Big Bang, when the
+          universe cooled enough for neutral hydrogen to form and the cosmos became
+          transparent to photons. Its polarization encodes direct information about the
+          inflationary epoch, making it one of the most powerful probes of early-universe
+          physics accessible to us today.
+        </p>
+
+        <h2>B-mode polarization and inflation</h2>
+
+        <p>
+          CMB polarization decomposes into two components: curl-free E-modes and
+          divergence-free B-modes. Scalar density perturbations generate only E-modes at
+          linear order. Primordial gravitational waves — predicted by inflationary models —
+          would imprint a distinct B-mode signal on degree angular scales (ℓ ~ 30–300).
+          A detection would constitute direct evidence for inflation and measure the energy
+          scale at which it occurred.
+        </p>
+
+        <p>
+          The primordial B-mode amplitude is parameterized by the tensor-to-scalar ratio
+          <em>r</em>. Current upper limits place <em>r</em> &lt; 0.036 at 95% confidence
+          (BICEP/Keck 2021). The Simons Observatory targets σ(<em>r</em>) ≈ 0.003, an
+          order-of-magnitude improvement probing a broad class of inflationary models
+          [<a href="https://arxiv.org/abs/1808.07445" target="_blank">SO Collaboration 2019</a>].
+        </p>
+
+        <figure class="research-figure">
+          <img src="https://simonsobservatory.org/wp-content/uploads/2024/11/SO_site_aerial.jpg"
+               alt="The Simons Observatory site in the Atacama Desert"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div style="display:none;background:var(--rule);height:220px;border-radius:2px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-muted);">SO site image</span>
+          </div>
+          <figcaption>
+            The Simons Observatory site at 5,200 meters elevation on Cerro Toco in the Atacama Desert, Chile.
+            The three small aperture telescopes and the large aperture telescope can be seen on the plateau.
+            Credit: Simons Observatory.
+          </figcaption>
+        </figure>
+
+        <h2>the Simons Observatory: nominal configuration</h2>
+
+        <p>
+          The Simons Observatory (SO) is located at 5,200 meters elevation on Cerro Toco
+          in the Atacama Desert of northern Chile
+          [<a href="https://arxiv.org/abs/1808.07445" target="_blank">SO Collaboration 2019</a>].
+          In its nominal configuration, SO consists of one 6-meter large aperture telescope
+          (LAT) and three 0.42-meter small aperture telescopes (SATs), fielding a total of
+          approximately 68,000 transition-edge sensor (TES) bolometers across six frequency
+          bands from 27 to 280 GHz.
+        </p>
+
+        <h2>the large aperture telescope</h2>
+
+        <p>
+          The LAT is a 6-meter crossed-Dragone telescope designed to map the CMB at
+          arcminute resolution over approximately 40% of the sky. Its focal plane — the
+          Large Aperture Telescope Receiver (LATR), the largest cryogenic CMB camera ever
+          built — will ultimately house 13 optics tubes carrying more than 62,000 TES
+          detectors across the six SO frequency bands
+          [<a href="https://arxiv.org/abs/2104.09511" target="_blank">Xu et al. 2021</a>,
+          <a href="https://arxiv.org/abs/2501.09241" target="_blank">Bhandarkar et al. 2025</a>].
+          The LATR is now fully populated with all 13 optics tubes, fielding over
+          62,000 detectors.
+        </p>
+
+        <p>
+          In February 2025, the LAT achieved first light with an observation of Mars,
+          confirming end-to-end functionality
+          [<a href="https://arxiv.org/abs/2503.00636" target="_blank">SO Collaboration 2025</a>].
+          The LAT survey will cover about 60% of the sky at arcminute resolution, with
+          five times the angular resolution and ten times the map depth of Planck.
+        </p>
+
+        <p>
+          The LAT science program is broad. At small angular scales, the LAT will measure
+          gravitational lensing of the CMB, the thermal and kinematic Sunyaev-Zel'dovich
+          effects, and produce catalogs of more than 30,000 galaxy clusters and 100,000
+          extragalactic millimeter sources. These measurements will constrain the sum of
+          neutrino masses, the properties of dark energy, and the growth of large-scale
+          structure. At large scales, the LAT's high-resolution lensing maps will be used
+          to delens the SAT B-mode measurements, improving constraints on primordial
+          gravitational waves. The LAT will also constrain the number of light relativistic
+          species in the early universe (N<sub>eff</sub>), probing physics beyond the
+          Standard Model
+          [<a href="https://arxiv.org/abs/2503.00636" target="_blank">SO Collaboration 2025</a>].
+        </p>
+
+        <h2>the three small aperture telescopes</h2>
+
+        <p>
+          The three SATs share a common design: a 0.42-meter refractive aperture with a
+          35-degree field of view, a cryogenic rotating half-wave plate (CHWP) for
+          polarization modulation, and TES detector arrays cooled to 100 mK. Each SAT
+          observes in two frequency bands, covering degree-scale angular modes where the
+          primordial B-mode signal peaks
+          [<a href="https://arxiv.org/abs/2101.11917" target="_blank">Galitzki et al. 2021</a>,
+          <a href="https://arxiv.org/abs/2405.05550" target="_blank">Galitzki et al. 2024</a>].
+        </p>
+
+        <div class="instrument-grid">
+          <div class="instrument-cell">
+            <h4>SAT-MF1</h4>
+            <p>90 &amp; 150 GHz</p>
+          </div>
+          <div class="instrument-cell">
+            <h4>SAT-MF2</h4>
+            <p>90 &amp; 150 GHz</p>
+          </div>
+          <div class="instrument-cell">
+            <h4>SAT-UHF</h4>
+            <p>220 &amp; 280 GHz</p>
+          </div>
+        </div>
+
+        <p>
+          Together, the SATs observe approximately 10% of the sky in a deep field survey
+          optimized for the degree-scale B-mode signal.
+        </p>
+
+        <figure class="research-figure">
+          <img src="https://simonsobservatory.org/wp-content/uploads/2024/11/sat_on_platform.jpg"
+               alt="Simons Observatory small aperture telescopes on the platform"
+               onerror="this.style.display='none'">
+          <figcaption>
+            The SO small aperture telescopes on the platform at the Cerro Toco site.
+            Credit: Simons Observatory.
+          </figcaption>
+        </figure>
+
+        <h2>expansions to SO</h2>
+
+        <p>
+          <strong>Advanced Simons Observatory (ASO).</strong> The ASO program comprises
+          two upgrades to the existing LAT infrastructure
+          [<a href="https://arxiv.org/abs/2503.00636" target="_blank">SO Collaboration 2025</a>].
+          The LATR has been fully populated with six additional optics tubes —
+          four mid-frequency (90/150 GHz) and two UHF (225/280 GHz) — adding
+          approximately 30,000 detectors and nearly doubling the LAT's mapping speed,
+          along with an automated data reduction pipeline. Second, a large-scale photovoltaic array is being
+          installed at the site, which will reduce reliance on diesel-generated power
+          by approximately 70% and provide a more stable power system for the observatory.
+        </p>
+
+        <p>
+          <strong>SO:UK.</strong> Two additional mid-frequency SATs contributed by the
+          United Kingdom, using kinetic inductance detectors (KIDs) rather than TES
+          bolometers.
+        </p>
+
+        <p>
+          <strong>SO:Japan.</strong> A low-frequency SAT (27/39 GHz) contributed by
+          Japan, targeting synchrotron radiation foreground characterization —
+          complementing the UHF SAT's dust characterization at high frequencies.
+        </p>
+
+        <h2>the UHF small aperture telescope</h2>
+
+        <p>
+          SAT-UHF observes at 220 and 280 GHz — the highest-frequency telescope in the
+          SO array. These bands are not sensitive to the primordial B-mode signal directly;
+          instead, they are critical for characterizing and subtracting Galactic thermal
+          dust emission, which peaks in this frequency range and is the dominant polarized
+          foreground for B-mode science at SO's target angular scales. Without the UHF
+          bands, constraints on <em>r</em> from the MF SATs would be fundamentally limited
+          by foreground systematics rather than detector noise
+          [<a href="https://arxiv.org/abs/2405.13201" target="_blank">Hertig et al. 2024</a>].
+        </p>
+
+        <p>
+          SAT-UHF fields over 12,000 TES bolometers using lenslet-coupled sinuous antenna
+          detector arrays read out via microwave SQUID multiplexing (μMUX). The 280 GHz
+          band is partially attenuated by atmospheric water vapor, placing stringent demands
+          on optical efficiency and detector noise. The detector array architecture —
+          including microstrip coupling, bandpass filters, and bolometer design — is
+          described in detail in
+          <a href="../thesis-html/ch5.html">chapter 5 of my thesis</a>.
+        </p>
+
+        <h2>my contributions: integration, deployment, and commissioning</h2>
+
+        <p>
+          I built, integrated, tested, deployed, and commissioned SAT-UHF as part of the
+          UC Berkeley group. The telescope was assembled at Lawrence Berkeley National
+          Laboratory in a staged integration sequence: mechanical validation, thermal and
+          vacuum testing, CHWP commissioning, and full detector array integration and
+          characterization. The strategy — informed by lessons from SAT-MF1 — reduced
+          on-site integration time and systematic risk. Every stage of the integration
+          and testing matrix is documented in
+          [<a href="https://arxiv.org/abs/2412.01200" target="_blank">Mangu et al. 2024</a>]
+          and <a href="../thesis-html/ch4.html">chapter 4 of my thesis</a>.
+        </p>
+
+        <p>
+          The final in-lab cooldown of SAT-UHF at LBNL was successful, after which
+          the telescope was packed and shipped to Chile and installed on the platform.
+          Site integration built on the infrastructure and lessons established during
+          SAT-MF1 deployment, whose in-lab beam characterization confirmed it met
+          science requirements before deployment
+          [<a href="https://arxiv.org/abs/2411.07318" target="_blank">Gerras et al. 2024</a>].
+        </p>
+
+        <p>
+          I am currently working on early science data from SAT-UHF — specifically
+          on detector characterization and optical performance validation during the
+          commissioning phase. This includes understanding the in-situ noise properties,
+          optical efficiency, and beam characteristics of the 220 and 280 GHz detector
+          arrays as the instrument moves toward full science operations.
+        </p>
+
+        <h2>selected references</h2>
+        <ul>
+          <li>
+            Mangu, A. (2024). <em>Development of Antenna-Coupled Detectors and a Small Aperture Telescope for Cosmic Microwave Background Observations.</em> PhD thesis, UC Berkeley.
+            <a href="../thesis.html">available here</a>
+          </li>
+          <li>
+            Mangu, A. et al. (2024). <em>The Simons Observatory: Design, Integration, and Current Status of Small Aperture Telescopes.</em>
+            <a href="https://arxiv.org/abs/2412.01200" target="_blank">arXiv:2412.01200</a>
+          </li>
+          <li>
+            Galitzki, N. et al. (2024). <em>The Simons Observatory: Design, integration, and testing of the small aperture telescopes.</em>
+            <a href="https://arxiv.org/abs/2405.05550" target="_blank">arXiv:2405.05550</a>
+          </li>
+          <li>
+            Bhandarkar, T. et al. (2025). <em>Simons Observatory: Characterization of the Large Aperture Telescope Receiver.</em>
+            <a href="https://arxiv.org/abs/2501.09241" target="_blank">arXiv:2501.09241</a>
+          </li>
+          <li>
+            Gerras, R. G. et al. (2024). <em>The Simons Observatory: Laboratory beam characterization for the first small aperture telescope.</em>
+            <a href="https://arxiv.org/abs/2411.07318" target="_blank">arXiv:2411.07318</a>
+          </li>
+          <li>
+            Hertig, E. et al. (2024). <em>The Simons Observatory: Combining delensing and foreground cleaning for improved constraints on inflation.</em>
+            <a href="https://arxiv.org/abs/2405.13201" target="_blank">arXiv:2405.13201</a>
+          </li>
+          <li>
+            SO Collaboration (2025). <em>Forecasted constraints on primordial gravitational waves with the expanded array of Small Aperture Telescopes.</em>
+            <a href="https://arxiv.org/abs/2512.15833" target="_blank">arXiv:2512.15833</a>
+          </li>
+          <li>
+            SO Collaboration (2025). <em>Science Goals and Forecasts for the Enhanced Large Aperture Telescope.</em>
+            <a href="https://arxiv.org/abs/2503.00636" target="_blank">arXiv:2503.00636</a>
+          </li>
+          <li>
+            Xu, Z. et al. (2021). <em>The Simons Observatory: the Large Aperture Telescope.</em>
+            <a href="https://arxiv.org/abs/2104.09511" target="_blank">arXiv:2104.09511</a>
+          </li>
+          <li>
+            Galitzki, N. et al. (2021). <em>Simons Observatory Small Aperture Telescope overview.</em>
+            <a href="https://arxiv.org/abs/2101.11917" target="_blank">arXiv:2101.11917</a>
+          </li>
+          <li>
+            SO Collaboration (2019). <em>The Simons Observatory: Science goals and forecasts.</em>
+            <a href="https://arxiv.org/abs/1808.07445" target="_blank">arXiv:1808.07445</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
