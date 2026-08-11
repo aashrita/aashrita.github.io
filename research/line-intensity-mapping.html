@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>line intensity mapping — aashrita mangu</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    .research-figure {
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .research-figure img {
+      max-width: 100%;
+      border-radius: 2px;
+      display: block;
+      margin: 0 auto;
+    }
+    .research-figure figcaption {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+      text-align: left;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+    .experiment-cell {
+      background: var(--surface);
+      padding: 1.25rem 1.1rem;
+    }
+    .experiment-cell h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      text-transform: lowercase;
+    }
+    .experiment-cell p {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+    @media (max-width: 580px) {
+      .experiment-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="page-research">
+
+  <div id="nav-root"></div>
+
+  <section>
+    <div class="container">
+
+      <p class="eyebrow">research · observational cosmology</p>
+      <h2>line intensity mapping</h2>
+      <span class="accent-rule"></span>
+
+      <div class="note-body">
+
+        <p>
+          Line intensity mapping (LIM) is an observational technique that measures the
+          aggregate emission of spectral lines from large cosmological volumes, without
+          resolving individual galaxies. Rather than detecting discrete sources one at a
+          time, LIM surveys collect the total line emission from all galaxies —
+          individually unresolved — within each spatial and spectral resolution element.
+          The resulting three-dimensional maps trace the large-scale structure of the
+          universe as a function of redshift, encoding statistical information about
+          galaxy populations, star formation history, and cosmological evolution
+          [<a href="https://arxiv.org/abs/2111.04631" target="_blank">Karkare et al. 2022</a>].
+        </p>
+
+        <h2>why it matters</h2>
+
+        <p>
+          Traditional galaxy surveys detect individual sources above a flux threshold,
+          which introduces selection biases and becomes prohibitively expensive at high
+          redshift. LIM bypasses this limitation: by summing all emission within a
+          volume — including from galaxies too faint to detect individually — it provides
+          an unbiased tracer of the underlying matter distribution and star formation
+          activity across cosmic time. This makes it a uniquely powerful tool for
+          studying the epoch of peak cosmic star formation (redshift z ~ 1–3) and for
+          constraining cosmological parameters at redshifts beyond the reach of
+          conventional surveys.
+        </p>
+
+        <p>
+          A particularly important target line is singly ionized carbon ([CII] at 158 μm),
+          one of the brightest emission lines in star-forming galaxies. Because the
+          [CII] luminosity traces the instantaneous star formation rate, mapping its
+          intensity as a function of redshift directly measures the cosmic star formation
+          history in dust-obscured environments that are invisible to optical surveys
+          [<a href="https://arxiv.org/abs/2009.14340" target="_blank">Vieira et al. 2020</a>].
+          At millimeter wavelengths, the CO rotational ladder provides a complementary
+          probe of the molecular gas that fuels star formation, accessible from
+          ground-based observatories
+          [<a href="https://arxiv.org/abs/2111.04631" target="_blank">Karkare et al. 2022</a>].
+        </p>
+
+        <p>
+          Beyond galaxy evolution, LIM in the millimeter band can constrain cosmological
+          parameters — including the expansion history of the universe and neutrino
+          properties — at redshifts where galaxy surveys face significant challenges
+          [<a href="https://arxiv.org/abs/2304.00973" target="_blank">Barry et al. 2023</a>].
+          Cross-correlating LIM measurements with existing spectroscopic surveys and
+          space missions like Euclid can further amplify scientific returns
+          [<a href="https://arxiv.org/abs/2602.24204" target="_blank">Bracks et al. 2026</a>].
+        </p>
+
+        <h2>the observational challenge</h2>
+
+        <p>
+          LIM experiments face two main technical challenges. First, the signal of
+          interest is faint and must be extracted from a much brighter foreground of
+          continuum emission and line interlopers from other redshifts. Second,
+          far-infrared wavelengths — where [CII] and other key diagnostic lines are
+          brightest — are inaccessible from the ground due to atmospheric opacity,
+          requiring balloon-borne or space-based platforms. Millimeter wavelengths,
+          where redshifted CO lines fall, are accessible from high-altitude ground-based
+          sites, but require highly multiplexed spectrometers with thousands of
+          detectors to survey adequate volumes. These technical demands make LIM a
+          particularly active area of detector and instrumentation development.
+        </p>
+
+        <h2>current experiments</h2>
+
+        <p>
+          A growing suite of experiments is working to demonstrate LIM as a practical
+          observational technique at both far-infrared and millimeter wavelengths. I am
+          currently involved in two of them: TIM and SPT-SLIM.
+        </p>
+
+        <div class="experiment-grid">
+          <div class="experiment-cell">
+            <h4>TIM — Terahertz Intensity Mapper</h4>
+            <p>Balloon-borne, far-infrared. Targeting [CII] at z = 0.5–1.7 from Antarctica.</p>
+          </div>
+          <div class="experiment-cell">
+            <h4>SPT-SLIM</h4>
+            <p>Ground-based, millimeter-wave. CO line intensity mapping pathfinder on the South Pole Telescope.</p>
+          </div>
+        </div>
+
+        <h2>TIM: the Terahertz Intensity Mapper</h2>
+
+        <p>
+          TIM is a NASA-funded balloon-borne far-infrared imaging spectrometer designed
+          to characterize the star formation history of dust-obscured galaxies around
+          the peak of cosmic star formation. The atmosphere is largely opaque to
+          terahertz photons, making stratospheric balloons the only platform capable
+          of wide-area spectral mapping in this band from within the solar system.
+          TIM will fly from Antarctica at an altitude of approximately 37 km
+          [<a href="https://arxiv.org/abs/2009.14340" target="_blank">Vieira et al. 2020</a>].
+        </p>
+
+        <p>
+          The instrument consists of a 2-meter low-emissivity carbon fiber telescope
+          feeding two grating spectrometer modules that together cover 240–420 μm at
+          a resolving power of R ~ 250, across a 1.3-degree field of view. The focal
+          plane uses 7,200 aluminum kinetic inductance detectors (KIDs) read out
+          through a novel RF system-on-chip architecture
+          [<a href="https://arxiv.org/abs/2009.14340" target="_blank">Vieira et al. 2020</a>].
+          TIM will map the redshifted [CII] 158 μm line over the redshift range
+          z = 0.5–1.7, corresponding to lookback times of 5–10 billion years — the
+          epoch over which the cosmic star formation rate rose to its peak and then
+          declined. TIM is planned to fly from Antarctica in the 2027–2028 austral summer
+          [<a href="https://arxiv.org/abs/2602.24204" target="_blank">Bracks et al. 2026</a>].
+        </p>
+
+        <p>
+          By applying the LIM technique, TIM will measure the total [CII] intensity
+          — including contributions from galaxies too faint to detect individually —
+          providing a dust-immune census of star formation over half of cosmic history.
+          TIM is also designed as a technology demonstrator for future far-infrared
+          space missions, which would carry out similar science at much greater
+          sensitivity
+          [<a href="https://arxiv.org/abs/2009.14340" target="_blank">Vieira et al. 2020</a>].
+        </p>
+
+        <h2>SPT-SLIM: South Pole Telescope Shirokoff Line Intensity Mapper</h2>
+
+        <p>
+          SPT-SLIM is a millimeter-wave LIM pathfinder experiment deployed on the
+          10-meter South Pole Telescope. Its goal is to demonstrate the performance
+          of on-chip superconducting filter-bank spectrometers for LIM at millimeter
+          wavelengths — technology that will underpin the next generation of large-scale
+          LIM surveys
+          [<a href="https://arxiv.org/abs/2111.04631" target="_blank">Karkare et al. 2022</a>].
+        </p>
+
+        <p>
+          The SPT-SLIM focal plane consists of 18 dual-polarization pixels, each coupled
+          to an R = 300 thin-film microstrip filter-bank spectrometer spanning the
+          2 mm atmospheric window at 120–180 GHz. Each spectral channel feeds a
+          microstrip-coupled lumped-element KID, giving approximately 10,000 detectors
+          in total. The cryostat holds the focal plane at 100 mK and is designed to
+          mount on the South Pole Telescope without removing the primary SPT-3G receiver
+          [<a href="https://arxiv.org/abs/2111.04633" target="_blank">Barry et al. 2021</a>].
+          SPT-SLIM targets the CO rotational line emission at redshifts z = 0.5–2,
+          probing the molecular gas content of galaxies over several billion years of
+          cosmic history.
+        </p>
+
+        <p>
+          SPT-SLIM completed its first deployment during the 2024–2025 austral summer
+          season. On-sky characterization, including atmospheric calibration and spectral
+          bandpass measurements of the filter-bank spectrometers, was performed on site
+          using a Fourier transform spectrometer
+          [<a href="https://arxiv.org/abs/2510.14220" target="_blank">Dibert et al. 2025</a>].
+          The techniques and detector technologies demonstrated by SPT-SLIM are intended
+          to inform the design of future, larger-scale millimeter LIM experiments capable
+          of constraining cosmology at redshifts beyond the reach of conventional galaxy
+          surveys
+          [<a href="https://arxiv.org/abs/2304.00973" target="_blank">Barry et al. 2023</a>].
+        </p>
+
+        <h2>selected references</h2>
+        <ul>
+          <li>
+            Vieira, J. et al. (2020). <em>The Terahertz Intensity Mapper (TIM): a Next-Generation Experiment for Galaxy Evolution Studies.</em>
+            <a href="https://arxiv.org/abs/2009.14340" target="_blank">arXiv:2009.14340</a>
+          </li>
+          <li>
+            Bracks, J. S. et al. (2026). <em>Forecasting the cross correlation of Terahertz Intensity Mapper [CII] line intensity maps with Euclid galaxies.</em>
+            <a href="https://arxiv.org/abs/2602.24204" target="_blank">arXiv:2602.24204</a>
+          </li>
+          <li>
+            Karkare, K. S. et al. (2022). <em>SPT-SLIM: A Line Intensity Mapping Pathfinder for the South Pole Telescope.</em>
+            <a href="https://arxiv.org/abs/2111.04631" target="_blank">arXiv:2111.04631</a>
+          </li>
+          <li>
+            Barry, P. S. et al. (2021). <em>Design of SPT-SLIM focal plane; a spectroscopic imaging array for the South Pole Telescope.</em>
+            <a href="https://arxiv.org/abs/2111.04633" target="_blank">arXiv:2111.04633</a>
+          </li>
+          <li>
+            Barry, P. S. et al. (2023). <em>Fabrication Development for SPT-SLIM, a Superconducting Spectrometer for Line Intensity Mapping.</em>
+            <a href="https://arxiv.org/abs/2304.00973" target="_blank">arXiv:2304.00973</a>
+          </li>
+          <li>
+            Dibert, K. R. et al. (2025). <em>An On-Sky Atmospheric Calibration of SPT-SLIM.</em>
+            <a href="https://arxiv.org/abs/2510.14220" target="_blank">arXiv:2510.14220</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>aashrita mangu</span>
+      <span id="yr"></span>
+    </div>
+  </footer>
+
+  <script src="../assets/nav.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
