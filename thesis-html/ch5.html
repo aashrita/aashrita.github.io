@@ -60,8 +60,8 @@
       text-transform: lowercase;
       color: var(--ink);
     }
-    /* Hide pandoc section numbers */
-    .thesis-wrap .header-section-number { display: none; }
+    /* Section numbers */
+    .thesis-wrap .header-section-number { font-family: var(--mono); font-size: 0.75em; color: var(--ink-muted); margin-right: 0.6em; }
     .thesis-wrap h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -272,7 +272,7 @@ class="header-section-number">5.1</span> Lenslet-Coupled Sinuous
 Antennas</h2>
 <figure id="fig:ch5:sinuous">
 <img src="figures/chap5_pics/sinuous.png" />
-<figcaption>Sinuous antenna parameters, properties, and lenslet focus.
+<figcaption><strong>Fig. 5.1.</strong> Sinuous antenna parameters, properties, and lenslet focus.
 Beige is slot, white is metal for the left antenna diagrams. (a)
 Baseline sinuous antenna with <span class="math inline">\(\tau =
 1.3\)</span>, <span class="math inline">\(\alpha = 45^{\circ}\)</span>,
@@ -412,7 +412,7 @@ either.</p></li>
 </ul>
 <figure id="fig:ch5:miscantenna">
 <img src="figures/chap5_pics/miscantenna.png" style="width:90.0%" />
-<figcaption>Slots, bow-tie antennas, spiral antennas, and double slot
+<figcaption><strong>Fig. 5.2.</strong> Slots, bow-tie antennas, spiral antennas, and double slot
 dipole antennas. (a) Half-wave dipoles in half-wave array placed as
 shown, where metal is shaded. While the metal dipole array acts as a
 bandstop filter, its dual of half-wave dipole slots act as a bandpass
@@ -479,7 +479,7 @@ uniform, commercial option rather than the traditional time-consuming
 method of mixing epoxy and making molds.</p>
 <figure id="fig:ch5:antennaimpedances">
 <img src="figures/chap5_pics/antenna_impedances.png" />
-<figcaption>Double slot dipole and sinuous antenna impedances.
+<figcaption><strong>Fig. 5.3.</strong> Double slot dipole and sinuous antenna impedances.
 <em>Left</em> is the simulated real and imaginary impedance of a double
 slot dipole antenna designed for a 150 GHz CMB observation band. Note
 how around the band center of <span
@@ -584,7 +584,7 @@ the antenna.</p></li>
 </ul>
 <figure id="fig:ch5:lpt">
 <img src="figures/chap5_pics/LPT.png" />
-<figcaption>Sinuous antenna versus log periodic toothed (LPT) antenna.
+<figcaption><strong>Fig. 5.4.</strong> Sinuous antenna versus log periodic toothed (LPT) antenna.
 (a) Trimetric view of example LPT (<span class="math inline">\(\tau =
 1.05\)</span>) simulation set up on ANSYS HFSS. (b) Inner LPT antenna
 excitation and crossfeed in simulation suite, where the groundplane is
@@ -598,7 +598,7 @@ geometry. Note the SO low-frequency geometry was adopted for this study.
 </figure>
 <figure id="fig:ch5:wobble">
 <img src="figures/chap5_pics/wobble.png" />
-<figcaption>Frequency-dependent polarization polarization rotation of
+<figcaption><strong>Fig. 5.5.</strong> Frequency-dependent polarization polarization rotation of
 the sinuous antenna and log periodic trapezoidal antenna versus <span
 class="math inline">\(\tau\)</span>. Dashed lines represent pure
 simulation data from HFSS. Numerical simulations, especially when
@@ -624,7 +624,7 @@ antenna.</figcaption>
 </figure>
 <figure id="fig:ch5:sinuousmsgp">
 <img src="figures/chap5_pics/sinuous_msgp.png" />
-<figcaption>Sinuous antenna microstrip line to groundplane ratio.
+<figcaption><strong>Fig. 5.6.</strong> Sinuous antenna microstrip line to groundplane ratio.
 <em>Left</em> shows the Simons Array sinuous antenna feed design. The
 microstrip line to groundplane ratio was worst at the red box.
 <em>Center</em> shows the updated sinuous antenna feed design. This
@@ -675,7 +675,7 @@ class="header-section-number">5.2</span> Other Types of CMB Optical
 Coupling</h2>
 <figure id="fig:ch5:cmboptcoupling">
 <img src="figures/chap5_pics/cmbopticalcoupling.png" />
-<figcaption>Optical coupling used in CMB experiments. (a)
+<figcaption><strong>Fig. 5.7.</strong> Optical coupling used in CMB experiments. (a)
 Lenslet-coupled double slot dipole used in POLARBEAR. Image from <span
 class="citation" data-cites="Arnold_2012">(K. Arnold et al.
 2012)</span>. (b) Lenslet-coupled sinuous antenna used in Simons
@@ -786,7 +786,7 @@ microstrip line) in Sonnet or HFSS, and then build up to designing
 filters from there.</p>
 <figure id="fig:ch5:uwavecomponents">
 <img src="figures/chap5_pics/uwavecomponents.png" style="width:80.0%" />
-<figcaption>Example microwave components in L-Edit. Blue is the niobium
+<figcaption><strong>Fig. 5.8.</strong> Example microwave components in L-Edit. Blue is the niobium
 microstrip line layer and beige is the slot cut into the niobium ground
 plane layer. A silicon nitride dielectric layer separates the two. (a)
 Impedance transformer for 7 to 20 <span
@@ -923,21 +923,21 @@ shallower roll-off).</p>
 </figure>
 <figure id="subfig:ch5:filterxform2">
 <img src="figures/chap5_pics/filterxform2.png" style="height:2.5cm" />
-<figcaption>Bandpass prototype.</figcaption>
+<figcaption><strong>Fig. 5.9.</strong> Bandpass prototype.</figcaption>
 </figure>
 <figure id="subfig:ch5:filterxform3">
 <img src="figures/chap5_pics/filterxform3.png" />
-<figcaption>Invert shunt components to series using impedance transform
+<figcaption><strong>Fig. 5.9.</strong> Invert shunt components to series using impedance transform
 with T-networks, and split series capacitance into two to maintain
 symmetry.</figcaption>
 </figure>
 <figure id="subfig:ch5:filterxform4">
 <img src="figures/chap5_pics/filterxform4.png" style="height:2.5cm" />
-<figcaption>Combine capacitances and relabel.</figcaption>
+<figcaption><strong>Fig. 5.9.</strong> Combine capacitances and relabel.</figcaption>
 </figure>
 <figure id="subfig:ch5:filterxform5">
 <img src="figures/chap5_pics/filterxform5.png" style="height:2.5cm" />
-<figcaption>Final form of bandpass filter after <span
+<figcaption><strong>Fig. 5.9.</strong> Final form of bandpass filter after <span
 class="math inline">\(Y-\Delta\)</span> transformation.</figcaption>
 </figure>
 <figcaption>3-pole Chebyshev filter transformation starting from the
@@ -1080,14 +1080,14 @@ Sonnet to account for unavoidable parasitic conductances and inductances
 from this lumped element method.</p>
 <figure id="fig:ch5:cmbs4_40bpf">
 <img src="figures/chap5_pics/cmbs4_40ghzbpf.png" />
-<figcaption>Example CMB-S4 prototype low-frequency bandpass filter
+<figcaption><strong>Fig. 5.10.</strong> Example CMB-S4 prototype low-frequency bandpass filter
 Sonnet simulation. Note that here the lower case letters are actually
 analogous to the uppercase letters in our final bandpass form.
 </figcaption>
 </figure>
 <figure id="fig:ch5:cmbs4bpfoutput">
 <img src="figures/chap5_pics/CMBS4bpf.png" />
-<figcaption>Example results of CMB-S4 prototype low-frequency bandpass
+<figcaption><strong>Fig. 5.11.</strong> Example results of CMB-S4 prototype low-frequency bandpass
 filter Sonnet simulation. Note the higher frequency resonances that are
 a product of any geometric filter design. Low-pass filters are often
 used in conjunction to cut these resonances. This low-pass filter is
@@ -1114,7 +1114,7 @@ class="header-section-number">5.4.1</span> Transition Edge Sensor
 Bolometers</h3>
 <figure id="fig:ch5:tesoperation">
 <img src="figures/chap5_pics/tesoperation.png" />
-<figcaption>Transition edge sensor basic operation shown for two
+<figcaption><strong>Fig. 5.12.</strong> Transition edge sensor basic operation shown for two
 different bolometer designs. Left is the Simons Observatory
 low-frequency TES design, and right is the BICEP/Keck TES design (BICEP
 TES image taken from <span class="citation"
@@ -1132,7 +1132,7 @@ id="fnref25" role="doc-noteref"><sup>25</sup></a></figcaption>
 </figure>
 <figure id="fig:ch5:tesbasics">
 <img src="figures/chap5_pics/tesbasics.png" />
-<figcaption>Transition edge sensor transition principles. <em>Left</em>
+<figcaption><strong>Fig. 5.13.</strong> Transition edge sensor transition principles. <em>Left</em>
 shows how incoming optical power affects the TES, which deviates from
 its bias point. This small shift in temperature corresponds to a large
 change in resistance. <em>Right</em> shows how the TES is schematically
@@ -1466,8 +1466,8 @@ frequency associated with such a microresonator. Thus, if a
 superconductor is placed in a resonator circuit, we can observe resonant
 frequency shifts for CMB observation.</p>
 <figure id="fig:ch5:kidmux">
-<img src="figures/chap5_pics/kidmux.png" style="max-width:100%;width:560px;" />
-<figcaption>Thermal kinetic inductance detectors versus microwave
+<img src="figures/chap5_pics/kidmux.png" style="max-width:560px;" />
+<figcaption><strong>Fig. 5.14.</strong> Thermal kinetic inductance detectors versus microwave
 multiplexing techniques. (a) and (b) TKID bolometer diagram with thermal
 circuit in red and electrical circuit in black (left) and prototype chip
 (right) <span class="citation" data-cites="wandui2020">(Wandui et al.
@@ -1542,7 +1542,7 @@ tones, amplified at the warmer cryogenic stages, and then demodulated on
 the warm 300K side to extract the sky signal.</p>
 <figure id="fig:ch5:dfmux">
 <img src="figures/chap5_pics/dfmuxannotated.png" />
-<figcaption>Basics of Dfmux operation. Incoming radiation interacts with
+<figcaption><strong>Fig. 5.15.</strong> Basics of Dfmux operation. Incoming radiation interacts with
 voltage-biased TESs, which are paired with LC resonators as shown. Image
 taken from <span class="citation"
 data-cites="Montgomery_2022">(Montgomery et al. 2022)</span>, adapted
@@ -1567,7 +1567,7 @@ SQUID series array amplifier, and then is further amplified from there
 until it is read out by the warm electronics as the sky signal.</p>
 <figure id="fig:ch5:tdm">
 <img src="figures/chap5_pics/tdm.png" style="width:60.0%" />
-<figcaption>Basics of TDM operation. SQUID-coupled TESs are arranged in
+<figcaption><strong>Fig. 5.16.</strong> Basics of TDM operation. SQUID-coupled TESs are arranged in
 a 2-D logical array. Each column is a single chain amplified with
 another SQUID array, and each row is read out cyclically. Image from
 <span class="citation" data-cites="cmbs4_technology">(Abitbol et al.
@@ -1599,7 +1599,7 @@ at the 4K and 40K stages, and then digitized into the desired sky signal
 by the warm electronics.</p>
 <figure id="fig:ch5:mumux">
 <img src="figures/chap5_pics/mumux.png" />
-<figcaption>Basics of microwave multiplexing operation. SMuRF generates
+<figcaption><strong>Fig. 5.17.</strong> Basics of microwave multiplexing operation. SMuRF generates
 the TES voltage biases, the kHz flux ramp to linearize SQUIDs, and uses
 tone tracking to watch for shifting resonances in the TESs.
 SQUID-coupled TESs are inductively coupled to microwave resonators,
@@ -1690,9 +1690,9 @@ data-cites="mayuri_2020">(Rao et al. 2020)</span>).</p>
 <h4 data-number="5.6.1.2" id="optimization"><span
 class="header-section-number">5.6.1.2</span> Optimization</h4>
 <figure id="fig1">
-<embed src="figures/chap5_pics/design-opt.png" />
+<img src="figures/chap5_pics/design-opt.png" />
 <p>-1ex</p>
-<figcaption><em>Left:</em> DOS CAD exploded view. Components are: (a)
+<figcaption><strong>Fig. 5.18.</strong> <em>Left:</em> DOS CAD exploded view. Components are: (a)
 vacuum plate**; (b) LF pixel array; (c) detector wafer; (d) invar clips;
 (e) bond-pad piece; (f) LF array support structure; (g) step-up aligner
 piece**; (h) copper backshort piece; and (i) interlocking flange.
@@ -1704,7 +1704,7 @@ view with key parameters labels. </figcaption>
 <p>-1.5ex</p>
 <div id="tab1">
 <table>
-<caption>Optimized Pixel Parameters</caption>
+<caption><strong>Table 5.1.</strong> Optimized Pixel Parameters</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">=.8<strong>Parameter</strong></th>
@@ -1764,8 +1764,8 @@ plane, where <span class="math inline">\(\lambda_{center}\)</span>
 corresponds to the central frequency of the combined 30 and 40 GHz
 bands.</p>
 <figure id="fig2">
-<p>-1ex <embed src="figures/chap5_pics/fab.png" /> -0.5ex</p>
-<figcaption>SO LF wafer images taken with Keyence 7000.
+<p>-1ex <img src="figures/chap5_pics/fab.png" /> -0.5ex</p>
+<figcaption><strong>Fig. 5.19.</strong> SO LF wafer images taken with Keyence 7000.
 <strong>(a)</strong> Pixel view showing sinuous antenna, superconducting
 microstrip line, lumped element band pass filters, crossunders, and TES.
 <strong>(b)</strong> TES bolometer. Visible are the microstrip lines
@@ -1819,9 +1819,9 @@ summary of final design values used are listed in Table <strong>Table 5.1</stron
 class="header-section-number">5.6.2</span> Fabrication and Ongoing
 Testing</h3>
 <figure id="fig3">
-<p><embed src="figures/chap5_pics/detectors.png" /> -1ex</p>
+<p><img src="figures/chap5_pics/detectors.png" /> -1ex</p>
 <p>-1ex</p>
-<figcaption><em>Left:</em> For left resistance map, note that opens are
+<figcaption><strong>Fig. 5.20.</strong> <em>Left:</em> For left resistance map, note that opens are
 marked, and all of P22 is shorted. Without a lithography error on the
 dark bolometers which has since been solved, we achieve <span
 class="math inline">\(\sim\)</span>91% warm electrical yield on this
@@ -1831,8 +1831,8 @@ class="math inline">\(\Omega\)</span> and <span
 class="math inline">\(T_c \approx\)</span> 160 mK.</figcaption>
 </figure>
 <figure id="fig5">
-<p>-0.5ex <embed src="figures/chap5_pics/thermal.png" /> -0.5ex</p>
-<figcaption>Thermal parameter distributions for a tested half-wafer with
+<p>-0.5ex <img src="figures/chap5_pics/thermal.png" /> -0.5ex</p>
+<figcaption><strong>Fig. 5.21.</strong> Thermal parameter distributions for a tested half-wafer with
 a cold load. Note that “dark" here refers to dark bolometers, which have
 lower <span class="math inline">\(P_{sat}\)</span> by design. Similarly,
 “optical" refers to all antenna-coupled bolometers. <em>Left:</em>
@@ -1851,9 +1851,9 @@ data-cites="suzuki2012 suzuki2016 Westbrook_2018 westbrook2022">(Aritoki
 Suzuki et al. 2012; A. Suzuki et al. 2016; B. Westbrook et al. 2018;
 Benjamin Westbrook et al. 2022)</span>.</p>
 <figure id="fig4">
-<p><embed src="figures/chap5_pics/optical-testing.png" /> -0.5ex</p>
+<p><img src="figures/chap5_pics/optical-testing.png" /> -0.5ex</p>
 <p>-1ex</p>
-<figcaption><strong>(a)</strong> ‘Swiss cheese’ backshort performs
+<figcaption><strong>Fig. 5.22.</strong> <strong>(a)</strong> ‘Swiss cheese’ backshort performs
 better than a flat backshort in beam width and amplitude for both bands
 in simulation. <strong>(b)</strong> Measured polarization efficiency is
 <span class="math inline">\(&gt;\)</span>96% for 40T (shown) and <span

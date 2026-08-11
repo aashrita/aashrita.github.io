@@ -60,8 +60,8 @@
       text-transform: lowercase;
       color: var(--ink);
     }
-    /* Hide pandoc section numbers */
-    .thesis-wrap .header-section-number { display: none; }
+    /* Section numbers */
+    .thesis-wrap .header-section-number { font-family: var(--mono); font-size: 0.75em; color: var(--ink-muted); margin-right: 0.6em; }
     .thesis-wrap h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -260,7 +260,7 @@ detailed and technical description of cosmology, please refer to Chapter
 <strong>2</strong>.</p>
 <figure id="fig:ch1:cmb_blackbody">
 <img src="figures/chap1_pics/COBE_CMBblackbody.png" />
-<figcaption>CMB data fit beautifully to a Planck blackbody spectrum with
+<figcaption><strong>Fig. 1.1.</strong> CMB data fit beautifully to a Planck blackbody spectrum with
 <span class="math inline">\(T \approx 2.73K\)</span> as measured by the
 FIRAS instrument on the COBE satellite <span class="citation"
 data-cites="Fixsen_1996 PDG">(Fixsen et al. 1996; Group et al.

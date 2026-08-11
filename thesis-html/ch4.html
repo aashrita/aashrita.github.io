@@ -60,8 +60,8 @@
       text-transform: lowercase;
       color: var(--ink);
     }
-    /* Hide pandoc section numbers */
-    .thesis-wrap .header-section-number { display: none; }
+    /* Section numbers */
+    .thesis-wrap .header-section-number { font-family: var(--mono); font-size: 0.75em; color: var(--ink-muted); margin-right: 0.6em; }
     .thesis-wrap h2 {
       font-size: 1.1rem;
       font-weight: 500;
@@ -241,15 +241,15 @@ Simons Observatory Collaboration 2019)</span>.</p>
 <h2 data-number="4.2" id="sat-design"><span
 class="header-section-number">4.2</span> SAT Design</h2>
 <figure id="fig:sat">
-<embed src="figures/chap4_pics/satbackend_dimslabelled.png" />
-<figcaption>SAT structure, cross sectional view. Forebaffle structure is
+<img src="figures/chap4_pics/satbackend_dimslabelled.png" />
+<figcaption><strong>Fig. 4.3.</strong> SAT structure, cross sectional view. Forebaffle structure is
 cropped in the above image. Not labelled explicitly are the series of
 low pass and alumina filters located at 40 K, 4 K, 1 K, and 100
 mK.</figcaption>
 </figure>
 <figure id="fig:satback">
-<embed src="figures/chap4_pics/sat_backend_labelled.png" />
-<figcaption>SAT structure, backend view CAD of full
+<img src="figures/chap4_pics/sat_backend_labelled.png" />
+<figcaption><strong>Fig. 4.4.</strong> SAT structure, backend view CAD of full
 assembly.</figcaption>
 </figure>
 <p>All SATs contain the same basic 3 lens refractor structure, as shown
@@ -374,8 +374,8 @@ requirements.</p>
 class="header-section-number">4.3</span> Integration and Testing
 Strategy</h2>
 <figure id="fig:satassembled">
-<embed src="figures/chap4_pics/sat_assembled.png" />
-<figcaption>SAT assembly. <strong>(a)</strong> SAT-UHF focal plane for
+<img src="figures/chap4_pics/sat_assembled.png" />
+<figcaption><strong>Fig. 4.5.</strong> SAT assembly. <strong>(a)</strong> SAT-UHF focal plane for
 final in-lab testing. <strong>(b)</strong> Universal Focal Plane Modules
 (UFMs) at Chilean site before being placed in SAT-MF1.
 <strong>(c)</strong> SAT-MF1 integration in the highbay at Chilean site
@@ -463,7 +463,7 @@ sent directly to site).</p>
 class="header-section-number">4.4.1</span> Truss Testing</h3>
 <figure id="fig:ch4:trusstesting">
 <img src="figures/chap4_pics/trusstesting.png" />
-<figcaption>SAT truss testing. (a) Example of delamination at the epoxy
+<figcaption><strong>Fig. 4.6.</strong> SAT truss testing. (a) Example of delamination at the epoxy
 joint between the G-10 piece and the aluminum foot. (b) The redesigned
 300K-40K-4K truss with a full G-10 tab with aluminum bars. (c) Jigging
 on the SAT front end during disassembly to remove old truss. (d) CAD
@@ -480,7 +480,7 @@ represents partial damage/de-adhesion.</figcaption>
 </figure>
 <figure id="subfig:ch4:truss40k4kfailure">
 <img src="figures/chap4_pics/truss40k-4kfailure.png" />
-<figcaption>There are 24 total tabs. Red represents damage/de-adhesion
+<figcaption><strong>Fig. 4.7.</strong> There are 24 total tabs. Red represents damage/de-adhesion
 on both 40K and 4K joints. Cyan represents damage/de-adhesion on 40K
 joint. Yellow represents damage/de-adhesion on 4K joint. Underline
 represents partial damage/de-adhesion.</figcaption>
@@ -548,7 +548,7 @@ Validation</h3>
 <figure id="fig:ch4:fpthermo">
 <img src="figures/chap4_pics/runfp_thermometry.png"
 style="width:60.0%" />
-<figcaption>In-lab final focal plane thermometry configuration for
+<figcaption><strong>Fig. 4.8.</strong> In-lab final focal plane thermometry configuration for
 pre-deployment testing. The ruthenium oxide (ROX) arrangement on the
 focal plane at 100mK are shown. The heater allowed us to control the
 temperature of the focal plane depending on what was read by the main
@@ -563,7 +563,7 @@ performance. Refer to Figure <strong>Fig. 4.8</strong> for the focal
 plane thermometry configuration used in this section.</p>
 <div id="table:ch4:basetemps">
 <table>
-<caption>SAT-UHF pre-deployment in-lab testing base temperatures
+<caption><strong>Table 4.1.</strong> SAT-UHF pre-deployment in-lab testing base temperatures
 achieved for key stages.</caption>
 <thead>
 <tr class="header">
@@ -611,7 +611,7 @@ class="math inline">\(\delta T\)</span> is the difference between the
 maximum temperature read on the 40K stage and the minimum temperature
 read at the focal plane stage. This requirement is set by the required
 transition temperature of the CHWP YBCO superconducting magnets. See
-Table <span style="color:var(--ink-muted);font-style:italic;">table:ch4:basetemps</span> for
+Table <strong>Table 4.1</strong> for
 a complete documentation of Run 5 base temperatures.</p>
 <p>The cold mechanical performance was split by the four temperature
 stages:</p>
@@ -657,7 +657,7 @@ loop.</p></li>
 </ul>
 <div id="table:ch4:baseloadingest">
 <table>
-<caption>SAT-UHF still and mixing chamber loading estimation. Prediction
+<caption><strong>Table 4.2.</strong> SAT-UHF still and mixing chamber loading estimation. Prediction
 comes from calculations done within SO. The Run 4 and 5 average comes
 from a predictive, comparative interpolation method.</caption>
 <thead>
@@ -703,14 +703,14 @@ thermal conductance performance shorting the DR cold heads to the focal
 plane.</p>
 <figure id="fig:ch4:hsload">
 <img src="figures/chap4_pics/hsload.png" />
-<figcaption>SAT-UHF 1 K and 100 mK thermal conductance measurements,
+<figcaption><strong>Fig. 4.9.</strong> SAT-UHF 1 K and 100 mK thermal conductance measurements,
 where G denotes the conductance as usual. Some of these measurements
 (labelled) involved heat strapping to the DR 1K and mK cold heads (i.e.
 still and MXC respectively).</figcaption>
 </figure>
 <figure id="fig:ch4:mxcload">
 <img src="figures/chap4_pics/mxcload.png" />
-<figcaption>Analysis of SAT-UHF mixing chamber temperature versus power
+<figcaption><strong>Fig. 4.10.</strong> Analysis of SAT-UHF mixing chamber temperature versus power
 applied. This was used to determine the ideal still power to achieve the
 lowest base temperature at the 100mK stage. Right is a zoomed-in view of
 left plot to show the y-intercept, where a 10.0mW still power was shown
@@ -718,7 +718,7 @@ to be favorable.</figcaption>
 </figure>
 <figure id="fig:ch4:4kloadcurve">
 <img src="figures/chap4_pics/4kloadcurve.png" />
-<figcaption>SAT-UHF 4K load curve with base loading estimate (left) and
+<figcaption><strong>Fig. 4.11.</strong> SAT-UHF 4K load curve with base loading estimate (left) and
 heat strap performance (right).</figcaption>
 </figure>
 <figure id="fig:ch4:drloadcurve">
@@ -730,7 +730,7 @@ class="math inline">\(\mu\)</span>W)).</figcaption>
 </figure>
 <figure id="subfig:ch4:run3run5drloadcurve">
 <img src="figures/chap4_pics/run3run5_drloadcurve.png" />
-<figcaption>Comparison of loading data taken in Run3 (where only the
+<figcaption><strong>Fig. 4.12.</strong> Comparison of loading data taken in Run3 (where only the
 PTC, DR, and thermometry were in the SAT) with loading data taken in
 Run5 (full, final pre-deployment configuration). Fewer points are shown
 because Run3 loading data contained fewer samples.</figcaption>
@@ -791,7 +791,7 @@ stop.</figcaption>
 </figure>
 <figure id="subfig:ch4:chwpjitter">
 <img src="figures/chap4_pics/chwp_anglejitter.png" />
-<figcaption>CHWP angle jitter.</figcaption>
+<figcaption><strong>Fig. 4.13.</strong> CHWP angle jitter.</figcaption>
 </figure>
 <figcaption>SAT-UHF final pre-deployment cryogenic half wave plate spin
 down and angle jitter. Phase compensation unit allows the full breaking
@@ -855,7 +855,7 @@ class="header-section-number">4.4.4</span> Readout Validation</h3>
 <figure id="fig:ch4:run5ufmconfig">
 <img src="figures/chap4_pics/run5_uv31masking.png"
 style="width:95.0%" />
-<figcaption>SAT-UHF final in-lab focal plane configuration.
+<figcaption><strong>Fig. 4.14.</strong> SAT-UHF final in-lab focal plane configuration.
 <em>Left</em> shows how bias lines go through a mid-frequency universal
 focal plane module. Image adapted from <span class="citation"
 data-cites="healythesis">(E. E. Healy 2023)</span>. <em>Right</em> shows
@@ -914,7 +914,7 @@ channels are currently working at site.</p>
 <figure id="fig:ch4:lab_craurhperformance">
 <img src="figures/chap4_pics/run5_craurhperformance.png"
 style="width:95.0%" />
-<figcaption>SAT-UHF final in-lab cold and warm loopback readout chain
+<figcaption><strong>Fig. 4.15.</strong> SAT-UHF final in-lab cold and warm loopback readout chain
 transmission. Channel 3 was not working properly during this final run
 and was later repaired for site.</figcaption>
 </figure>
@@ -948,7 +948,7 @@ class="header-section-number">4.4.5</span> Detector Validation</h3>
 <figure id="fig:ch4:run5maskingtable">
 <img src="figures/chap4_pics/run5_maskingtable.png"
 style="width:60.0%" />
-<figcaption>SAT-UHF in-lab testing UFM masking configuration. Bias line,
+<figcaption><strong>Fig. 4.16.</strong> SAT-UHF in-lab testing UFM masking configuration. Bias line,
 UHF band, and masked state is shown for both Uv31 (half masked) and Uv8
 (fully masked).</figcaption>
 </figure>
@@ -1096,7 +1096,7 @@ tests for risk mitigation for the other MF SATs already in the field.
 Outlined here are three examples of some of these tests.</p>
 <figure id="fig:ch4:satcovervsnocover">
 <img src="figures/chap4_pics/satcovervsnocover.png" />
-<figcaption>SAT-UHF detector saturation powers for an open window versus
+<figcaption><strong>Fig. 4.17.</strong> SAT-UHF detector saturation powers for an open window versus
 covered window. Top shows the detector biasing table. Bottom show
 histogram of the detector saturation powers. Masking state, band, and
 median saturation powers are shown in the legend.</figcaption>
@@ -1114,7 +1114,7 @@ this ability to transition with a window cover very clearly, and is
 promising for UHF detectors performing favorably at the site.</p>
 <figure id="fig:ch4:hfleak">
 <img src="figures/chap4_pics/uv31hfleak.png" />
-<figcaption>SAT-UHF high frequency leaks test setup and results. The
+<figcaption><strong>Fig. 4.18.</strong> SAT-UHF high frequency leaks test setup and results. The
 leftmost column shows the test setup with a chopper and heat source. The
 centermost column shows the signal seen at 2 different chopper
 frequencies as a sanity check. It is clear that the above and below
@@ -1126,7 +1126,7 @@ have a blue light leak.</figcaption>
 </figure>
 <figure id="fig:ch4:satrays">
 <img src="figures/chap4_pics/satrays.png" style="width:70.0%" />
-<figcaption>Approximate optical ray traces over SAT cross sectional
+<figcaption><strong>Fig. 4.19.</strong> Approximate optical ray traces over SAT cross sectional
 view. Orange boxes show rough placement of Uv8 and Uv31, and where
 expected beam should peak outside the window. Image adapted from <span
 class="citation" data-cites="yamada2023">(Yamada et al.
@@ -1173,7 +1173,7 @@ months, SAT-UHF will begin observations once it is placed on the
 platform with the completed enclosures!</p>
 <figure id="fig:ch4:siteintegration1">
 <img src="figures/chap4_pics/siteintegration1.png" />
-<figcaption>Site integration initial installations. (a) Author with
+<figcaption><strong>Fig. 4.20.</strong> Site integration initial installations. (a) Author with
 SAT-UHF when it arrived at site. (b) The PTC insertion set up, with the
 vibration isolation and multi-layer insulation (MLI) around 40K and 4K.
 The angled white shell mates the PTC to the SAT 300K shell. (c) The cart
@@ -1199,7 +1199,7 @@ pump down process was started. The leak check was successful, and
 integration could continue.</p>
 <figure id="fig:ch4:siteBE1">
 <img src="figures/chap4_pics/siteBEintegration1.png" />
-<figcaption>SAT-UHF backend integration: universal readout harness
+<figcaption><strong>Fig. 4.21.</strong> SAT-UHF backend integration: universal readout harness
 (URH), cold readout assembly (CRA), and optics tube (OT). (a) Benchtop
 preparation of URH. (b) URH after insertion into SAT, but before final
 close up of assembly. (c) OT being craned into the SAT. The 4K magnetic
@@ -1236,14 +1236,14 @@ well as shown in <strong>Fig. 4.22</strong>.</p>
 <figure id="fig:ch4:site_craurhperformance">
 <img src="figures/chap4_pics/site_craurhperformance.png"
 style="width:95.0%" />
-<figcaption>SAT-UHF final in-lab cold and warm loopback readout chain
+<figcaption><strong>Fig. 4.22.</strong> SAT-UHF final in-lab cold and warm loopback readout chain
 transmission. All chains were working well. Only difference from the
 in-lab testing was VNA input power was set to -8.0dBm instead of
 0.0dBm.</figcaption>
 </figure>
 <figure id="fig:ch4:siteBE2">
 <img src="figures/chap4_pics/satBEintegration2.png" />
-<figcaption>SAT-UHF backend integration: universal focal plane module
+<figcaption><strong>Fig. 4.23.</strong> SAT-UHF backend integration: universal focal plane module
 (UFM) installation and close up. (a) Backend prior to UFM installation.
 Sitting directly behind the focal plane is the 100mK metal mesh filter.
 At this point, the 1K-100mK CRA was fully installed. (b) Full, final
@@ -1262,7 +1262,7 @@ before close up. The magnetic shield lids were attached, with heat
 strapping completed intermittently at every temperature stage.</p>
 <figure id="fig:ch4:siteFE">
 <img src="figures/chap4_pics/siteFEintegration1.png" />
-<figcaption>SAT-UHF front end integration. (a) 4K alumina filter
+<figcaption><strong>Fig. 4.24.</strong> SAT-UHF front end integration. (a) 4K alumina filter
 installation. Multi-layer insulation is partially taped down in the
 picture. (b) Cryogenic half wave plate (CHWP) final installation after
 actuators gripped the sapphire. (c) CHWP before sapphire was gripped
@@ -1293,7 +1293,7 @@ by the BICEP team) <span class="citation"
 data-cites="BICEPupgrade_2018">(P. A. Ade et al. 2018)</span>.</p>
 <figure id="fig:ch4:siteBE3">
 <img src="figures/chap4_pics/satBEintegration3.png" />
-<figcaption>SAT-UHF final close up pictures. <em>Left</em> post-UFM
+<figcaption><strong>Fig. 4.25.</strong> SAT-UHF final close up pictures. <em>Left</em> post-UFM
 installation group picture featuring this author. Blue anti-static lab
 coats were used as a part of UFM handling. <em>Right</em> is the fully
 integrated SAT before being placed on the platform. The ‘Cosmic Plasma’
