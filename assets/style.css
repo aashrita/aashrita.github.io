@@ -63,6 +63,51 @@ img { max-width: 100%; display: block; }
   padding: 0 2rem;
 }
 
+/* Width variants — swap .container for one of these on any page */
+.container-wide {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container-full {
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Width toggle control ───────────────── */
+.width-toggle {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.width-toggle button {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink-muted);
+  cursor: pointer;
+  border-radius: 1px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.width-toggle button:hover {
+  border-color: var(--ink-muted);
+  color: var(--ink-soft);
+}
+
+.width-toggle button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Nav ─────────────────────────────────  */
 nav {
   position: sticky;
