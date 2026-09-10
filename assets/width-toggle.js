@@ -1,10 +1,9 @@
 /* width-toggle.js
-   Auto-injects narrow / wide / full toggle into any page that loads this script.
+   Shows the nav width control and handles narrow / wide / full switching.
    Width preference is saved per-page in localStorage.
 */
 (function () {
   const WIDTHS = ['container', 'container-wide', 'container-full'];
-  const LABELS = { 'container': 'narrow', 'container-wide': 'wide', 'container-full': 'full' };
   const KEY = 'page-width:' + window.location.pathname;
 
   function getContainer() {
@@ -14,43 +13,40 @@
   function setWidth(w) {
     const el = getContainer();
     if (!el) return;
-    WIDTHS.forEach(c => { el.classList.remove(c); });
+    WIDTHS.forEach(c => el.classList.remove(c));
     el.classList.add(w);
-    document.querySelectorAll('.width-toggle button').forEach(btn => {
+    document.querySelectorAll('.nw-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.width === w);
     });
     try { localStorage.setItem(KEY, w); } catch (e) {}
   }
 
-  function inject() {
+  function init() {
     const el = getContainer();
-    if (!el || el.querySelector('.width-toggle')) return; // already present
+    if (!el) return; // no resizable container on this page
 
-    const bar = document.createElement('div');
-    bar.className = 'width-toggle';
-    bar.setAttribute('aria-label', 'Page width');
+    // Show the nav width control
+    const nav = document.getElementById('nav-width');
+    if (nav) {
+      nav.style.display = 'flex';
+      nav.querySelectorAll('.nw-btn').forEach(btn => {
+        btn.addEventListener('click', () => setWidth(btn.dataset.width));
+      });
+    }
 
-    WIDTHS.forEach(w => {
-      const btn = document.createElement('button');
-      btn.textContent = LABELS[w];
-      btn.dataset.width = w;
-      if (el.classList.contains(w)) btn.classList.add('active');
-      btn.addEventListener('click', () => setWidth(w));
-      bar.appendChild(btn);
-    });
-
-    el.insertBefore(bar, el.firstChild);
-
-    // Restore saved preference
+    // Restore saved preference, default to current class
+    const current = WIDTHS.find(c => el.classList.contains(c)) || 'container';
     try {
       const saved = localStorage.getItem(KEY);
-      if (saved && WIDTHS.includes(saved)) setWidth(saved);
-    } catch (e) {}
+      setWidth(saved && WIDTHS.includes(saved) ? saved : current);
+    } catch (e) {
+      setWidth(current);
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', inject);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    inject();
+    init();
   }
 })();

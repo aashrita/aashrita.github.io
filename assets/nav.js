@@ -25,14 +25,21 @@
     <nav>
       <div class="container">
         <a class="nav-name" href="${root}index.html">aashrita mangu</a>
-        <ul class="nav-links">
-          ${links.map(l => {
-            const check = l.label === 'about' ? 'index.html' : l.label + '.html';
-            const isActive = current.endsWith(check)
-                          || (current.endsWith('/') && l.label === 'about');
-            return `<li><a href="${l.href}"${isActive ? ' class="active"' : ''}>${l.label}</a></li>`;
-          }).join('')}
-        </ul>
+        <div class="nav-right">
+          <ul class="nav-links">
+            ${links.map(l => {
+              const check = l.label === 'about' ? 'index.html' : l.label + '.html';
+              const isActive = current.endsWith(check)
+                            || (current.endsWith('/') && l.label === 'about');
+              return `<li><a href="${l.href}"${isActive ? ' class="active"' : ''}>${l.label}</a></li>`;
+            }).join('')}
+          </ul>
+          <div class="nav-width" id="nav-width" style="display:none">
+            <button class="nw-btn" data-width="container">narrow</button>
+            <button class="nw-btn" data-width="container-wide">wide</button>
+            <button class="nw-btn" data-width="container-full">full</button>
+          </div>
+        </div>
       </div>
     </nav>`;
 

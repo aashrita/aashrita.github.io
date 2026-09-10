@@ -76,37 +76,39 @@ img { max-width: 100%; display: block; }
   padding: 0 2rem;
 }
 
-/* ── Width toggle control ───────────────── */
-.width-toggle {
+/* ── Nav right group (links + width toggle) ── */
+.nav-right {
   display: flex;
-  gap: 0.25rem;
   align-items: center;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
 }
 
-.width-toggle button {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid var(--rule);
-  background: var(--surface);
-  color: var(--ink-muted);
+/* ── Width toggle (in nav) ──────────────── */
+.nav-width {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-left: 1px solid var(--rule);
+  padding-left: 1.25rem;
+}
+
+.nw-btn {
+  background: none;
+  border: none;
   cursor: pointer;
-  border-radius: 1px;
-  transition: border-color 0.15s, color 0.15s;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  font-family: var(--sans);
+  color: var(--ink-muted);
+  transition: color 0.15s;
+  line-height: 1;
 }
 
-.width-toggle button:hover {
-  border-color: var(--ink-muted);
-  color: var(--ink-soft);
-}
-
-.width-toggle button.active {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.nw-btn:hover { color: var(--ink-soft); }
+.nw-btn.active { color: var(--accent); }
 
 /* ── Nav ─────────────────────────────────  */
 nav {
