@@ -17,7 +17,6 @@
     { label: "research", href: root + "research.html" },
     { label: "thesis",   href: root + "thesis.html" },
     { label: "wiki",     href: root + "wiki.html" },
-    { label: "cmb",      href: root + "research/cmb.html" },
   ];
 
   const current = window.location.pathname;
@@ -28,7 +27,7 @@
         <a class="nav-name" href="${root}index.html">aashrita mangu</a>
         <ul class="nav-links">
           ${links.map(l => {
-            const check = l.label === 'about' ? 'index.html' : l.label === 'cmb' ? 'research/cmb.html' : l.label + '.html';
+            const check = l.label === 'about' ? 'index.html' : l.label + '.html';
             const isActive = current.endsWith(check)
                           || (current.endsWith('/') && l.label === 'about');
             return `<li><a href="${l.href}"${isActive ? ' class="active"' : ''}>${l.label}</a></li>`;
