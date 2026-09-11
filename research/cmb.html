@@ -6,11 +6,10 @@
   <title>the cosmic microwave background — aashrita mangu</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <style>
-    /* ── Figure blocks (full-bleed, break out of container) ── */
+    /* ── Figure blocks (break out of note-body width, reclaim container padding) ── */
     .fig-block {
-      margin: 3rem 0;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
+      margin: 3rem -2rem;
+      width: calc(100% + 4rem);
     }
     .fig-block-label {
       font-family: var(--mono);
@@ -19,7 +18,6 @@
       text-transform: uppercase;
       color: var(--ink-muted);
       margin-bottom: 0.6rem;
-      padding-left: clamp(10px, 2vw, 20px);
     }
     /* ── Planck image figures ── */
     .research-figure {
@@ -138,7 +136,7 @@
 .figc-inline .img-container{position:relative;width:100%}
 .figc-inline .img-container img{display:block;width:100%;height:auto;border-radius:4px}
 .figc-inline .credit{font-size:10px;color:#aaa;text-align:right;margin-top:4px;font-style:italic}
-.figc-inline .grid-outer{position:relative;margin-bottom:12px}.figc-inline .grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:auto auto;gap:5px}
+.figc-inline .grid-outer{position:relative;margin-bottom:12px;overflow-x:auto}.figc-inline .grid{display:grid;grid-template-columns:repeat(7,minmax(100px,1fr));grid-template-rows:auto auto;gap:5px;min-width:700px}
 .figc-inline .row-lbl{position:absolute;left:-28px;width:22px;display:flex;align-items:center;justify-content:center}
 .figc-inline .row-lbl-top{top:0;height:50%}
 .figc-inline .row-lbl-bot{bottom:0;height:50%}
