@@ -444,6 +444,8 @@ p:last-child { margin-bottom: 0; }
 /* ── Wiki note page ─────────────────────── */
 .note-body {
   max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .note-body h2 {
