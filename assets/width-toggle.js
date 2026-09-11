@@ -34,13 +34,12 @@
       });
     }
 
-    // Restore saved preference, default to current class
-    const current = WIDTHS.find(c => el.classList.contains(c)) || 'container';
+    // Restore saved preference; default to narrow ('container')
     try {
       const saved = localStorage.getItem(KEY);
-      setWidth(saved && WIDTHS.includes(saved) ? saved : current);
+      setWidth(saved && WIDTHS.includes(saved) ? saved : 'container');
     } catch (e) {
-      setWidth(current);
+      setWidth('container');
     }
   }
 

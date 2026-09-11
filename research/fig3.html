@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    body { padding: 2rem; background: var(--bg); }
+    .fig-block { margin: 2rem 0; width: 100%; }
+    .fig-block-label {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.6rem;
+    }
+    .fig1-inline p, .fig2-inline p, .fig3-inline p, .figc-inline p { color: inherit; margin-bottom: 0; }
+    <title>Figure 3 — Science Cases</title>
+  </style>
+</head>
+<body class="page-research">
+      <div class="fig-block">
+        <div class="fig-block-label">Figure 3 &mdash; Science Cases</div>
+        <style>
+
+.fig3-inline *{ box-sizing: border-box; margin: 0; padding: 0; }
+.fig3-inline{ background: #f0f2f5; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 24px; }
+.fig3-inline h1{ font-size: 22px; font-weight: 700; color: #111; letter-spacing: 1px; margin-bottom: 4px; }
+.fig3-inline .subtitle{ font-size: 12px; color: #666; margin-bottom: 24px; }
+
+.fig3-inline .grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+.fig3-inline .card{
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  border-top: 4px solid;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.fig3-inline .card-tag{
+  font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.fig3-inline .card h2{ font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.fig3-inline .card .epoch{ font-size: 10px; color: #888; margin-bottom: 12px; }
+.fig3-inline .card .observable{
+  font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+  color: #555; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-bottom: 10px;
+}
+.fig3-inline .card .mechanism{ font-size: 11px; color: #444; line-height: 1.5; margin-bottom: 10px; }
+.fig3-inline .card .forecast{
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+.fig3-inline .card .forecast .label{ font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+.fig3-inline .card .forecast .value{ font-size: 16px; font-weight: 700; margin: 2px 0; }
+.fig3-inline .card .forecast .context{ font-size: 9.5px; color: #666; }
+
+.fig3-inline .card .telescope{ font-size: 10px; color: #888; margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px; }
+.fig3-inline .telescope span{ font-weight: 600; }
+
+/* Card colors */
+.fig3-inline .c1{ border-color: #e63946; }
+.fig3-inline .c1 h2{ color: #e63946; }
+.fig3-inline .c1 .forecast .value{ color: #e63946; }
+
+.fig3-inline .c2{ border-color: #f4813f; }
+.fig3-inline .c2 h2{ color: #f4813f; }
+.fig3-inline .c2 .forecast .value{ color: #f4813f; }
+
+.fig3-inline .c3{ border-color: #7209b7; }
+.fig3-inline .c3 h2{ color: #7209b7; }
+.fig3-inline .c3 .forecast .value{ color: #7209b7; }
+
+.fig3-inline .c4{ border-color: #4cc9f0; }
+.fig3-inline .c4 h2{ color: #4cc9f0; }
+.fig3-inline .c4 .forecast .value{ color: #4cc9f0; }
+
+.fig3-inline .c5{ border-color: #4361ee; }
+.fig3-inline .c5 h2{ color: #4361ee; }
+.fig3-inline .c5 .forecast .value{ color: #4361ee; }
+
+.fig3-inline .c6{ border-color: #52b788; }
+.fig3-inline .c6 h2{ color: #52b788; }
+.fig3-inline .c6 .forecast .value{ color: #52b788; }
+
+.fig3-inline .sat-badge, .fig3-inline .lat-badge{
+  display: inline-block; font-size: 9px; font-weight: 700;
+  padding: 1px 6px; border-radius: 3px; margin-right: 4px;
+}
+.fig3-inline .sat-badge{ background: #e6394622; color: #e63946; }
+.fig3-inline .lat-badge{ background: #4cc9f022; color: #4cc9f0; }
+
+</style>
+<div class="fig3-inline">
+<h1>SCIENCE WITH THE SIMONS OBSERVATORY</h1>
+<p class="subtitle">Six science drivers — each requiring a different combination of frequency coverage, angular resolution, and polarization sensitivity</p>
+
+<div class="grid">
+
+  <!-- CARD 1: Inflation / B-modes -->
+  <div class="card c1">
+    <div class="card-tag" style="color:#e63946">Primordial Universe</div>
+    <h2>Inflation</h2>
+    <div class="epoch">t &lt; 10⁻³² s after Big Bang</div>
+    <div class="observable">Observable: B-mode polarization at ℓ &lt; 300</div>
+    <div class="mechanism">
+      Inflation predicts a background of primordial gravitational waves that imprint a faint, distinctive curl-like (B-mode) pattern on CMB polarization at large angular scales. No other known process produces this pattern at these scales.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">σ(r) = 0.003</div>
+      <div class="context">10× improvement over Planck. Planck+BICEP/Keck: r &lt; 0.036</div>
+    </div>
+    <div class="telescope"><span class="sat-badge">SAT</span> 3 × 0.5-m telescopes, large-scale sky coverage</div>
+  </div>
+
+  <!-- CARD 2: Light relics / Neff -->
+  <div class="card c2">
+    <div class="card-tag" style="color:#f4813f">Early Universe Physics</div>
+    <h2>Light Relics &amp; Neutrinos</h2>
+    <div class="epoch">t ~ 1 s – 380,000 yrs</div>
+    <div class="observable">Observable: CMB damping tail (TE, TT, EE); lensing</div>
+    <div class="mechanism">
+      Any particle species in thermal equilibrium in the early Universe leaves a measurable imprint on the CMB damping tail via its contribution to the radiation density N<sub>eff</sub>. The lensing power spectrum constrains the total neutrino mass.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">σ(N<sub>eff</sub>) ≈ 0.05</div>
+      <div class="context">σ(Σm<sub>ν</sub>) ≈ 40 meV · Can detect any thermal relic at 95% C.L.</div>
+    </div>
+    <div class="telescope"><span class="lat-badge">LAT</span> 6-m aperture, arcminute resolution damping tail</div>
+  </div>
+
+  <!-- CARD 3: Clusters / Dark energy -->
+  <div class="card c3">
+    <div class="card-tag" style="color:#7209b7">Large-Scale Structure</div>
+    <h2>Dark Energy &amp; Clusters</h2>
+    <div class="epoch">z = 0 – 3 (recent 8 Gyr)</div>
+    <div class="observable">Observable: thermal SZ (tSZ), CMB lensing</div>
+    <div class="mechanism">
+      Hot gas in galaxy clusters scatters CMB photons, producing a distinctive spectral distortion (tSZ). The CMB lensing power spectrum traces the projected matter distribution. Together they constrain the growth of structure and dark energy.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">~16,000 clusters</div>
+      <div class="context">σ(σ₈) ≈ 0.004 · σ(w₀) competitive with stage-IV BAO surveys</div>
+    </div>
+    <div class="telescope"><span class="lat-badge">LAT</span> 40% sky coverage, 6 frequency bands for spectral SZ</div>
+  </div>
+
+  <!-- CARD 4: Reionization -->
+  <div class="card c4">
+    <div class="card-tag" style="color:#4cc9f0">Cosmic Dawn</div>
+    <h2>Reionization</h2>
+    <div class="epoch">z ~ 6–12 (0.4–1 Gyr)</div>
+    <div class="observable">Observable: kinematic SZ (kSZ), optical depth τ</div>
+    <div class="mechanism">
+      During reionization, ionized bubbles of gas around the first stars scatter CMB photons. The bulk velocity of these bubbles produces a kinematic SZ signal. The patchy optical depth constrains when and how reionization proceeded.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">Δz / z<sub>reion</sub></div>
+      <div class="context">Constrain duration and morphology · First detection of patchy τ</div>
+    </div>
+    <div class="telescope"><span class="lat-badge">LAT</span> high-ℓ kSZ via cross-correlation with galaxy surveys</div>
+  </div>
+
+  <!-- CARD 5: Galaxy evolution / feedback -->
+  <div class="card c5">
+    <div class="card-tag" style="color:#4361ee">Astrophysics</div>
+    <h2>Galaxy Evolution</h2>
+    <div class="epoch">z = 0 – 4 (recent 12 Gyr)</div>
+    <div class="observable">Observable: tSZ, kSZ stacking on galaxy samples</div>
+    <div class="mechanism">
+      The tSZ measures non-thermal pressure and total thermal energy in cluster gas. The kSZ measures bulk gas velocities. Together they probe AGN and supernova feedback — the processes regulating star formation in galaxies.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">10⁴ clusters + fields</div>
+      <div class="context">Non-thermal pressure profiles · Feedback efficiency at z&gt;1</div>
+    </div>
+    <div class="telescope"><span class="lat-badge">LAT</span> + external galaxy surveys (DESI, LSST, Euclid)</div>
+  </div>
+
+  <!-- CARD 6: Extragalactic sources / radio survey -->
+  <div class="card c6">
+    <div class="card-tag" style="color:#52b788">Transients &amp; Sources</div>
+    <h2>Extragalactic Sources</h2>
+    <div class="epoch">All epochs</div>
+    <div class="observable">Observable: point sources, variability, new transients</div>
+    <div class="mechanism">
+      SO will catalog &gt;20,000 compact extragalactic sources (radio galaxies, blazars, dusty galaxies) across six frequencies, enabling multi-frequency spectral studies. The high-cadence scanning also enables a blind transient survey.
+    </div>
+    <div class="forecast">
+      <div class="label">SO forecast</div>
+      <div class="value">&gt;20,000 sources</div>
+      <div class="context">Multi-frequency SEDs · First SO transient catalog</div>
+    </div>
+    <div class="telescope"><span class="lat-badge">LAT</span> 40% sky, daily revisit cadence for variability</div>
+  </div>
+
+</div>
+
+</div>
+      </div>
+
+</body>
+</html>
