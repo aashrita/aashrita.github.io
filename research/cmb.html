@@ -6,10 +6,11 @@
   <title>the cosmic microwave background — aashrita mangu</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <style>
-    /* ── Figure blocks (break out of note-body width) ── */
+    /* ── Figure blocks (full-bleed, break out of container) ── */
     .fig-block {
       margin: 3rem 0;
-      width: 100%;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
     }
     .fig-block-label {
       font-family: var(--mono);
@@ -18,6 +19,7 @@
       text-transform: uppercase;
       color: var(--ink-muted);
       margin-bottom: 0.6rem;
+      padding-left: clamp(10px, 2vw, 20px);
     }
     /* ── Planck image figures ── */
     .research-figure {
